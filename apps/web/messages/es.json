@@ -106,7 +106,8 @@
     "giftedness": {
       "title": "Altas capacidades",
       "description": "Características relacionadas con distintos potenciales cognitivos."
-    }
+    },
+    "explore": "Explorar evaluación"
   },
   "how": {
     "eyebrow": "Un recorrido sencillo",
@@ -153,7 +154,8 @@
     "reasoning": "Razonamiento",
     "patterns": "Patrones",
     "attention": "Atención",
-    "memory": "Memoria"
+    "memory": "Memoria",
+    "signalCaption": "LECTURA EN FORMACIÓN"
   },
   "premium": {
     "eyebrow": "Después de la primera mirada",

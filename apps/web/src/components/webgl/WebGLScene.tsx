@@ -44,30 +44,31 @@ export function WebGLScene() {
     return () => mq.removeEventListener('change', resolve);
   }, []);
 
-  if (!shouldRender) {
-    return (
-      <div className="fallback-canvas" aria-hidden="true">
-        <div className="fallback-core">
-          <span className="fallback-crystal" />
-          <span className="fallback-orbit fallback-orbit-a" />
-          <span className="fallback-orbit fallback-orbit-b" />
-          <span className="fallback-filament fallback-filament-a" />
-          <span className="fallback-node fallback-node-a" />
-          <span className="fallback-node fallback-node-b" />
-          <span className="fallback-node fallback-node-c" />
-          <span className="fallback-node fallback-node-d" />
-        </div>
-      </div>
-    );
-  }
-
   return (
     <>
-      <div className="canvas-container" aria-hidden="true">
-        <Suspense fallback={null}>
-          <ExperienceCanvas />
-        </Suspense>
-      </div>
+      {shouldRender ? (
+        <div className="canvas-container" aria-hidden="true">
+          <Suspense fallback={null}>
+            <ExperienceCanvas />
+          </Suspense>
+        </div>
+      ) : (
+        <div className="fallback-canvas" aria-hidden="true">
+          <div className="fallback-core">
+            <span className="fallback-crystal" />
+            <span className="fallback-orbit fallback-orbit-a" />
+            <span className="fallback-orbit fallback-orbit-b" />
+            <span className="fallback-filament fallback-filament-a" />
+            <span className="fallback-node fallback-node-a" />
+            <span className="fallback-node fallback-node-b" />
+            <span className="fallback-node fallback-node-c" />
+            <span className="fallback-node fallback-node-d" />
+          </div>
+        </div>
+      )}
+      {/* Mounted in both branches: ScrollManager also toggles the
+          nura-scene-how / nura-scene-profile classes on <body>, which reposition
+          the CSS fallback core. Without it the fallback never moves. */}
       <Suspense fallback={null}>
         <ScrollManager />
       </Suspense>

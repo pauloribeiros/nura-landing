@@ -106,7 +106,8 @@
     "giftedness": {
       "title": "Giftedness",
       "description": "Characteristics related to different cognitive potentials."
-    }
+    },
+    "explore": "Explore assessment"
   },
   "how": {
     "eyebrow": "A simple journey",
@@ -153,7 +154,8 @@
     "reasoning": "Reasoning",
     "patterns": "Patterns",
     "attention": "Attention",
-    "memory": "Memory"
+    "memory": "Memory",
+    "signalCaption": "READING IN PROGRESS"
   },
   "premium": {
     "eyebrow": "After the first look",

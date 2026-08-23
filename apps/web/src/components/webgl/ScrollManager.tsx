@@ -68,6 +68,37 @@ export function ScrollManager() {
         }
       });
 
+      // Keep the existing constellation present as a quieter, linear guide
+      // through the three steps of the journey.
+      gsap.to(glState, {
+        howProgress: 1,
+        ease: 'power2.inOut',
+        scrollTrigger: {
+          trigger: '.how',
+          start: 'top bottom',
+          end: 'center center',
+          scrub: true,
+        }
+      });
+
+      ScrollTrigger.create({
+        trigger: '.how',
+        start: 'top 72%',
+        end: 'bottom 28%',
+        toggleClass: { targets: document.body, className: 'nura-scene-how' },
+      });
+
+      gsap.to(glState, {
+        howProgress: 0,
+        ease: 'power2.inOut',
+        scrollTrigger: {
+          trigger: '#perfil',
+          start: 'top bottom',
+          end: 'center center',
+          scrub: true,
+        }
+      });
+
       // Reconnect
       gsap.to(glState, {
         reconnectProgress: 1,
@@ -78,6 +109,26 @@ export function ScrollManager() {
           end: 'center center',
           scrub: true,
         }
+      });
+
+      // The same constellation becomes a more deliberate dimensional map
+      // as the NURA Profile section enters the viewport.
+      gsap.to(glState, {
+        profileFocus: 1,
+        ease: 'power2.inOut',
+        scrollTrigger: {
+          trigger: '#perfil',
+          start: 'top bottom',
+          end: 'center center',
+          scrub: true,
+        }
+      });
+
+      ScrollTrigger.create({
+        trigger: '#perfil',
+        start: 'top 72%',
+        end: 'bottom 28%',
+        toggleClass: { targets: document.body, className: 'nura-scene-profile' },
       });
     });
 

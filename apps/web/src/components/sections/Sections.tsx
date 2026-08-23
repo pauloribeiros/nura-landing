@@ -6,13 +6,13 @@ import {
   PREMIUM_BENEFITS,
   PROFILE_DIMENSIONS,
   PROFILE_DOT_COUNT,
-  RESULT_METRICS,
   SECTION_IDS,
   TRUST_POINTS,
 } from '@/content/landing';
 import { CtaLink } from '../CtaLink';
 import { NuraLogo } from '../Header';
 import { FaqList } from '../FaqList';
+import { ResultCard } from '../ResultCard';
 import { LocaleSwitcher } from '../LocaleSwitcher';
 
 /* ---------------------------------------------------------------- hero --- */
@@ -135,8 +135,8 @@ export function AssessmentPaths() {
                 <h3>{t(`${item.id}.title`)}</h3>
                 <p>{t(`${item.id}.description`)}</p>
               </div>
-              <CtaLink to="catalog" className="text-link" iconSize={14}>
-                {t('start')}
+              <CtaLink to="catalog" className="path-action" iconSize={14}>
+                {t('explore')}
               </CtaLink>
             </article>
           ))}
@@ -232,33 +232,7 @@ export function ResultPreview() {
           <h2>{t('title')}</h2>
           <p className="result-copy">{t('copy')}</p>
         </div>
-        <div className="result-card reveal">
-          <div className="result-card-head">
-            <div>
-              <span className="mono result-card-label">{t('cardLabel')}</span>
-              <h3>{t('cardTitle')}</h3>
-            </div>
-            <div className="result-avatar" aria-hidden="true">
-              {t('cardAvatar')}
-            </div>
-          </div>
-          <span className="result-tag">{t('tag')}</span>
-          <div className="result-highlight">
-            <b>{t('highlight')}</b>
-            <small>{t('highlightNote')}</small>
-          </div>
-          {RESULT_METRICS.map((metric) => (
-            <div className="metric" key={metric.id}>
-              <div>
-                <span>{t(metric.id)}</span>
-                <div className="metric-track">
-                  <span style={{ width: `${metric.value}%` }} />
-                </div>
-              </div>
-              <b>{metric.value}</b>
-            </div>
-          ))}
-        </div>
+        <ResultCard />
       </div>
     </section>
   );
