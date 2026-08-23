@@ -112,7 +112,7 @@ export function FeaturedAssessment() {
 export function AssessmentPaths() {
   const t = useTranslations('assessments');
   return (
-    <section className="section paths fade-from-dark" id={SECTION_IDS.assessments}>
+    <section className="section paths" id={SECTION_IDS.assessments}>
       <div className="wrap">
         <div className="section-head reveal">
           <div>
@@ -154,7 +154,7 @@ export function AssessmentPaths() {
 export function HowItWorks() {
   const t = useTranslations('how');
   return (
-    <section className="section how fade-to-dark" id={SECTION_IDS.howItWorks}>
+    <section className="section how" id={SECTION_IDS.howItWorks}>
       <div className="wrap">
         <p className="eyebrow reveal">{t('eyebrow')}</p>
         <h2 className="section-title reveal">
@@ -185,7 +185,7 @@ export function NuraProfile() {
     <section className="section profile dark" id={SECTION_IDS.profile}>
       <div className="wrap profile-grid">
         <div className="spacer desktop-only" aria-hidden="true" />
-        <div className="reveal scrim">
+        <div className="reveal">
           <p className="eyebrow eyebrow-light">{t('eyebrow')}</p>
           <h2>
             {t('titleStart')}
@@ -225,7 +225,7 @@ export function NuraProfile() {
 export function ResultPreview() {
   const t = useTranslations('result');
   return (
-    <section className="section result fade-from-dark" id={SECTION_IDS.result}>
+    <section className="section result" id={SECTION_IDS.result}>
       <div className="wrap result-grid">
         <div className="reveal">
           <p className="eyebrow">{t('eyebrow')}</p>
@@ -338,7 +338,7 @@ export function TrustSection() {
 export function Faq() {
   const t = useTranslations('faq');
   return (
-    <section className="section faq fade-to-dark" id={SECTION_IDS.faq}>
+    <section className="section faq" id={SECTION_IDS.faq}>
       <div className="wrap faq-layout">
         <div className="reveal">
           <p className="eyebrow">{t('eyebrow')}</p>
@@ -356,7 +356,7 @@ export function FinalCta() {
   const t = useTranslations('finalCta');
   return (
     <section className="section final-cta">
-      <div className="wrap final-inner reveal scrim scrim-center">
+      <div className="wrap final-inner reveal">
         <p className="eyebrow eyebrow-light">{t('eyebrow')}</p>
         <h2>{t('title')}</h2>
         <p>{t('copy')}</p>

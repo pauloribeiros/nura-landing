@@ -7,11 +7,9 @@ import { Suspense, lazy, useState, useEffect } from 'react';
 const ExperienceCanvas = lazy(() =>
   import('./ExperienceCanvas').then((m) => ({ default: m.ExperienceCanvas })),
 );
-const ScrollProgress = lazy(() =>
-  import('./ScrollProgress').then((m) => ({ default: m.ScrollProgress })),
+const ScrollManager = lazy(() =>
+  import('./ScrollManager').then((m) => ({ default: m.ScrollManager })),
 );
-
-import { detectQuality, glState } from './store';
 
 const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)';
 
@@ -40,13 +38,7 @@ export function WebGLScene() {
 
   useEffect(() => {
     const mq = window.matchMedia(REDUCED_MOTION_QUERY);
-    const resolve = () => {
-      const ok = !mq.matches && hasWebGL();
-      // Resolved before the canvas mounts, because NuraCore reads the tier at
-      // render time to pick its geometry and particle budgets.
-      if (ok) glState.quality = detectQuality();
-      setShouldRender(ok);
-    };
+    const resolve = () => setShouldRender(!mq.matches && hasWebGL());
     resolve();
     mq.addEventListener('change', resolve);
     return () => mq.removeEventListener('change', resolve);
@@ -77,7 +69,7 @@ export function WebGLScene() {
         </Suspense>
       </div>
       <Suspense fallback={null}>
-        <ScrollProgress />
+        <ScrollManager />
       </Suspense>
     </>
   );
