@@ -1,0 +1,209 @@
+{
+  "meta": {
+    "title": "NURA — Assessments to explore your attention, cognition and behaviour",
+    "description": "Explore different dimensions of your mind and behaviour through interactive assessments. Start free, no card required, and get an initial result right away. A self-knowledge and screening tool — it does not replace professional diagnosis.",
+    "ogTitle": "NURA — Discover what makes you, you",
+    "ogDescription": "Interactive assessments to explore your attention, cognition, personality and behaviour. Free to start, no card required.",
+    "ogImageAlt": "NURA — Discover what makes you, you"
+  },
+  "brand": {
+    "name": "NURA",
+    "backToTop": "NURA, back to top"
+  },
+  "nav": {
+    "label": "Main navigation",
+    "mobileLabel": "Mobile navigation",
+    "footerLabel": "Footer navigation",
+    "assessments": "Assessments",
+    "howItWorks": "How it works",
+    "profile": "NURA Profile",
+    "about": "About",
+    "aboutPrivacy": "About and privacy",
+    "login": "Sign in",
+    "start": "Start",
+    "startFreeSuffix": "free",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "hero": {
+    "eyebrow": "A new way to observe yourself",
+    "titleLine1": "Discover what",
+    "titleLine2": "makes you, you.",
+    "subtitle": "Explore different dimensions of your mind and behaviour.",
+    "cta": "Start my discovery",
+    "metaFree": "Free to start",
+    "metaInstant": "Immediate result",
+    "metaNoCard": "No card required",
+    "scrollHint": "scroll to explore"
+  },
+  "statement": {
+    "titleStart": "You are more than a ",
+    "titleEmphasis": "single result.",
+    "copy": "Each assessment reveals a new dimension of how you think, feel, decide and interact. NURA connects those discoveries without reducing who you are to a score."
+  },
+  "featured": {
+    "eyebrow": "Featured experience",
+    "titleLine1": "ADHD assessment",
+    "titleLine2": "for adults.",
+    "copy": "Explore how your attention works day to day. Look at patterns related to attention, organisation, impulsivity and routine through a quick, structured experience.",
+    "durationValue": "3–5 min",
+    "durationLabel": "approximate time",
+    "freeValue": "Free",
+    "freeLabel": "initial result",
+    "cardValue": "No",
+    "cardLabel": "card required",
+    "cta": "Take the free assessment",
+    "note": "A screening and self-knowledge tool. The result does not constitute a medical diagnosis."
+  },
+  "assessments": {
+    "sectionEyebrow": "Start wherever it makes sense",
+    "sectionTitleLine1": "What would you like",
+    "sectionTitleLine2": "to discover?",
+    "seeAll": "See all assessments",
+    "start": "Start",
+    "attention": {
+      "title": "Attention & behaviour",
+      "description": "Attention, organisation and impulsivity in everyday life."
+    },
+    "autism": {
+      "title": "Autism spectrum",
+      "description": "Communication, interaction, routine and sensory processing."
+    },
+    "cognition": {
+      "title": "Cognition",
+      "description": "Reasoning, patterns, memory and attention."
+    },
+    "giftedness": {
+      "title": "Giftedness",
+      "description": "Characteristics related to different cognitive potentials."
+    }
+  },
+  "how": {
+    "eyebrow": "A simple journey",
+    "titleLine1": "Discovering more about",
+    "titleLine2": "yourself can be simple.",
+    "answer": {
+      "number": "01",
+      "title": "Answer",
+      "copy": "Take a quick, interactive assessment."
+    },
+    "discover": {
+      "number": "02",
+      "title": "Discover",
+      "copy": "Get your initial result for free."
+    },
+    "deepen": {
+      "number": "03",
+      "title": "Go deeper",
+      "copy": "Explore detailed analysis and build your NURA Profile."
+    }
+  },
+  "profile": {
+    "eyebrow": "What builds over time",
+    "titleStart": "Every discovery reveals a new ",
+    "titleEmphasis": "dimension.",
+    "copy": "Your assessments progressively build your NURA Profile: a living map of explored dimensions, nodes and connections. Never a universal score — only how much of yourself you have explored here.",
+    "legend": "The percentages represent how much of the NURA ecosystem you have explored. They do not mean intelligence, health or diagnosis.",
+    "cognition": "Cognition",
+    "attention": "Attention",
+    "personality": "Personality",
+    "behaviour": "Behaviour",
+    "career": "Career"
+  },
+  "result": {
+    "eyebrow": "A first look",
+    "title": "Your result starts telling a story.",
+    "copy": "You get an initial result for free. A clear reading meant to spark the next question — not to end the conversation about you.",
+    "cardLabel": "YOUR RESULT",
+    "cardTitle": "Your Cognitive Profile",
+    "cardAvatar": "N.",
+    "tag": "predominant profile",
+    "highlight": "ANALYTICAL",
+    "highlightNote": "Main strength · pattern recognition",
+    "reasoning": "Reasoning",
+    "patterns": "Patterns",
+    "attention": "Attention",
+    "memory": "Memory"
+  },
+  "premium": {
+    "eyebrow": "After the first look",
+    "title": "Want to understand your result in depth?",
+    "price": "R$ 19.90",
+    "priceNote": "one-time payment",
+    "note": "No automatic subscription. You try before you decide.",
+    "analysis": "Detailed analysis and interpretation",
+    "dimensions": "Dimensions, strengths and points of attention",
+    "recommendations": "Recommendations to keep exploring",
+    "profile": "A contribution to your NURA Profile",
+    "asideTitle": "Knowing yourself is a process.",
+    "asideCopy": "The full report organises the signals that emerged in your experience and opens paths to the next discovery.",
+    "asideCta": "Start for free"
+  },
+  "trust": {
+    "eyebrow": "Clarity first",
+    "title": "Assessments built responsibly.",
+    "copy": "Personal discovery only makes sense with context, clear limits and respect for the person on the other side.",
+    "information": {
+      "title": "Information, not a verdict",
+      "copy": "Results are informative. Screening instruments do not replace professional diagnosis."
+    },
+    "privacy": {
+      "title": "Your data, your choice",
+      "copy": "Transparency about purpose, consent, deletion and care in how your data is handled."
+    },
+    "methodology": {
+      "title": "Transparent methodology",
+      "copy": "An experience built to encourage self-knowledge, without promising impossible precision."
+    }
+  },
+  "faq": {
+    "eyebrow": "Before you start",
+    "title": "Questions that may come up.",
+    "diagnosis": {
+      "question": "Does NURA provide a diagnosis?",
+      "answer": "No. NURA's experiences are informative and meant for self-knowledge. Some instruments can work as screening, but no result replaces a professional assessment or diagnosis."
+    },
+    "price": {
+      "question": "Do I have to pay to start?",
+      "answer": "No. You can start for free and receive an initial result. If you want to go further, the in-depth report costs R$ 19.90 as a one-time payment, with no automatic subscription."
+    },
+    "data": {
+      "question": "How is my data handled?",
+      "answer": "Privacy is part of the experience. We collect only what is needed to deliver your result, with transparency about the purpose and responsibility in how data is processed."
+    },
+    "duration": {
+      "question": "How long does an assessment take?",
+      "answer": "It depends on the experience. The ADHD assessment for adults, for example, takes roughly 3 to 5 minutes."
+    }
+  },
+  "finalCta": {
+    "eyebrow": "The next discovery can start now",
+    "title": "There is still a lot for you to discover.",
+    "copy": "Start with one question. The rest of your profile builds along the way.",
+    "cta": "Start my discovery"
+  },
+  "footer": {
+    "copy": "A thoughtful experience for anyone who wants to observe themselves with more curiosity.",
+    "assessments": "Assessments",
+    "profile": "NURA Profile",
+    "faq": "FAQ",
+    "privacy": "Privacy",
+    "start": "Start",
+    "rights": "© {year} NURA. All rights reserved.",
+    "tagline": "Made to discover, not to label."
+  },
+  "stickyCta": {
+    "label": "Start assessment"
+  },
+  "feedback": {
+    "start": "You can start your discovery for free.",
+    "comingSoon": "The next experiences are on their way. Start with the featured assessment.",
+    "assessmentReady": "{name} is ready to be your first discovery.",
+    "loginSoon": "The account area will be available soon."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "copy": "The address you opened does not exist or has moved.",
+    "cta": "Back to home"
+  }
+}

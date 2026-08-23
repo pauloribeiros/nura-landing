@@ -1,0 +1,416 @@
+import { Check, LockKeyhole, ShieldCheck } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import {
+  FEATURED_ASSESSMENT,
+  GRID_ASSESSMENTS,
+  HOW_IT_WORKS_STEPS,
+  PREMIUM_BENEFITS,
+  PROFILE_DIMENSIONS,
+  PROFILE_DOT_COUNT,
+  RESULT_METRICS,
+  SECTION_IDS,
+  TRUST_POINTS,
+} from '@/content/landing';
+import { CtaButton } from '../CtaButton';
+import { NuraLogo } from '../Header';
+import { FaqList } from '../FaqList';
+
+/* ---------------------------------------------------------------- hero --- */
+
+export function Hero() {
+  const t = useTranslations('hero');
+  return (
+    <section className="hero" id={SECTION_IDS.top}>
+      <div className="hero-inner wrap">
+        <div className="hero-content reveal">
+          <p className="eyebrow eyebrow-light">{t('eyebrow')}</p>
+          <h1>
+            {t('titleLine1')}
+            <br />
+            <span>{t('titleLine2')}</span>
+          </h1>
+          <p className="hero-sub">{t('subtitle')}</p>
+          <div className="hero-actions">
+            <CtaButton action={{ kind: 'start' }}>{t('cta')}</CtaButton>
+          </div>
+          <div className="hero-meta">
+            <span>{t('metaFree')}</span>
+            <i />
+            <span>{t('metaInstant')}</span>
+            <i />
+            <span>{t('metaNoCard')}</span>
+          </div>
+        </div>
+      </div>
+      <div className="scroll-hint-wrapper wrap">
+        <div className="scroll-hint">
+          <span />
+          {t('scrollHint')}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ----------------------------------------------------------- statement --- */
+
+export function Statement() {
+  const t = useTranslations('statement');
+  return (
+    <section className="statement dark">
+      <div className="wrap statement-inner reveal">
+        <h2>
+          {t('titleStart')}
+          <em>{t('titleEmphasis')}</em>
+        </h2>
+        <p className="statement-copy">{t('copy')}</p>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------ featured --- */
+
+export function FeaturedAssessment() {
+  const t = useTranslations('featured');
+  const ta = useTranslations('assessments');
+  return (
+    <section className="section featured dark" id={SECTION_IDS.featured}>
+      <div className="wrap featured-grid">
+        <div className="reveal">
+          <p className="eyebrow eyebrow-light">{t('eyebrow')}</p>
+          <h2>
+            {t('titleLine1')}
+            <br />
+            <span>{t('titleLine2')}</span>
+          </h2>
+          <p className="featured-copy">{t('copy')}</p>
+          <div className="detail-row">
+            <span>
+              <strong>{t('durationValue')}</strong>
+              {t('durationLabel')}
+            </span>
+            <span>
+              <strong>{t('freeValue')}</strong>
+              {t('freeLabel')}
+            </span>
+            <span>
+              <strong>{t('cardValue')}</strong>
+              {t('cardLabel')}
+            </span>
+          </div>
+          <CtaButton action={{ kind: 'assessment', name: ta(`${FEATURED_ASSESSMENT.id}.title`) }}>
+            {t('cta')}
+          </CtaButton>
+          <p className="featured-note">{t('note')}</p>
+        </div>
+        <div className="spacer desktop-only" aria-hidden="true" />
+      </div>
+    </section>
+  );
+}
+
+/* --------------------------------------------------------------- paths --- */
+
+export function AssessmentPaths() {
+  const t = useTranslations('assessments');
+  return (
+    <section className="section paths" id={SECTION_IDS.assessments}>
+      <div className="wrap">
+        <div className="section-head reveal">
+          <div>
+            <p className="eyebrow">{t('sectionEyebrow')}</p>
+            <h2 className="section-title">
+              {t('sectionTitleLine1')}
+              <br />
+              {t('sectionTitleLine2')}
+            </h2>
+          </div>
+          <CtaButton
+            action={{ kind: 'assessment', name: null }}
+            className="text-link desktop-only"
+            iconSize={15}
+          >
+            {t('seeAll')}
+          </CtaButton>
+        </div>
+        <div className="path-grid">
+          {GRID_ASSESSMENTS.map((item) => (
+            <article className="path-card reveal" key={item.id}>
+              <div>
+                <span className="path-index">{item.index}</span>
+                <h3>{t(`${item.id}.title`)}</h3>
+                <p>{t(`${item.id}.description`)}</p>
+              </div>
+              <CtaButton
+                action={{ kind: 'assessment', name: t(`${item.id}.title`) }}
+                className="text-link"
+                iconSize={14}
+              >
+                {t('start')}
+              </CtaButton>
+            </article>
+          ))}
+        </div>
+        <CtaButton
+          action={{ kind: 'assessment', name: null }}
+          className="text-link path-more"
+          iconSize={15}
+        >
+          {t('seeAll')}
+        </CtaButton>
+      </div>
+    </section>
+  );
+}
+
+/* ----------------------------------------------------------- how it works --- */
+
+export function HowItWorks() {
+  const t = useTranslations('how');
+  return (
+    <section className="section how" id={SECTION_IDS.howItWorks}>
+      <div className="wrap">
+        <p className="eyebrow reveal">{t('eyebrow')}</p>
+        <h2 className="section-title reveal">
+          {t('titleLine1')}
+          <br />
+          {t('titleLine2')}
+        </h2>
+        <div className="steps">
+          {HOW_IT_WORKS_STEPS.map((step) => (
+            <article className="step reveal" key={step}>
+              <div className="step-number">{t(`${step}.number`)}</div>
+              <div className="step-mark" />
+              <h3>{t(`${step}.title`)}</h3>
+              <p>{t(`${step}.copy`)}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------- profile --- */
+
+export function NuraProfile() {
+  const t = useTranslations('profile');
+  return (
+    <section className="section profile dark" id={SECTION_IDS.profile}>
+      <div className="wrap profile-grid">
+        <div className="spacer desktop-only" aria-hidden="true" />
+        <div className="reveal">
+          <p className="eyebrow eyebrow-light">{t('eyebrow')}</p>
+          <h2>
+            {t('titleStart')}
+            <span>{t('titleEmphasis')}</span>
+          </h2>
+          <p className="profile-copy">{t('copy')}</p>
+          <div className="profile-stats">
+            {PROFILE_DIMENSIONS.map((dimension) => (
+              <div className="profile-stat" key={dimension.id}>
+                <span className="profile-stat-label">{t(dimension.id)}</span>
+                <span className="profile-dots">
+                  {Array.from({ length: PROFILE_DOT_COUNT }, (_, dot) => (
+                    <i
+                      key={dot}
+                      className={
+                        dot < dimension.filled
+                          ? dimension.tone === 'violet'
+                            ? 'on v'
+                            : 'on'
+                          : ''
+                      }
+                    />
+                  ))}
+                </span>
+              </div>
+            ))}
+          </div>
+          <p className="profile-legend">{t('legend')}</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------- result --- */
+
+export function ResultPreview() {
+  const t = useTranslations('result');
+  return (
+    <section className="section result" id={SECTION_IDS.result}>
+      <div className="wrap result-grid">
+        <div className="reveal">
+          <p className="eyebrow">{t('eyebrow')}</p>
+          <h2>{t('title')}</h2>
+          <p className="result-copy">{t('copy')}</p>
+        </div>
+        <div className="result-card reveal">
+          <div className="result-card-head">
+            <div>
+              <span className="mono result-card-label">{t('cardLabel')}</span>
+              <h3>{t('cardTitle')}</h3>
+            </div>
+            <div className="result-avatar" aria-hidden="true">
+              {t('cardAvatar')}
+            </div>
+          </div>
+          <span className="result-tag">{t('tag')}</span>
+          <div className="result-highlight">
+            <b>{t('highlight')}</b>
+            <small>{t('highlightNote')}</small>
+          </div>
+          {RESULT_METRICS.map((metric) => (
+            <div className="metric" key={metric.id}>
+              <div>
+                <span>{t(metric.id)}</span>
+                <div className="metric-track">
+                  <span style={{ width: `${metric.value}%` }} />
+                </div>
+              </div>
+              <b>{metric.value}</b>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------- premium --- */
+
+export function PremiumSection() {
+  const t = useTranslations('premium');
+  return (
+    <section className="section premium" id={SECTION_IDS.premium}>
+      <div className="wrap premium-grid">
+        <div className="reveal">
+          <p className="eyebrow">{t('eyebrow')}</p>
+          <h2>{t('title')}</h2>
+          <div className="price">
+            {t('price')} <small>{t('priceNote')}</small>
+          </div>
+          <p className="premium-note">{t('note')}</p>
+          <ul className="benefits">
+            {PREMIUM_BENEFITS.map((benefit) => (
+              <li key={benefit}>{t(benefit)}</li>
+            ))}
+          </ul>
+        </div>
+        <aside className="reveal">
+          <h3>{t('asideTitle')}</h3>
+          <p>{t('asideCopy')}</p>
+          <CtaButton action={{ kind: 'start' }} className="button button-primary button-wide">
+            {t('asideCta')}
+          </CtaButton>
+        </aside>
+      </div>
+    </section>
+  );
+}
+
+/* --------------------------------------------------------------- trust --- */
+
+const TRUST_ICONS = {
+  information: ShieldCheck,
+  privacy: LockKeyhole,
+  methodology: Check,
+} as const;
+
+export function TrustSection() {
+  const t = useTranslations('trust');
+  return (
+    <section className="section trust" id={SECTION_IDS.trust}>
+      <div className="wrap trust-grid">
+        <div className="reveal">
+          <p className="eyebrow">{t('eyebrow')}</p>
+          <h2>{t('title')}</h2>
+          <p className="trust-copy">{t('copy')}</p>
+        </div>
+        <div className="trust-points reveal">
+          {TRUST_POINTS.map((point) => {
+            const Icon = TRUST_ICONS[point];
+            return (
+              <div className="trust-point" key={point}>
+                <h3>
+                  <Icon size={16} className="trust-icon" aria-hidden="true" />
+                  {t(`${point}.title`)}
+                </h3>
+                <p>{t(`${point}.copy`)}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ----------------------------------------------------------------- faq --- */
+
+export function Faq() {
+  const t = useTranslations('faq');
+  return (
+    <section className="section faq" id={SECTION_IDS.faq}>
+      <div className="wrap faq-layout">
+        <div className="reveal">
+          <p className="eyebrow">{t('eyebrow')}</p>
+          <h2 className="section-title">{t('title')}</h2>
+        </div>
+        <FaqList />
+      </div>
+    </section>
+  );
+}
+
+/* ----------------------------------------------------------- final cta --- */
+
+export function FinalCta() {
+  const t = useTranslations('finalCta');
+  return (
+    <section className="section final-cta">
+      <div className="wrap final-inner reveal">
+        <p className="eyebrow eyebrow-light">{t('eyebrow')}</p>
+        <h2>{t('title')}</h2>
+        <p>{t('copy')}</p>
+        <CtaButton action={{ kind: 'start' }} className="button button-light">
+          {t('cta')}
+        </CtaButton>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------- footer --- */
+
+export function Footer() {
+  const t = useTranslations('footer');
+  const tn = useTranslations('nav');
+  return (
+    <footer className="footer">
+      <div className="wrap">
+        <div className="footer-grid">
+          <div>
+            <NuraLogo light={false} />
+            <p className="footer-copy">{t('copy')}</p>
+          </div>
+          <nav className="footer-nav" aria-label={tn('footerLabel')}>
+            <a href={`#${SECTION_IDS.assessments}`}>{t('assessments')}</a>
+            <a href={`#${SECTION_IDS.profile}`}>{t('profile')}</a>
+            <a href={`#${SECTION_IDS.faq}`}>{t('faq')}</a>
+            <a href={`#${SECTION_IDS.trust}`}>{t('privacy')}</a>
+            <CtaButton action={{ kind: 'start' }} className="text-link" iconSize={13}>
+              {t('start')}
+            </CtaButton>
+          </nav>
+        </div>
+        <div className="footer-bottom">
+          <span>{t('rights', { year: new Date().getFullYear() })}</span>
+          <span>{t('tagline')}</span>
+        </div>
+      </div>
+    </footer>
+  );
+}

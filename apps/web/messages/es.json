@@ -1,0 +1,209 @@
+{
+  "meta": {
+    "title": "NURA — Evaluaciones para explorar tu atención, cognición y comportamiento",
+    "description": "Explora diferentes dimensiones de tu mente y tu comportamiento con evaluaciones interactivas. Empieza gratis, sin tarjeta, y recibe un resultado inicial al momento. Herramienta de autoconocimiento y cribado — no sustituye un diagnóstico profesional.",
+    "ogTitle": "NURA — Descubre más sobre ti",
+    "ogDescription": "Evaluaciones interactivas para explorar tu atención, cognición, personalidad y comportamiento. Gratis para empezar, sin tarjeta.",
+    "ogImageAlt": "NURA — Descubre más sobre ti"
+  },
+  "brand": {
+    "name": "NURA",
+    "backToTop": "NURA, volver al inicio"
+  },
+  "nav": {
+    "label": "Navegación principal",
+    "mobileLabel": "Navegación móvil",
+    "footerLabel": "Navegación del pie de página",
+    "assessments": "Evaluaciones",
+    "howItWorks": "Cómo funciona",
+    "profile": "Perfil NURA",
+    "about": "Acerca de",
+    "aboutPrivacy": "Acerca de y privacidad",
+    "login": "Entrar",
+    "start": "Empezar",
+    "startFreeSuffix": "gratis",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú"
+  },
+  "hero": {
+    "eyebrow": "Una nueva forma de observarte",
+    "titleLine1": "Descubre más",
+    "titleLine2": "sobre ti.",
+    "subtitle": "Explora diferentes dimensiones de tu mente y tu comportamiento.",
+    "cta": "Empezar mi descubrimiento",
+    "metaFree": "Gratis para empezar",
+    "metaInstant": "Resultado inmediato",
+    "metaNoCard": "Sin tarjeta",
+    "scrollHint": "desplázate para explorar"
+  },
+  "statement": {
+    "titleStart": "Eres más que un ",
+    "titleEmphasis": "único resultado.",
+    "copy": "Cada evaluación revela una nueva dimensión sobre cómo piensas, sientes, decides e interactúas. NURA conecta esos descubrimientos sin reducir quién eres a una nota."
+  },
+  "featured": {
+    "eyebrow": "Experiencia destacada",
+    "titleLine1": "Test de TDAH",
+    "titleLine2": "en adultos.",
+    "copy": "Explora cómo funciona tu atención en el día a día. Evalúa patrones relacionados con la atención, la organización, la impulsividad y la rutina en una experiencia rápida y estructurada.",
+    "durationValue": "3–5 min",
+    "durationLabel": "tiempo aproximado",
+    "freeValue": "Gratis",
+    "freeLabel": "resultado inicial",
+    "cardValue": "No",
+    "cardLabel": "necesitas tarjeta",
+    "cta": "Hacer la evaluación gratuita",
+    "note": "Herramienta de cribado y autoconocimiento. El resultado no constituye un diagnóstico médico."
+  },
+  "assessments": {
+    "sectionEyebrow": "Empieza por donde tenga sentido",
+    "sectionTitleLine1": "¿Qué te gustaría",
+    "sectionTitleLine2": "descubrir?",
+    "seeAll": "Ver todas las evaluaciones",
+    "start": "Empezar",
+    "attention": {
+      "title": "Atención y comportamiento",
+      "description": "Atención, organización e impulsividad en el día a día."
+    },
+    "autism": {
+      "title": "Espectro autista",
+      "description": "Comunicación, interacción, rutina y procesamiento sensorial."
+    },
+    "cognition": {
+      "title": "Cognición",
+      "description": "Razonamiento, patrones, memoria y atención."
+    },
+    "giftedness": {
+      "title": "Altas capacidades",
+      "description": "Características relacionadas con distintos potenciales cognitivos."
+    }
+  },
+  "how": {
+    "eyebrow": "Un recorrido sencillo",
+    "titleLine1": "Descubrir más sobre ti",
+    "titleLine2": "puede ser sencillo.",
+    "answer": {
+      "number": "01",
+      "title": "Responde",
+      "copy": "Haz una evaluación rápida e interactiva."
+    },
+    "discover": {
+      "number": "02",
+      "title": "Descubre",
+      "copy": "Recibe gratis tu resultado inicial."
+    },
+    "deepen": {
+      "number": "03",
+      "title": "Profundiza",
+      "copy": "Explora análisis detallados y desarrolla tu Perfil NURA."
+    }
+  },
+  "profile": {
+    "eyebrow": "Lo que se construye con el tiempo",
+    "titleStart": "Cada descubrimiento revela una nueva ",
+    "titleEmphasis": "dimensión.",
+    "copy": "Tus evaluaciones construyen progresivamente tu Perfil NURA: un mapa vivo de dimensiones exploradas, nodos y conexiones. Nunca una puntuación universal — solo cuánto te has conocido por aquí.",
+    "legend": "Los porcentajes representan cuánto has explorado del ecosistema NURA. No significan inteligencia, salud ni diagnóstico.",
+    "cognition": "Cognición",
+    "attention": "Atención",
+    "personality": "Personalidad",
+    "behaviour": "Comportamiento",
+    "career": "Carrera"
+  },
+  "result": {
+    "eyebrow": "Una primera mirada",
+    "title": "Tu resultado empieza a contar una historia.",
+    "copy": "Recibes un resultado inicial de forma gratuita. Una lectura clara para despertar la siguiente pregunta — y no para cerrar la conversación sobre ti.",
+    "cardLabel": "TU RESULTADO",
+    "cardTitle": "Tu Perfil Cognitivo",
+    "cardAvatar": "N.",
+    "tag": "perfil predominante",
+    "highlight": "ANALÍTICO",
+    "highlightNote": "Principal fortaleza · reconocimiento de patrones",
+    "reasoning": "Razonamiento",
+    "patterns": "Patrones",
+    "attention": "Atención",
+    "memory": "Memoria"
+  },
+  "premium": {
+    "eyebrow": "Después de la primera mirada",
+    "title": "¿Quieres entender tu resultado en profundidad?",
+    "price": "R$ 19,90",
+    "priceNote": "pago único",
+    "note": "Sin suscripción automática. Pruebas antes de decidir.",
+    "analysis": "Análisis e interpretación detallados",
+    "dimensions": "Dimensiones, fortalezas y puntos de atención",
+    "recommendations": "Recomendaciones para seguir explorando",
+    "profile": "Contribución a tu Perfil NURA",
+    "asideTitle": "Conocerse es un proceso.",
+    "asideCopy": "El informe completo organiza las señales que aparecieron en tu experiencia y abre caminos hacia el siguiente descubrimiento.",
+    "asideCta": "Empezar gratis"
+  },
+  "trust": {
+    "eyebrow": "Claridad ante todo",
+    "title": "Evaluaciones hechas con responsabilidad.",
+    "copy": "El descubrimiento personal solo tiene sentido con contexto, límites claros y respeto por quien está del otro lado.",
+    "information": {
+      "title": "Información, no sentencia",
+      "copy": "Los resultados son informativos. Los instrumentos de cribado no sustituyen un diagnóstico profesional."
+    },
+    "privacy": {
+      "title": "Tus datos, tu decisión",
+      "copy": "Transparencia sobre la finalidad, el consentimiento, la eliminación y el cuidado en el tratamiento de tus datos."
+    },
+    "methodology": {
+      "title": "Metodología transparente",
+      "copy": "Una experiencia construida para estimular el autoconocimiento, sin prometer una precisión imposible."
+    }
+  },
+  "faq": {
+    "eyebrow": "Antes de empezar",
+    "title": "Preguntas que pueden surgir.",
+    "diagnosis": {
+      "question": "¿NURA hace diagnósticos?",
+      "answer": "No. Las experiencias de NURA tienen una finalidad informativa y de autoconocimiento. Algunos instrumentos pueden funcionar como cribado, pero ningún resultado sustituye una evaluación o un diagnóstico profesional."
+    },
+    "price": {
+      "question": "¿Tengo que pagar para empezar?",
+      "answer": "No. Puedes empezar gratis y recibir un resultado inicial. Si quieres ir más allá, el informe en profundidad cuesta R$ 19,90 en un pago único, sin suscripción automática."
+    },
+    "data": {
+      "question": "¿Cómo se tratan mis datos?",
+      "answer": "La privacidad forma parte de la experiencia. Recogemos solo lo necesario para entregar tu resultado, con transparencia sobre la finalidad y responsabilidad en el tratamiento de los datos."
+    },
+    "duration": {
+      "question": "¿Cuánto dura una evaluación?",
+      "answer": "Depende de la experiencia elegida. La evaluación de TDAH en adultos, por ejemplo, dura aproximadamente de 3 a 5 minutos."
+    }
+  },
+  "finalCta": {
+    "eyebrow": "El próximo descubrimiento puede empezar ahora",
+    "title": "Todavía tienes mucho por descubrir.",
+    "copy": "Empieza con una pregunta. El resto de tu perfil se construye por el camino.",
+    "cta": "Empezar mi descubrimiento"
+  },
+  "footer": {
+    "copy": "Una experiencia pensada para quien quiere observarse con más curiosidad.",
+    "assessments": "Evaluaciones",
+    "profile": "Perfil NURA",
+    "faq": "Dudas",
+    "privacy": "Privacidad",
+    "start": "Empezar",
+    "rights": "© {year} NURA. Todos los derechos reservados.",
+    "tagline": "Hecho para descubrir, no para etiquetar."
+  },
+  "stickyCta": {
+    "label": "Empezar evaluación"
+  },
+  "feedback": {
+    "start": "Puedes empezar tu descubrimiento de forma gratuita.",
+    "comingSoon": "Las próximas experiencias están en camino. Empieza por la evaluación destacada.",
+    "assessmentReady": "{name} está lista para ser tu primer descubrimiento.",
+    "loginSoon": "El área de acceso estará disponible pronto."
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "copy": "La dirección que abriste no existe o se ha movido.",
+    "cta": "Volver al inicio"
+  }
+}
