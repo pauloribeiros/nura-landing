@@ -10,18 +10,12 @@ import {
   useState,
   type ReactNode,
 } from 'react';
-import { useTranslations } from 'next-intl';
-import { SECTION_IDS } from '@/content/landing';
-import { scrollToId } from './scroll';
 
 const FEEDBACK_MS = 4500;
 
 interface LandingActions {
-  /** Primary CTA: send the visitor to the featured assessment. */
-  start: () => void;
-  /** Secondary CTA on an assessment that is not available yet. */
-  showAssessment: (name: string | null) => void;
-  /** Ad-hoc notice, e.g. the sign-in area that does not exist yet. */
+  /** Ad-hoc notice, e.g. the sign-in area that does not exist yet. All real
+   *  calls to action are links now, so this is the only remaining use. */
   notify: (message: string) => void;
 }
 
@@ -34,7 +28,6 @@ export function useLanding(): LandingActions {
 }
 
 export function LandingProvider({ children }: { children: ReactNode }) {
-  const t = useTranslations('feedback');
   const [feedback, setFeedback] = useState('');
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -44,25 +37,7 @@ export function LandingProvider({ children }: { children: ReactNode }) {
     timer.current = setTimeout(() => setFeedback(''), FEEDBACK_MS);
   }, []);
 
-  const actions = useMemo<LandingActions>(
-    () => ({
-      start: () => {
-        scrollToId(SECTION_IDS.featured);
-        announce(t('start'));
-      },
-      showAssessment: (name) => {
-        if (name === null) {
-          scrollToId(SECTION_IDS.assessments);
-          announce(t('comingSoon'));
-          return;
-        }
-        scrollToId(SECTION_IDS.featured);
-        announce(t('assessmentReady', { name }));
-      },
-      notify: announce,
-    }),
-    [announce, t],
-  );
+  const actions = useMemo<LandingActions>(() => ({ notify: announce }), [announce]);
 
   // Section reveal. Kept here so the whole page shares one observer instead of
   // each section registering its own.

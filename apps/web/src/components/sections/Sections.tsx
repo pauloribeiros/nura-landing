@@ -1,7 +1,6 @@
 import { Check, LockKeyhole, ShieldCheck } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import {
-  FEATURED_ASSESSMENT,
   GRID_ASSESSMENTS,
   HOW_IT_WORKS_STEPS,
   PREMIUM_BENEFITS,
@@ -11,9 +10,10 @@ import {
   SECTION_IDS,
   TRUST_POINTS,
 } from '@/content/landing';
-import { CtaButton } from '../CtaButton';
+import { CtaLink } from '../CtaLink';
 import { NuraLogo } from '../Header';
 import { FaqList } from '../FaqList';
+import { LocaleSwitcher } from '../LocaleSwitcher';
 
 /* ---------------------------------------------------------------- hero --- */
 
@@ -31,7 +31,7 @@ export function Hero() {
           </h1>
           <p className="hero-sub">{t('subtitle')}</p>
           <div className="hero-actions">
-            <CtaButton action={{ kind: 'start' }}>{t('cta')}</CtaButton>
+            <CtaLink to="featured">{t('cta')}</CtaLink>
           </div>
           <div className="hero-meta">
             <span>{t('metaFree')}</span>
@@ -73,7 +73,6 @@ export function Statement() {
 
 export function FeaturedAssessment() {
   const t = useTranslations('featured');
-  const ta = useTranslations('assessments');
   return (
     <section className="section featured dark" id={SECTION_IDS.featured}>
       <div className="wrap featured-grid">
@@ -99,9 +98,7 @@ export function FeaturedAssessment() {
               {t('cardLabel')}
             </span>
           </div>
-          <CtaButton action={{ kind: 'assessment', name: ta(`${FEATURED_ASSESSMENT.id}.title`) }}>
-            {t('cta')}
-          </CtaButton>
+          <CtaLink to="featured">{t('cta')}</CtaLink>
           <p className="featured-note">{t('note')}</p>
         </div>
         <div className="spacer desktop-only" aria-hidden="true" />
@@ -126,13 +123,9 @@ export function AssessmentPaths() {
               {t('sectionTitleLine2')}
             </h2>
           </div>
-          <CtaButton
-            action={{ kind: 'assessment', name: null }}
-            className="text-link desktop-only"
-            iconSize={15}
-          >
+          <CtaLink to="catalog" className="text-link desktop-only" iconSize={15}>
             {t('seeAll')}
-          </CtaButton>
+          </CtaLink>
         </div>
         <div className="path-grid">
           {GRID_ASSESSMENTS.map((item) => (
@@ -142,23 +135,15 @@ export function AssessmentPaths() {
                 <h3>{t(`${item.id}.title`)}</h3>
                 <p>{t(`${item.id}.description`)}</p>
               </div>
-              <CtaButton
-                action={{ kind: 'assessment', name: t(`${item.id}.title`) }}
-                className="text-link"
-                iconSize={14}
-              >
+              <CtaLink to="catalog" className="text-link" iconSize={14}>
                 {t('start')}
-              </CtaButton>
+              </CtaLink>
             </article>
           ))}
         </div>
-        <CtaButton
-          action={{ kind: 'assessment', name: null }}
-          className="text-link path-more"
-          iconSize={15}
-        >
+        <CtaLink to="catalog" className="text-link path-more" iconSize={15}>
           {t('seeAll')}
-        </CtaButton>
+        </CtaLink>
       </div>
     </section>
   );
@@ -302,9 +287,9 @@ export function PremiumSection() {
         <aside className="reveal">
           <h3>{t('asideTitle')}</h3>
           <p>{t('asideCopy')}</p>
-          <CtaButton action={{ kind: 'start' }} className="button button-primary button-wide">
+          <CtaLink to="featured" className="button button-primary button-wide">
             {t('asideCta')}
-          </CtaButton>
+          </CtaLink>
         </aside>
       </div>
     </section>
@@ -375,9 +360,9 @@ export function FinalCta() {
         <p className="eyebrow eyebrow-light">{t('eyebrow')}</p>
         <h2>{t('title')}</h2>
         <p>{t('copy')}</p>
-        <CtaButton action={{ kind: 'start' }} className="button button-light">
+        <CtaLink to="featured" className="button button-light">
           {t('cta')}
-        </CtaButton>
+        </CtaLink>
       </div>
     </section>
   );
@@ -401,14 +386,15 @@ export function Footer() {
             <a href={`#${SECTION_IDS.profile}`}>{t('profile')}</a>
             <a href={`#${SECTION_IDS.faq}`}>{t('faq')}</a>
             <a href={`#${SECTION_IDS.trust}`}>{t('privacy')}</a>
-            <CtaButton action={{ kind: 'start' }} className="text-link" iconSize={13}>
+            <CtaLink to="featured" className="text-link" iconSize={13}>
               {t('start')}
-            </CtaButton>
+            </CtaLink>
           </nav>
         </div>
         <div className="footer-bottom">
           <span>{t('rights', { year: new Date().getFullYear() })}</span>
           <span>{t('tagline')}</span>
+          <LocaleSwitcher variant="footer" />
         </div>
       </div>
     </footer>

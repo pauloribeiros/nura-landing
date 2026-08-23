@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { CtaButton } from './CtaButton';
+import { CtaLink } from './CtaLink';
 
 export function MobileStickyCta() {
   const t = useTranslations('stickyCta');
@@ -31,9 +31,9 @@ export function MobileStickyCta() {
 
   return (
     <div className={`mobile-cta ${visible ? 'visible' : ''}`}>
-      <CtaButton action={{ kind: 'start' }} className="button button-primary button-wide">
+      <CtaLink to="featured" className="button button-primary button-wide">
         {t('label')}
-      </CtaButton>
+      </CtaLink>
     </div>
   );
 }

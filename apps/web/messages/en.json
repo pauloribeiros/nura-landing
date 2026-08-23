@@ -23,7 +23,9 @@
     "start": "Start",
     "startFreeSuffix": "free",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "language": "Language",
+    "languageShort": "EN"
   },
   "hero": {
     "eyebrow": "A new way to observe yourself",
@@ -63,7 +65,35 @@
     "start": "Start",
     "attention": {
       "title": "Attention & behaviour",
-      "description": "Attention, organisation and impulsivity in everyday life."
+      "description": "Attention, organisation and impulsivity in everyday life.",
+      "landing": {
+        "metaTitle": "ADHD assessment for adults — free attention screening | NURA",
+        "metaDescription": "Explore patterns of attention, organisation, impulsivity and routine in your daily life. Free, 3 to 5 minutes, no card required. A screening and self-knowledge tool — not a diagnosis.",
+        "heroLine1": "How does your",
+        "heroLine2": "attention work?",
+        "intro": "A structured experience for observing how your attention behaves day to day: where it holds, where it slips, and which patterns repeat. The initial result is free and immediate.",
+        "forWhom": "For adults who recognise persistent difficulty with focus, organisation or impulse regulation and want to understand those patterns better — out of curiosity, or as a step before a professional assessment.",
+        "methodology": "We are defining this assessment's instrument from public, validated criteria for adult attention screening. Before launch we will publish here the reference used, the population it was validated for, and its limitations. We do not use proprietary instruments without a licence, and we do not invent questions.",
+        "disclaimer": "This is a screening and self-knowledge tool. The result is informative, does not constitute a medical diagnosis and does not replace assessment by a qualified professional.",
+        "covers": {
+          "focus": {
+            "title": "Focus and sustained attention",
+            "copy": "How your attention holds up in long, repetitive or low-stimulation tasks."
+          },
+          "organisation": {
+            "title": "Organisation and planning",
+            "copy": "How you structure deadlines, priorities and multi-step tasks."
+          },
+          "impulsivity": {
+            "title": "Impulsivity",
+            "copy": "Patterns of quick decisions, interrupting and difficulty waiting."
+          },
+          "routine": {
+            "title": "Routine and regulation",
+            "copy": "How sleep, habits and environment affect your attention through the day."
+          }
+        }
+      }
     },
     "autism": {
       "title": "Autism spectrum",
@@ -205,5 +235,36 @@
     "title": "Page not found",
     "copy": "The address you opened does not exist or has moved.",
     "cta": "Back to home"
+  },
+  "common": {
+    "backToHome": "Back to home",
+    "backToCatalog": "See all assessments",
+    "breadcrumb": "You are here"
+  },
+  "catalog": {
+    "metaTitle": "Assessments — NURA",
+    "metaDescription": "Explore NURA's assessments for attention, cognition, personality and behaviour. Start free, no card required.",
+    "eyebrow": "Catalogue",
+    "title": "What would you like to discover?",
+    "intro": "Each assessment reveals a different dimension. Start wherever it makes most sense to you — the rest of your NURA Profile builds along the way.",
+    "availableLabel": "Available",
+    "upcomingLabel": "Coming soon",
+    "upcomingTitle": "Upcoming experiences",
+    "upcomingIntro": "These assessments are in preparation. We publish each one when its methodology has been defined and reviewed.",
+    "open": "View assessment"
+  },
+  "assessmentLanding": {
+    "durationLabel": "approximate time",
+    "freeLabel": "initial result",
+    "cardLabel": "card required",
+    "freeValue": "Free",
+    "cardValue": "No",
+    "coversTitle": "What you will explore",
+    "forWhomTitle": "Who it is for",
+    "methodologyTitle": "Methodology and limits",
+    "faqTitle": "Before you start",
+    "upcomingTitle": "This assessment opens soon",
+    "upcomingCopy": "We are finalising the instrument behind this assessment. It goes live as soon as the methodology is defined, reviewed and documented on this page.",
+    "startCta": "Start the free assessment"
   }
 }

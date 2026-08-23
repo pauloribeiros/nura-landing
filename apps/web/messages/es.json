@@ -23,7 +23,9 @@
     "start": "Empezar",
     "startFreeSuffix": "gratis",
     "openMenu": "Abrir menú",
-    "closeMenu": "Cerrar menú"
+    "closeMenu": "Cerrar menú",
+    "language": "Idioma",
+    "languageShort": "ES"
   },
   "hero": {
     "eyebrow": "Una nueva forma de observarte",
@@ -63,7 +65,35 @@
     "start": "Empezar",
     "attention": {
       "title": "Atención y comportamiento",
-      "description": "Atención, organización e impulsividad en el día a día."
+      "description": "Atención, organización e impulsividad en el día a día.",
+      "landing": {
+        "metaTitle": "Test de TDAH en adultos — evaluación gratuita de atención | NURA",
+        "metaDescription": "Explora patrones de atención, organización, impulsividad y rutina en tu día a día. Evaluación gratuita, de 3 a 5 minutos, sin tarjeta. Herramienta de cribado y autoconocimiento — no constituye diagnóstico.",
+        "heroLine1": "¿Cómo funciona",
+        "heroLine2": "tu atención?",
+        "intro": "Una experiencia estructurada para observar cómo se comporta tu atención en el día a día: dónde se sostiene, dónde se escapa y qué patrones se repiten. El resultado inicial es gratuito e inmediato.",
+        "forWhom": "Para adultos que se reconocen en dificultades persistentes de foco, organización o regulación de impulsos y quieren entender mejor esos patrones — por curiosidad o como paso previo a una evaluación profesional.",
+        "methodology": "Estamos definiendo el instrumento de esta evaluación a partir de criterios públicos y validados para el cribado de atención en adultos. Antes del lanzamiento publicaremos aquí la referencia utilizada, la población para la que fue validada y sus limitaciones. No usamos instrumentos propietarios sin licencia y no inventamos preguntas.",
+        "disclaimer": "Esta es una herramienta de cribado y autoconocimiento. El resultado es informativo, no constituye un diagnóstico médico y no sustituye la evaluación de un profesional habilitado.",
+        "covers": {
+          "focus": {
+            "title": "Foco y sostenimiento",
+            "copy": "Cómo se mantiene tu atención en tareas largas, repetitivas o poco estimulantes."
+          },
+          "organisation": {
+            "title": "Organización y planificación",
+            "copy": "Cómo estructuras plazos, prioridades y tareas de varios pasos."
+          },
+          "impulsivity": {
+            "title": "Impulsividad",
+            "copy": "Patrones de decisión rápida, interrupción y dificultad para esperar."
+          },
+          "routine": {
+            "title": "Rutina y regulación",
+            "copy": "Cómo el sueño, los hábitos y el entorno afectan tu atención a lo largo del día."
+          }
+        }
+      }
     },
     "autism": {
       "title": "Espectro autista",
@@ -205,5 +235,36 @@
     "title": "Página no encontrada",
     "copy": "La dirección que abriste no existe o se ha movido.",
     "cta": "Volver al inicio"
+  },
+  "common": {
+    "backToHome": "Volver al inicio",
+    "backToCatalog": "Ver todas las evaluaciones",
+    "breadcrumb": "Estás aquí"
+  },
+  "catalog": {
+    "metaTitle": "Evaluaciones — NURA",
+    "metaDescription": "Conoce las evaluaciones de NURA para explorar atención, cognición, personalidad y comportamiento. Empieza gratis, sin tarjeta.",
+    "eyebrow": "Catálogo",
+    "title": "¿Qué te gustaría descubrir?",
+    "intro": "Cada evaluación revela una dimensión diferente. Empieza por donde tenga más sentido para ti — el resto de tu Perfil NURA se construye por el camino.",
+    "availableLabel": "Disponible",
+    "upcomingLabel": "Próximamente",
+    "upcomingTitle": "Próximas experiencias",
+    "upcomingIntro": "Estas evaluaciones están en preparación. Publicamos cada una cuando su metodología está definida y revisada.",
+    "open": "Ver evaluación"
+  },
+  "assessmentLanding": {
+    "durationLabel": "tiempo aproximado",
+    "freeLabel": "resultado inicial",
+    "cardLabel": "necesitas tarjeta",
+    "freeValue": "Gratis",
+    "cardValue": "No",
+    "coversTitle": "Qué vas a explorar",
+    "forWhomTitle": "Para quién es",
+    "methodologyTitle": "Metodología y límites",
+    "faqTitle": "Antes de empezar",
+    "upcomingTitle": "La evaluación abre pronto",
+    "upcomingCopy": "Estamos terminando el instrumento de esta evaluación. Se publicará en cuanto la metodología esté definida, revisada y documentada en esta página.",
+    "startCta": "Empezar la evaluación gratuita"
   }
 }

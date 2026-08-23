@@ -5,7 +5,8 @@ import { Menu, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { SECTION_IDS } from '@/content/landing';
 import { useLanding } from './LandingProvider';
-import { CtaButton } from './CtaButton';
+import { CtaLink } from './CtaLink';
+import { LocaleSwitcher } from './LocaleSwitcher';
 import { scrollToId } from './scroll';
 
 export function NuraLogo({ light = true }: { light?: boolean }) {
@@ -78,12 +79,13 @@ export function Header() {
             ))}
           </nav>
           <div className="header-actions">
+            <LocaleSwitcher />
             <button type="button" className="header-login" onClick={() => notify(tf('loginSoon'))}>
               {t('login')}
             </button>
-            <CtaButton action={{ kind: 'start' }} withIcon={false}>
+            <CtaLink to="featured" withIcon={false}>
               {t('start')} <span className="desktop-only">{t('startFreeSuffix')}</span>
-            </CtaButton>
+            </CtaLink>
             <button
               ref={toggleRef}
               type="button"
@@ -113,6 +115,9 @@ export function Header() {
                 {l.mobileLabel}
               </a>
             ))}
+            <div className="mobile-nav-locale">
+              <LocaleSwitcher variant="footer" />
+            </div>
           </nav>
         </>
       ) : null}

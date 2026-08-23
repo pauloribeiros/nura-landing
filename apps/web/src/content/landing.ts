@@ -1,5 +1,7 @@
+import type { Locale } from '@/i18n/routing';
+
 /**
- * Structure of the landing content. Every user-facing string lives in
+ * Structure of the product content. Every user-facing string lives in
  * `messages/<locale>.json` and is referenced here by key, so adding a locale
  * never means touching a component.
  */
@@ -9,13 +11,16 @@ export interface AssessmentEntry {
   id: string;
   /** Catalog number shown in the grid. */
   index: string;
-  /** URL segment per locale. Assessment landings will live at
-   *  `/[locale]/testes/[slug]`; kept here so the route and the catalog cannot
-   *  drift apart. */
-  slug: Record<string, string>;
-  /** The anchor assessment gets its own section instead of a grid card. */
+  /** URL segment per locale, used by `/[locale]/testes/[slug]`. */
+  slug: Record<Locale, string>;
+  /** The anchor assessment gets its own section on the home page. */
   featured: boolean;
-  /** Whether the assessment can actually be started today. */
+  /**
+   * Whether the assessment has a landing page and an entry point today.
+   * An assessment without one is listed in the catalog as upcoming — we do not
+   * publish a landing page for something that cannot be started, because thin
+   * pages for non-existent products cost more in SEO than they earn.
+   */
   available: boolean;
 }
 
@@ -25,7 +30,7 @@ export const ASSESSMENTS: AssessmentEntry[] = [
     index: '01',
     slug: { 'pt-br': 'tdah', en: 'adhd', es: 'tdah' },
     featured: true,
-    available: false,
+    available: true,
   },
   {
     id: 'autism',
@@ -52,8 +57,27 @@ export const ASSESSMENTS: AssessmentEntry[] = [
 
 export const FEATURED_ASSESSMENT = ASSESSMENTS.find((a) => a.featured)!;
 export const GRID_ASSESSMENTS = ASSESSMENTS.filter((a) => !a.featured);
+export const AVAILABLE_ASSESSMENTS = ASSESSMENTS.filter((a) => a.available);
 
-/** Section anchors. Stable across locales so shared links keep working. */
+export function assessmentBySlug(locale: Locale, slug: string) {
+  return ASSESSMENTS.find((a) => a.slug[locale] === slug);
+}
+
+/** Route segments. Localised so the URLs read naturally in each market. */
+export const ROUTE_SEGMENTS = {
+  catalog: { 'pt-br': 'testes', en: 'tests', es: 'tests' },
+  assessment: { 'pt-br': 'avaliacao', en: 'assessment', es: 'evaluacion' },
+} as const satisfies Record<string, Record<Locale, string>>;
+
+export const catalogPath = (locale: Locale) => `/${locale}/${ROUTE_SEGMENTS.catalog[locale]}`;
+
+export const assessmentLandingPath = (locale: Locale, a: AssessmentEntry) =>
+  `${catalogPath(locale)}/${a.slug[locale]}`;
+
+export const assessmentStartPath = (locale: Locale, a: AssessmentEntry) =>
+  `/${locale}/${ROUTE_SEGMENTS.assessment[locale]}/${a.slug[locale]}`;
+
+/** Section anchors on the home page. Stable across locales. */
 export const SECTION_IDS = {
   top: 'inicio',
   featured: 'tdah',
@@ -93,3 +117,9 @@ export const RESULT_METRICS = [
 export const TRUST_POINTS = ['information', 'privacy', 'methodology'] as const;
 
 export const PREMIUM_BENEFITS = ['analysis', 'dimensions', 'recommendations', 'profile'] as const;
+
+/** What the featured assessment landing explains, in order. */
+export const ATTENTION_COVERS = ['focus', 'organisation', 'impulsivity', 'routine'] as const;
+
+/** Blocks the assessment is divided into, shown on the intro screen. */
+export const ATTENTION_BLOCKS = ['focus', 'organisation', 'impulsivity', 'routine'] as const;
