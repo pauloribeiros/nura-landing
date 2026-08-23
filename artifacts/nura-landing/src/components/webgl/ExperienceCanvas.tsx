@@ -5,7 +5,7 @@ export function ExperienceCanvas() {
   return (
     <Canvas
       camera={{ position: [0, 0, 15], fov: 45 }}
-      dpr={Math.min(window.devicePixelRatio || 1, 1.5)}
+      dpr={[1, 1.5]}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
     >
       <ambientLight intensity={0.2} />

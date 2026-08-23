@@ -1,14 +1,9 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { ArrowRight, Check, ChevronDown, Clock3, LockKeyhole, Menu, Plus, ShieldCheck, X } from 'lucide-react';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
-import { Toaster } from '@/components/ui/toaster';
-import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import { Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
 import { WebGLRenderer } from '@/components/webgl/WebGLRenderer';
-
-const queryClient = new QueryClient();
 
 const assessments = [
   { index: '01', title: 'Atenção & comportamento', description: 'Atenção, organização e impulsividade no dia a dia.' },
@@ -33,14 +28,24 @@ function scrollToId(id: string, onDone?: () => void) {
 function MobileStickyCTA({ onStart }: { onStart: () => void }) {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
+    // Document height only changes on resize/layout. Reading it inside the
+    // scroll handler forced a layout on every scroll frame.
+    let docHeight = document.documentElement.scrollHeight;
+    let winHeight = window.innerHeight;
+    const measure = () => {
+      docHeight = document.documentElement.scrollHeight;
+      winHeight = window.innerHeight;
+    };
     const handler = () => {
       const scrollY = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight;
-      const winHeight = window.innerHeight;
       setVisible(scrollY > winHeight * 0.8 && scrollY < docHeight - winHeight * 1.5);
     };
     window.addEventListener('scroll', handler, { passive: true });
-    return () => window.removeEventListener('scroll', handler);
+    window.addEventListener('resize', measure, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handler);
+      window.removeEventListener('resize', measure);
+    };
   }, []);
   return (
     <div className={`mobile-cta ${visible ? 'visible' : ''}`}>
@@ -231,9 +236,9 @@ function TrustSection() {
       <div className="wrap trust-grid">
         <div className="reveal"><div className="eyebrow">Clareza antes de tudo</div><h2>Avaliações feitas com responsabilidade.</h2><p className="trust-copy">Descoberta pessoal só faz sentido quando vem acompanhada de contexto, limites claros e respeito por quem está do outro lado.</p></div>
         <div className="trust-points reveal">
-          <div className="trust-point"><b><ShieldCheck size={16} style={{ verticalAlign: 'middle', marginRight: 8, color: '#3b67ff' }} />Informação, não sentença</b><p>Resultados são informativos. Instrumentos de triagem não substituem diagnóstico profissional.</p></div>
-          <div className="trust-point"><b><LockKeyhole size={16} style={{ verticalAlign: 'middle', marginRight: 8, color: '#3b67ff' }} />Seus dados, sua escolha</b><p>Transparência sobre finalidade, consentimento, exclusão e cuidado no tratamento dos seus dados.</p></div>
-          <div className="trust-point"><b><Check size={16} style={{ verticalAlign: 'middle', marginRight: 8, color: '#3b67ff' }} />Metodologia transparente</b><p>Uma experiência construída para estimular autoconhecimento, sem promessas de precisão impossível.</p></div>
+          <div className="trust-point"><h3><ShieldCheck size={16} className="trust-icon" aria-hidden="true" />Informação, não sentença</h3><p>Resultados são informativos. Instrumentos de triagem não substituem diagnóstico profissional.</p></div>
+          <div className="trust-point"><h3><LockKeyhole size={16} className="trust-icon" aria-hidden="true" />Seus dados, sua escolha</h3><p>Transparência sobre finalidade, consentimento, exclusão e cuidado no tratamento dos seus dados.</p></div>
+          <div className="trust-point"><h3><Check size={16} className="trust-icon" aria-hidden="true" />Metodologia transparente</h3><p>Uma experiência construída para estimular autoconhecimento, sem promessas de precisão impossível.</p></div>
         </div>
       </div>
     </section>
@@ -253,7 +258,7 @@ function FAQ() {
 }
 
 function Footer({ onStart }: { onStart: () => void }) {
-  return <footer className="footer"><div className="wrap"><div className="footer-grid"><div><NuraLogo light={false} /><p className="footer-copy">Uma experiência inteligente para quem quer se observar com mais curiosidade.</p></div><nav className="footer-nav" aria-label="Navegação do rodapé"><a href="#avaliacoes">Avaliações</a><a href="#perfil">NURA Perfil</a><a href="#faq">Dúvidas</a><a href="#responsabilidade">Privacidade</a><button className="text-link" onClick={onStart}>Começar <ArrowRight size={13} /></button></nav></div><div className="footer-bottom"><span>© 2024 NURA. Todos os direitos reservados.</span><span>Feito para descobrir, não para rotular.</span></div></div></footer>;
+  return <footer className="footer"><div className="wrap"><div className="footer-grid"><div><NuraLogo light={false} /><p className="footer-copy">Uma experiência inteligente para quem quer se observar com mais curiosidade.</p></div><nav className="footer-nav" aria-label="Navegação do rodapé"><a href="#avaliacoes">Avaliações</a><a href="#perfil">NURA Perfil</a><a href="#faq">Dúvidas</a><a href="#responsabilidade">Privacidade</a><button className="text-link" onClick={onStart}>Começar <ArrowRight size={13} /></button></nav></div><div className="footer-bottom"><span>© {new Date().getFullYear()} NURA. Todos os direitos reservados.</span><span>Feito para descobrir, não para rotular.</span></div></div></footer>;
 }
 
 function LandingPage() {
@@ -266,11 +271,6 @@ function LandingPage() {
     scrollToId(name === 'Todas as avaliações' ? 'avaliacoes' : 'tdah');
   };
   useEffect(() => {
-    document.title = 'NURA — Descubra mais sobre você';
-    const meta = document.querySelector('meta[name="description"]') ?? document.createElement('meta');
-    meta.setAttribute('name', 'description');
-    meta.setAttribute('content', 'Avaliações inteligentes para explorar sua atenção, cognição, personalidade e comportamento.');
-    document.head.appendChild(meta);
     const eventHandler = (event: Event) => setFeedback((event as CustomEvent<string>).detail);
     window.addEventListener('nura:feedback', eventHandler);
     const observer = new IntersectionObserver((entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add('visible')), { threshold: .12 });
@@ -305,7 +305,13 @@ function Router() {
 }
 
 function App() {
-  return <QueryClientProvider client={queryClient}><TooltipProvider><WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}><ErrorBoundary><Router /></ErrorBoundary></WouterRouter><Toaster /></TooltipProvider></QueryClientProvider>;
+  return (
+    <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+      <ErrorBoundary>
+        <Router />
+      </ErrorBoundary>
+    </WouterRouter>
+  );
 }
 
 export default App;
