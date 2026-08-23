@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "NURA — Descubra mais sobre você"
+description = "Landing page premium e mobile-first para a NURA, uma plataforma de avaliações de autoconhecimento, cognição, comportamento e carreira."
+version = "1.0.0"
+id = "artifacts/nura-landing"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19433
+
+[services.development]
+run = "pnpm --filter @workspace/nura-landing run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/nura-landing", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/nura-landing/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19433"
+BASE_PATH = "/"

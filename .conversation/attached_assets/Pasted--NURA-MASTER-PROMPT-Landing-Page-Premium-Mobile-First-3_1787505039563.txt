@@ -1,0 +1,1873 @@
+# NURA — MASTER PROMPT
+
+## Landing Page Premium • Mobile First • 3D Scrollytelling • Conversion First
+
+---
+
+# 1. CONTEXTO DO PRODUTO
+
+Crie uma Landing Page premium, moderna, altamente responsiva e orientada à conversão para a:
+
+# NURA
+
+A NURA é uma plataforma digital de avaliações voltadas para descoberta pessoal, cognição, personalidade, comportamento, carreira e neurodiversidade.
+
+A plataforma disponibilizará diferentes experiências, como:
+
+* TDAH em Adultos;
+* Espectro Autista em Adultos;
+* Perfil Cognitivo / QI;
+* Altas Habilidades / Superdotação;
+* Personalidade;
+* Inteligência Emocional;
+* Memória;
+* Atenção;
+* Raciocínio;
+* Perfil Profissional;
+* outras avaliações futuras.
+
+IMPORTANTE:
+
+A NURA não deve parecer:
+
+* um site de quizzes;
+* um portal médico;
+* uma clínica;
+* um SaaS genérico;
+* uma plataforma genérica de IA.
+
+A percepção desejada é:
+
+> tecnologia + ciência + autoconhecimento + curiosidade + confiança + experiência premium.
+
+---
+
+# 2. CONCEITO CENTRAL — NURA PERFIL
+
+Substituir qualquer referência anterior a "Mind ID" por:
+
+# NURA Perfil
+
+O NURA Perfil é a representação visual e evolutiva das diferentes dimensões exploradas pelo usuário dentro da plataforma.
+
+Cada nova avaliação acrescenta informações ao NURA Perfil.
+
+Exemplo:
+
+```text
+SEU NURA PERFIL
+
+Cognição           ●●●●○
+Atenção            ●●●○○
+Personalidade      ●●●●○
+Comportamento      ●●○○○
+Carreira           ○○○○○
+
+42% explorado
+```
+
+IMPORTANTE:
+
+Não criar uma "pontuação universal da pessoa".
+
+Resultados metodologicamente diferentes não devem ser artificialmente combinados em uma única nota.
+
+O percentual representa apenas quanto do ecossistema NURA o usuário já explorou.
+
+---
+
+# 3. OBJETIVO DA LANDING PAGE
+
+A Landing Page possui um objetivo principal:
+
+# Fazer o usuário querer iniciar uma avaliação.
+
+A jornada psicológica deve ser:
+
+```text
+CURIOSIDADE
+     ↓
+IDENTIFICAÇÃO
+     ↓
+CONFIANÇA
+     ↓
+DESCOBERTA
+     ↓
+COMEÇAR TESTE
+```
+
+Não tentar explicar todas as funcionalidades imediatamente.
+
+A Landing deve provocar:
+
+> "Eu quero descobrir isso sobre mim."
+
+---
+
+# 4. PRINCÍPIO DE CONVERSÃO
+
+A Home vende:
+
+# descoberta pessoal.
+
+As páginas individuais vendem:
+
+# uma avaliação específica.
+
+O teste gera:
+
+# envolvimento.
+
+O resultado gratuito gera:
+
+# curiosidade.
+
+O relatório aprofundado gera:
+
+# monetização.
+
+O NURA Perfil gera:
+
+# retenção.
+
+Portanto:
+
+```text
+Aquisição
+    ↓
+Avaliação
+    ↓
+Resultado inicial
+    ↓
+Relatório Premium
+    ↓
+NURA Perfil
+    ↓
+Próxima avaliação
+```
+
+---
+
+# 5. MOBILE FIRST — PRIORIDADE ABSOLUTA
+
+A maior parte dos acessos deve ser considerada MOBILE.
+
+Os principais canais serão:
+
+* Instagram;
+* Facebook;
+* TikTok;
+* Google;
+* WhatsApp;
+* tráfego orgânico.
+
+Portanto:
+
+NÃO desenvolver desktop primeiro e depois simplesmente reduzir.
+
+Projetar primeiro para:
+
+# 390px
+
+Depois expandir para desktop.
+
+Testar:
+
+```text
+320px
+360px
+375px
+390px
+414px
+430px
+
+768px
+1024px
+
+1366px
+1440px
+1920px
+```
+
+Prioridade máxima:
+
+```text
+390px
+```
+
+---
+
+# 6. REQUISITOS MOBILE
+
+No celular:
+
+* CTA imediatamente identificável;
+* tipografia confortável;
+* botões grandes;
+* touch targets mínimos próximos de 44px;
+* nenhuma rolagem horizontal;
+* nenhuma informação dependente de hover;
+* nenhuma animação bloqueando interação;
+* nenhum texto sobre fundo sem contraste;
+* navegação simples;
+* performance extremamente alta;
+* scroll natural;
+* formulários simples;
+* cenas 3D simplificadas.
+
+A experiência mobile deve parecer:
+
+# um produto mobile premium.
+
+Não uma página desktop reduzida.
+
+---
+
+# 7. STACK
+
+Utilizar preferencialmente:
+
+* Next.js;
+* React;
+* TypeScript;
+* Tailwind CSS;
+* Motion / Framer Motion;
+* GSAP;
+* GSAP ScrollTrigger;
+* Three.js;
+* React Three Fiber.
+
+Responsabilidades sugeridas:
+
+### Interface
+
+Motion / Framer Motion.
+
+### Scrollytelling
+
+GSAP + ScrollTrigger.
+
+### 3D
+
+Three.js + React Three Fiber.
+
+Não utilizar bibliotecas desnecessariamente.
+
+Performance possui prioridade sobre complexidade técnica.
+
+---
+
+# 8. IDENTIDADE VISUAL NURA
+
+A identidade deve transmitir:
+
+* inteligência;
+* descoberta;
+* tecnologia;
+* confiança;
+* sofisticação;
+* ciência;
+* humanidade.
+
+Não utilizar estética:
+
+* AI SaaS genérico;
+* crypto;
+* Web3;
+* cassino;
+* videogame;
+* hospital;
+* laboratório futurista exagerado.
+
+A NURA deve possuir identidade própria.
+
+---
+
+# 9. PALETA PRINCIPAL
+
+## NURA Obsidian
+
+```text
+#070B14
+```
+
+Utilizar em:
+
+* Hero;
+* experiências 3D;
+* seções cinematográficas;
+* CTA final;
+* footer.
+
+---
+
+## Deep Navy
+
+```text
+#101827
+```
+
+Utilizar em:
+
+* superfícies;
+* componentes escuros;
+* backgrounds secundários.
+
+---
+
+## NURA Blue
+
+```text
+#3B67FF
+```
+
+Cor principal de ação.
+
+Utilizar principalmente em:
+
+* CTA;
+* links;
+* seleção;
+* progresso;
+* foco;
+* elementos importantes.
+
+IMPORTANTE:
+
+Não utilizar NURA Blue indiscriminadamente.
+
+Se tudo for azul, o CTA perde importância.
+
+---
+
+## Cognitive Cyan
+
+```text
+#22D3E5
+```
+
+Utilizar em:
+
+* partículas;
+* conexões;
+* cognição;
+* detalhes 3D;
+* elementos de descoberta.
+
+---
+
+## Neural Violet
+
+```text
+#7557FF
+```
+
+Utilizar em:
+
+* personalidade;
+* dimensões;
+* determinados elementos do NURA Perfil.
+
+Não transformar toda a interface em roxo.
+
+---
+
+## Pure White
+
+```text
+#FFFFFF
+```
+
+---
+
+## Soft White
+
+```text
+#F6F8FC
+```
+
+Utilizar para grandes áreas claras.
+
+---
+
+## Graphite
+
+```text
+#121826
+```
+
+Texto principal sobre fundo claro.
+
+---
+
+## Cool Gray
+
+```text
+#667085
+```
+
+Texto secundário.
+
+---
+
+# 10. DISTRIBUIÇÃO DAS CORES
+
+Aproximadamente:
+
+```text
+70% neutros
+20% NURA Blue
+10% Cyan / Violet / cores dimensionais
+```
+
+Preservar bastante espaço negativo.
+
+Não criar poluição cromática.
+
+---
+
+# 11. ALTERNÂNCIA VISUAL
+
+Não criar uma Landing Page completamente escura.
+
+Utilizar:
+
+```text
+DARK
+ ↓
+LIGHT
+ ↓
+DARK
+ ↓
+LIGHT
+ ↓
+DARK
+```
+
+Dark:
+
+* impacto;
+* tecnologia;
+* storytelling;
+* 3D;
+* emoção.
+
+Light:
+
+* leitura;
+* confiança;
+* benefícios;
+* explicações;
+* clareza.
+
+---
+
+# 12. TIPOGRAFIA
+
+Utilizar:
+
+* Geist;
+* Inter;
+
+ou alternativa moderna equivalente.
+
+Criar tokens para:
+
+```text
+Display
+H1
+H2
+H3
+Body
+Body Small
+Caption
+Label
+Score
+```
+
+Não utilizar títulos gigantes que prejudiquem mobile.
+
+Headlines precisam ser:
+
+* fortes;
+* curtas;
+* legíveis;
+* memoráveis.
+
+---
+
+# 13. CONCEITO VISUAL 3D
+
+Criar uma cena 3D persistente em WebGL.
+
+O 3D deve representar:
+
+# descoberta progressiva da identidade.
+
+Não utilizar cérebro humano 3D literal.
+
+Não utilizar:
+
+* cabeça humana holográfica;
+* robôs;
+* DNA genérico;
+* código binário;
+* circuitos clichês.
+
+Criar uma estrutura abstrata formada por:
+
+* nós;
+* partículas;
+* conexões;
+* órbitas;
+* linhas;
+* estruturas geométricas;
+* clusters;
+* profundidade;
+* campos;
+* pequenos pontos de luz.
+
+Essa estrutura representa visualmente o:
+
+# NURA Perfil.
+
+---
+
+# 14. O 3D PRECISA CONTAR UMA HISTÓRIA
+
+Não utilizar 3D apenas como background bonito.
+
+Durante o scroll, a estrutura deve evoluir.
+
+## ESTADO 1
+
+Perfil ainda desconhecido.
+
+Poucos nós conectados.
+
+## ESTADO 2
+
+Primeiras dimensões aparecem.
+
+## ESTADO 3
+
+Novas conexões são formadas.
+
+## ESTADO 4
+
+A estrutura fica mais complexa.
+
+## ESTADO 5
+
+Forma-se visualmente o NURA Perfil.
+
+Essa transformação deve acompanhar a narrativa da Landing.
+
+---
+
+# 15. INTERAÇÃO DESKTOP
+
+No desktop, permitir interação extremamente sutil com cursor.
+
+Exemplos:
+
+* pequena rotação;
+* alteração de perspectiva;
+* profundidade;
+* partículas reagindo;
+* conexões discretamente se movimentando.
+
+Não criar movimento agressivo.
+
+O usuário nunca deve precisar interagir com o 3D para utilizar a página.
+
+---
+
+# 16. 3D NO MOBILE
+
+No mobile:
+
+NÃO reproduzir automaticamente toda a complexidade desktop.
+
+Reduzir:
+
+* partículas;
+* polígonos;
+* conexões;
+* blur;
+* pós-processamento;
+* shaders;
+* efeitos;
+* resolução quando necessário.
+
+Caso o dispositivo apresente baixa performance:
+
+usar fallback.
+
+Fallback possível:
+
+* Canvas 2D;
+* animação CSS;
+* SVG animado;
+* imagem renderizada;
+* vídeo extremamente otimizado.
+
+Conteúdo e CTA possuem prioridade absoluta.
+
+---
+
+# 17. PERFORMANCE
+
+Performance é requisito de conversão.
+
+Implementar:
+
+* lazy loading;
+* dynamic imports;
+* code splitting;
+* otimização de fontes;
+* compressão de assets;
+* imagens WebP/AVIF;
+* carregamento progressivo;
+* fallback WebGL;
+* redução automática de qualidade;
+* renderização condicional.
+
+NÃO bloquear o Hero esperando o Three.js carregar.
+
+Headline e CTA devem aparecer imediatamente.
+
+---
+
+# 18. HEADER
+
+Desktop:
+
+```text
+NURA
+
+Avaliações
+Como funciona
+NURA Perfil
+Sobre
+
+Entrar
+
+[Começar grátis]
+```
+
+Mobile:
+
+```text
+NURA                 [Começar]
+
+                     ☰
+```
+
+ou solução equivalente extremamente limpa.
+
+Header deve possuir altura pequena.
+
+Pode começar transparente sobre o Hero e ganhar background discreto durante o scroll.
+
+---
+
+# 19. HERO — SEÇÃO MAIS IMPORTANTE
+
+Background:
+
+```text
+#070B14
+```
+
+Cena NURA Perfil 3D integrada.
+
+Não permitir que o 3D prejudique a legibilidade.
+
+Headline:
+
+# Descubra mais sobre você.
+
+Subheadline:
+
+> Explore sua atenção, cognição, personalidade e comportamento através de avaliações inteligentes.
+
+CTA principal:
+
+# Começar minha descoberta
+
+CTA secundário discreto:
+
+> Explorar avaliações
+
+Microcopy:
+
+```text
+Grátis para começar
+•
+Resultado imediato
+•
+Sem cartão
+```
+
+Não apresentar preço no Hero.
+
+---
+
+# 20. HERO MOBILE
+
+O primeiro viewport deve responder imediatamente:
+
+1. O que é?
+2. O que eu ganho?
+3. Posso começar agora?
+
+Priorizar:
+
+```text
+NURA
+
+Descubra mais
+sobre você.
+
+Explore diferentes dimensões
+da sua mente e comportamento.
+
+[COMEÇAR MINHA DESCOBERTA]
+
+Grátis para começar • Resultado imediato
+
+       NURA PROFILE
+        visual 3D
+```
+
+Evitar excesso de texto.
+
+---
+
+# 21. PRIMEIRA TRANSIÇÃO
+
+Conforme o usuário rola:
+
+a estrutura 3D começa a mudar.
+
+Headline:
+
+# Você é mais do que um único resultado.
+
+Texto:
+
+> Cada avaliação revela uma nova dimensão sobre como você pensa, sente, decide e interage.
+
+Visualmente:
+
+um núcleo se divide em diferentes clusters.
+
+---
+
+# 22. SEÇÃO — O QUE VOCÊ QUER DESCOBRIR?
+
+Background:
+
+```text
+#F6F8FC
+```
+
+Headline:
+
+# O que você gostaria de descobrir sobre você?
+
+Mostrar apenas os principais caminhos.
+
+### Atenção & Comportamento
+
+### Espectro Autista
+
+### Cognição
+
+### Altas Habilidades
+
+### Personalidade
+
+Não criar 20 cards.
+
+Pode existir:
+
+> Ver todas as avaliações →
+
+---
+
+# 23. TESTE ÂNCORA — TDAH
+
+Criar uma seção de alta conversão.
+
+Título:
+
+# Teste de TDAH em Adultos
+
+Headline de apoio:
+
+### Explore como sua atenção funciona no dia a dia.
+
+Descrição:
+
+> Avalie padrões relacionados à atenção, organização, impulsividade e rotina através de uma experiência rápida e estruturada.
+
+Informações:
+
+```text
+3–5 minutos
+Resultado inicial gratuito
+Sem cartão
+```
+
+CTA:
+
+# Fazer avaliação gratuita
+
+Aviso discreto e visível:
+
+> Ferramenta de triagem e autoconhecimento. O resultado não constitui diagnóstico médico.
+
+Não utilizar linguagem como:
+
+* "Descubra se você tem TDAH";
+* "Você possui TDAH";
+* "Diagnóstico instantâneo";
+* "Teste definitivo".
+
+---
+
+# 24. AVALIAÇÕES EM DESTAQUE
+
+Mostrar inicialmente apenas:
+
+### TDAH em Adultos
+
+Atenção, organização e impulsividade.
+
+### Espectro Autista em Adultos
+
+Comunicação, interação, rotina e processamento sensorial.
+
+### Perfil Cognitivo
+
+Raciocínio, padrões, memória e atenção.
+
+### Altas Habilidades
+
+Explore características relacionadas a diferentes potenciais cognitivos.
+
+Cada experiência deve mostrar:
+
+* nome;
+* descrição;
+* tempo aproximado;
+* CTA.
+
+CTA:
+
+> Começar gratuitamente
+
+Final:
+
+> Ver todas as avaliações →
+
+---
+
+# 25. NÃO TRANSFORMAR EM CATÁLOGO
+
+Evitar:
+
+```text
+[teste][teste][teste][teste]
+[teste][teste][teste][teste]
+[teste][teste][teste][teste]
+```
+
+A Home deve permanecer editorial e premium.
+
+O catálogo completo terá uma página própria:
+
+```text
+/avaliacoes
+```
+
+---
+
+# 26. COMO FUNCIONA
+
+Background claro.
+
+Headline:
+
+# Descobrir mais sobre você pode ser simples.
+
+Criar 3 etapas.
+
+## 01
+
+### Responda
+
+Faça uma avaliação rápida e interativa.
+
+## 02
+
+### Descubra
+
+Receba gratuitamente seu resultado inicial.
+
+## 03
+
+### Aprofunde
+
+Explore análises detalhadas e desenvolva seu NURA Perfil.
+
+Utilizar Motion extremamente discreto.
+
+---
+
+# 27. NURA PERFIL
+
+Esta deve ser uma das principais seções visuais.
+
+Background escuro.
+
+A cena 3D retorna.
+
+Headline:
+
+# Cada descoberta revela uma nova dimensão.
+
+Subheadline:
+
+> Suas avaliações constroem progressivamente o seu NURA Perfil.
+
+Mostrar algo semelhante a:
+
+```text
+SEU NURA PERFIL
+
+42% explorado
+
+Cognição             ●
+Atenção              ●
+Personalidade        ●
+Comportamento        ●
+Carreira             ○
+```
+
+Mas não utilizar barras tradicionais como elemento visual principal.
+
+Criar visual proprietário baseado em:
+
+* nós;
+* conexões;
+* estruturas;
+* clusters;
+* órbitas.
+
+---
+
+# 28. EVOLUÇÃO VISUAL DO NURA PERFIL
+
+Durante scroll:
+
+```text
+12%
+ ↓
+27%
+ ↓
+42%
+ ↓
+58%
+```
+
+A estrutura ganha novas dimensões.
+
+O percentual significa:
+
+> percentual do ecossistema de avaliações explorado.
+
+Não significa:
+
+* inteligência;
+* saúde;
+* qualidade da pessoa;
+* diagnóstico;
+* performance geral.
+
+---
+
+# 29. PREVIEW DO RESULTADO
+
+Mostrar uma simulação sofisticada.
+
+Exemplo:
+
+```text
+Seu Perfil Cognitivo
+
+Analítico
+
+Raciocínio       87
+Padrões          91
+Atenção          78
+Memória          82
+```
+
+Utilizar uma visualização autoral.
+
+Evitar dashboard corporativo tradicional.
+
+Não utilizar gráficos Power BI-like.
+
+---
+
+# 30. RESULTADO GRATUITO
+
+Comunicar claramente:
+
+# Você recebe um resultado inicial gratuitamente.
+
+Não criar impressão de que o usuário precisa pagar para descobrir absolutamente qualquer coisa.
+
+Mostrar exemplo:
+
+```text
+Seu resultado
+
+Perfil predominante
+ANALÍTICO
+
+Principal destaque
+RECONHECIMENTO DE PADRÕES
+
+87/100
+```
+
+---
+
+# 31. MONETIZAÇÃO
+
+Somente depois de explicar o valor.
+
+Headline:
+
+# Quer entender seu resultado em profundidade?
+
+Relatório completo:
+
+# R$ 19,90
+
+Pagamento único.
+
+Sem assinatura automática.
+
+Apresentar:
+
+* análise detalhada;
+* interpretação;
+* dimensões;
+* pontos fortes;
+* pontos de atenção;
+* recomendações;
+* contribuição para o NURA Perfil.
+
+CTA:
+
+# Começar gratuitamente
+
+O usuário não compra antes de experimentar.
+
+---
+
+# 32. FUNIL
+
+A arquitetura deve suportar:
+
+```text
+Google
+Instagram
+Facebook
+TikTok
+SEO
+   ↓
+Landing
+   ↓
+Avaliação
+   ↓
+Resultado inicial
+   ↓
+Relatório R$19,90
+   ↓
+NURA Perfil
+   ↓
+Nova avaliação
+```
+
+---
+
+# 33. LANDINGS ESPECÍFICAS
+
+A Home não será a única Landing Page.
+
+Preparar arquitetura reutilizável para páginas:
+
+```text
+/testes/tdah
+/testes/espectro-autista
+/testes/perfil-cognitivo
+/testes/altas-habilidades
+/testes/personalidade
+/testes/memoria
+/testes/atencao
+```
+
+Cada página deve possuir:
+
+* Hero próprio;
+* SEO próprio;
+* CTA;
+* descrição;
+* metodologia;
+* tempo;
+* preview;
+* FAQ;
+* aviso apropriado;
+* entrada direta no Assessment Engine.
+
+Não duplicar código.
+
+Criar template reutilizável.
+
+---
+
+# 34. SEO
+
+Todo conteúdo relevante deve estar em HTML.
+
+Nunca depender do Canvas/WebGL para SEO.
+
+Implementar:
+
+* semantic HTML;
+* title;
+* meta description;
+* canonical;
+* Open Graph;
+* Twitter cards;
+* sitemap;
+* robots;
+* structured data quando apropriado;
+* breadcrumbs;
+* URLs semânticas.
+
+---
+
+# 35. SEO POR AVALIAÇÃO
+
+Preparar páginas específicas para intenções de busca.
+
+Exemplos:
+
+```text
+teste de tdah
+teste de tdah adulto
+teste de autismo
+teste de espectro autista
+teste cognitivo
+teste de qi
+teste de raciocínio
+teste de memória
+teste de personalidade
+teste de altas habilidades
+```
+
+Não utilizar keyword stuffing.
+
+Conteúdo deve permanecer natural.
+
+---
+
+# 36. MULTILÍNGUE
+
+Arquitetura i18n-first.
+
+Idiomas iniciais:
+
+```text
+PT-BR
+EN
+ES
+```
+
+Nenhum texto importante deve ficar hardcoded.
+
+Preparar:
+
+```text
+/pt-br
+/en
+/es
+```
+
+Exemplos:
+
+```text
+/pt-br/testes/tdah
+
+/en/tests/adhd
+
+/es/tests/tdah
+```
+
+Utilizar hreflang adequadamente.
+
+---
+
+# 37. NURA PERFIL INTERNACIONAL
+
+PT-BR:
+
+# NURA Perfil
+
+EN:
+
+# NURA Profile
+
+ES:
+
+# Perfil NURA
+
+A arquitetura deve permitir localização do nome sem alterar componentes.
+
+---
+
+# 38. MOTION DESIGN
+
+Motion deve transmitir:
+
+* descoberta;
+* construção;
+* conexão;
+* progressão.
+
+Utilizar:
+
+* fade;
+* translate;
+* scale;
+* morphing;
+* parallax discreto;
+* linhas sendo formadas;
+* partículas se conectando;
+* mudanças suaves de câmera.
+
+Evitar:
+
+* bounce exagerado;
+* zoom agressivo;
+* animações infantis;
+* elementos constantemente pulando;
+* animações em cada texto.
+
+---
+
+# 39. SCROLLYTELLING
+
+A Landing deve funcionar como uma pequena narrativa.
+
+```text
+DESCONHECIDO
+     ↓
+CURIOSIDADE
+     ↓
+DIMENSÕES
+     ↓
+CONEXÕES
+     ↓
+NURA PERFIL
+     ↓
+DESCOBERTA
+```
+
+O 3D acompanha essa transformação.
+
+---
+
+# 40. ACESSIBILIDADE
+
+Implementar:
+
+```css
+prefers-reduced-motion
+```
+
+Quando ativado:
+
+* reduzir Motion;
+* remover parallax;
+* interromper movimentos desnecessários;
+* oferecer representação estática equivalente.
+
+Garantir:
+
+* contraste WCAG;
+* keyboard navigation;
+* foco visível;
+* labels;
+* ARIA quando necessário;
+* HTML semântico.
+
+---
+
+# 41. STICKY CTA MOBILE
+
+Depois que o usuário ultrapassar o Hero, considerar CTA inferior discreto:
+
+# Começar avaliação gratuita
+
+Não mostrar se estiver cobrindo:
+
+* formulários;
+* outros CTAs;
+* informações importantes.
+
+Permitir ocultação contextual.
+
+---
+
+# 42. CREDIBILIDADE
+
+Criar seção:
+
+# Avaliações feitas com responsabilidade.
+
+Explicar brevemente:
+
+* resultados possuem finalidade informativa;
+* determinados instrumentos possuem finalidade de triagem;
+* não substituem diagnóstico profissional;
+* metodologias devem ser transparentes;
+* dados são tratados com responsabilidade.
+
+Não transformar a Landing em documento jurídico.
+
+---
+
+# 43. PROVA SOCIAL
+
+Preparar componentes para:
+
+* quantidade de avaliações;
+* reviews;
+* depoimentos;
+* profissionais;
+* metodologia;
+* parceiros;
+* imprensa.
+
+IMPORTANTE:
+
+NÃO inventar:
+
+```text
+1 milhão de usuários
+98% de precisão
+97% recomendam
+```
+
+Enquanto não houver dados reais, utilizar placeholders somente no ambiente de desenvolvimento ou ocultar a seção.
+
+---
+
+# 44. PRIVACIDADE
+
+Como algumas avaliações podem envolver informações relacionadas à saúde e neurodiversidade, preparar arquitetura para:
+
+* consentimento;
+* política de privacidade;
+* finalidade;
+* exclusão;
+* exportação;
+* gestão de dados;
+* LGPD.
+
+Não implementar dark patterns.
+
+---
+
+# 45. PWA
+
+A aplicação deve permanecer preparada para instalação futura como:
+
+# Progressive Web App.
+
+Considerar:
+
+* manifest;
+* icons;
+* standalone;
+* service worker;
+* offline strategy futura;
+* installability.
+
+Não precisa implementar toda funcionalidade PWA nesta etapa.
+
+Apenas não bloquear essa evolução.
+
+---
+
+# 46. COMPONENTIZAÇÃO
+
+Criar componentes reutilizáveis.
+
+Exemplo:
+
+```text
+components/
+
+Header
+Hero
+NuraProfileScene
+AssessmentCard
+FeaturedAssessment
+HowItWorks
+ResultPreview
+NuraProfilePreview
+PremiumSection
+TrustSection
+FAQ
+CTA
+Footer
+```
+
+Evitar componentes gigantes.
+
+---
+
+# 47. LANDING ENGINE
+
+Preparar arquitetura para reutilizar a estrutura das páginas individuais.
+
+Exemplo conceitual:
+
+```typescript
+AssessmentLanding {
+    slug
+    category
+    title
+    headline
+    description
+    estimatedTime
+    benefits
+    methodology
+    seo
+    assessmentId
+    disclaimer
+}
+```
+
+Não criar uma página totalmente independente em código para cada avaliação.
+
+---
+
+# 48. ANALYTICS
+
+Preparar eventos para futuro tracking.
+
+Exemplos:
+
+```text
+landing_view
+
+hero_cta_click
+
+assessment_selected
+
+assessment_started
+
+assessment_step_completed
+
+assessment_completed
+
+result_viewed
+
+premium_viewed
+
+checkout_started
+
+purchase_completed
+
+nura_profile_viewed
+```
+
+A arquitetura precisa permitir GA4, Meta Pixel e outras ferramentas futuramente.
+
+---
+
+# 49. NÃO IMPLEMENTAR DARK PATTERNS
+
+Não utilizar:
+
+* contadores falsos;
+* "últimas vagas";
+* descontos inexistentes;
+* resultados falsamente bloqueados;
+* urgência artificial;
+* notificações falsas de compras;
+* números sociais inventados.
+
+Conversão deve vir de:
+
+# curiosidade + valor + confiança.
+
+---
+
+# 50. ESTRUTURA FINAL DA HOME
+
+Utilizar aproximadamente:
+
+```text
+HEADER
+       ↓
+HERO + NURA PERFIL 3D
+       ↓
+"O que você gostaria de descobrir?"
+       ↓
+TDAH — AVALIAÇÃO EM DESTAQUE
+       ↓
+AVALIAÇÕES POPULARES
+       ↓
+COMO FUNCIONA
+       ↓
+SCROLLYTELLING
+       ↓
+NURA PERFIL
+       ↓
+PREVIEW DO RESULTADO
+       ↓
+RESULTADO GRATUITO
+       ↓
+RELATÓRIO PREMIUM
+       ↓
+CREDIBILIDADE
+       ↓
+FAQ
+       ↓
+CTA FINAL
+       ↓
+FOOTER
+```
+
+---
+
+# 51. CTA FINAL
+
+Background:
+
+```text
+#070B14
+```
+
+Cena do NURA Perfil completa ao fundo.
+
+Headline:
+
+# Existe muito mais sobre você para descobrir.
+
+Texto:
+
+> Comece gratuitamente e explore uma nova dimensão sobre você.
+
+CTA:
+
+# Começar minha descoberta
+
+Microcopy:
+
+```text
+Grátis para começar
+•
+Sem cartão
+```
+
+---
+
+# 52. REGRA DE UX
+
+Cada seção deve responder pelo menos uma destas perguntas:
+
+```text
+O que é?
+
+Por que isso é interessante para mim?
+
+O que vou descobrir?
+
+Quanto tempo leva?
+
+É gratuito?
+
+Posso confiar?
+
+O que receberei?
+
+O que faço agora?
+```
+
+Se uma seção não responde nenhuma delas e existe apenas para decoração:
+
+# remover.
+
+---
+
+# 53. REGRA DE DESIGN
+
+Evitar excesso de:
+
+* cards;
+* badges;
+* pills;
+* gradientes;
+* glassmorphism;
+* sombras;
+* bordas;
+* ícones;
+* textos;
+* partículas.
+
+O design deve respirar.
+
+Utilizar:
+
+# espaço negativo.
+
+---
+
+# 54. REGRA DO 3D
+
+Perguntar para cada efeito:
+
+> Esse elemento ajuda a contar a história da descoberta?
+
+Se não:
+
+# remover.
+
+Não criar um showcase de Three.js.
+
+Criar uma experiência de produto.
+
+---
+
+# 55. REGRA DE CONVERSÃO
+
+O objetivo NÃO é:
+
+> impressionar designers.
+
+O objetivo é:
+
+# fazer o usuário começar a avaliação.
+
+A experiência visual existe para aumentar:
+
+* curiosidade;
+* desejo;
+* confiança;
+* percepção de qualidade.
+
+Nunca prejudicar:
+
+* velocidade;
+* leitura;
+* navegação;
+* CTA.
+
+---
+
+# 56. PRIMEIRA ENTREGA — NÃO DESENVOLVER TUDO
+
+IMPORTANTE:
+
+Nesta primeira implementação, NÃO construir a Landing Page inteira.
+
+Desenvolver somente:
+
+### 1. Design System básico
+
+Aplicar:
+
+* cores;
+* tipografia;
+* spacing;
+* botões;
+* backgrounds;
+* responsividade.
+
+### 2. Header
+
+Desktop + Mobile.
+
+### 3. Hero
+
+Desktop + Mobile.
+
+### 4. NURA Perfil 3D
+
+Criar o conceito visual inicial.
+
+### 5. Primeira transição de scroll
+
+Mostrar o NURA Perfil começando a se transformar.
+
+### 6. Seção
+
+"O que você gostaria de descobrir?"
+
+### 7. TDAH em Adultos
+
+Criar a seção da avaliação âncora.
+
+### 8. Avaliações em destaque
+
+Mostrar:
+
+* TDAH;
+* Espectro Autista;
+* Perfil Cognitivo;
+* Altas Habilidades.
+
+---
+
+# 57. ANTES DE CONTINUAR
+
+Depois dessa primeira implementação:
+
+# PARAR.
+
+Não desenvolver:
+
+* checkout;
+* login;
+* dashboard;
+* Assessment Engine;
+* perguntas;
+* resultado;
+* FAQ completa;
+* backend;
+* banco;
+* pagamentos.
+
+Primeiro apresentar a Landing implementada para revisão.
+
+---
+
+# 58. VALIDAÇÃO MOBILE
+
+Antes de considerar a primeira etapa pronta:
+
+testar principalmente em:
+
+```text
+390 × 844
+```
+
+Verificar:
+
+* Hero;
+* CTA;
+* tipografia;
+* scroll;
+* performance;
+* menu;
+* 3D;
+* espaçamento;
+* legibilidade;
+* touch;
+* sticky CTA.
+
+Nenhum elemento pode:
+
+* cortar;
+* sobrepor;
+* sair da tela;
+* gerar scroll horizontal.
+
+---
+
+# 59. VALIDAÇÃO DE PERFORMANCE
+
+Verificar:
+
+* LCP;
+* CLS;
+* INP;
+* tamanho inicial do bundle;
+* custo da cena WebGL;
+* FPS mobile;
+* carregamento das fontes;
+* imagens;
+* scripts.
+
+Se o 3D prejudicar significativamente a performance mobile:
+
+# simplificar o 3D.
+
+Performance tem prioridade.
+
+---
+
+# 60. RESULTADO ESPERADO
+
+A Landing Page final deve transmitir:
+
+> "Isso não parece um site de quiz."
+
+> "Quero descobrir meu resultado."
+
+> "Parece confiável."
+
+> "Parece moderno."
+
+> "Quero continuar."
+
+A experiência deve unir:
+
+# NURA
+
+### ciência
+
+### tecnologia
+
+### descoberta
+
+### identidade
+
+### curiosidade
+
+em uma experiência visual premium.
+
+---
+
+# REGRA FINAL
+
+Não copie visualmente 16Personalities, Truity, IQ Center ou qualquer outro concorrente.
+
+Utilize benchmarks apenas para compreender:
+
+* clareza;
+* conversão;
+* hierarquia;
+* experiência;
+* funil.
+
+A identidade da NURA deve ser própria.
+
+A principal assinatura visual da NURA será:
+
+# o NURA Perfil sendo progressivamente construído através de nós, conexões e dimensões.
+
+Comece pela primeira entrega definida neste documento e pare para revisão antes de desenvolver as demais áreas.

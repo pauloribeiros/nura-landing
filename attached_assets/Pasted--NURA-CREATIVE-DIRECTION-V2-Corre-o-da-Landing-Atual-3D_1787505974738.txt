@@ -1,0 +1,1503 @@
+# NURA — CREATIVE DIRECTION V2
+
+## Correção da Landing Atual • 3D Cinematográfico • Scrollytelling • Mobile First
+
+## CONTEXTO
+
+A Landing Page atual da NURA já foi construída e possui uma boa base estrutural.
+
+Porém, o resultado visual atual está **simples demais, estático e semelhante a uma Landing Page SaaS convencional**.
+
+O principal requisito solicitado anteriormente NÃO foi atingido:
+
+# A experiência 3D não está presente de forma relevante.
+
+A página deveria possuir uma experiência visual premium baseada em:
+
+* WebGL;
+* Three.js;
+* React Three Fiber;
+* GSAP ScrollTrigger;
+* Motion;
+* câmera 3D;
+* partículas;
+* profundidade;
+* objetos tridimensionais;
+* scrollytelling.
+
+A versão atual não transmite suficientemente:
+
+* profundidade;
+* inovação;
+* descoberta;
+* impacto;
+* tecnologia premium;
+* experiência cinematográfica.
+
+Portanto, faça um **upgrade visual significativo da Landing atual**.
+
+---
+
+# 1. NÃO RECONSTRUIR O PROJETO
+
+IMPORTANTE:
+
+Não começar novamente do zero.
+
+Preservar tudo que estiver funcional:
+
+* rotas;
+* SEO;
+* textos;
+* responsividade existente;
+* componentes funcionais;
+* estrutura;
+* internacionalização;
+* links;
+* CTAs;
+* arquitetura.
+
+O objetivo é:
+
+# reconstruir a experiência visual.
+
+Principalmente:
+
+1. Hero;
+2. background;
+3. cena 3D;
+4. transições;
+5. scrollytelling;
+6. NURA Perfil;
+7. Motion;
+8. profundidade;
+9. composição;
+10. experiência mobile.
+
+---
+
+# 2. PROBLEMA DA VERSÃO ATUAL
+
+A Landing atual parece:
+
+> uma Landing Page moderna com alguns efeitos.
+
+Isso NÃO é suficiente.
+
+A experiência desejada é:
+
+> uma narrativa visual cinematográfica controlada pelo scroll.
+
+Não quero simplesmente:
+
+* cards animados;
+* gradientes;
+* partículas CSS;
+* blobs;
+* glow;
+* fade-in;
+* elementos flutuando;
+* parallax 2D.
+
+Quero uma:
+
+# CENA 3D REAL.
+
+---
+
+# 3. IMPLEMENTAR WEBGL REAL
+
+Criar uma cena WebGL utilizando:
+
+* Three.js;
+* React Three Fiber;
+* Drei quando útil.
+
+O Canvas 3D deve permanecer visualmente integrado durante grande parte da experiência.
+
+Arquitetura conceitual:
+
+```text
+<Page>
+
+    <FixedWebGLCanvas />
+
+    <HTMLContent>
+
+        <Hero />
+
+        <Discovery />
+
+        <Attention />
+
+        <Assessments />
+
+        <NuraProfile />
+
+        <Result />
+
+    </HTMLContent>
+
+</Page>
+```
+
+O HTML continua responsável por:
+
+* SEO;
+* textos;
+* botões;
+* acessibilidade;
+* conteúdo.
+
+WebGL é responsável pela narrativa visual.
+
+---
+
+# 4. CRIAR O OBJETO 3D PROPRIETÁRIO DA NURA
+
+Não usar:
+
+* cérebro 3D;
+* cabeça humana;
+* robô;
+* esfera simples;
+* globo;
+* DNA;
+* holograma clichê.
+
+Criar um objeto abstrato proprietário:
+
+# NURA CORE
+
+O NURA Core representa visualmente a identidade ainda não completamente explorada do usuário.
+
+Ele será posteriormente transformado no:
+
+# NURA Perfil.
+
+---
+
+# 5. APARÊNCIA DO NURA CORE
+
+Criar uma estrutura orgânica/geométrica formada por:
+
+* núcleo central;
+* centenas ou milhares de partículas;
+* pequenos nós;
+* conexões;
+* estruturas orbitais;
+* filamentos;
+* linhas luminosas;
+* pequenos clusters;
+* diferentes níveis de profundidade.
+
+O objeto deve parecer:
+
+* vivo;
+* sofisticado;
+* tecnológico;
+* misterioso;
+* elegante.
+
+Mas não:
+
+* alienígena;
+* gamer;
+* cyberpunk;
+* crypto.
+
+---
+
+# 6. MATERIAIS
+
+Combinar visualmente:
+
+## Crystal / Glass
+
+No núcleo.
+
+## Particles
+
+Representando dimensões ainda não exploradas.
+
+## Light Nodes
+
+Representando descobertas.
+
+## Connections
+
+Representando relações entre dimensões.
+
+Utilizar transparência e refração apenas quando a performance permitir.
+
+---
+
+# 7. PALETA
+
+Manter a identidade NURA:
+
+Background:
+
+```text
+#070B14
+```
+
+Deep Navy:
+
+```text
+#101827
+```
+
+NURA Blue:
+
+```text
+#3B67FF
+```
+
+Cognitive Cyan:
+
+```text
+#22D3E5
+```
+
+Neural Violet:
+
+```text
+#7557FF
+```
+
+White:
+
+```text
+#FFFFFF
+```
+
+Soft White:
+
+```text
+#F6F8FC
+```
+
+Não transformar a cena em um arco-íris.
+
+Priorizar:
+
+* azul;
+* cyan;
+* branco.
+
+Violet apenas em momentos específicos.
+
+---
+
+# 8. ILUMINAÇÃO
+
+Criar iluminação cinematográfica.
+
+Utilizar quando apropriado:
+
+* key light;
+* rim light;
+* point lights;
+* emissive materials;
+* environment lighting;
+* bloom muito controlado.
+
+Evitar excesso de glow.
+
+O objeto deve possuir volume real.
+
+Precisamos perceber:
+
+* frente;
+* trás;
+* profundidade;
+* sombra;
+* refração;
+* distância.
+
+---
+
+# 9. HERO — RECONSTRUIR VISUALMENTE
+
+A estrutura textual pode ser preservada.
+
+Porém, o Hero precisa causar impacto imediatamente.
+
+Desktop:
+
+```text
+┌───────────────────────────────────────┐
+
+ NURA
+
+ Descubra mais
+ sobre você.                NURA CORE
+                                ◉
+ Explore diferentes          ◌ ● ◌
+ dimensões sobre você.       ● ╱ ╲ ●
+                              ◌ ● ◌
+
+ [ COMEÇAR MINHA DESCOBERTA ]
+
+ Grátis • Resultado imediato
+
+└───────────────────────────────────────┘
+```
+
+O objeto deve ocupar uma parte significativa do viewport.
+
+Não colocar um pequeno elemento decorativo no canto.
+
+O 3D deve possuir presença.
+
+---
+
+# 10. HERO — PRIMEIROS SEGUNDOS
+
+Quando a página abrir:
+
+NURA Core já deve estar visível.
+
+Executar uma animação inicial curta:
+
+### 0–400ms
+
+HTML aparece imediatamente.
+
+### 400–1200ms
+
+NURA Core começa a surgir.
+
+### 1200–2000ms
+
+Partículas se organizam.
+
+### depois
+
+Objeto entra em idle animation extremamente lenta.
+
+Não criar splash screen.
+
+Não atrasar CTA.
+
+---
+
+# 11. INTERAÇÃO COM CURSOR
+
+Desktop:
+
+O NURA Core deve reagir suavemente ao mouse.
+
+Utilizar interpolação / lerp.
+
+Movimento máximo pequeno.
+
+Exemplo conceitual:
+
+```javascript
+targetRotationX = mouseY * 0.08
+targetRotationY = mouseX * 0.12
+
+currentRotation +=
+(targetRotation - currentRotation) * 0.04
+```
+
+Não copiar literalmente caso a arquitetura atual utilize outra abordagem.
+
+Objetivo:
+
+movimento orgânico e discreto.
+
+---
+
+# 12. IDLE MOTION
+
+Mesmo sem interação:
+
+* partículas respiram;
+* núcleo rotaciona lentamente;
+* linhas oscilam;
+* alguns nós pulsam;
+* profundidade muda minimamente.
+
+Tudo extremamente lento.
+
+Nada deve parecer:
+
+* loading;
+* screensaver;
+* videogame.
+
+---
+
+# 13. SCROLL = TIMELINE
+
+A principal alteração desta versão:
+
+# O SCROLL CONTROLARÁ A CENA 3D.
+
+Utilizar:
+
+GSAP + ScrollTrigger.
+
+Criar uma timeline principal.
+
+Conceitualmente:
+
+```javascript
+const timeline = gsap.timeline({
+  scrollTrigger: {
+    trigger: container,
+    start: "top top",
+    end: "bottom bottom",
+    scrub: 1
+  }
+})
+```
+
+Adaptar à arquitetura real.
+
+---
+
+# 14. A CÂMERA PRECISA SE MOVER
+
+Não deixar a câmera parada durante toda a Landing.
+
+O scroll deve controlar:
+
+* camera.position;
+* camera.rotation;
+* target;
+* object.rotation;
+* object.position;
+* object.scale;
+* partículas;
+* opacidade;
+* clusters.
+
+A sensação deve ser:
+
+# estamos viajando através do NURA Perfil.
+
+---
+
+# 15. CENA 01 — DESCOBERTA
+
+Scroll:
+
+```text
+0–15%
+```
+
+NURA Core completo.
+
+Headline:
+
+# Descubra mais sobre você.
+
+O objeto flutua.
+
+A câmera lentamente se aproxima.
+
+---
+
+# 16. CENA 02 — DIMENSÕES
+
+Scroll:
+
+```text
+15–30%
+```
+
+Headline:
+
+# Você é mais do que um único resultado.
+
+O NURA Core começa a se separar.
+
+Não fazer uma explosão agressiva.
+
+Os nós começam lentamente a formar clusters.
+
+Exemplo:
+
+```text
+              ●
+
+       ●             ●
+
+              ◉
+
+       ●             ●
+```
+
+Clusters representam:
+
+* atenção;
+* cognição;
+* personalidade;
+* comportamento;
+* carreira.
+
+---
+
+# 17. CENA 03 — DESCOBERTA DAS DIMENSÕES
+
+Scroll:
+
+```text
+30–45%
+```
+
+Os clusters ganham identidade.
+
+Visualmente:
+
+```text
+             ATENÇÃO
+                ●
+
+
+COGNIÇÃO ●              ● PERSONALIDADE
+
+
+           ●         ●
+
+      COMPORTAMENTO   CARREIRA
+```
+
+Não necessariamente renderizar todos os textos dentro do WebGL.
+
+Textos podem permanecer HTML.
+
+O WebGL representa visualmente cada cluster.
+
+---
+
+# 18. CENA 04 — ATENÇÃO / TDAH
+
+Scroll:
+
+```text
+45–60%
+```
+
+Essa é uma cena muito importante.
+
+A câmera deixa os demais clusters para trás e aproxima-se do cluster:
+
+# ATENÇÃO.
+
+Os demais elementos:
+
+* diminuem;
+* perdem opacidade;
+* desfocam visualmente;
+* afastam-se.
+
+O cluster Attention torna-se protagonista.
+
+Headline HTML:
+
+# Como funciona sua atenção?
+
+Subheadline:
+
+> Explore padrões relacionados à atenção, organização, impulsividade e rotina.
+
+Mostrar:
+
+### Teste de TDAH em Adultos
+
+CTA:
+
+# Fazer avaliação gratuita
+
+Microcopy:
+
+```text
+3–5 minutos
+Resultado inicial gratuito
+Sem cartão
+```
+
+Disclaimer:
+
+> Ferramenta de triagem e autoconhecimento. Não constitui diagnóstico médico.
+
+---
+
+# 19. TDAH NÃO PODE PARECER PROPAGANDA
+
+A seção deve parecer continuação natural da narrativa.
+
+Não colocar simplesmente:
+
+```text
+CARD
+TESTE TDAH
+BOTÃO
+```
+
+O usuário deve sentir:
+
+> estamos explorando a dimensão Atenção.
+
+E então descobrir que existe uma avaliação específica para isso.
+
+---
+
+# 20. CENA 05 — OUTRAS DESCOBERTAS
+
+Scroll:
+
+```text
+60–72%
+```
+
+A câmera começa a sair do cluster Attention.
+
+Outros clusters reaparecem.
+
+Apresentar:
+
+* Espectro Autista;
+* Perfil Cognitivo;
+* Altas Habilidades;
+* Personalidade.
+
+Mas não transformar em catálogo.
+
+Utilizar composição editorial.
+
+---
+
+# 21. CENA 06 — NURA PERFIL
+
+Scroll:
+
+```text
+72–88%
+```
+
+Essa deve ser uma das cenas mais impactantes.
+
+Todos os clusters começam a voltar.
+
+Linhas surgem entre eles.
+
+Partículas reorganizam-se.
+
+A estrutura começa a formar:
+
+# NURA PERFIL.
+
+Visual:
+
+```text
+            ●
+          ╱ │ ╲
+        ●───●───●
+         ╲ ╱ ╲
+          ●───●
+             ╲
+              ●
+```
+
+Obviamente em 3D real.
+
+---
+
+# 22. NURA PERFIL NÃO É UM GRÁFICO
+
+Não utilizar:
+
+* radar chart;
+* pie chart;
+* gauge;
+* barras tradicionais;
+* dashboard.
+
+NURA Perfil precisa ser uma:
+
+# estrutura visual proprietária.
+
+---
+
+# 23. EVOLUÇÃO DO NURA PERFIL
+
+Mostrar progressivamente:
+
+```text
+12% explorado
+
+27% explorado
+
+42% explorado
+
+58% explorado
+```
+
+Conforme aumenta:
+
+* novos nós aparecem;
+* novas conexões aparecem;
+* clusters tornam-se mais ricos.
+
+IMPORTANTE:
+
+O percentual representa quantidade de dimensões/experiências exploradas.
+
+Não representa inteligência, saúde ou qualidade da pessoa.
+
+---
+
+# 24. TRANSIÇÕES ENTRE DARK E LIGHT
+
+A versão atual utiliza seções tradicionais.
+
+Melhorar as transições.
+
+Não simplesmente:
+
+```text
+background preto
+background branco
+```
+
+Criar transições visuais.
+
+Exemplos:
+
+* luz aumentando;
+* partículas desaparecendo;
+* canvas sendo mascarado;
+* gradiente de luminosidade;
+* conteúdo emergindo da cena;
+* mudança progressiva da atmosfera.
+
+---
+
+# 25. ÁREAS CLARAS
+
+Nem tudo deve ser 3D.
+
+Nas áreas de:
+
+* como funciona;
+* credibilidade;
+* metodologia;
+* benefícios;
+
+reduzir drasticamente os efeitos.
+
+Utilizar:
+
+```text
+#F6F8FC
+```
+
+com:
+
+```text
+#121826
+```
+
+para texto.
+
+Objetivo:
+
+# descanso visual.
+
+---
+
+# 26. MOTION DO HTML
+
+Adicionar Motion editorial.
+
+Utilizar:
+
+* opacity;
+* translateY;
+* clip-path;
+* masking;
+* stagger discreto.
+
+Exemplo:
+
+Headline:
+
+```text
+Descubra mais
+sobre você.
+```
+
+Pode surgir linha por linha.
+
+Mas rapidamente.
+
+---
+
+# 27. NÃO ANIMAR TUDO
+
+Evitar:
+
+* cada palavra;
+* cada botão;
+* cada ícone;
+* cada card.
+
+Motion deve criar hierarquia.
+
+---
+
+# 28. TIPOGRAFIA CINEMATOGRÁFICA
+
+Aumentar presença editorial.
+
+Desktop:
+
+headlines podem ocupar aproximadamente:
+
+```text
+40–55vw
+```
+
+quando fizer sentido.
+
+Utilizar bastante espaço negativo.
+
+Evitar:
+
+```text
+card
+card
+card
+card
+```
+
+Preferir:
+
+```text
+GRANDE HEADLINE
+
+               visual
+
+     conteúdo
+
+                        objeto
+```
+
+Criar composição assimétrica sofisticada.
+
+---
+
+# 29. DEPTH LAYERS
+
+Criar pelo menos três níveis visuais:
+
+```text
+BACKGROUND
+partículas distantes
+
+MIDGROUND
+NURA Core / clusters
+
+FOREGROUND
+HTML / algumas partículas
+```
+
+Isso deve gerar profundidade.
+
+---
+
+# 30. PARALLAX REAL
+
+Elementos em profundidades diferentes devem responder de maneira diferente ao scroll.
+
+Não usar apenas:
+
+```css
+transform: translateY()
+```
+
+em tudo.
+
+A profundidade deve existir na cena.
+
+---
+
+# 31. MOBILE — NÃO REMOVER A EXPERIÊNCIA
+
+IMPORTANTE:
+
+Não resolver performance simplesmente removendo o 3D do celular.
+
+Mobile também precisa possuir identidade visual NURA.
+
+Porém simplificada.
+
+---
+
+# 32. MOBILE 390PX
+
+Projetar especificamente:
+
+```text
+390 × 844
+```
+
+Hero:
+
+```text
+NURA
+
+Descubra mais
+sobre você.
+
+Explore diferentes dimensões
+da sua mente e comportamento.
+
+[ COMEÇAR MINHA DESCOBERTA ]
+
+Grátis • Resultado imediato
+
+
+             ◉
+          NURA CORE
+```
+
+O objeto pode ocupar aproximadamente:
+
+```text
+45–55%
+```
+
+da área visual inferior do Hero.
+
+---
+
+# 33. MOBILE 3D
+
+Mobile:
+
+reduzir aproximadamente:
+
+* particle count;
+* geometry complexity;
+* DPR;
+* bloom;
+* refraction;
+* postprocessing.
+
+Utilizar:
+
+```text
+DPR máximo controlado
+```
+
+e detectar dispositivos de menor capacidade quando possível.
+
+---
+
+# 34. MOBILE SCROLLYTELLING
+
+Manter a narrativa:
+
+```text
+CORE
+ ↓
+DIMENSÕES
+ ↓
+ATENÇÃO
+ ↓
+TDAH
+ ↓
+OUTRAS DESCOBERTAS
+ ↓
+NURA PERFIL
+```
+
+Mas reduzir movimentos complexos de câmera.
+
+Priorizar:
+
+* scale;
+* rotation;
+* position;
+* particle morphing.
+
+---
+
+# 35. FALLBACK
+
+Caso:
+
+* WebGL indisponível;
+* GPU muito fraca;
+* reduced motion;
+
+mostrar versão estática premium do NURA Core.
+
+Nunca mostrar:
+
+* Canvas vazio;
+* erro;
+* loading infinito.
+
+---
+
+# 36. PREFERS REDUCED MOTION
+
+Respeitar:
+
+```css
+@media (prefers-reduced-motion: reduce)
+```
+
+Desativar:
+
+* camera travel;
+* parallax forte;
+* particle morphing contínuo.
+
+Manter conteúdo completo.
+
+---
+
+# 37. PERFORMANCE BUDGET
+
+A experiência 3D NÃO pode destruir conversão.
+
+Priorizar:
+
+# velocidade antes de complexidade.
+
+O HTML do Hero deve aparecer imediatamente.
+
+Lazy load para elementos posteriores.
+
+Evitar modelos GLB pesados quando geometria procedural for suficiente.
+
+Preferir geometria procedural para o NURA Core.
+
+---
+
+# 38. NÃO USAR MODELO 3D GENÉRICO
+
+Não baixar simplesmente um modelo pronto de:
+
+* cérebro;
+* esfera;
+* cabeça;
+* átomo.
+
+O objeto precisa nascer do próprio código.
+
+Isso ajuda a criar uma assinatura visual da NURA.
+
+---
+
+# 39. ACESSIBILIDADE
+
+Canvas deve ser:
+
+```text
+aria-hidden
+```
+
+quando for puramente decorativo.
+
+Toda informação importante deve existir no HTML.
+
+CTAs precisam permanecer:
+
+* clicáveis;
+* acessíveis;
+* navegáveis por teclado.
+
+---
+
+# 40. CTA MOBILE
+
+Implementar sticky CTA discreto depois do Hero:
+
+# Começar avaliação
+
+Não mostrar quando outro CTA estiver próximo.
+
+Não bloquear conteúdo.
+
+---
+
+# 41. PRESERVAR SEO
+
+Não mover conteúdo importante para WebGL.
+
+Manter:
+
+* H1;
+* H2;
+* textos;
+* links;
+* FAQ;
+* informações das avaliações;
+
+em HTML semântico.
+
+---
+
+# 42. NÃO ALTERAR A MARCA
+
+Manter:
+
+# NURA
+
+e:
+
+# NURA Perfil
+
+Não utilizar:
+
+```text
+Mind ID
+Mind Profile
+Neural ID
+```
+
+---
+
+# 43. NÃO ALTERAR O MODELO DE NEGÓCIO
+
+Manter:
+
+```text
+Avaliação gratuita
+        ↓
+Resultado inicial gratuito
+        ↓
+Relatório aprofundado
+        ↓
+R$19,90
+        ↓
+NURA Perfil
+```
+
+Não implementar checkout nesta etapa.
+
+---
+
+# 44. REFERÊNCIA DE QUALIDADE
+
+A qualidade desejada é próxima de:
+
+* experiências digitais premium;
+* portfolios Awwwards;
+* product storytelling;
+* sites WebGL modernos;
+* experiências interativas de marcas de tecnologia.
+
+Mas:
+
+# NÃO COPIAR nenhum site.
+
+Utilizar apenas como referência de:
+
+* profundidade;
+* composição;
+* Motion;
+* scrollytelling;
+* direção de arte.
+
+---
+
+# 45. NÃO QUERO
+
+Não entregar novamente:
+
+* Hero convencional;
+* cards convencionais;
+* fundo com gradiente;
+* algumas partículas;
+* fade-in;
+* pequenos ícones animados.
+
+Isso NÃO resolve esta solicitação.
+
+---
+
+# 46. QUERO
+
+A página deve provocar:
+
+> "Uau, o que é isso?"
+
+seguido imediatamente de:
+
+> "Quero descobrir meu perfil."
+
+Essa combinação é essencial:
+
+# WOW + CURIOSIDADE + CONVERSÃO.
+
+---
+
+# 47. IMPLEMENTAÇÃO TÉCNICA
+
+Estruturar aproximadamente:
+
+```text
+ExperienceCanvas
+│
+├── CameraRig
+│
+├── NuraCore
+│   ├── CoreGeometry
+│   ├── ParticleField
+│   ├── NeuralNodes
+│   ├── Connections
+│   └── OrbitElements
+│
+├── DimensionClusters
+│   ├── Attention
+│   ├── Cognition
+│   ├── Personality
+│   ├── Behavior
+│   └── Career
+│
+├── Lighting
+│
+└── Effects
+```
+
+E:
+
+```text
+ScrollExperience
+│
+├── Hero
+├── Dimensions
+├── AttentionStory
+├── FeaturedAssessment
+├── Discoveries
+└── NuraProfile
+```
+
+Separar lógica 3D da lógica HTML.
+
+---
+
+# 48. CENTRALIZAR ESTADO DO SCROLL
+
+Não criar dezenas de listeners independentes.
+
+Criar um sistema central de progresso:
+
+```text
+0.0 → 1.0
+```
+
+A cena reage a esse progresso.
+
+Exemplo conceitual:
+
+```text
+0.00 Hero
+0.20 Dimensions
+0.45 Attention
+0.60 Assessments
+0.75 Reconnection
+1.00 NURA Perfil
+```
+
+---
+
+# 49. EVITAR RE-RENDERS
+
+No React Three Fiber:
+
+evitar atualizar React state a cada frame.
+
+Utilizar:
+
+* refs;
+* useFrame;
+* uniforms;
+* GSAP targets;
+
+quando apropriado.
+
+Priorizar performance.
+
+---
+
+# 50. PRIMEIRA ENTREGA DESTA CORREÇÃO
+
+NÃO modificar a Landing inteira de uma vez.
+
+Implementar primeiro:
+
+## ETAPA A
+
+1. NURA Core;
+2. Canvas WebGL;
+3. Hero novo;
+4. interação com cursor;
+5. idle animation.
+
+## ETAPA B
+
+6. GSAP ScrollTrigger;
+7. câmera;
+8. separação em clusters;
+9. cena Attention;
+10. seção TDAH integrada.
+
+## ETAPA C
+
+11. reconexão;
+12. formação do NURA Perfil.
+
+Depois:
+
+# PARAR.
+
+---
+
+# 51. NÃO CONTINUAR AUTOMATICAMENTE
+
+Depois de implementar:
+
+```text
+Hero
++
+NURA Core
++
+Dimensions
++
+Attention/TDAH
++
+NURA Perfil
+```
+
+PARAR.
+
+Não alterar ainda:
+
+* checkout;
+* Assessment Engine;
+* login;
+* dashboard;
+* backend;
+* banco;
+* perguntas.
+
+Precisamos revisar a experiência visual antes.
+
+---
+
+# 52. CRITÉRIO DE APROVAÇÃO
+
+Antes de considerar concluído, responder tecnicamente:
+
+### Existe um Canvas WebGL real?
+
+SIM.
+
+### Existe geometria 3D?
+
+SIM.
+
+### Existe profundidade real?
+
+SIM.
+
+### A câmera reage ao scroll?
+
+SIM.
+
+### O objeto muda durante o scroll?
+
+SIM.
+
+### Existem clusters/dimensões?
+
+SIM.
+
+### O NURA Perfil nasce da cena?
+
+SIM.
+
+### Existe versão mobile?
+
+SIM.
+
+### O 3D foi otimizado no mobile?
+
+SIM.
+
+### Existe fallback?
+
+SIM.
+
+### O Hero continua rápido?
+
+SIM.
+
+Se qualquer resposta for NÃO:
+
+# a implementação ainda não está concluída.
+
+---
+
+# 53. TESTAR
+
+Testar obrigatoriamente:
+
+```text
+390 × 844
+430 × 932
+768 × 1024
+1366 × 768
+1440 × 900
+1920 × 1080
+```
+
+Avaliar principalmente:
+
+* FPS;
+* legibilidade;
+* CTA;
+* scroll;
+* câmera;
+* partículas;
+* sobreposição;
+* performance;
+* comportamento do Canvas.
+
+---
+
+# 54. REGRA FINAL
+
+Não trate o 3D como decoração.
+
+# O 3D É A NARRATIVA.
+
+O NURA Core começa incompleto.
+
+O scroll revela dimensões.
+
+A atenção se torna protagonista.
+
+A avaliação de TDAH aparece dentro dessa descoberta.
+
+As dimensões voltam a se conectar.
+
+E dessa conexão nasce:
+
+# NURA PERFIL.
+
+A Landing deve contar essa história visualmente.
+
+Preserve a aplicação existente e implemente esta evolução sobre ela.
