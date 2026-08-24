@@ -19,12 +19,19 @@ import type { AssessmentDefinition } from '../types';
  * 1-3 count from "De vez em quando", items 4-6 only from "Quase sempre". A
  * single cutoff across all six produces a different result from the scale.
  *
- * Part B carries no scoring: the instrument itself states there is no minimum
- * score for it. Its shading exists to draw a clinician's eye, so it is not
- * encoded here rather than encoded and left unused.
+ * Part B is recorded as flagged items, never as a score. The instrument states
+ * it has no minimum score, and it must not move the Part A result — so it can
+ * only say which symptoms were answered in a clinically relevant range.
  *
- * Still to confirm before launch: the prompts were transcribed from a PDF text
- * layer and should be checked against the published source.
+ * OPEN QUESTION — q4. The shading table supplied for this edition marks q4 from
+ * "Quase nunca" (value 1), which is what is encoded. The widely published
+ * ASRS-v1.1 marks q4 from "Quase sempre" (value 3), like q5 and q6. The
+ * difference is not cosmetic: at value 1 almost any answer other than "Nunca"
+ * counts, which raises the positive count and therefore the share of people
+ * told to seek assessment. Confirm against the source before launch; changing
+ * it is a one-line edit plus a scoringVersion bump.
+ *
+ * Also still to confirm: the prompts were transcribed from a PDF text layer.
  * ---------------------------------------------------------------------------
  */
 
@@ -73,10 +80,28 @@ export const asrs18: AssessmentDefinition = {
       kind: 'threshold-count',
       id: 'partA-screen',
       questionIds: [...PART_A],
-      // Read from the shaded cells of the published Part A table. The split at
-      // q4 is intentional, not a typo.
-      positiveAt: { q1: 2, q2: 2, q3: 2, q4: 3, q5: 3, q6: 3 },
+      // Shading rules supplied for this edition of the instrument. They are
+      // NOT uniform, and q4 is the outlier: it counts from "Quase nunca",
+      // while q1-q3 count from "De vez em quando" and q5-q6 only from
+      // "Quase sempre". See the header note about q4.
+      positiveAt: { q1: 2, q2: 2, q3: 2, q4: 1, q5: 3, q6: 3 },
       cutoff: 4,
+      bands: [
+        { from: 0, to: 3, key: 'notElevated' },
+        { from: 4, to: 6, key: 'highlyConsistent' },
+      ],
+    },
+    {
+      // Descriptive only: Part B has no minimum score and must not move the
+      // Part A result. It names which symptoms were answered in a clinically
+      // relevant range, which is what the in-depth report is built on.
+      kind: 'flagged-items',
+      id: 'partB-detail',
+      questionIds: [...PART_B],
+      positiveAt: {
+        q7: 2, q8: 2, q9: 3, q10: 2, q11: 2, q12: 3,
+        q13: 3, q14: 3, q15: 3, q16: 2, q17: 3, q18: 2,
+      },
     },
     { kind: 'sum', id: 'inattention', questionIds: INATTENTION },
     { kind: 'sum', id: 'hyperactivity', questionIds: HYPERACTIVITY },

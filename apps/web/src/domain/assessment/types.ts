@@ -50,6 +50,22 @@ export interface ThresholdCountRule {
   positiveAt: Record<string, number>;
   /** How many positives are needed for the flag to be raised. */
   cutoff: number;
+  /** Inclusive ranges over the positive count, mapped to an interpretation
+   *  key. Bands describe; the copy behind the key is what the person reads. */
+  bands?: { from: number; to: number; key: string }[];
+}
+
+/**
+ * Names which items cleared their own threshold, without producing a score or
+ * a verdict. ASRS Part B works this way: it has no minimum score and must not
+ * move the Part A result, but it does say which symptoms were answered in a
+ * clinically relevant range — which is what the in-depth report is built on.
+ */
+export interface FlaggedItemsRule {
+  kind: 'flagged-items';
+  id: string;
+  questionIds: string[];
+  positiveAt: Record<string, number>;
 }
 
 /** Plain sum of choice values — used for descriptive subscales. */
@@ -59,7 +75,7 @@ export interface SumRule {
   questionIds: string[];
 }
 
-export type ScoringRule = ThresholdCountRule | SumRule;
+export type ScoringRule = ThresholdCountRule | SumRule | FlaggedItemsRule;
 
 export interface AssessmentDefinition {
   assessmentId: string;
@@ -101,6 +117,11 @@ export interface ScoreResult {
   scores: Record<string, number>;
   /** Raised flags per threshold-count rule id. */
   flags: Record<string, boolean>;
+  /** Item ids that cleared their threshold, per flagged-items rule id.
+   *  Descriptive only — never feeds a flag. */
+  flagged: Record<string, string[]>;
+  /** Interpretation band matched per threshold-count rule id. */
+  bands: Record<string, string>;
   /** 0..1 — how much of the instrument was answered. */
   completeness: number;
 }

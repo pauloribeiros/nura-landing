@@ -24,7 +24,7 @@ export function assertScorable(definition: AssessmentDefinition): void {
   }
 
   for (const rule of definition.rules) {
-    if (rule.kind !== 'threshold-count') continue;
+    if (rule.kind === 'sum') continue;
     const missing = rule.questionIds.filter((id) => rule.positiveAt[id] === undefined);
     if (missing.length > 0) {
       throw new NotScorableError(
@@ -63,7 +63,7 @@ function valueOf(
 function applyRule(
   definition: AssessmentDefinition,
   answers: Map<string, string>,
-  rule: ScoringRule,
+  rule: Exclude<ScoringRule, { kind: 'flagged-items' }>,
 ): { score: number; flag?: boolean } {
   if (rule.kind === 'sum') {
     const score = rule.questionIds.reduce(
@@ -100,11 +100,27 @@ export function scoreAssessment(
 
   const scores: Record<string, number> = {};
   const flags: Record<string, boolean> = {};
+  const flagged: Record<string, string[]> = {};
+  const bands: Record<string, string> = {};
 
   for (const rule of definition.rules) {
+    if (rule.kind === 'flagged-items') {
+      flagged[rule.id] = rule.questionIds.filter((id) => {
+        const value = valueOf(definition, byQuestion, id);
+        return value !== undefined && value >= rule.positiveAt[id];
+      });
+      continue;
+    }
+
     const { score, flag } = applyRule(definition, byQuestion, rule);
     scores[rule.id] = score;
-    if (flag !== undefined) flags[rule.id] = flag;
+    if (flag === undefined) continue;
+
+    flags[rule.id] = flag;
+    const band = rule.kind === 'threshold-count'
+      ? rule.bands?.find((b) => score >= b.from && score <= b.to)
+      : undefined;
+    if (band) bands[rule.id] = band.key;
   }
 
   const answered = definition.questions.filter(
@@ -117,6 +133,8 @@ export function scoreAssessment(
     scoringVersion: definition.scoringVersion,
     scores,
     flags,
+    flagged,
+    bands,
     completeness: definition.questions.length === 0 ? 0 : answered / definition.questions.length,
   };
 }
