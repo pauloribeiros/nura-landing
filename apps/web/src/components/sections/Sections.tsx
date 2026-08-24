@@ -56,7 +56,7 @@ export function Statement() {
   return (
     <section className="statement dark">
       <div className="wrap statement-inner reveal">
-        <h2>
+        <h2 className="reveal-display">
           {t('titleStart')}
           <em>{t('titleEmphasis')}</em>
         </h2>
@@ -75,11 +75,10 @@ export function FeaturedAssessment() {
       <div className="wrap featured-grid">
         <div className="reveal">
           <p className="eyebrow eyebrow-light">{t('eyebrow')}</p>
-          <h2>
-            {t('titleLine1')}
-            <br />
-            <span>{t('titleLine2')}</span>
-          </h2>
+          <RevealLines
+            lines={[t('titleLine1'), t('titleLine2'), t('titleLine3')]}
+            accentFrom={1}
+          />
           <p className="featured-copy">{t('copy')}</p>
           <div className="detail-row">
             <span>
@@ -114,11 +113,10 @@ export function AssessmentPaths() {
         <div className="section-head reveal">
           <div>
             <p className="eyebrow">{t('sectionEyebrow')}</p>
-            <h2 className="section-title">
-              {t('sectionTitleLine1')}
-              <br />
-              {t('sectionTitleLine2')}
-            </h2>
+            <RevealLines
+              className="section-title"
+              lines={[t('sectionTitleLine1'), t('sectionTitleLine2')]}
+            />
           </div>
           <CtaLink to="catalog" className="text-link desktop-only" iconSize={15}>
             {t('seeAll')}
@@ -154,11 +152,7 @@ export function HowItWorks() {
     <section className="section how" id={SECTION_IDS.howItWorks}>
       <div className="wrap">
         <p className="eyebrow reveal">{t('eyebrow')}</p>
-        <h2 className="section-title reveal">
-          {t('titleLine1')}
-          <br />
-          {t('titleLine2')}
-        </h2>
+        <RevealLines className="section-title" lines={[t('titleLine1'), t('titleLine2')]} />
         <div className="steps">
           {HOW_IT_WORKS_STEPS.map((step) => (
             <article className="step reveal" key={step}>
@@ -184,7 +178,7 @@ export function NuraProfile() {
         <div className="spacer desktop-only" aria-hidden="true" />
         <div className="reveal">
           <p className="eyebrow eyebrow-light">{t('eyebrow')}</p>
-          <h2>
+          <h2 className="reveal-display">
             {t('titleStart')}
             <span>{t('titleEmphasis')}</span>
           </h2>

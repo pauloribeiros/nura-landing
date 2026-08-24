@@ -46,7 +46,7 @@
   "featured": {
     "eyebrow": "Experiencia destacada",
     "titleLine1": "TDAH:",
-    "titleLine2": "autoevaluación para adultos.",
+    "titleLine2": "autoevaluación",
     "copy": "Explora cómo funciona tu atención en el día a día. Evalúa patrones relacionados con la atención, la organización, la impulsividad y la rutina en una experiencia rápida y estructurada.",
     "durationValue": "3–5 min",
     "durationLabel": "tiempo aproximado",
@@ -55,7 +55,8 @@
     "cardValue": "No",
     "cardLabel": "necesitas tarjeta",
     "cta": "Hacer la evaluación gratuita",
-    "note": "Herramienta de cribado y autoconocimiento. El resultado no constituye un diagnóstico médico."
+    "note": "Herramienta de cribado y autoconocimiento. El resultado no constituye un diagnóstico médico.",
+    "titleLine3": "para adultos."
   },
   "assessments": {
     "sectionEyebrow": "Empieza por donde tenga sentido",
@@ -70,7 +71,7 @@
         "metaTitle": "TDAH: autoevaluación para adultos — cribado gratuito | NURA",
         "metaDescription": "Autoevaluación gratuita de TDAH en adultos con la escala ASRS-v1.1, de la Organización Mundial de la Salud. 18 ítems, de 3 a 5 minutos, sin tarjeta. Instrumento de cribado — no constituye diagnóstico.",
         "heroLine1": "TDAH:",
-        "heroLine2": "autoevaluación para adultos.",
+        "heroLine2": "autoevaluación",
         "intro": "Una experiencia estructurada para observar cómo se comporta tu atención en el día a día: dónde se sostiene, dónde se escapa y qué patrones se repiten. El resultado inicial es gratuito e inmediato.",
         "forWhom": "Para adultos que se reconocen en dificultades persistentes de foco, organización o regulación de impulsos y quieren entender mejor esos patrones — por curiosidad o como paso previo a una evaluación profesional.",
         "methodology": "Esta autoevaluación usa la ASRS-v1.1 (Adult ADHD Self-Report Scale), escala de autoinforme desarrollada por la Organización Mundial de la Salud en colaboración con la Harvard Medical School. Son 18 ítems: los seis primeros forman la Parte A, el bloque de cribado que señala patrones consistentes con TDAH; los doce siguientes detallan inatención e hiperactividad/impulsividad.",
@@ -95,7 +96,8 @@
         },
         "eyebrow": "Atención y comportamiento",
         "lead": "¿Cómo funciona tu atención en el día a día?",
-        "limits": "Es un instrumento de cribado, no de diagnóstico. La ansiedad, la depresión, el estrés y la privación de sueño producen síntomas parecidos y pueden generar falsos positivos. La confirmación exige una evaluación clínica con psiquiatra o psicólogo. Indicado para personas a partir de 18 años."
+        "limits": "Es un instrumento de cribado, no de diagnóstico. La ansiedad, la depresión, el estrés y la privación de sueño producen síntomas parecidos y pueden generar falsos positivos. La confirmación exige una evaluación clínica con psiquiatra o psicólogo. Indicado para personas a partir de 18 años.",
+        "heroLine3": "para adultos."
       }
     },
     "autism": {

@@ -178,8 +178,8 @@ a { color: inherit; text-decoration: none; }
 .featured:after { content: "01"; position: absolute; right: 8vw; bottom: 8%; color: rgba(34,211,229,.1); font: 700 clamp(150px, 20vw, 300px)/.7 var(--app-font-display); letter-spacing: -.12em; pointer-events: none; }
 .featured-grid { position: relative; z-index: 1; display: grid; gap: 36px; align-items: center; }
 .featured h2 { margin: 15px 0 0; font: 700 clamp(45px, 6vw, 78px)/.98 var(--app-font-display); letter-spacing: -.07em; }
-.featured h2 span { color: var(--nura-blue); }
-.dark.featured h2 span { color: var(--nura-cyan); }
+.featured h2 .accent { color: var(--nura-blue); }
+.dark.featured h2 .accent { color: var(--nura-cyan); }
 .featured-copy { margin: 24px 0 0; max-width: 560px; color: var(--text-on-dark-muted); font-size: 17px; line-height: 1.7; }
 .detail-row { display: flex; flex-wrap: wrap; gap: 18px; margin: 28px 0; color: #404c62; font-size: 12px; }
 .detail-row strong { display: block; margin-bottom: 5px; color: var(--nura-graphite); font: 700 14px var(--app-font-mono); }
@@ -368,8 +368,8 @@ a { color: inherit; text-decoration: none; }
 
 /* assessment landing */
 .assessment-hero { padding: 26px 0 84px; display: grid; gap: 22px; }
-.assessment-hero h1 { max-width: 14ch; font: 700 clamp(42px, 7vw, 82px)/1 var(--app-font-display); letter-spacing: -.07em; }
-.assessment-hero h1 span { color: var(--nura-blue); }
+.assessment-hero h1 { max-width: 20ch; font: 700 clamp(42px, 7vw, 82px)/1 var(--app-font-display); letter-spacing: -.07em; }
+.assessment-hero h1 .accent { color: var(--nura-blue); }
 .assessment-lead { max-width: 22ch; color: var(--nura-cyan); font: 700 clamp(20px, 2.4vw, 26px)/1.25 var(--app-font-display); letter-spacing: -.03em; }
 .assessment-intro { max-width: 58ch; color: var(--text-on-dark-muted); font-size: 18px; line-height: 1.65; }
 
@@ -430,4 +430,38 @@ a { color: inherit; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   .reveal-lines .reveal-line { overflow: visible; }
   .reveal-lines .reveal-line > span { transform: none !important; transition: none !important; }
+}
+
+/* Headlines that wrap naturally cannot be split into masked lines — only the
+   browser knows where the breaks land. A top-down wipe reads the same and is
+   indifferent to wrapping. */
+.reveal-display {
+  clip-path: inset(0 0 108% 0);
+  transform: translateY(10px);
+  transition: clip-path .78s cubic-bezier(.16, 1, .3, 1), transform .78s cubic-bezier(.16, 1, .3, 1);
+}
+.reveal-display.visible { clip-path: inset(0 0 -12% 0); transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-display { clip-path: none !important; transform: none !important; transition: none !important; }
+}
+
+/* Author-declared lines only hold while the display type has room. Below 900px
+   a phrase like "O que você gostaria" wraps anyway, and a wrapped line travels
+   two line-heights — arriving late and breaking the rhythm. So the masked
+   reveal degrades to the same wipe the flowing headlines use. Measured: at
+   1280 every line travels an identical distance; at 390 two of them did not. */
+@media (max-width: 899px) {
+  .reveal-lines .reveal-line { overflow: visible; padding-bottom: 0; margin-bottom: 0; }
+  .reveal-lines .reveal-line > span { transform: none; transition: none; }
+  .reveal-lines {
+    clip-path: inset(0 0 108% 0);
+    transform: translateY(10px);
+    transition: clip-path .78s cubic-bezier(.16, 1, .3, 1), transform .78s cubic-bezier(.16, 1, .3, 1);
+  }
+  .reveal-lines.visible { clip-path: inset(0 0 -12% 0); transform: none; }
+}
+
+@media (max-width: 899px) and (prefers-reduced-motion: reduce) {
+  .reveal-lines { clip-path: none !important; transform: none !important; transition: none !important; }
 }

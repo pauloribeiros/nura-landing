@@ -19,6 +19,7 @@ import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { FaqList } from '@/components/FaqList';
 import { AssessmentViewTracker } from '@/components/AssessmentViewTracker';
+import { RevealLines } from '@/components/RevealLines';
 
 /** Only assessments that can actually be started get a landing page. */
 export function generateStaticParams() {
@@ -143,11 +144,11 @@ export default async function AssessmentLanding({ params }: { params: Params }) 
 
         <div className="wrap assessment-hero">
           <p className="eyebrow eyebrow-light">{t('eyebrow')}</p>
-          <h1>
-            {t('heroLine1')}
-            <br />
-            <span>{t('heroLine2')}</span>
-          </h1>
+          <RevealLines
+            as="h1"
+            lines={[t('heroLine1'), t('heroLine2'), t('heroLine3')]}
+            accentFrom={1}
+          />
           <p className="assessment-lead">{t('lead')}</p>
           <p className="assessment-intro">{t('intro')}</p>
 

@@ -46,7 +46,7 @@
   "featured": {
     "eyebrow": "Experiência em destaque",
     "titleLine1": "TDAH:",
-    "titleLine2": "autoavaliação para adultos.",
+    "titleLine2": "autoavaliação",
     "copy": "Explore como sua atenção funciona no dia a dia. Avalie padrões relacionados à atenção, organização, impulsividade e rotina através de uma experiência rápida e estruturada.",
     "durationValue": "3–5 min",
     "durationLabel": "tempo aproximado",
@@ -55,7 +55,8 @@
     "cardValue": "Não",
     "cardLabel": "precisa de cartão",
     "cta": "Fazer avaliação gratuita",
-    "note": "Ferramenta de triagem e autoconhecimento. O resultado não constitui diagnóstico médico."
+    "note": "Ferramenta de triagem e autoconhecimento. O resultado não constitui diagnóstico médico.",
+    "titleLine3": "para adultos."
   },
   "assessments": {
     "sectionEyebrow": "Comece por onde fizer sentido",
@@ -70,7 +71,7 @@
         "metaTitle": "TDAH: autoavaliação para adultos — teste de rastreio gratuito | NURA",
         "metaDescription": "Autoavaliação gratuita de TDAH em adultos com a escala ASRS-v1.1, da Organização Mundial da Saúde. 18 itens, de 3 a 5 minutos, sem cartão. Instrumento de rastreio — não constitui diagnóstico.",
         "heroLine1": "TDAH:",
-        "heroLine2": "autoavaliação para adultos.",
+        "heroLine2": "autoavaliação",
         "intro": "Uma experiência estruturada para observar como sua atenção se comporta no dia a dia: onde ela se sustenta, onde escapa e que padrões se repetem. O resultado inicial é gratuito e sai na hora.",
         "forWhom": "Para adultos que se reconhecem em dificuldades persistentes de foco, organização ou regulação de impulsos e querem entender melhor esses padrões — seja por curiosidade, seja como passo anterior a uma avaliação profissional.",
         "methodology": "Esta autoavaliação usa a ASRS-v1.1 (Adult ADHD Self-Report Scale), escala de autorrelato desenvolvida pela Organização Mundial da Saúde em parceria com a Harvard Medical School. São 18 itens: os seis primeiros formam a Parte A, o bloco de rastreio que sinaliza padrões consistentes com TDAH; os doze seguintes detalham desatenção e hiperatividade/impulsividade. A escala tem tradução e validação para adultos brasileiros, em estudo conduzido por Paulo Mattos e colaboradores.",
@@ -95,7 +96,8 @@
         },
         "eyebrow": "Atenção & comportamento",
         "lead": "Como funciona a sua atenção no dia a dia?",
-        "limits": "É um instrumento de rastreio, não de diagnóstico. Ansiedade, depressão, estresse e privação de sono produzem sintomas parecidos e podem gerar falso positivo. A confirmação exige avaliação clínica com psiquiatra ou psicólogo. Indicado para pessoas a partir de 18 anos."
+        "limits": "É um instrumento de rastreio, não de diagnóstico. Ansiedade, depressão, estresse e privação de sono produzem sintomas parecidos e podem gerar falso positivo. A confirmação exige avaliação clínica com psiquiatra ou psicólogo. Indicado para pessoas a partir de 18 anos.",
+        "heroLine3": "para adultos."
       }
     },
     "autism": {

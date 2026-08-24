@@ -46,7 +46,7 @@
   "featured": {
     "eyebrow": "Featured experience",
     "titleLine1": "ADHD:",
-    "titleLine2": "self-report for adults.",
+    "titleLine2": "self-report",
     "copy": "Explore how your attention works day to day. Look at patterns related to attention, organisation, impulsivity and routine through a quick, structured experience.",
     "durationValue": "3–5 min",
     "durationLabel": "approximate time",
@@ -55,7 +55,8 @@
     "cardValue": "No",
     "cardLabel": "card required",
     "cta": "Take the free assessment",
-    "note": "A screening and self-knowledge tool. The result does not constitute a medical diagnosis."
+    "note": "A screening and self-knowledge tool. The result does not constitute a medical diagnosis.",
+    "titleLine3": "for adults."
   },
   "assessments": {
     "sectionEyebrow": "Start wherever it makes sense",
@@ -70,7 +71,7 @@
         "metaTitle": "ADHD self-report for adults — free screening | NURA",
         "metaDescription": "Free adult ADHD self-report using the ASRS-v1.1 scale from the World Health Organization. 18 items, 3 to 5 minutes, no card required. A screening instrument — not a diagnosis.",
         "heroLine1": "ADHD:",
-        "heroLine2": "self-report for adults.",
+        "heroLine2": "self-report",
         "intro": "A structured experience for observing how your attention behaves day to day: where it holds, where it slips, and which patterns repeat. The initial result is free and immediate.",
         "forWhom": "For adults who recognise persistent difficulty with focus, organisation or impulse regulation and want to understand those patterns better — out of curiosity, or as a step before a professional assessment.",
         "methodology": "This self-report uses the ASRS-v1.1 (Adult ADHD Self-Report Scale), developed by the World Health Organization in partnership with Harvard Medical School. It has 18 items: the first six form Part A, the screening block that flags patterns consistent with ADHD; the remaining twelve detail inattention and hyperactivity/impulsivity.",
@@ -95,7 +96,8 @@
         },
         "eyebrow": "Attention & behaviour",
         "lead": "How does your attention work day to day?",
-        "limits": "This is a screening instrument, not a diagnostic one. Anxiety, depression, stress and sleep deprivation produce similar symptoms and can cause false positives. Confirmation requires a clinical assessment with a psychiatrist or psychologist. Intended for people aged 18 and over."
+        "limits": "This is a screening instrument, not a diagnostic one. Anxiety, depression, stress and sleep deprivation produce similar symptoms and can cause false positives. Confirmation requires a clinical assessment with a psychiatrist or psychologist. Intended for people aged 18 and over.",
+        "heroLine3": "for adults."
       }
     },
     "autism": {
