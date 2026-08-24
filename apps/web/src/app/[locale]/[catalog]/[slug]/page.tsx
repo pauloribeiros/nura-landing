@@ -82,8 +82,12 @@ export default async function AssessmentLanding({ params }: { params: Params }) 
   const tf = await getTranslations({ locale, namespace: 'featured' });
   const tc = await getTranslations({ locale, namespace: 'common' });
   const tq = await getTranslations({ locale, namespace: 'faq' });
+  const tn = await getTranslations({ locale, namespace: 'nav' });
 
   const strip = (p: string) => p.replace(`/${locale}`, '') || '/';
+
+  // Breadcrumbs want the page's short name, not its full <title>.
+  const shortName = `${t('heroLine1')} ${t('heroLine2')}`.replace(/[.]\s*$/, '');
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -100,13 +104,13 @@ export default async function AssessmentLanding({ params }: { params: Params }) 
           {
             '@type': 'ListItem',
             position: 2,
-            name: tl('coversTitle'),
+            name: tn('assessments'),
             item: `${SITE_URL}${catalogPath(locale)}`,
           },
           {
             '@type': 'ListItem',
             position: 3,
-            name: t('metaTitle'),
+            name: shortName,
           },
         ],
       },
@@ -132,15 +136,19 @@ export default async function AssessmentLanding({ params }: { params: Params }) 
 
       <main className="page page-dark">
         <nav className="wrap breadcrumb" aria-label={tc('breadcrumb')}>
-          <Link href={strip(catalogPath(locale))}>{tc('backToCatalog')}</Link>
+          <Link href="/">{tc('home')}</Link>
+          <span aria-hidden="true">/</span>
+          <Link href={strip(catalogPath(locale))}>{tn('assessments')}</Link>
         </nav>
 
         <div className="wrap assessment-hero">
+          <p className="eyebrow eyebrow-light">{t('eyebrow')}</p>
           <h1>
             {t('heroLine1')}
             <br />
             <span>{t('heroLine2')}</span>
           </h1>
+          <p className="assessment-lead">{t('lead')}</p>
           <p className="assessment-intro">{t('intro')}</p>
 
           <ul className="assessment-facts">

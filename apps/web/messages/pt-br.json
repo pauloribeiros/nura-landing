@@ -69,8 +69,8 @@
       "landing": {
         "metaTitle": "Teste de TDAH em adultos — avaliação gratuita de atenção | NURA",
         "metaDescription": "Explore padrões de atenção, organização, impulsividade e rotina no seu dia a dia. Avaliação gratuita, de 3 a 5 minutos, sem cartão. Ferramenta de triagem e autoconhecimento — não constitui diagnóstico.",
-        "heroLine1": "Como funciona",
-        "heroLine2": "sua atenção?",
+        "heroLine1": "Teste de TDAH",
+        "heroLine2": "em adultos.",
         "intro": "Uma experiência estruturada para observar como sua atenção se comporta no dia a dia: onde ela se sustenta, onde escapa e que padrões se repetem. O resultado inicial é gratuito e sai na hora.",
         "forWhom": "Para adultos que se reconhecem em dificuldades persistentes de foco, organização ou regulação de impulsos e querem entender melhor esses padrões — seja por curiosidade, seja como passo anterior a uma avaliação profissional.",
         "methodology": "Estamos definindo o instrumento desta avaliação a partir de critérios públicos e validados para triagem de atenção em adultos. Antes do lançamento, publicaremos aqui a referência utilizada, a população para a qual foi validada e suas limitações. Não usamos instrumentos proprietários sem licença, e não inventamos perguntas.",
@@ -92,7 +92,9 @@
             "title": "Rotina e regulação",
             "copy": "Como sono, hábitos e ambiente afetam sua atenção ao longo do dia."
           }
-        }
+        },
+        "eyebrow": "Atenção & comportamento",
+        "lead": "Como funciona a sua atenção no dia a dia?"
       }
     },
     "autism": {
@@ -241,7 +243,8 @@
   "common": {
     "backToHome": "Voltar para o início",
     "backToCatalog": "Ver todas as avaliações",
-    "breadcrumb": "Você está aqui"
+    "breadcrumb": "Você está aqui",
+    "home": "Início"
   },
   "catalog": {
     "metaTitle": "Avaliações — NURA",

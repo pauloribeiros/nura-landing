@@ -338,7 +338,7 @@ a { color: inherit; text-decoration: none; }
 .page-head h1 { max-width: 16ch; font: 700 clamp(38px, 6vw, 68px)/1.02 var(--app-font-display); letter-spacing: -.06em; text-wrap: balance; }
 .page-intro { max-width: 60ch; color: var(--text-on-dark-muted); font-size: 17px; line-height: 1.65; }
 
-.breadcrumb { padding: 108px 0 0; font-size: 13px; }
+.breadcrumb { padding: 108px 0 0; display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-on-dark-faint); }
 .breadcrumb a { min-height: 44px; display: inline-flex; align-items: center; color: var(--nura-cyan); }
 .breadcrumb a:hover { text-decoration: underline; }
 
@@ -367,7 +367,8 @@ a { color: inherit; text-decoration: none; }
 /* assessment landing */
 .assessment-hero { padding: 26px 0 84px; display: grid; gap: 22px; }
 .assessment-hero h1 { max-width: 14ch; font: 700 clamp(42px, 7vw, 82px)/1 var(--app-font-display); letter-spacing: -.07em; }
-.assessment-hero h1 span { color: var(--nura-cyan); }
+.assessment-hero h1 span { color: var(--nura-blue); }
+.assessment-lead { max-width: 22ch; color: var(--nura-cyan); font: 700 clamp(20px, 2.4vw, 26px)/1.25 var(--app-font-display); letter-spacing: -.03em; }
 .assessment-intro { max-width: 58ch; color: var(--text-on-dark-muted); font-size: 18px; line-height: 1.65; }
 
 .assessment-facts { display: flex; flex-wrap: wrap; gap: 12px; list-style: none; }

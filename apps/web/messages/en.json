@@ -69,8 +69,8 @@
       "landing": {
         "metaTitle": "ADHD assessment for adults — free attention screening | NURA",
         "metaDescription": "Explore patterns of attention, organisation, impulsivity and routine in your daily life. Free, 3 to 5 minutes, no card required. A screening and self-knowledge tool — not a diagnosis.",
-        "heroLine1": "How does your",
-        "heroLine2": "attention work?",
+        "heroLine1": "ADHD assessment",
+        "heroLine2": "for adults.",
         "intro": "A structured experience for observing how your attention behaves day to day: where it holds, where it slips, and which patterns repeat. The initial result is free and immediate.",
         "forWhom": "For adults who recognise persistent difficulty with focus, organisation or impulse regulation and want to understand those patterns better — out of curiosity, or as a step before a professional assessment.",
         "methodology": "We are defining this assessment's instrument from public, validated criteria for adult attention screening. Before launch we will publish here the reference used, the population it was validated for, and its limitations. We do not use proprietary instruments without a licence, and we do not invent questions.",
@@ -92,7 +92,9 @@
             "title": "Routine and regulation",
             "copy": "How sleep, habits and environment affect your attention through the day."
           }
-        }
+        },
+        "eyebrow": "Attention & behaviour",
+        "lead": "How does your attention work day to day?"
       }
     },
     "autism": {
@@ -241,7 +243,8 @@
   "common": {
     "backToHome": "Back to home",
     "backToCatalog": "See all assessments",
-    "breadcrumb": "You are here"
+    "breadcrumb": "You are here",
+    "home": "Home"
   },
   "catalog": {
     "metaTitle": "Assessments — NURA",
