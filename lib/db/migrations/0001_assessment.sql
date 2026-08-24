@@ -110,4 +110,21 @@ create policy "own results are readable"
     )
   );
 
+-- ------------------------------------------------------------- exposure --
+-- The project is created with "automatically expose new tables" off, so the
+-- Data API roles get nothing by default and every table is opened on purpose.
+--
+-- Grants go to `authenticated` only. Supabase anonymous sign-in does NOT use
+-- the `anon` role: it issues a real JWT whose role is `authenticated` with
+-- is_anonymous = true. So an anonymous visitor is covered here, while a
+-- request with no session at all can touch nothing.
+grant usage on schema public to authenticated;
+
+grant select, insert, update, delete on public.assessment_sessions to authenticated;
+grant select, insert, update, delete on public.assessment_answers  to authenticated;
+
+-- Read only, deliberately: a result is what the paid report is unlocked
+-- against, so it is written by the server through the service role.
+grant select on public.assessment_results to authenticated;
+
 commit;
