@@ -131,9 +131,9 @@ export function AssessmentPaths() {
             {t('seeAll')}
           </CtaLink>
         </div>
-        <div className="path-grid">
+        <div className="path-grid reveal">
           {GRID_ASSESSMENTS.map((item) => (
-            <article className="path-card reveal" key={item.id}>
+            <article className="path-card" key={item.id}>
               <div>
                 <span className="path-index">{item.index}</span>
                 <h3>{t(`${item.id}.title`)}</h3>
@@ -160,11 +160,17 @@ export function HowItWorks() {
   return (
     <section className="section how" id={SECTION_IDS.howItWorks}>
       <div className="wrap">
-        <p className="eyebrow reveal">{t('eyebrow')}</p>
-        <RevealLines className="section-title" lines={[t('titleLine1'), t('titleLine2')]} />
-        <div className="steps">
-          {HOW_IT_WORKS_STEPS.map((step) => (
-            <article className="step reveal" key={step}>
+        <div className="reveal-group">
+          <p className="eyebrow reveal-item">{t('eyebrow')}</p>
+          <RevealLines className="section-title" lines={[t('titleLine1'), t('titleLine2')]} />
+        </div>
+        <div className="steps reveal-group">
+          {HOW_IT_WORKS_STEPS.map((step, i) => (
+            <article
+              className="step reveal-item"
+              style={{ '--i': i } as CSSProperties}
+              key={step}
+            >
               <div className="step-number">{t(`${step}.number`)}</div>
               <div className="step-mark" />
               <h3>{t(`${step}.title`)}</h3>
