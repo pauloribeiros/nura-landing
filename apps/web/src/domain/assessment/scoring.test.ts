@@ -225,6 +225,21 @@ describe('ASRS-18 definition', () => {
     expect(withEveryPartBMaxed.flags['partB-detail']).toBeUndefined();
   });
 
+  it('names Part A items as well as counting them', () => {
+    const result = scoreAssessment(asrs18, [
+      a('q1', 'sometimes'), a('q4', 'sometimes'), a('q5', 'often'),
+    ]);
+    // q4 needs "often", so it is counted neither by the screen nor here
+    expect(result.flagged['partA-detail']).toEqual(['q1', 'q5']);
+    expect(result.scores['partA-screen']).toBe(2);
+  });
+
+  it('covers every item across the two detail rules', () => {
+    const detail = asrs18.rules.filter((r) => r.kind === 'flagged-items');
+    const covered = detail.flatMap((r) => r.questionIds);
+    expect(new Set(covered)).toEqual(new Set(asrs18.questions.map((q) => q.id)));
+  });
+
   it('names the Part B symptoms answered in a relevant range', () => {
     const result = scoreAssessment(asrs18, [
       a('q7', 'sometimes'),   // shaded from 2 -> counts

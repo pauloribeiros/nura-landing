@@ -34,9 +34,16 @@ const SCALE_ID = 'asrs-frequency';
 const PART_A = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6'] as const;
 const PART_B = ['q7', 'q8', 'q9', 'q10', 'q11', 'q12', 'q13', 'q14', 'q15', 'q16', 'q17', 'q18'] as const;
 
-/** DSM-IV-TR symptom domains, used for the Part B subscales. */
+/** DSM-IV-TR symptom domains. Exported so a result can group by them. */
 const INATTENTION = ['q1', 'q2', 'q3', 'q4', 'q7', 'q8', 'q9', 'q10', 'q11'];
 const HYPERACTIVITY = ['q5', 'q6', 'q12', 'q13', 'q14', 'q15', 'q16', 'q17', 'q18'];
+
+export const ASRS_DOMAINS = {
+  inattention: INATTENTION,
+  hyperactivity: HYPERACTIVITY,
+} as const;
+
+export type AsrsDomain = keyof typeof ASRS_DOMAINS;
 
 export const asrs18: AssessmentDefinition = {
   assessmentId: 'attention',
@@ -83,6 +90,15 @@ export const asrs18: AssessmentDefinition = {
         { from: 0, to: 3, key: 'notElevated' },
         { from: 4, to: 6, key: 'highlyConsistent' },
       ],
+    },
+    {
+      // The same Part A cells, reported as named items rather than a count.
+      // The screening rule above answers "how many"; this answers "which",
+      // which is what a result can actually talk about.
+      kind: 'flagged-items',
+      id: 'partA-detail',
+      questionIds: [...PART_A],
+      positiveAt: { q1: 2, q2: 2, q3: 2, q4: 3, q5: 3, q6: 3 },
     },
     {
       // Descriptive only: Part B has no minimum score and must not move the

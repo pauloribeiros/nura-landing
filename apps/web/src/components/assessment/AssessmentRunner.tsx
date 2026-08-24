@@ -17,6 +17,7 @@ import {
 import { scoreAssessment } from '@/domain/assessment/scoring';
 import type { AssessmentDefinition } from '@/domain/assessment/types';
 import { clearSession, loadSession, saveSession } from '@/lib/sessionStore';
+import { AssessmentResult } from './AssessmentResult';
 import { track } from '@/lib/analytics';
 
 type Stage = 'intro' | 'questions' | 'transition' | 'done';
@@ -68,7 +69,8 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
   const restart = () => {
     clearSession(definition.assessmentId);
     setResumable(null);
-    begin();
+    setSession(null);
+    setStage('intro');
   };
 
   if (stage === 'intro' || !session) {
@@ -164,20 +166,11 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
   }
 
   if (stage === 'done') {
-    // The result screen is the next piece of work. Scoring already runs, so
-    // the outcome exists — it is simply not presented yet.
-    const result = scoreAssessment(definition, session.answers);
     return (
-      <section className="runner runner-done">
-        <div className="wrap runner-inner">
-          <p className="eyebrow eyebrow-light">{t('doneEyebrow')}</p>
-          <h2>{t('doneTitle')}</h2>
-          <p className="runner-lead">{t('doneLead')}</p>
-          <p className="runner-disclaimer">
-            {t('doneAnswered', { answered: result.scores['partA-screen'] !== undefined ? stats.total : stats.answered })}
-          </p>
-        </div>
-      </section>
+      <AssessmentResult
+        result={scoreAssessment(definition, session.answers)}
+        onRestart={restart}
+      />
     );
   }
 

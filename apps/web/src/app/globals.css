@@ -529,3 +529,29 @@ a { color: inherit; text-decoration: none; }
 @media (min-width: 640px) {
   .runner-choices { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
 }
+
+/* ------------------------------------------------------------ result ----- */
+
+.result-screen .runner-inner { gap: 34px; }
+.result-band { padding: 26px 28px; border: 1px solid rgba(255,255,255,.13); border-left: 3px solid var(--nura-cyan); border-radius: 4px; background: rgba(34,211,229,.06); display: grid; gap: 10px; }
+.result-band.is-elevated { border-left-color: var(--nura-violet); background: rgba(117,87,255,.09); }
+.result-band-label { color: var(--text-on-dark-faint); font: 700 10px var(--app-font-mono); letter-spacing: .14em; text-transform: uppercase; }
+.result-band-count { font: 700 clamp(26px, 3.4vw, 38px)/1.1 var(--app-font-display); letter-spacing: -.04em; }
+.result-band-cutoff { color: var(--text-on-dark-faint); font-size: 13px; }
+.result-band h2 { margin-top: 6px; font: 700 22px/1.25 var(--app-font-display); letter-spacing: -.03em; }
+.result-band p:last-child { color: var(--text-on-dark-muted); font-size: 15px; line-height: 1.65; }
+
+.result-domains h2, .result-next h2, .result-premium h2 { font: 700 22px var(--app-font-display); letter-spacing: -.03em; }
+.result-domains ul { display: grid; gap: 18px; margin-top: 20px; list-style: none; }
+.result-domain-head { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; font-size: 15px; }
+.result-domain-head b { color: var(--nura-cyan); font: 700 12px var(--app-font-mono); }
+.result-domain-track { height: 4px; margin-top: 8px; border-radius: 99px; background: rgba(255,255,255,.12); overflow: hidden; }
+.result-domain-track span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--nura-blue), var(--nura-cyan)); }
+
+.result-next p { color: var(--text-on-dark-muted); font-size: 16px; line-height: 1.7; margin-top: 10px; }
+
+.result-premium { padding: 28px; border: 1px solid rgba(255,255,255,.13); border-radius: 20px; background: rgba(255,255,255,.03); display: grid; gap: 14px; }
+.result-premium .benefits li { color: var(--text-on-dark-muted); }
+.result-premium .price { color: var(--text-on-dark); }
+.result-premium .price small { color: var(--text-on-dark-faint); }
+.result-premium .button { width: fit-content; }
