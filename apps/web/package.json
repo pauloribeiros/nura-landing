@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "dev:lan": "next dev --port 3000 --hostname 0.0.0.0"
   },
   "dependencies": {
     "@react-three/fiber": "^9.7.0",

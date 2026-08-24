@@ -86,6 +86,12 @@ export default async function LocaleLayout({
     <html
       lang={LOCALE_META[locale as Locale].lang}
       className={`${dmSans.variable} ${manrope.variable} ${spaceMono.variable}`}
+      // The script below adds `js` to this element before React hydrates, so
+      // the server markup and the live DOM differ here by design. React warns
+      // and, on <html>, refuses to reconcile — which would drop the class and
+      // leave every reveal stuck at opacity 0. Suppressing is the fix, and it
+      // covers this element's own attributes only, not its subtree.
+      suppressHydrationWarning
     >
       <head>
         {/* Runs before first paint. Reveal styles are gated on `.js`, so if
