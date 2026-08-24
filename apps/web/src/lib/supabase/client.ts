@@ -1,7 +1,7 @@
 'use client';
 
 import { createBrowserClient } from '@supabase/ssr';
-import { SUPABASE_ANON_KEY, SUPABASE_URL, supabaseConfigured } from './env';
+import { SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL, supabaseConfigured } from './env';
 
 let client: ReturnType<typeof createBrowserClient> | null = null;
 
@@ -15,7 +15,7 @@ let client: ReturnType<typeof createBrowserClient> | null = null;
  */
 export function getSupabaseBrowserClient() {
   if (!supabaseConfigured) return null;
-  client ??= createBrowserClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  client ??= createBrowserClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
   return client;
 }
 
