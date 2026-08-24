@@ -5,6 +5,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { DM_Sans, Manrope, Space_Mono } from 'next/font/google';
 import { LOCALE_META, locales, routing, type Locale } from '@/i18n/routing';
 import { SITE_URL } from '@/lib/site';
+import { RevealObserver } from '@/components/RevealObserver';
 import '../globals.css';
 
 // Self-hosted through Next, so there is no render-blocking request to a font
@@ -86,8 +87,18 @@ export default async function LocaleLayout({
       lang={LOCALE_META[locale as Locale].lang}
       className={`${dmSans.variable} ${manrope.variable} ${spaceMono.variable}`}
     >
+      <head>
+        {/* Runs before first paint. Reveal styles are gated on `.js`, so if
+            scripting is off or the bundle fails the content simply shows. */}
+        <script
+          dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }}
+        />
+      </head>
       <body>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <RevealObserver />
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );

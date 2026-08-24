@@ -191,7 +191,7 @@ export function NuraProfile() {
     <section className="section profile dark" id={SECTION_IDS.profile}>
       <div className="wrap profile-grid">
         <div className="spacer desktop-only" aria-hidden="true" />
-        <div className="reveal">
+        <div className="reveal profile-content">
           <p className="eyebrow eyebrow-light">{t('eyebrow')}</p>
           <h2 className="reveal-display">
             {t('titleStart')}

@@ -39,23 +39,6 @@ export function LandingProvider({ children }: { children: ReactNode }) {
 
   const actions = useMemo<LandingActions>(() => ({ notify: announce }), [announce]);
 
-  // Section reveal. Kept here so the whole page shares one observer instead of
-  // each section registering its own.
-  useEffect(() => {
-    const elements = document.querySelectorAll('.reveal, .reveal-lines, .reveal-display, .reveal-group');
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      elements.forEach((el) => el.classList.add('visible'));
-      return;
-    }
-    const observer = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add('visible')),
-      { threshold: 0.12 },
-    );
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-
   useEffect(() => () => { if (timer.current) clearTimeout(timer.current); }, []);
 
   return (
