@@ -46,6 +46,26 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
   const [session, setSession] = useState<AssessmentSession | null>(null);
   const [resumable, setResumable] = useState<AssessmentSession | null>(null);
   const liveRef = useRef<HTMLDivElement>(null);
+  const topRef = useRef<HTMLElement>(null);
+  const firstRender = useRef(true);
+
+  // Advancing a page swaps the questions in place, leaving the viewport where
+  // the person left it — halfway down, looking at question 12's choices while
+  // question 13 sits above them. Every step change moves back to the top, and
+  // takes keyboard focus with it so the same thing happens for anyone not
+  // using a mouse.
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+    // `instant`, not `smooth` or `auto`: globals.css sets
+    // `html { scroll-behavior: smooth }`, so `auto` would animate too. A step
+    // change is a page change — it should land, not glide down a tall page —
+    // and jumping does not depend on a scroll animation running at all.
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    topRef.current?.focus({ preventScroll: true });
+  }, [stage, session?.pageIndex]);
 
   // Offer to resume before anything else, so a refresh does not silently
   // discard answers the person already gave.
@@ -168,7 +188,7 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
 
   if (stage === 'transition') {
     return (
-      <section className="runner runner-transition">
+      <section className="runner runner-transition" ref={topRef} tabIndex={-1}>
         <div className="wrap runner-inner">
           <p className="eyebrow eyebrow-light">{t('transitionEyebrow')}</p>
           <h2>{t('transitionTitle')}</h2>
@@ -193,7 +213,7 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
   }
 
   return (
-    <section className="runner">
+    <section className="runner" ref={topRef} tabIndex={-1}>
       <div className="wrap runner-inner">
         <div className="runner-progress">
           <div className="runner-progress-track" aria-hidden="true">
