@@ -13,13 +13,6 @@ const CLUSTER_CENTERS = [
   new THREE.Vector3(0, -4, 1)   // Career
 ];
 
-const COLORS = [
-  new THREE.Color('#22D3E5'),
-  new THREE.Color('#3B67FF'),
-  new THREE.Color('#7557FF'),
-  new THREE.Color('#22D3E5'),
-  new THREE.Color('#FFFFFF'),
-];
 
 export function NuraCore() {
   const nodesRef = useRef<THREE.InstancedMesh>(null);
