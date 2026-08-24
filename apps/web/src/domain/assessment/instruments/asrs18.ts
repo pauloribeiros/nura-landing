@@ -23,15 +23,8 @@ import type { AssessmentDefinition } from '../types';
  * it has no minimum score, and it must not move the Part A result — so it can
  * only say which symptoms were answered in a clinically relevant range.
  *
- * OPEN QUESTION — q4. The shading table supplied for this edition marks q4 from
- * "Quase nunca" (value 1), which is what is encoded. The widely published
- * ASRS-v1.1 marks q4 from "Quase sempre" (value 3), like q5 and q6. The
- * difference is not cosmetic: at value 1 almost any answer other than "Nunca"
- * counts, which raises the positive count and therefore the share of people
- * told to seek assessment. Confirm against the source before launch; changing
- * it is a one-line edit plus a scoringVersion bump.
- *
- * Also still to confirm: the prompts were transcribed from a PDF text layer.
+ * Still to confirm before launch: the prompts were transcribed from a PDF text
+ * layer and should be checked against the published source.
  * ---------------------------------------------------------------------------
  */
 
@@ -80,11 +73,11 @@ export const asrs18: AssessmentDefinition = {
       kind: 'threshold-count',
       id: 'partA-screen',
       questionIds: [...PART_A],
-      // Shading rules supplied for this edition of the instrument. They are
-      // NOT uniform, and q4 is the outlier: it counts from "Quase nunca",
-      // while q1-q3 count from "De vez em quando" and q5-q6 only from
-      // "Quase sempre". See the header note about q4.
-      positiveAt: { q1: 2, q2: 2, q3: 2, q4: 1, q5: 3, q6: 3 },
+      // Read from the shaded cells of the published Part A table. Not
+      // uniform: q1-q3 count from "De vez em quando", q4-q6 only from
+      // "Quase sempre". A single cutoff across all six gives a different
+      // result from the scale.
+      positiveAt: { q1: 2, q2: 2, q3: 2, q4: 3, q5: 3, q6: 3 },
       cutoff: 4,
       bands: [
         { from: 0, to: 3, key: 'notElevated' },

@@ -176,41 +176,33 @@ describe('ASRS-18 definition', () => {
     expect(asrs18.pending).toBeUndefined();
   });
 
-  it('uses three different Part A thresholds, not one cutoff for all six', () => {
+  it('uses two different Part A thresholds, not one cutoff for all six', () => {
     const rule = asrs18.rules.find((r) => r.id === 'partA-screen');
     if (rule?.kind !== 'threshold-count') throw new Error('rule missing');
-    expect(rule.positiveAt).toEqual({ q1: 2, q2: 2, q3: 2, q4: 1, q5: 3, q6: 3 });
-    expect(new Set(Object.values(rule.positiveAt)).size).toBe(3);
+    expect(rule.positiveAt).toEqual({ q1: 2, q2: 2, q3: 2, q4: 3, q5: 3, q6: 3 });
+    expect(new Set(Object.values(rule.positiveAt)).size).toBe(2);
   });
 
-  it('counts q4 from "Quase nunca", which q5 and q6 do not', () => {
-    // The single most error-prone cell in the table: q4 is shaded one step
-    // earlier than the other two hyperactivity items.
-    const rarelyOnly = scoreAssessment(asrs18, [
-      a('q4', 'rarely'), a('q5', 'rarely'), a('q6', 'rarely'),
-    ]);
-    expect(rarelyOnly.scores['partA-screen']).toBe(1);
-  });
-
-  it('counts "De vez em quando" for q1-q3 but not for q5-q6', () => {
-    // A uniform ">= 2" rule would count all six and flag it.
+  it('counts "De vez em quando" for q1-q3 but not for q4-q6', () => {
+    // All six answered "sometimes": only the first three sit in the shaded
+    // box. A uniform ">= 2" rule would count six and flag it.
     const result = scoreAssessment(asrs18, partA.map((q) => a(q, 'sometimes')));
-    expect(result.scores['partA-screen']).toBe(4); // q1,q2,q3 and q4 (>=1)
-    expect(result.flags['partA-screen']).toBe(true);
+    expect(result.scores['partA-screen']).toBe(3);
+    expect(result.flags['partA-screen']).toBe(false);
+    expect(result.bands['partA-screen']).toBe('notElevated');
   });
 
   it('raises the screen at four positives and not at three', () => {
     const three = scoreAssessment(asrs18, [
       a('q1', 'sometimes'), a('q2', 'sometimes'), a('q3', 'sometimes'),
-      a('q4', 'never'), a('q5', 'sometimes'), a('q6', 'sometimes'),
+      a('q4', 'sometimes'), a('q5', 'sometimes'), a('q6', 'sometimes'),
     ]);
     expect(three.scores['partA-screen']).toBe(3);
-    expect(three.flags['partA-screen']).toBe(false);
     expect(three.bands['partA-screen']).toBe('notElevated');
 
     const four = scoreAssessment(asrs18, [
       a('q1', 'sometimes'), a('q2', 'sometimes'), a('q3', 'sometimes'),
-      a('q4', 'rarely'), a('q5', 'never'), a('q6', 'never'),
+      a('q4', 'often'), a('q5', 'sometimes'), a('q6', 'sometimes'),
     ]);
     expect(four.scores['partA-screen']).toBe(4);
     expect(four.flags['partA-screen']).toBe(true);
@@ -220,7 +212,7 @@ describe('ASRS-18 definition', () => {
   it('never lets Part B move the Part A result', () => {
     const partABelowCutoff = [
       a('q1', 'sometimes'), a('q2', 'sometimes'), a('q3', 'never'),
-      a('q4', 'never'), a('q5', 'never'), a('q6', 'never'),
+      a('q4', 'sometimes'), a('q5', 'sometimes'), a('q6', 'sometimes'),
     ];
     const alone = scoreAssessment(asrs18, partABelowCutoff);
     const withEveryPartBMaxed = scoreAssessment(asrs18, [
