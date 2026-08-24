@@ -13,6 +13,7 @@ import { CtaLink } from '../CtaLink';
 import { NuraLogo } from '../Header';
 import { FaqList } from '../FaqList';
 import { ResultCard } from '../ResultCard';
+import { RevealLines } from '../RevealLines';
 import { LocaleSwitcher } from '../LocaleSwitcher';
 
 /* ---------------------------------------------------------------- hero --- */
@@ -24,11 +25,7 @@ export function Hero() {
       <div className="hero-inner wrap">
         <div className="hero-content reveal">
           <p className="eyebrow eyebrow-light">{t('eyebrow')}</p>
-          <h1>
-            {t('titleLine1')}
-            <br />
-            <span>{t('titleLine2')}</span>
-          </h1>
+          <RevealLines as="h1" lines={[t('titleLine1'), t('titleLine2')]} accentFrom={1} />
           <p className="hero-sub">{t('subtitle')}</p>
           <div className="hero-actions">
             <CtaLink to="featured">{t('cta')}</CtaLink>

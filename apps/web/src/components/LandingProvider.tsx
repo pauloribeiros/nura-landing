@@ -42,7 +42,7 @@ export function LandingProvider({ children }: { children: ReactNode }) {
   // Section reveal. Kept here so the whole page shares one observer instead of
   // each section registering its own.
   useEffect(() => {
-    const elements = document.querySelectorAll('.reveal');
+    const elements = document.querySelectorAll('.reveal, .reveal-lines');
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       elements.forEach((el) => el.classList.add('visible'));
       return;

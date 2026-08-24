@@ -45,8 +45,8 @@
   },
   "featured": {
     "eyebrow": "Experiência em destaque",
-    "titleLine1": "Teste de TDAH",
-    "titleLine2": "em adultos.",
+    "titleLine1": "TDAH:",
+    "titleLine2": "autoavaliação para adultos.",
     "copy": "Explore como sua atenção funciona no dia a dia. Avalie padrões relacionados à atenção, organização, impulsividade e rotina através de uma experiência rápida e estruturada.",
     "durationValue": "3–5 min",
     "durationLabel": "tempo aproximado",
@@ -64,16 +64,16 @@
     "seeAll": "Ver todas as avaliações",
     "start": "Começar",
     "attention": {
-      "title": "Atenção & comportamento",
+      "title": "TDAH: autoavaliação para adultos",
       "description": "Atenção, organização e impulsividade no dia a dia.",
       "landing": {
-        "metaTitle": "Teste de TDAH em adultos — avaliação gratuita de atenção | NURA",
-        "metaDescription": "Explore padrões de atenção, organização, impulsividade e rotina no seu dia a dia. Avaliação gratuita, de 3 a 5 minutos, sem cartão. Ferramenta de triagem e autoconhecimento — não constitui diagnóstico.",
-        "heroLine1": "Teste de TDAH",
-        "heroLine2": "em adultos.",
+        "metaTitle": "TDAH: autoavaliação para adultos — teste de rastreio gratuito | NURA",
+        "metaDescription": "Autoavaliação gratuita de TDAH em adultos com a escala ASRS-v1.1, da Organização Mundial da Saúde. 18 itens, de 3 a 5 minutos, sem cartão. Instrumento de rastreio — não constitui diagnóstico.",
+        "heroLine1": "TDAH:",
+        "heroLine2": "autoavaliação para adultos.",
         "intro": "Uma experiência estruturada para observar como sua atenção se comporta no dia a dia: onde ela se sustenta, onde escapa e que padrões se repetem. O resultado inicial é gratuito e sai na hora.",
         "forWhom": "Para adultos que se reconhecem em dificuldades persistentes de foco, organização ou regulação de impulsos e querem entender melhor esses padrões — seja por curiosidade, seja como passo anterior a uma avaliação profissional.",
-        "methodology": "Estamos definindo o instrumento desta avaliação a partir de critérios públicos e validados para triagem de atenção em adultos. Antes do lançamento, publicaremos aqui a referência utilizada, a população para a qual foi validada e suas limitações. Não usamos instrumentos proprietários sem licença, e não inventamos perguntas.",
+        "methodology": "Esta autoavaliação usa a ASRS-v1.1 (Adult ADHD Self-Report Scale), escala de autorrelato desenvolvida pela Organização Mundial da Saúde em parceria com a Harvard Medical School. São 18 itens: os seis primeiros formam a Parte A, o bloco de rastreio que sinaliza padrões consistentes com TDAH; os doze seguintes detalham desatenção e hiperatividade/impulsividade. A escala tem tradução e validação para adultos brasileiros, em estudo conduzido por Paulo Mattos e colaboradores.",
         "disclaimer": "Esta é uma ferramenta de triagem e autoconhecimento. O resultado é informativo, não constitui diagnóstico médico e não substitui a avaliação de um profissional habilitado.",
         "covers": {
           "focus": {
@@ -94,7 +94,8 @@
           }
         },
         "eyebrow": "Atenção & comportamento",
-        "lead": "Como funciona a sua atenção no dia a dia?"
+        "lead": "Como funciona a sua atenção no dia a dia?",
+        "limits": "É um instrumento de rastreio, não de diagnóstico. Ansiedade, depressão, estresse e privação de sono produzem sintomas parecidos e podem gerar falso positivo. A confirmação exige avaliação clínica com psiquiatra ou psicólogo. Indicado para pessoas a partir de 18 anos."
       }
     },
     "autism": {
@@ -266,10 +267,11 @@
     "cardValue": "Não",
     "coversTitle": "O que você vai explorar",
     "forWhomTitle": "Para quem é",
-    "methodologyTitle": "Metodologia e limites",
+    "methodologyTitle": "Metodologia",
     "faqTitle": "Antes de começar",
     "upcomingTitle": "A avaliação abre em breve",
     "upcomingCopy": "Estamos finalizando o instrumento desta avaliação. Ela será publicada assim que a metodologia estiver definida, revisada e documentada nesta página.",
-    "startCta": "Começar avaliação gratuita"
+    "startCta": "Começar avaliação gratuita",
+    "limitsTitle": "Limites deste resultado"
   }
 }

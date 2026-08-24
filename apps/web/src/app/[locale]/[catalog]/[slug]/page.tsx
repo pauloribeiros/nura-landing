@@ -203,6 +203,10 @@ export default async function AssessmentLanding({ params }: { params: Params }) 
               <h2>{tl('methodologyTitle')}</h2>
               <p>{t('methodology')}</p>
             </div>
+            <div>
+              <h2>{tl('limitsTitle')}</h2>
+              <p>{t('limits')}</p>
+            </div>
           </div>
         </section>
 
