@@ -25,6 +25,7 @@ import {
 } from '@/lib/supabase/assessmentStore';
 import { AssessmentResult } from './AssessmentResult';
 import { track } from '@/lib/analytics';
+import { randomId } from '@/lib/randomId';
 
 type Stage = 'intro' | 'questions' | 'transition' | 'done';
 
@@ -70,7 +71,7 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
     const next =
       from ??
       createSession(definition, {
-        id: crypto.randomUUID(),
+        id: randomId(),
         startedAt: new Date().toISOString(),
       });
     setSession(next);
