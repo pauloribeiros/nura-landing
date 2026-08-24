@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { hasLocale } from 'next-intl';
@@ -142,17 +143,21 @@ export default async function AssessmentLanding({ params }: { params: Params }) 
           <Link href={strip(catalogPath(locale))}>{tn('assessments')}</Link>
         </nav>
 
-        <div className="wrap assessment-hero">
-          <p className="eyebrow eyebrow-light">{t('eyebrow')}</p>
+        <div className="wrap assessment-hero reveal-group">
+          <p className="eyebrow eyebrow-light reveal-item">{t('eyebrow')}</p>
           <RevealLines
             as="h1"
             lines={[t('heroLine1'), t('heroLine2'), t('heroLine3')]}
             accentFrom={1}
           />
-          <p className="assessment-lead">{t('lead')}</p>
-          <p className="assessment-intro">{t('intro')}</p>
+          <p className="assessment-lead reveal-item" style={{ '--i': 2 } as CSSProperties}>
+            {t('lead')}
+          </p>
+          <p className="assessment-intro reveal-item" style={{ '--i': 3 } as CSSProperties}>
+            {t('intro')}
+          </p>
 
-          <ul className="assessment-facts">
+          <ul className="assessment-facts reveal-item" style={{ '--i': 4 } as CSSProperties}>
             <li>
               <Clock3 size={17} aria-hidden="true" />
               <b>{tf('durationValue')}</b>
@@ -172,12 +177,14 @@ export default async function AssessmentLanding({ params }: { params: Params }) 
 
           {/* The engine does not exist yet. Rather than a CTA that goes nowhere,
               the page states plainly where the assessment stands. */}
-          <div className="assessment-upcoming">
+          <div className="assessment-upcoming reveal-item" style={{ '--i': 5 } as CSSProperties}>
             <h2>{tl('upcomingTitle')}</h2>
             <p>{tl('upcomingCopy')}</p>
           </div>
 
-          <p className="assessment-disclaimer">{t('disclaimer')}</p>
+          <p className="assessment-disclaimer reveal-item" style={{ '--i': 6 } as CSSProperties}>
+            {t('disclaimer')}
+          </p>
         </div>
 
         <section className="section assessment-covers">

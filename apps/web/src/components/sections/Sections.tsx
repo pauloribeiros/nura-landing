@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import { Check, LockKeyhole, ShieldCheck } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import {
@@ -23,14 +24,16 @@ export function Hero() {
   return (
     <section className="hero" id={SECTION_IDS.top}>
       <div className="hero-inner wrap">
-        <div className="hero-content reveal">
-          <p className="eyebrow eyebrow-light">{t('eyebrow')}</p>
+        <div className="hero-content reveal-group">
+          <p className="eyebrow eyebrow-light reveal-item">{t('eyebrow')}</p>
           <RevealLines as="h1" lines={[t('titleLine1'), t('titleLine2')]} accentFrom={1} />
-          <p className="hero-sub">{t('subtitle')}</p>
-          <div className="hero-actions">
+          <p className="hero-sub reveal-item" style={{ '--i': 2 } as CSSProperties}>
+            {t('subtitle')}
+          </p>
+          <div className="hero-actions reveal-item" style={{ '--i': 3 } as CSSProperties}>
             <CtaLink to="featured">{t('cta')}</CtaLink>
           </div>
-          <div className="hero-meta">
+          <div className="hero-meta reveal-item" style={{ '--i': 4 } as CSSProperties}>
             <span>{t('metaFree')}</span>
             <i />
             <span>{t('metaInstant')}</span>
@@ -73,14 +76,16 @@ export function FeaturedAssessment() {
   return (
     <section className="section featured dark" id={SECTION_IDS.featured}>
       <div className="wrap featured-grid">
-        <div className="reveal">
-          <p className="eyebrow eyebrow-light">{t('eyebrow')}</p>
+        <div className="reveal-group">
+          <p className="eyebrow eyebrow-light reveal-item">{t('eyebrow')}</p>
           <RevealLines
             lines={[t('titleLine1'), t('titleLine2'), t('titleLine3')]}
             accentFrom={1}
           />
-          <p className="featured-copy">{t('copy')}</p>
-          <div className="detail-row">
+          <p className="featured-copy reveal-item" style={{ '--i': 2 } as CSSProperties}>
+            {t('copy')}
+          </p>
+          <div className="detail-row reveal-item" style={{ '--i': 3 } as CSSProperties}>
             <span>
               <strong>{t('durationValue')}</strong>
               {t('durationLabel')}
@@ -94,8 +99,12 @@ export function FeaturedAssessment() {
               {t('cardLabel')}
             </span>
           </div>
-          <CtaLink to="featured">{t('cta')}</CtaLink>
-          <p className="featured-note">{t('note')}</p>
+          <div className="reveal-item" style={{ '--i': 4 } as CSSProperties}>
+            <CtaLink to="featured">{t('cta')}</CtaLink>
+          </div>
+          <p className="featured-note reveal-item" style={{ '--i': 5 } as CSSProperties}>
+            {t('note')}
+          </p>
         </div>
         <div className="spacer desktop-only" aria-hidden="true" />
       </div>
