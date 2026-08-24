@@ -6,7 +6,12 @@
  * as two separate people and has each one try, through the real API, to read,
  * alter, delete and forge the other's data.
  *
- * Test users are created through the admin API and deleted at the end.
+ * The two people are created the way the product creates them: anonymous
+ * sign-in. That matters — an anonymous visitor does NOT use the `anon` role,
+ * it gets a real uid with the `authenticated` role, and the policies key on
+ * that uid. Testing with password users would exercise a path no visitor takes.
+ *
+ * Both users are deleted at the end.
  * Run from apps/web with: node scripts/verify-rls.mjs
  */
 import fs from 'node:fs';
@@ -31,23 +36,20 @@ const check = (label, pass, detail = '') => {
 };
 
 const made = [];
-async function person(tag) {
-  const email = `rls-${tag}-${crypto.randomUUID()}@nura.test`;
-  const password = crypto.randomUUID() + 'Aa1!';
-  const { data, error } = await admin.auth.admin.createUser({ email, password, email_confirm: true });
-  if (error) throw new Error(`createUser: ${error.message}`);
-  made.push(data.user.id);
+async function person() {
   const client = newClient();
-  const { data: s, error: e2 } = await client.auth.signInWithPassword({ email, password });
-  if (e2) throw new Error(`signIn: ${e2.message}`);
-  return { client, id: s.user.id, role: s.user.role };
+  const { data, error } = await client.auth.signInAnonymously();
+  if (error) throw new Error(`signInAnonymously: ${error.message}`);
+  made.push(data.user.id);
+  return { client, id: data.user.id, role: data.user.role, anonymous: data.user.is_anonymous };
 }
 
 try {
-  const A = await person('a');
-  const B = await person('b');
-  check('duas pessoas distintas', A.id !== B.id);
-  check('sessao usa role authenticated', A.role === 'authenticated', `role=${A.role}`);
+  const A = await person();
+  const B = await person();
+  check('duas pessoas anonimas distintas', A.id !== B.id);
+  check('visitante anonimo usa role authenticated', A.role === 'authenticated', `role=${A.role}`);
+  check('visitante marcado is_anonymous', A.anonymous === true);
 
   const sid = crypto.randomUUID();
   const { error: insErr } = await A.client.from('assessment_sessions')

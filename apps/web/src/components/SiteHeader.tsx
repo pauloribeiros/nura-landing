@@ -11,8 +11,15 @@ import { LocaleSwitcher } from './LocaleSwitcher';
  * Header for inner pages. The home page uses `Header`, which additionally
  * carries the section anchors and the scroll-driven CTA state; those make no
  * sense once the visitor has left the landing.
+ *
+ * `ctaHref` exists because the default destination — the featured assessment's
+ * landing — is a link to the current page once the visitor is already on that
+ * landing. Tapping "Começar" there did nothing, which on a phone is the whole
+ * funnel: the hero CTA sits below the fold at 375x812, so the header button is
+ * the one a visitor reaches first. Pages that know where "start" should go
+ * pass it.
  */
-export function SiteHeader({ locale }: { locale: Locale }) {
+export function SiteHeader({ locale, ctaHref }: { locale: Locale; ctaHref?: string }) {
   const t = useTranslations('nav');
   const tb = useTranslations('brand');
   const [scrolled, setScrolled] = useState(false);
@@ -40,7 +47,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
           <LocaleSwitcher />
           <Link
             className="button button-primary"
-            href={strip(assessmentLandingPath(locale, FEATURED_ASSESSMENT))}
+            href={ctaHref ?? strip(assessmentLandingPath(locale, FEATURED_ASSESSMENT))}
           >
             {t('start')} <span className="desktop-only">{t('startFreeSuffix')}</span>
           </Link>

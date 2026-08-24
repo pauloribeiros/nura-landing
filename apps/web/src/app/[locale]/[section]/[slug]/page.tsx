@@ -173,7 +173,12 @@ export default async function AssessmentPage({ params }: { params: Params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <AssessmentViewTracker assessment={assessment.id} locale={locale} />
-      <SiteHeader locale={locale} />
+      {/* On this page the default header CTA would link to this page. Send it
+          to the assessment itself so "Começar" always advances the funnel. */}
+      <SiteHeader
+        locale={locale}
+        ctaHref={assessmentStartPath(locale, assessment).replace(`/${locale}`, '')}
+      />
 
       <main className="page page-dark">
         <nav className="wrap breadcrumb" aria-label={tc('breadcrumb')}>
