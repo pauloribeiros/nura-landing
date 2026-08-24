@@ -1,0 +1,254 @@
+'use client';
+
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import {
+  createSession,
+  goToPage,
+  isComplete,
+  isPageComplete,
+  isResumable,
+  paginate,
+  progress,
+  recordAnswer,
+  type AssessmentSession,
+} from '@/domain/assessment/session';
+import { scoreAssessment } from '@/domain/assessment/scoring';
+import type { AssessmentDefinition } from '@/domain/assessment/types';
+import { clearSession, loadSession, saveSession } from '@/lib/sessionStore';
+import { track } from '@/lib/analytics';
+
+type Stage = 'intro' | 'questions' | 'transition' | 'done';
+
+interface Props {
+  definition: AssessmentDefinition;
+  prompts: Record<string, string>;
+  choiceLabels: Record<string, string>;
+  locale: string;
+}
+
+const PAGE_SIZE = 6;
+
+export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: Props) {
+  const t = useTranslations('runner');
+  const pages = useMemo(() => paginate(definition, PAGE_SIZE), [definition]);
+
+  const [stage, setStage] = useState<Stage>('intro');
+  const [session, setSession] = useState<AssessmentSession | null>(null);
+  const [resumable, setResumable] = useState<AssessmentSession | null>(null);
+  const liveRef = useRef<HTMLDivElement>(null);
+
+  // Offer to resume before anything else, so a refresh does not silently
+  // discard answers the person already gave.
+  useEffect(() => {
+    const stored = loadSession(definition.assessmentId);
+    if (stored && isResumable(definition, stored) && stored.answers.length > 0) {
+      setResumable(stored);
+    }
+  }, [definition]);
+
+  useEffect(() => {
+    if (session) saveSession(session);
+  }, [session]);
+
+  const begin = (from?: AssessmentSession) => {
+    const next =
+      from ??
+      createSession(definition, {
+        id: crypto.randomUUID(),
+        startedAt: new Date().toISOString(),
+      });
+    setSession(next);
+    setResumable(null);
+    setStage('questions');
+    track('assessment_started', { assessment: definition.assessmentId, locale });
+  };
+
+  const restart = () => {
+    clearSession(definition.assessmentId);
+    setResumable(null);
+    begin();
+  };
+
+  if (stage === 'intro' || !session) {
+    return (
+      <section className="runner runner-intro">
+        <div className="wrap runner-inner">
+          <p className="eyebrow eyebrow-light">{t('introEyebrow')}</p>
+          <h1>{t('introTitle')}</h1>
+          <p className="runner-lead">{t('introLead', { count: definition.questions.length })}</p>
+
+          <ul className="runner-notes">
+            <li>{t('noteHonest')}</li>
+            <li>{t('noteNoRightAnswer')}</li>
+            <li>{t('noteResume')}</li>
+          </ul>
+
+          <p className="runner-disclaimer">{t('disclaimer')}</p>
+
+          {resumable ? (
+            <div className="runner-resume">
+              <p>{t('resumeFound', { answered: resumable.answers.length })}</p>
+              <div className="runner-actions">
+                <button type="button" className="button button-primary" onClick={() => begin(resumable)}>
+                  {t('resume')} <ArrowRight size={16} aria-hidden="true" />
+                </button>
+                <button type="button" className="button button-ghost" onClick={restart}>
+                  {t('startOver')}
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="runner-actions">
+              <button type="button" className="button button-primary" onClick={() => begin()}>
+                {t('start')} <ArrowRight size={16} aria-hidden="true" />
+              </button>
+            </div>
+          )}
+        </div>
+      </section>
+    );
+  }
+
+  const page = pages[session.pageIndex];
+  const stats = progress(definition, session, pages);
+  const pageDone = isPageComplete(page, session);
+  const answerFor = (questionId: string) =>
+    session.answers.find((a) => a.questionId === questionId)?.choiceId;
+
+  const choose = (questionId: string, choiceId: string) => {
+    setSession((current) => (current ? recordAnswer(current, { questionId, choiceId }) : current));
+  };
+
+  const advance = () => {
+    if (!pageDone) return;
+    track('assessment_step_completed', {
+      assessment: definition.assessmentId,
+      step: session.pageIndex + 1,
+    });
+
+    const last = session.pageIndex >= pages.length - 1;
+    if (last) {
+      if (isComplete(definition, session)) {
+        track('assessment_completed', { assessment: definition.assessmentId });
+        setStage('done');
+      }
+      return;
+    }
+    // A transition screen only where the instrument actually changes block.
+    setStage(page.endsBlock ? 'transition' : 'questions');
+    setSession((current) => (current ? goToPage(current, pages, current.pageIndex + 1) : current));
+  };
+
+  const back = () => {
+    setStage('questions');
+    setSession((current) => (current ? goToPage(current, pages, current.pageIndex - 1) : current));
+  };
+
+  if (stage === 'transition') {
+    return (
+      <section className="runner runner-transition">
+        <div className="wrap runner-inner">
+          <p className="eyebrow eyebrow-light">{t('transitionEyebrow')}</p>
+          <h2>{t('transitionTitle')}</h2>
+          <p className="runner-lead">{t('transitionLead')}</p>
+          <div className="runner-actions">
+            <button type="button" className="button button-primary" onClick={() => setStage('questions')}>
+              {t('continue')} <ArrowRight size={16} aria-hidden="true" />
+            </button>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (stage === 'done') {
+    // The result screen is the next piece of work. Scoring already runs, so
+    // the outcome exists — it is simply not presented yet.
+    const result = scoreAssessment(definition, session.answers);
+    return (
+      <section className="runner runner-done">
+        <div className="wrap runner-inner">
+          <p className="eyebrow eyebrow-light">{t('doneEyebrow')}</p>
+          <h2>{t('doneTitle')}</h2>
+          <p className="runner-lead">{t('doneLead')}</p>
+          <p className="runner-disclaimer">
+            {t('doneAnswered', { answered: result.scores['partA-screen'] !== undefined ? stats.total : stats.answered })}
+          </p>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="runner">
+      <div className="wrap runner-inner">
+        <div className="runner-progress">
+          <div className="runner-progress-track" aria-hidden="true">
+            <span style={{ width: `${Math.round(stats.ratio * 100)}%` }} />
+          </div>
+          <p className="runner-progress-label" role="status" ref={liveRef}>
+            {t('progress', { answered: stats.answered, total: stats.total })}
+          </p>
+        </div>
+
+        <ol className="runner-questions">
+          {page.questionIds.map((questionId, i) => {
+            const chosen = answerFor(questionId);
+            const number = session.pageIndex * PAGE_SIZE + i + 1;
+            return (
+              <li key={questionId} className="runner-question">
+                <fieldset>
+                  <legend>
+                    <span className="runner-question-number">{number}</span>
+                    {prompts[questionId]}
+                  </legend>
+                  <div className="runner-choices">
+                    {definition.scales[0].choices.map((choice) => (
+                      <label
+                        key={choice.id}
+                        className={`runner-choice ${chosen === choice.id ? 'is-chosen' : ''}`}
+                      >
+                        <input
+                          type="radio"
+                          name={questionId}
+                          value={choice.id}
+                          checked={chosen === choice.id}
+                          onChange={() => choose(questionId, choice.id)}
+                        />
+                        <span>{choiceLabels[choice.id]}</span>
+                        {chosen === choice.id ? <Check size={15} aria-hidden="true" /> : null}
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+              </li>
+            );
+          })}
+        </ol>
+
+        <div className="runner-nav">
+          {session.pageIndex > 0 ? (
+            <button type="button" className="button button-ghost" onClick={back}>
+              <ArrowLeft size={16} aria-hidden="true" /> {t('back')}
+            </button>
+          ) : (
+            <span />
+          )}
+          <button
+            type="button"
+            className="button button-primary"
+            onClick={advance}
+            disabled={!pageDone}
+          >
+            {session.pageIndex >= pages.length - 1 ? t('finish') : t('continue')}
+            <ArrowRight size={16} aria-hidden="true" />
+          </button>
+        </div>
+
+        {!pageDone ? <p className="runner-hint">{t('answerAll')}</p> : null}
+      </div>
+    </section>
+  );
+}

@@ -275,5 +275,33 @@
     "upcomingCopy": "Estamos terminando el instrumento de esta evaluación. Se publicará en cuanto la metodología esté definida, revisada y documentada en esta página.",
     "startCta": "Empezar la evaluación gratuita",
     "limitsTitle": "Límites de este resultado"
+  },
+  "runner": {
+    "introEyebrow": "Antes de empezar",
+    "introTitle": "Cómo respondes importa más que la puntuación.",
+    "introLead": "Son {count} preguntas sobre cómo se comporta tu atención en los últimos seis meses. Dura de 3 a 5 minutos.",
+    "noteHonest": "Responde pensando en tu día a día real, no en cómo te gustaría ser.",
+    "noteNoRightAnswer": "No hay respuesta correcta ni incorrecta — cada opción describe una frecuencia.",
+    "noteResume": "Si sales, tus respuestas quedan guardadas en este dispositivo durante 7 días.",
+    "disclaimer": "Instrumento de cribado y autoconocimiento. El resultado es informativo, no constituye diagnóstico y no sustituye la evaluación de un profesional habilitado.",
+    "start": "Empezar",
+    "resume": "Continuar donde lo dejé",
+    "resumeFound": "Ya respondiste {answered} de 18 preguntas.",
+    "startOver": "Empezar de cero",
+    "progress": "{answered} de {total} respondidas",
+    "back": "Volver",
+    "continue": "Continuar",
+    "finish": "Ver mi resultado",
+    "answerAll": "Responde todas las preguntas de esta etapa para continuar.",
+    "transitionEyebrow": "Primera etapa completada",
+    "transitionTitle": "Ahora el detalle.",
+    "transitionLead": "Las siguientes preguntas no cambian el resultado del cribado. Describen qué patrones aparecieron, y eso es lo que da profundidad a tu informe.",
+    "doneEyebrow": "Respuestas registradas",
+    "doneTitle": "Terminamos.",
+    "doneLead": "Tu resultado se está preparando. La pantalla de resultado llega en el próximo paso del desarrollo.",
+    "doneAnswered": "{answered} respuestas registradas.",
+    "unavailableTitle": "Esta evaluación aún no está disponible en este idioma.",
+    "unavailableLead": "La escala usada aquí solo tiene traducción oficial validada en portugués. Traducirla por nuestra cuenta invalidaría la validación científica, así que preferimos no ofrecerla.",
+    "unavailableCta": "Ver la evaluación en portugués"
   }
 }

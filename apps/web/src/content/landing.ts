@@ -77,6 +77,25 @@ export const assessmentLandingPath = (locale: Locale, a: AssessmentEntry) =>
 export const assessmentStartPath = (locale: Locale, a: AssessmentEntry) =>
   `/${locale}/${ROUTE_SEGMENTS.assessment[locale]}/${a.slug[locale]}`;
 
+/** Which kind of page a `[section]` segment addresses, if any. */
+export function sectionKind(locale: Locale, segment: string): 'catalog' | 'assessment' | null {
+  if (ROUTE_SEGMENTS.catalog[locale] === segment) return 'catalog';
+  if (ROUTE_SEGMENTS.assessment[locale] === segment) return 'assessment';
+  return null;
+}
+
+/**
+ * Locales an assessment can actually be taken in. An instrument without an
+ * officially validated translation is not offered rather than machine
+ * translated, so the landing may exist in a locale the run does not.
+ */
+export const ASSESSMENT_RUN_LOCALES: Record<string, Locale[]> = {
+  attention: ['pt-br'],
+};
+
+export const canRunAssessment = (locale: Locale, a: AssessmentEntry) =>
+  a.available && (ASSESSMENT_RUN_LOCALES[a.id] ?? []).includes(locale);
+
 /** Section anchors on the home page. Stable across locales. */
 export const SECTION_IDS = {
   top: 'inicio',

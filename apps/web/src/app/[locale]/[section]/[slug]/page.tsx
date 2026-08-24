@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { Clock3, CreditCard, Sparkles } from 'lucide-react';
+import { ArrowRight, Clock3, CreditCard, Sparkles } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { LOCALE_META, locales, routing, type Locale } from '@/i18n/routing';
 import { SITE_URL } from '@/lib/site';
@@ -14,41 +14,57 @@ import {
   ROUTE_SEGMENTS,
   assessmentBySlug,
   assessmentLandingPath,
+  assessmentStartPath,
+  canRunAssessment,
   catalogPath,
+  sectionKind,
 } from '@/content/landing';
+import { asrs18, asrs18ChoiceLabels, asrs18Prompts } from '@/domain/assessment/instruments/asrs18';
+import { AssessmentRunner } from '@/components/assessment/AssessmentRunner';
+import { AssessmentUnavailable } from '@/components/assessment/AssessmentUnavailable';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { FaqList } from '@/components/FaqList';
 import { AssessmentViewTracker } from '@/components/AssessmentViewTracker';
 import { RevealLines } from '@/components/RevealLines';
 
-/** Only assessments that can actually be started get a landing page. */
+/**
+ * Next cannot have two sibling dynamic segments, so the catalog and the
+ * assessment share one `[section]` param and this route dispatches on it. Both
+ * shapes are prerendered.
+ */
 export function generateStaticParams() {
   return locales.flatMap((locale) =>
-    AVAILABLE_ASSESSMENTS.map((a) => ({
-      locale,
-      catalog: ROUTE_SEGMENTS.catalog[locale],
-      slug: a.slug[locale],
-    })),
+    AVAILABLE_ASSESSMENTS.flatMap((a) => [
+      { locale, section: ROUTE_SEGMENTS.catalog[locale], slug: a.slug[locale] },
+      { locale, section: ROUTE_SEGMENTS.assessment[locale], slug: a.slug[locale] },
+    ]),
   );
 }
 
-type Params = Promise<{ locale: string; catalog: string; slug: string }>;
+type Params = Promise<{ locale: string; section: string; slug: string }>;
 
 async function resolve(params: Params) {
-  const { locale, catalog, slug } = await params;
+  const { locale, section, slug } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   const loc = locale as Locale;
-  if (ROUTE_SEGMENTS.catalog[loc] !== catalog) notFound();
+  const kind = sectionKind(loc, section);
+  if (!kind) notFound();
   const assessment = assessmentBySlug(loc, slug);
   if (!assessment || !assessment.available) notFound();
-  return { locale: loc, assessment };
+  return { locale: loc, assessment, kind };
 }
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
-  const { locale, assessment } = await resolve(params);
+  const { locale, assessment, kind } = await resolve(params);
   const t = await getTranslations({ locale, namespace: `assessments.${assessment.id}.landing` });
   const path = assessmentLandingPath(locale, assessment);
+
+  // The run itself is a tool with no content to rank, and indexing it would
+  // compete with the landing for the same query.
+  if (kind === 'assessment') {
+    return { title: t('metaTitle'), robots: { index: false, follow: true } };
+  }
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -75,9 +91,32 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
-export default async function AssessmentLanding({ params }: { params: Params }) {
-  const { locale, assessment } = await resolve(params);
+export default async function AssessmentPage({ params }: { params: Params }) {
+  const { locale, assessment, kind } = await resolve(params);
   setRequestLocale(locale);
+
+  if (kind === 'assessment') {
+    return (
+      <>
+        <SiteHeader locale={locale} />
+        <main className="page page-dark">
+          {canRunAssessment(locale, assessment) ? (
+            <AssessmentRunner
+              definition={asrs18}
+              prompts={asrs18Prompts[locale]}
+              choiceLabels={asrs18ChoiceLabels[locale]}
+              locale={locale}
+            />
+          ) : (
+            <AssessmentUnavailable
+              fallbackHref={assessmentLandingPath(routing.defaultLocale, assessment)}
+            />
+          )}
+        </main>
+        <SiteFooter />
+      </>
+    );
+  }
 
   const t = await getTranslations({ locale, namespace: `assessments.${assessment.id}.landing` });
   const tl = await getTranslations({ locale, namespace: 'assessmentLanding' });
@@ -175,11 +214,13 @@ export default async function AssessmentLanding({ params }: { params: Params }) 
             </li>
           </ul>
 
-          {/* The engine does not exist yet. Rather than a CTA that goes nowhere,
-              the page states plainly where the assessment stands. */}
-          <div className="assessment-upcoming reveal-item" style={{ '--i': 5 } as CSSProperties}>
-            <h2>{tl('upcomingTitle')}</h2>
-            <p>{tl('upcomingCopy')}</p>
+          <div className="reveal-item" style={{ '--i': 5 } as CSSProperties}>
+            <Link
+              className="button button-primary"
+              href={assessmentStartPath(locale, assessment).replace(`/${locale}`, '')}
+            >
+              {tl('startCta')} <ArrowRight size={16} aria-hidden="true" />
+            </Link>
           </div>
 
           <p className="assessment-disclaimer reveal-item" style={{ '--i': 6 } as CSSProperties}>

@@ -20,21 +20,21 @@ import { SiteFooter } from '@/components/SiteFooter';
  * literal folder name.
  */
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale, catalog: ROUTE_SEGMENTS.catalog[locale] }));
+  return locales.map((locale) => ({ locale, section: ROUTE_SEGMENTS.catalog[locale] }));
 }
 
 function isCatalogSegment(locale: Locale, segment: string) {
   return ROUTE_SEGMENTS.catalog[locale] === segment;
 }
 
-type Params = Promise<{ locale: string; catalog: string }>;
+type Params = Promise<{ locale: string; section: string }>;
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
-  const { locale, catalog } = await params;
-  if (!hasLocale(routing.locales, locale) || !isCatalogSegment(locale, catalog)) notFound();
+  const { locale, section } = await params;
+  if (!hasLocale(routing.locales, locale) || !isCatalogSegment(locale, section)) notFound();
 
   const t = await getTranslations({ locale, namespace: 'catalog' });
-  const path = `/${locale}/${catalog}`;
+  const path = `/${locale}/${section}`;
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -62,8 +62,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function CatalogPage({ params }: { params: Params }) {
-  const { locale, catalog } = await params;
-  if (!hasLocale(routing.locales, locale) || !isCatalogSegment(locale, catalog)) notFound();
+  const { locale, section } = await params;
+  if (!hasLocale(routing.locales, locale) || !isCatalogSegment(locale, section)) notFound();
   setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: 'catalog' });

@@ -275,5 +275,33 @@
     "upcomingCopy": "We are finalising the instrument behind this assessment. It goes live as soon as the methodology is defined, reviewed and documented on this page.",
     "startCta": "Start the free assessment",
     "limitsTitle": "Limits of this result"
+  },
+  "runner": {
+    "introEyebrow": "Before you start",
+    "introTitle": "How you answer matters more than the score.",
+    "introLead": "{count} questions about how your attention behaves over the last six months. It takes 3 to 5 minutes.",
+    "noteHonest": "Answer for your actual day to day, not for how you would like to be.",
+    "noteNoRightAnswer": "There is no right or wrong answer — each option describes a frequency.",
+    "noteResume": "If you leave, your answers stay saved on this device for 7 days.",
+    "disclaimer": "A screening and self-knowledge instrument. The result is informative, is not a diagnosis and does not replace assessment by a qualified professional.",
+    "start": "Start",
+    "resume": "Pick up where I left off",
+    "resumeFound": "You have already answered {answered} of 18 questions.",
+    "startOver": "Start over",
+    "progress": "{answered} of {total} answered",
+    "back": "Back",
+    "continue": "Continue",
+    "finish": "See my result",
+    "answerAll": "Answer every question on this step to continue.",
+    "transitionEyebrow": "First step complete",
+    "transitionTitle": "Now the detail.",
+    "transitionLead": "The next questions do not change the screening result. They describe which patterns showed up, and that is what gives your report depth.",
+    "doneEyebrow": "Answers recorded",
+    "doneTitle": "That is it.",
+    "doneLead": "Your result is being prepared. The result screen arrives in the next development step.",
+    "doneAnswered": "{answered} answers recorded.",
+    "unavailableTitle": "This assessment is not available in this language yet.",
+    "unavailableLead": "The scale used here only has an officially validated translation in Portuguese. Translating it ourselves would void the scientific validation, so we would rather not offer it.",
+    "unavailableCta": "See the assessment in Portuguese"
   }
 }

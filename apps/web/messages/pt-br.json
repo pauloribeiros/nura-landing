@@ -275,5 +275,33 @@
     "upcomingCopy": "Estamos finalizando o instrumento desta avaliação. Ela será publicada assim que a metodologia estiver definida, revisada e documentada nesta página.",
     "startCta": "Começar avaliação gratuita",
     "limitsTitle": "Limites deste resultado"
+  },
+  "runner": {
+    "introEyebrow": "Antes de começar",
+    "introTitle": "Como você responde importa mais do que a nota.",
+    "introLead": "São {count} perguntas sobre como sua atenção se comporta nos últimos seis meses. Leva de 3 a 5 minutos.",
+    "noteHonest": "Responda pensando no seu dia a dia real, não em como você gostaria de ser.",
+    "noteNoRightAnswer": "Não existe resposta certa ou errada — cada opção descreve uma frequência.",
+    "noteResume": "Se você sair, suas respostas ficam salvas neste dispositivo por 7 dias.",
+    "disclaimer": "Instrumento de rastreio e autoconhecimento. O resultado é informativo, não constitui diagnóstico e não substitui avaliação de um profissional habilitado.",
+    "start": "Começar",
+    "resume": "Continuar de onde parei",
+    "resumeFound": "Você já respondeu {answered} de 18 perguntas nesta avaliação.",
+    "startOver": "Começar do zero",
+    "progress": "{answered} de {total} respondidas",
+    "back": "Voltar",
+    "continue": "Continuar",
+    "finish": "Ver meu resultado",
+    "answerAll": "Responda todas as perguntas desta etapa para continuar.",
+    "transitionEyebrow": "Primeira etapa concluída",
+    "transitionTitle": "Agora vamos detalhar.",
+    "transitionLead": "As próximas perguntas não mudam o resultado da triagem. Elas descrevem quais padrões apareceram, e é isso que dá profundidade ao seu relatório.",
+    "doneEyebrow": "Respostas registradas",
+    "doneTitle": "Terminamos.",
+    "doneLead": "Seu resultado está sendo preparado. A tela de resultado chega no próximo passo do desenvolvimento.",
+    "doneAnswered": "{answered} respostas registradas.",
+    "unavailableTitle": "Esta avaliação ainda não está disponível neste idioma.",
+    "unavailableLead": "A escala usada aqui só tem tradução oficial validada em português. Traduzir por conta própria invalidaria a validação científica, então preferimos não oferecer.",
+    "unavailableCta": "Ver a avaliação em português"
   }
 }
