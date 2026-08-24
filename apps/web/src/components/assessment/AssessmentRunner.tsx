@@ -16,7 +16,13 @@ import {
 } from '@/domain/assessment/session';
 import { scoreAssessment } from '@/domain/assessment/scoring';
 import type { AssessmentDefinition } from '@/domain/assessment/types';
-import { clearSession, loadSession, saveSession } from '@/lib/sessionStore';
+import {
+  completeSession,
+  discardSession,
+  loadSession,
+  openRemoteSession,
+  saveSession,
+} from '@/lib/supabase/assessmentStore';
 import { AssessmentResult } from './AssessmentResult';
 import { track } from '@/lib/analytics';
 
@@ -43,17 +49,24 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
   // Offer to resume before anything else, so a refresh does not silently
   // discard answers the person already gave.
   useEffect(() => {
-    const stored = loadSession(definition.assessmentId);
-    if (stored && isResumable(definition, stored) && stored.answers.length > 0) {
-      setResumable(stored);
-    }
+    let cancelled = false;
+    loadSession(definition.assessmentId).then((stored) => {
+      if (cancelled) return;
+      if (stored && isResumable(definition, stored) && stored.answers.length > 0) {
+        setResumable(stored);
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
   }, [definition]);
 
   useEffect(() => {
-    if (session) saveSession(session);
+    if (session) void saveSession(session);
   }, [session]);
 
   const begin = (from?: AssessmentSession) => {
+    const resuming = Boolean(from);
     const next =
       from ??
       createSession(definition, {
@@ -63,11 +76,14 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
     setSession(next);
     setResumable(null);
     setStage('questions');
+    // The anonymous user is created here, on a deliberate click, rather than
+    // on page view — which keeps drive-by traffic out of the auth table.
+    if (!resuming) void openRemoteSession(next);
     track('assessment_started', { assessment: definition.assessmentId, locale });
   };
 
   const restart = () => {
-    clearSession(definition.assessmentId);
+    void discardSession(definition.assessmentId, session?.id);
     setResumable(null);
     setSession(null);
     setStage('intro');
@@ -133,6 +149,7 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
     const last = session.pageIndex >= pages.length - 1;
     if (last) {
       if (isComplete(definition, session)) {
+        void completeSession(session.id);
         track('assessment_completed', { assessment: definition.assessmentId });
         setStage('done');
       }
