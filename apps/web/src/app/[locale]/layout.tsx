@@ -5,6 +5,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { DM_Sans, Manrope, Space_Mono } from 'next/font/google';
 import { LOCALE_META, locales, routing, type Locale } from '@/i18n/routing';
 import { SITE_URL } from '@/lib/site';
+import { ConsentBanner } from '@/components/ConsentBanner';
 import { RevealObserver } from '@/components/RevealObserver';
 import '../globals.css';
 
@@ -103,6 +104,7 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider>
           <RevealObserver />
+          <ConsentBanner />
           {children}
         </NextIntlClientProvider>
       </body>

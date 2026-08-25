@@ -42,6 +42,9 @@ autoInstallPeers: false
 allowBuilds:
   '@parcel/watcher': true
   '@swc/core': true
+  # Pulled in by posthog-js. Its postinstall only prints a funding notice, so
+  # there is nothing to gain by running it.
+  core-js: false
   esbuild: true
   sharp: true
   unrs-resolver: true

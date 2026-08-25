@@ -39,9 +39,9 @@ export function AssessmentResult({
   ]);
 
   useEffect(() => {
-    track('result_viewed', { assessment: result.assessmentId });
+    track('result_viewed', { assessment: result.assessmentId, band });
     track('premium_offer_viewed', { assessment: result.assessmentId });
-  }, [result.assessmentId]);
+  }, [result.assessmentId, band]);
 
   const domains = (Object.keys(ASRS_DOMAINS) as AsrsDomain[]).map((domain) => {
     const items = ASRS_DOMAINS[domain];

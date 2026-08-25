@@ -555,3 +555,23 @@ a { color: inherit; text-decoration: none; }
 .result-premium .price { color: var(--text-on-dark); }
 .result-premium .price small { color: var(--text-on-dark-faint); }
 .result-premium .button { width: fit-content; }
+
+/* ------------------------------------------------------------------ consent */
+/* Fixed to the bottom, never covering the content someone is reading.
+   Light surface on the dark site so it reads as chrome, not content. */
+.consent-banner {
+  position: fixed;
+  inset-inline: 16px;
+  bottom: 16px;
+  z-index: 60;
+  max-width: 560px;
+  margin-inline: auto;
+  padding: 18px 20px;
+  border-radius: 16px;
+  background: var(--nura-surface, #fff);
+  color: var(--nura-ink, #10131c);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+}
+.consent-banner p { margin: 0 0 12px; font-size: 0.92rem; line-height: 1.5; }
+.consent-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.consent-actions .button { min-height: 40px; }

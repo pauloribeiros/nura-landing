@@ -335,5 +335,11 @@
     "premiumSoon": "The in-depth report will be available soon.",
     "disclaimer": "This result comes from the ASRS-v1.1, a World Health Organization screening scale. It is informative, is not a diagnosis and does not replace assessment by a qualified professional.",
     "restart": "Take the assessment again"
+  },
+  "consent": {
+    "ariaLabel": "Privacy preferences",
+    "text": "We use anonymous usage measurement to improve NURA. Nothing is collected without your consent, and your assessment answers are never part of this measurement.",
+    "accept": "Accept measurement",
+    "decline": "Continue without"
   }
 }

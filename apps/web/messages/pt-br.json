@@ -335,5 +335,11 @@
     "premiumSoon": "O relatório aprofundado estará disponível em breve.",
     "disclaimer": "Este resultado vem da ASRS-v1.1, escala de rastreio da Organização Mundial da Saúde. É informativo, não constitui diagnóstico e não substitui avaliação de um profissional habilitado.",
     "restart": "Refazer a avaliação"
+  },
+  "consent": {
+    "ariaLabel": "Preferências de privacidade",
+    "text": "Usamos medição anônima de uso para melhorar a NURA. Nenhum dado é coletado sem o seu consentimento, e suas respostas nas avaliações nunca fazem parte dessa medição.",
+    "accept": "Aceitar medição",
+    "decline": "Continuar sem medição"
   }
 }

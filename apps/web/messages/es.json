@@ -335,5 +335,11 @@
     "premiumSoon": "El informe en profundidad estará disponible pronto.",
     "disclaimer": "Este resultado proviene de la ASRS-v1.1, escala de cribado de la Organización Mundial de la Salud. Es informativo, no constituye diagnóstico y no sustituye la evaluación de un profesional habilitado.",
     "restart": "Repetir la evaluación"
+  },
+  "consent": {
+    "ariaLabel": "Preferencias de privacidad",
+    "text": "Usamos medición anónima de uso para mejorar NURA. No se recopila nada sin tu consentimiento, y tus respuestas en las evaluaciones nunca forman parte de esta medición.",
+    "accept": "Aceptar medición",
+    "decline": "Continuar sin medición"
   }
 }
