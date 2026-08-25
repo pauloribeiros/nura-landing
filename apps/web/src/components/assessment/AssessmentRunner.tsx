@@ -28,6 +28,7 @@ import {
 import { AssessmentResult } from './AssessmentResult';
 import { track } from '@/lib/analytics';
 import { randomId } from '@/lib/randomId';
+import { scoreOnServer } from '@/lib/assessment/scoreOnServer';
 
 type Stage = 'intro' | 'questions' | 'transition' | 'context' | 'done';
 
@@ -200,6 +201,10 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
     if (last) {
       if (isComplete(definition, session)) {
         void completeSession(session.id);
+        // The screen renders from the local preview; this stores the copy that
+        // a paid report is unlocked against, computed from the answers the
+        // database actually holds rather than from anything the browser says.
+        void scoreOnServer(session.id);
         track('assessment_completed', { assessment: definition.assessmentId });
         // The instrument is finished and the result already exists at this
         // point; context is asked in between, and skipping it changes nothing.
