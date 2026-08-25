@@ -302,7 +302,40 @@
     "doneAnswered": "{answered} respuestas registradas.",
     "unavailableTitle": "Esta evaluación aún no está disponible en este idioma.",
     "unavailableLead": "La escala usada aquí solo tiene traducción oficial validada en portugués. Traducirla por nuestra cuenta invalidaría la validación científica, así que preferimos no ofrecerla.",
-    "unavailableCta": "Ver la evaluación en portugués"
+    "unavailableCta": "Ver la evaluación en portugués",
+    "stepOf": "Etapa {step} de {total}",
+    "blockScreening": "Cribado",
+    "blockDetail": "Profundización",
+    "contextEyebrow": "Casi listo",
+    "contextTitle": "Cuéntanos un poco sobre tu contexto.",
+    "contextLead": "Tres preguntas rápidas para personalizar la presentación de tu resultado.",
+    "contextNoScore": "Estas preguntas son de NURA, no de la escala. No cambian tu resultado — puedes saltarlas.",
+    "contextProgress": "{step} de {total}",
+    "contextSkip": "Saltar y ver resultado",
+    "ctx": {
+      "ctxSetting": {
+        "prompt": "¿En qué contexto notas más dificultad?",
+        "work": "En el trabajo",
+        "study": "En los estudios",
+        "home": "En la rutina personal",
+        "several": "En varios contextos"
+      },
+      "ctxSince": {
+        "prompt": "¿Desde cuándo notas estos patrones?",
+        "childhood": "Desde la infancia",
+        "adolescence": "Desde la adolescencia",
+        "adulthood": "En la vida adulta",
+        "recent": "Solo recientemente",
+        "unsure": "No sabría decir"
+      },
+      "ctxTrigger": {
+        "prompt": "¿Qué te trajo a esta prueba hoy?",
+        "ownSuspicion": "Una sospecha mía",
+        "someoneSuggested": "Alguien cercano lo comentó",
+        "professionalSuggested": "Indicación de un profesional",
+        "curiosity": "Curiosidad"
+      }
+    }
   },
   "result_screen": {
     "eyebrow": "Tu resultado",
@@ -334,12 +367,40 @@
     "premiumCta": "Desbloquear el análisis completo",
     "premiumSoon": "El informe en profundidad estará disponible pronto.",
     "disclaimer": "Este resultado proviene de la ASRS-v1.1, escala de cribado de la Organización Mundial de la Salud. Es informativo, no constituye diagnóstico y no sustituye la evaluación de un profesional habilitado.",
-    "restart": "Repetir la evaluación"
+    "restart": "Repetir la evaluación",
+    "settingNote": {
+      "work": "Indicaste que notas más dificultad en el trabajo — vale la pena llevar ejemplos concretos de ese contexto a una consulta.",
+      "study": "Indicaste que notas más dificultad en los estudios — vale la pena llevar ejemplos concretos de ese contexto a una consulta.",
+      "home": "Indicaste que notas más dificultad en la rutina personal — vale la pena llevar ejemplos concretos de ese contexto a una consulta.",
+      "several": "Indicaste dificultad en varios contextos. Precisamente por aparecer en más de un lugar, es un punto importante para mencionar en una consulta."
+    }
   },
   "consent": {
     "ariaLabel": "Preferencias de privacidad",
     "text": "Usamos medición anónima de uso para mejorar NURA. No se recopila nada sin tu consentimiento, y tus respuestas en las evaluaciones nunca forman parte de esta medición.",
     "accept": "Aceptar medición",
     "decline": "Continuar sin medición"
+  },
+  "lead": {
+    "title": "¿Quieres recibir este resultado por correo?",
+    "lead": "Enviamos un resumen de lo que apareció aquí, para guardarlo o llevarlo a una consulta.",
+    "emailLabel": "Tu correo",
+    "emailPlaceholder": "tu@ejemplo.com",
+    "consent": "Autorizo a NURA a enviarme este resultado y contenidos relacionados por correo. Puedo cancelar cuando quiera.",
+    "submit": "Recibir por correo",
+    "sending": "Enviando…",
+    "done": "Listo. Lo enviaremos al correo indicado.",
+    "error": "No pudimos guardarlo ahora. Inténtalo de nuevo en unos instantes.",
+    "note": "No compartimos tu correo con terceros."
+  },
+  "result_next_assessment": {
+    "title": "Si no es atención, ¿qué lo explica?",
+    "lead": "El cansancio constante, la procrastinación y la sensación de ir siempre tarde tienen más de un origen posible. Este cribado miró uno de ellos.",
+    "b1": "Perfil cognitivo — cómo tu mente procesa y resuelve",
+    "b2": "Espectro autista — otra forma de organizar atención y rutina",
+    "b3": "Altas capacidades — cuando el poco desafío también cansa",
+    "cta": "Ver la próxima evaluación",
+    "catalogCta": "Conocer el catálogo NURA",
+    "soon": "Las demás evaluaciones están en desarrollo y llegan pronto."
   }
 }

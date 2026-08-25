@@ -575,3 +575,81 @@ a { color: inherit; text-decoration: none; }
 .consent-banner p { margin: 0 0 12px; font-size: 0.92rem; line-height: 1.5; }
 .consent-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 .consent-actions .button { min-height: 40px; }
+
+/* ------------------------------------------------------- runner step label */
+/* Position, never theme — the ASRS licence forbids regrouping items, so the
+   label says where you are, not what the items are about. */
+.runner-step {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 10px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--nura-cyan);
+}
+.runner-step-block { color: var(--nura-cool-gray); letter-spacing: 0.1em; }
+
+.runner-context .runner-question { margin-top: 20px; }
+.runner-context .runner-nav { margin-top: 24px; }
+
+/* ---------------------------------------------------- lead capture / next */
+.result-lead,
+.result-next-assessment {
+  margin-top: 32px;
+  padding: 24px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+}
+.result-lead h2,
+.result-next-assessment h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 8px;
+  font-size: 1.12rem;
+}
+.result-lead.is-done { display: flex; align-items: center; }
+.result-lead.is-done p { display: flex; align-items: center; gap: 8px; margin: 0; color: var(--nura-cyan); }
+
+.result-lead-field { display: block; margin: 16px 0 12px; }
+.result-lead-field span {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.82rem;
+  color: var(--nura-cool-gray);
+}
+.result-lead-field input {
+  width: 100%;
+  min-height: 46px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(0, 0, 0, 0.25);
+  color: inherit;
+  font: inherit;
+}
+.result-lead-field input:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 2px; }
+
+/* Consent sits next to its checkbox and stays readable — it is the thing
+   being agreed to, not fine print. */
+.result-lead-consent {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  cursor: pointer;
+}
+.result-lead-consent input { margin-top: 3px; flex-shrink: 0; width: 18px; height: 18px; }
+
+.result-context-note {
+  margin-top: 12px;
+  padding-left: 14px;
+  border-left: 2px solid var(--nura-cyan);
+  color: var(--nura-cool-gray);
+}

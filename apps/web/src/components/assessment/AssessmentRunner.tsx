@@ -13,7 +13,9 @@ import {
   progress,
   recordAnswer,
   type AssessmentSession,
+  type Page,
 } from '@/domain/assessment/session';
+import { ASRS_CONTEXT } from '@/domain/assessment/context';
 import { scoreAssessment } from '@/domain/assessment/scoring';
 import type { AssessmentDefinition } from '@/domain/assessment/types';
 import {
@@ -27,7 +29,32 @@ import { AssessmentResult } from './AssessmentResult';
 import { track } from '@/lib/analytics';
 import { randomId } from '@/lib/randomId';
 
-type Stage = 'intro' | 'questions' | 'transition' | 'done';
+type Stage = 'intro' | 'questions' | 'transition' | 'context' | 'done';
+
+/**
+ * Stages are labelled by position — "step 2 of 3" — and never by theme.
+ *
+ * A thematic label ("Attention and focus", "Organisation and routine") would
+ * read better, but producing it means regrouping items by subject, and the
+ * ASRS licence forbids modifying the instrument. `paginate` preserves the
+ * published order for exactly that reason and a test locks it. Position gives
+ * the same sense of structure and claims nothing about what the items measure.
+ *
+ * The real domains do get named — on the result screen, where mapping answered
+ * items to inattention and hyperactivity is the instrument's own analysis
+ * rather than an invented taxonomy.
+ */
+function stepLabelFor(pages: Page[], pageIndex: number) {
+  // Numbered across the whole assessment rather than within the block. Part A
+  // is a single page, so per-block numbering produced "step 1 of 1", which
+  // tells the person nothing about how far they are. The block still appears,
+  // as a qualifier — "Step 1 of 3 · Screening".
+  return {
+    block: pages[pageIndex].block,
+    step: pageIndex + 1,
+    total: pages.length,
+  };
+}
 
 interface Props {
   definition: AssessmentDefinition;
@@ -45,6 +72,7 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
   const [stage, setStage] = useState<Stage>('intro');
   const [session, setSession] = useState<AssessmentSession | null>(null);
   const [resumable, setResumable] = useState<AssessmentSession | null>(null);
+  const [contextIndex, setContextIndex] = useState(0);
   const liveRef = useRef<HTMLDivElement>(null);
   const topRef = useRef<HTMLElement>(null);
   const firstRender = useRef(true);
@@ -65,7 +93,7 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
     // and jumping does not depend on a scroll animation running at all.
     window.scrollTo({ top: 0, behavior: 'instant' });
     topRef.current?.focus({ preventScroll: true });
-  }, [stage, session?.pageIndex]);
+  }, [stage, session?.pageIndex, contextIndex]);
 
   // Offer to resume before anything else, so a refresh does not silently
   // discard answers the person already gave.
@@ -151,6 +179,7 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
   }
 
   const page = pages[session.pageIndex];
+  const stepLabel = stepLabelFor(pages, session.pageIndex);
   const stats = progress(definition, session, pages);
   const pageDone = isPageComplete(page, session);
   const answerFor = (questionId: string) =>
@@ -172,7 +201,9 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
       if (isComplete(definition, session)) {
         void completeSession(session.id);
         track('assessment_completed', { assessment: definition.assessmentId });
-        setStage('done');
+        // The instrument is finished and the result already exists at this
+        // point; context is asked in between, and skipping it changes nothing.
+        setStage(ASRS_CONTEXT.length > 0 ? 'context' : 'done');
       }
       return;
     }
@@ -203,10 +234,87 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
     );
   }
 
+  if (stage === 'context') {
+    const question = ASRS_CONTEXT[contextIndex];
+    const chosen = answerFor(question.id);
+
+    const leaveContext = () => {
+      const answered = ASRS_CONTEXT.filter((q) => answerFor(q.id)).length;
+      track('context_completed', { assessment: definition.assessmentId, answered });
+      setStage('done');
+    };
+
+    const nextContext = () => {
+      if (contextIndex < ASRS_CONTEXT.length - 1) setContextIndex(contextIndex + 1);
+      else leaveContext();
+    };
+
+    return (
+      <section className="runner runner-context" ref={topRef} tabIndex={-1}>
+        <div className="wrap runner-inner">
+          <p className="eyebrow eyebrow-light">{t('contextEyebrow')}</p>
+          <h2>{t('contextTitle')}</h2>
+          <p className="runner-lead">{t('contextLead')}</p>
+          {/* Said plainly rather than buried: these do not touch the score.
+              Someone answering them should know they are helping personalise a
+              report, not adding to a clinical measure. */}
+          <p className="runner-hint">{t('contextNoScore')}</p>
+
+          <p className="runner-progress-label" role="status">
+            {t('contextProgress', { step: contextIndex + 1, total: ASRS_CONTEXT.length })}
+          </p>
+
+          <fieldset className="runner-question">
+            <legend>{t(`ctx.${question.id}.prompt`)}</legend>
+            <div className="runner-choices">
+              {question.choices.map((choice) => (
+                <label
+                  key={choice.id}
+                  className={`runner-choice ${chosen === choice.id ? 'is-chosen' : ''}`}
+                >
+                  <input
+                    type="radio"
+                    name={question.id}
+                    value={choice.id}
+                    checked={chosen === choice.id}
+                    onChange={() => choose(question.id, choice.id)}
+                  />
+                  <span>{t(`ctx.${question.id}.${choice.id}`)}</span>
+                  {chosen === choice.id ? <Check size={15} aria-hidden="true" /> : null}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <div className="runner-nav">
+            {/* Skipping is a real option, presented as one. A courtesy question
+                that blocks the result costs more completions than it is worth. */}
+            <button type="button" className="button button-ghost" onClick={leaveContext}>
+              {t('contextSkip')}
+            </button>
+            <button
+              type="button"
+              className="button button-primary"
+              onClick={nextContext}
+              disabled={!chosen}
+            >
+              {contextIndex >= ASRS_CONTEXT.length - 1 ? t('finish') : t('continue')}
+              <ArrowRight size={16} aria-hidden="true" />
+            </button>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   if (stage === 'done') {
     return (
       <AssessmentResult
         result={scoreAssessment(definition, session.answers)}
+        sessionId={session.id}
+        contextAnswers={Object.fromEntries(
+          ASRS_CONTEXT.map((q) => [q.id, answerFor(q.id)]).filter(([, v]) => v),
+        )}
         onRestart={restart}
       />
     );
@@ -216,6 +324,12 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
     <section className="runner" ref={topRef} tabIndex={-1}>
       <div className="wrap runner-inner">
         <div className="runner-progress">
+          <p className="runner-step">
+            {t('stepOf', { step: stepLabel.step, total: stepLabel.total })}
+            <span className="runner-step-block">
+              {t(stepLabel.block === 'partA' ? 'blockScreening' : 'blockDetail')}
+            </span>
+          </p>
           <div className="runner-progress-track" aria-hidden="true">
             <span style={{ width: `${Math.round(stats.ratio * 100)}%` }} />
           </div>

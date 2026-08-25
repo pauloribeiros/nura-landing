@@ -105,6 +105,36 @@ try {
   const { data: nada } = await newClient().from('assessment_sessions').select('id');
   check('requisicao sem login nao le nada', (nada?.length ?? 0) === 0, `${nada?.length ?? 0} linhas`);
 
+  // --- leads: escrever pode, ler nao ---
+  const { error: leadErr } = await A.client.from('assessment_leads').insert({
+    user_id: A.id, session_id: sid, assessment_id: 'attention',
+    email: 'a@nura.test', locale: 'pt-br',
+  });
+  check('A grava o proprio lead', !leadErr, leadErr?.message ?? '');
+
+  const { data: ownLead } = await A.client.from('assessment_leads').select('email');
+  check('A le apenas o proprio lead', ownLead?.length === 1, `${ownLead?.length ?? 0} linhas`);
+
+  const { data: otherLead } = await B.client.from('assessment_leads').select('email');
+  check('B NAO le lead algum', (otherLead?.length ?? 0) === 0, `${otherLead?.length ?? 0} linhas`);
+
+  const { error: leadSpoof } = await B.client.from('assessment_leads').insert({
+    user_id: A.id, assessment_id: 'attention', email: 'spoof@nura.test',
+  });
+  check('B NAO grava lead no nome de A', !!leadSpoof, leadSpoof?.code ?? 'INSERT PASSOU');
+
+  const { error: upsertErr } = await A.client.from('assessment_leads').upsert(
+    { user_id: A.id, session_id: sid, assessment_id: 'attention', email: 'a2@nura.test' },
+    { onConflict: 'user_id,assessment_id' },
+  );
+  check('A reenvia e o lead e atualizado, nao duplicado', !upsertErr, upsertErr?.message ?? '');
+
+  const { data: srvLeads } = await admin.from('assessment_leads')
+    .select('email').eq('user_id', A.id);
+  check('servidor le o lead', srvLeads?.length === 1, `${srvLeads?.length ?? 0} linhas`);
+  check('upsert substituiu o endereco', srvLeads?.[0]?.email === 'a2@nura.test',
+    srvLeads?.[0]?.email ?? '');
+
   await A.client.from('assessment_sessions').delete().eq('id', sid);
   const { data: gone } = await A.client.from('assessment_sessions').select('id').eq('id', sid);
   check('A apaga a propria sessao', (gone?.length ?? 0) === 0);

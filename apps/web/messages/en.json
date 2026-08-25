@@ -302,7 +302,40 @@
     "doneAnswered": "{answered} answers recorded.",
     "unavailableTitle": "This assessment is not available in this language yet.",
     "unavailableLead": "The scale used here only has an officially validated translation in Portuguese. Translating it ourselves would void the scientific validation, so we would rather not offer it.",
-    "unavailableCta": "See the assessment in Portuguese"
+    "unavailableCta": "See the assessment in Portuguese",
+    "stepOf": "Step {step} of {total}",
+    "blockScreening": "Screening",
+    "blockDetail": "Detail",
+    "contextEyebrow": "Almost there",
+    "contextTitle": "Tell us a little about your context.",
+    "contextLead": "Three quick questions to personalise how your result is presented.",
+    "contextNoScore": "These are NURA's questions, not the scale's. They do not change your result — you can skip them.",
+    "contextProgress": "{step} of {total}",
+    "contextSkip": "Skip and see result",
+    "ctx": {
+      "ctxSetting": {
+        "prompt": "Where do you notice the most difficulty?",
+        "work": "At work",
+        "study": "In my studies",
+        "home": "In personal routine",
+        "several": "Across several settings"
+      },
+      "ctxSince": {
+        "prompt": "How long have you noticed these patterns?",
+        "childhood": "Since childhood",
+        "adolescence": "Since adolescence",
+        "adulthood": "In adulthood",
+        "recent": "Only recently",
+        "unsure": "I am not sure"
+      },
+      "ctxTrigger": {
+        "prompt": "What brought you to this test today?",
+        "ownSuspicion": "A suspicion of my own",
+        "someoneSuggested": "Someone close mentioned it",
+        "professionalSuggested": "A professional suggested it",
+        "curiosity": "Curiosity"
+      }
+    }
   },
   "result_screen": {
     "eyebrow": "Your result",
@@ -334,12 +367,40 @@
     "premiumCta": "Unlock the full analysis",
     "premiumSoon": "The in-depth report will be available soon.",
     "disclaimer": "This result comes from the ASRS-v1.1, a World Health Organization screening scale. It is informative, is not a diagnosis and does not replace assessment by a qualified professional.",
-    "restart": "Take the assessment again"
+    "restart": "Take the assessment again",
+    "settingNote": {
+      "work": "You said difficulty shows up most at work — concrete examples from that setting are worth taking to an appointment.",
+      "study": "You said difficulty shows up most in your studies — concrete examples from that setting are worth taking to an appointment.",
+      "home": "You said difficulty shows up most in your personal routine — concrete examples from that setting are worth taking to an appointment.",
+      "several": "You reported difficulty across several settings. Appearing in more than one place is itself worth mentioning at an appointment."
+    }
   },
   "consent": {
     "ariaLabel": "Privacy preferences",
     "text": "We use anonymous usage measurement to improve NURA. Nothing is collected without your consent, and your assessment answers are never part of this measurement.",
     "accept": "Accept measurement",
     "decline": "Continue without"
+  },
+  "lead": {
+    "title": "Want this result by email?",
+    "lead": "We will send a summary of what came up here, to keep or take to an appointment.",
+    "emailLabel": "Your email",
+    "emailPlaceholder": "you@example.com",
+    "consent": "I allow NURA to email me this result and related content. I can unsubscribe at any time.",
+    "submit": "Send by email",
+    "sending": "Sending…",
+    "done": "Done. We will send it to the address you gave.",
+    "error": "We could not save that right now. Please try again shortly.",
+    "note": "We do not share your email with third parties."
+  },
+  "result_next_assessment": {
+    "title": "If it is not attention, what explains it?",
+    "lead": "Constant tiredness, procrastination and the sense of always running late have more than one possible source. This screening looked at one of them.",
+    "b1": "Cognitive profile — how your mind processes and solves",
+    "b2": "Autism spectrum — another way of organising attention and routine",
+    "b3": "Giftedness — when too little challenge is also exhausting",
+    "cta": "See the next assessment",
+    "catalogCta": "Explore the NURA catalogue",
+    "soon": "The remaining assessments are in development and arrive soon."
   }
 }

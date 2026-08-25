@@ -302,7 +302,40 @@
     "doneAnswered": "{answered} respostas registradas.",
     "unavailableTitle": "Esta avaliação ainda não está disponível neste idioma.",
     "unavailableLead": "A escala usada aqui só tem tradução oficial validada em português. Traduzir por conta própria invalidaria a validação científica, então preferimos não oferecer.",
-    "unavailableCta": "Ver a avaliação em português"
+    "unavailableCta": "Ver a avaliação em português",
+    "stepOf": "Etapa {step} de {total}",
+    "blockScreening": "Triagem",
+    "blockDetail": "Aprofundamento",
+    "contextEyebrow": "Quase lá",
+    "contextTitle": "Conte um pouco sobre o seu contexto.",
+    "contextLead": "Três perguntas rápidas para personalizar a apresentação do seu resultado.",
+    "contextNoScore": "Estas perguntas são da NURA, não da escala. Elas não alteram o seu resultado — você pode pular.",
+    "contextProgress": "{step} de {total}",
+    "contextSkip": "Pular e ver resultado",
+    "ctx": {
+      "ctxSetting": {
+        "prompt": "Em qual contexto você percebe mais dificuldade?",
+        "work": "No trabalho",
+        "study": "Nos estudos",
+        "home": "Na rotina pessoal",
+        "several": "Em vários contextos"
+      },
+      "ctxSince": {
+        "prompt": "Desde quando você percebe esses padrões?",
+        "childhood": "Desde a infância",
+        "adolescence": "Desde a adolescência",
+        "adulthood": "Na vida adulta",
+        "recent": "Só recentemente",
+        "unsure": "Não sei dizer"
+      },
+      "ctxTrigger": {
+        "prompt": "O que te trouxe até este teste hoje?",
+        "ownSuspicion": "Uma suspeita minha",
+        "someoneSuggested": "Alguém próximo comentou",
+        "professionalSuggested": "Indicação de um profissional",
+        "curiosity": "Curiosidade"
+      }
+    }
   },
   "result_screen": {
     "eyebrow": "Seu resultado",
@@ -334,12 +367,40 @@
     "premiumCta": "Desbloquear análise completa",
     "premiumSoon": "O relatório aprofundado estará disponível em breve.",
     "disclaimer": "Este resultado vem da ASRS-v1.1, escala de rastreio da Organização Mundial da Saúde. É informativo, não constitui diagnóstico e não substitui avaliação de um profissional habilitado.",
-    "restart": "Refazer a avaliação"
+    "restart": "Refazer a avaliação",
+    "settingNote": {
+      "work": "Você indicou que percebe mais dificuldade no trabalho — vale levar exemplos concretos desse contexto para uma consulta.",
+      "study": "Você indicou que percebe mais dificuldade nos estudos — vale levar exemplos concretos desse contexto para uma consulta.",
+      "home": "Você indicou que percebe mais dificuldade na rotina pessoal — vale levar exemplos concretos desse contexto para uma consulta.",
+      "several": "Você indicou dificuldade em vários contextos. Justamente por aparecer em mais de um lugar, é um ponto importante a mencionar numa consulta."
+    }
   },
   "consent": {
     "ariaLabel": "Preferências de privacidade",
     "text": "Usamos medição anônima de uso para melhorar a NURA. Nenhum dado é coletado sem o seu consentimento, e suas respostas nas avaliações nunca fazem parte dessa medição.",
     "accept": "Aceitar medição",
     "decline": "Continuar sem medição"
+  },
+  "lead": {
+    "title": "Quer receber este resultado por e-mail?",
+    "lead": "Enviamos um resumo do que apareceu aqui, para você guardar ou levar a uma consulta.",
+    "emailLabel": "Seu e-mail",
+    "emailPlaceholder": "voce@exemplo.com",
+    "consent": "Autorizo a NURA a me enviar este resultado e conteúdos relacionados por e-mail. Posso cancelar quando quiser.",
+    "submit": "Receber por e-mail",
+    "sending": "Enviando…",
+    "done": "Pronto. Enviaremos para o e-mail informado.",
+    "error": "Não conseguimos salvar agora. Tente novamente em instantes.",
+    "note": "Não compartilhamos seu e-mail com terceiros."
+  },
+  "result_next_assessment": {
+    "title": "Se não é atenção, o que explica?",
+    "lead": "Cansaço constante, procrastinação e a sensação de estar sempre atrasado têm mais de uma origem possível. Este rastreio olhou para uma delas.",
+    "b1": "Perfil cognitivo — como sua mente processa e resolve",
+    "b2": "Espectro autista — outra forma de organizar atenção e rotina",
+    "b3": "Altas habilidades — quando o desafio de menos também cansa",
+    "cta": "Ver a próxima avaliação",
+    "catalogCta": "Conhecer o catálogo NURA",
+    "soon": "As demais avaliações estão em desenvolvimento e chegam em breve."
   }
 }
