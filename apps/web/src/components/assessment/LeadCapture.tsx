@@ -22,10 +22,17 @@ import { saveLead } from '@/lib/supabase/leadStore';
 export function LeadCapture({
   assessmentId,
   sessionId,
+  variant = 'primary',
 }: {
   assessmentId: string;
   /** Links the address to the run it came from, so a result can be emailed. */
   sessionId?: string;
+  /**
+   * `primary` where this is the only conversion on the screen — the
+   * not-elevated branch, which has no paid offer. `secondary` where it follows
+   * the offer and speaks to someone who read the price and did not buy.
+   */
+  variant?: 'primary' | 'secondary';
 }) {
   const t = useTranslations('lead');
   const locale = useLocale();
@@ -50,7 +57,7 @@ export function LeadCapture({
     setState('sending');
     const ok = await saveLead({ email: email.trim(), assessmentId, sessionId, locale });
     if (ok) {
-      track('lead_submitted', { assessment: assessmentId, source: 'result' });
+      track('lead_submitted', { assessment: assessmentId, source: variant });
       setState('done');
     } else {
       setState('error');
@@ -58,11 +65,11 @@ export function LeadCapture({
   };
 
   return (
-    <form className="result-lead" onSubmit={submit}>
+    <form className={`result-lead is-${variant}`} onSubmit={submit}>
       <h2>
-        <Mail size={18} aria-hidden="true" /> {t('title')}
+        <Mail size={18} aria-hidden="true" /> {t(variant === 'secondary' ? 'titleSecondary' : 'title')}
       </h2>
-      <p className="runner-lead">{t('lead')}</p>
+      <p className="runner-lead">{t(variant === 'secondary' ? 'leadSecondary' : 'lead')}</p>
 
       <label className="result-lead-field">
         <span>{t('emailLabel')}</span>

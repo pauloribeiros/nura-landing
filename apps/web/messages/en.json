@@ -356,15 +356,15 @@
     "nextTitle": "What to do with this",
     "nextElevated": "Take this result to a professional. A psychiatrist, neurologist or psychologist experienced in adult ADHD can investigate the criteria a questionnaire cannot reach: when the signs started, how many contexts they appear in, and what else might explain them.",
     "nextNotElevated": "If the signs keep getting in the way day to day, seeing a professional still makes sense. Anxiety, depression, stress and sleep deprivation produce similar symptoms and deserve the same attention.",
-    "premiumTitle": "Want to understand this result in depth?",
-    "premiumLead": "The full report organises what showed up here and explains what each pattern means in your daily life.",
-    "premiumB1": "Item-by-item interpretation, with context",
+    "premiumTitle": "Unlock your full NURA report",
+    "premiumLead": "What you see here is an initial view. The report organises your answers and explains what the patterns mean day to day.",
+    "premiumB1": "Interpretation of each dimension, in context",
     "premiumB2": "How inattention and impulsivity combine in your profile",
-    "premiumB3": "What to ask in an appointment, if you decide to go",
-    "premiumB4": "A contribution to your NURA Profile",
+    "premiumB3": "What to ask at an appointment, if you decide to seek one",
+    "premiumB4": "Immediate access on NURA and a copy sent to your email",
     "premiumPrice": "R$ 19.90",
     "premiumPriceNote": "one-time payment, no subscription",
-    "premiumCta": "Unlock the full analysis",
+    "premiumCta": "Unlock my full report",
     "premiumSoon": "The in-depth report will be available soon.",
     "disclaimer": "This result comes from the ASRS-v1.1, a World Health Organization screening scale. It is informative, is not a diagnosis and does not replace assessment by a qualified professional.",
     "restart": "Take the assessment again",
@@ -373,7 +373,10 @@
       "study": "You said difficulty shows up most in your studies — concrete examples from that setting are worth taking to an appointment.",
       "home": "You said difficulty shows up most in your personal routine — concrete examples from that setting are worth taking to an appointment.",
       "several": "You reported difficulty across several settings. Appearing in more than one place is itself worth mentioning at an appointment."
-    }
+    },
+    "guarantee": "Seven days to request a refund, no reason needed.",
+    "stickyName": "Full report",
+    "stickyCta": "Unlock"
   },
   "consent": {
     "ariaLabel": "Privacy preferences",
@@ -391,7 +394,9 @@
     "sending": "Sending…",
     "done": "Done. We will send it to the address you gave.",
     "error": "We could not save that right now. Please try again shortly.",
-    "note": "We do not share your email with third parties."
+    "note": "We do not share your email with third parties.",
+    "titleSecondary": "Would you rather just keep the result?",
+    "leadSecondary": "We will send a free summary of what came up here, to read later or take to an appointment."
   },
   "result_next_assessment": {
     "title": "If it is not attention, what explains it?",
@@ -402,5 +407,16 @@
     "cta": "See the next assessment",
     "catalogCta": "Explore the NURA catalogue",
     "soon": "The remaining assessments are in development and arrive soon."
+  },
+  "report_preview": {
+    "title": "What the full report contains",
+    "lead": "Your report in 6 sections, built from the answers you just gave.",
+    "s1": "How to read your result",
+    "s2": "Inattention: what showed up in your answers",
+    "s3": "Hyperactivity and impulsivity",
+    "s4": "How the two dimensions combine",
+    "s5": "Your patterns at work, in study and in routine",
+    "s6": "What to bring and what to ask at an appointment",
+    "lockedNote": "{count} sections available in the full report."
   }
 }

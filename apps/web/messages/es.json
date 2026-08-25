@@ -356,15 +356,15 @@
     "nextTitle": "Qué hacer con esto",
     "nextElevated": "Lleva este resultado a un profesional. Un psiquiatra, neurólogo o psicólogo con experiencia en TDAH adulto puede investigar los criterios que un cuestionario no alcanza: cuándo empezaron las señales, en cuántos contextos aparecen y qué más podría explicarlas.",
     "nextNotElevated": "Si las señales siguen molestando en el día a día, buscar a un profesional sigue teniendo sentido. La ansiedad, la depresión, el estrés y la privación de sueño producen síntomas parecidos y merecen la misma atención.",
-    "premiumTitle": "¿Quieres entender este resultado en profundidad?",
-    "premiumLead": "El informe completo organiza lo que apareció aquí y explica qué significa cada patrón en tu día a día.",
-    "premiumB1": "Interpretación ítem por ítem, con contexto",
-    "premiumB2": "Cómo se combinan inatención e impulsividad en tu perfil",
-    "premiumB3": "Qué preguntar en una consulta, si decides ir",
-    "premiumB4": "Contribución a tu Perfil NURA",
+    "premiumTitle": "Desbloquea tu Informe NURA Completo",
+    "premiumLead": "Lo que ves aquí es una visión inicial. El informe organiza tus respuestas y explica qué significan los patrones en el día a día.",
+    "premiumB1": "Interpretación de cada dimensión, con contexto",
+    "premiumB2": "Cómo se combinan desatención e impulsividad en tu perfil",
+    "premiumB3": "Qué preguntar en una consulta, si decides buscarla",
+    "premiumB4": "Acceso inmediato en NURA y envío a tu correo",
     "premiumPrice": "R$ 19,90",
     "premiumPriceNote": "pago único, sin suscripción",
-    "premiumCta": "Desbloquear el análisis completo",
+    "premiumCta": "Desbloquear mi informe completo",
     "premiumSoon": "El informe en profundidad estará disponible pronto.",
     "disclaimer": "Este resultado proviene de la ASRS-v1.1, escala de cribado de la Organización Mundial de la Salud. Es informativo, no constituye diagnóstico y no sustituye la evaluación de un profesional habilitado.",
     "restart": "Repetir la evaluación",
@@ -373,7 +373,10 @@
       "study": "Indicaste que notas más dificultad en los estudios — vale la pena llevar ejemplos concretos de ese contexto a una consulta.",
       "home": "Indicaste que notas más dificultad en la rutina personal — vale la pena llevar ejemplos concretos de ese contexto a una consulta.",
       "several": "Indicaste dificultad en varios contextos. Precisamente por aparecer en más de un lugar, es un punto importante para mencionar en una consulta."
-    }
+    },
+    "guarantee": "7 días para pedir reembolso, sin necesidad de justificar.",
+    "stickyName": "Informe completo",
+    "stickyCta": "Desbloquear"
   },
   "consent": {
     "ariaLabel": "Preferencias de privacidad",
@@ -391,7 +394,9 @@
     "sending": "Enviando…",
     "done": "Listo. Lo enviaremos al correo indicado.",
     "error": "No pudimos guardarlo ahora. Inténtalo de nuevo en unos instantes.",
-    "note": "No compartimos tu correo con terceros."
+    "note": "No compartimos tu correo con terceros.",
+    "titleSecondary": "¿Prefieres solo guardar el resultado?",
+    "leadSecondary": "Enviamos un resumen gratuito de lo que apareció aquí, para consultarlo después o llevarlo a una consulta."
   },
   "result_next_assessment": {
     "title": "Si no es atención, ¿qué lo explica?",
@@ -402,5 +407,16 @@
     "cta": "Ver la próxima evaluación",
     "catalogCta": "Conocer el catálogo NURA",
     "soon": "Las demás evaluaciones están en desarrollo y llegan pronto."
+  },
+  "report_preview": {
+    "title": "Qué contiene el informe completo",
+    "lead": "Tu informe en 6 secciones, elaboradas a partir de las respuestas que acabas de dar.",
+    "s1": "Cómo leer tu resultado",
+    "s2": "Desatención: qué apareció en tus respuestas",
+    "s3": "Hiperactividad e impulsividad",
+    "s4": "Cómo se combinan las dos dimensiones",
+    "s5": "Tus patrones en el trabajo, en los estudios y en la rutina",
+    "s6": "Qué llevar y qué preguntar en una consulta",
+    "lockedNote": "{count} secciones disponibles en el informe completo."
   }
 }
