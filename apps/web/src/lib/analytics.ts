@@ -67,7 +67,7 @@ async function startPosthog() {
 
   const { default: posthog } = await import('posthog-js');
   posthog.init(key, {
-    api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST ?? 'https://us.i.posthog.com',
+    api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com',
     // The funnel is event-based; automatic pageviews would double-count
     // landing_view, and autocapture would hoover up clicks nobody asked for.
     capture_pageview: false,
