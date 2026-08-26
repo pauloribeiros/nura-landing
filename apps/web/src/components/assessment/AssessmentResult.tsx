@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { ArrowRight, Lock, RotateCcw } from 'lucide-react';
+import { Lock, RotateCcw } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { ASRS_DOMAINS, type AsrsDomain } from '@/domain/assessment/instruments/asrs18';
 import type { ScoreResult } from '@/domain/assessment/types';
@@ -10,6 +10,7 @@ import { DomainSegments } from './DomainSegments';
 import { LeadCapture } from './LeadCapture';
 import { NextAssessment } from './NextAssessment';
 import { StatusBadge } from './StatusBadge';
+import { UnlockButton } from './UnlockButton';
 
 /**
  * The free result.
@@ -155,13 +156,7 @@ export function AssessmentResult({
             <div className="price">
               {t('premiumPrice')} <small>{t('premiumPriceNote')}</small>
             </div>
-            {/* No provider is wired yet, and section 64 says not to pick one
-                before the decision is made. Stating that is better than a
-                button that pretends to charge. */}
-            <button type="button" className="button button-primary" disabled>
-              {t('premiumCta')} <ArrowRight size={16} aria-hidden="true" />
-            </button>
-            <p className="runner-hint">{t('premiumSoon')}</p>
+            <UnlockButton sessionId={sessionId} />
 
             <p className="result-delivery">{t('deliveryNote')}</p>
           </div>

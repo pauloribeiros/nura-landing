@@ -361,7 +361,6 @@
     "premiumPrice": "R$ 19,90",
     "premiumPriceNote": "pagamento único, sem assinatura",
     "premiumCta": "Desbloquear meu relatório completo",
-    "premiumSoon": "O relatório aprofundado estará disponível em breve.",
     "disclaimer": "Este resultado vem da ASRS-v1.1, escala de rastreio da Organização Mundial da Saúde. É informativo, não constitui diagnóstico e não substitui avaliação de um profissional habilitado.",
     "restart": "Refazer a avaliação",
     "settingNote": {
@@ -375,7 +374,9 @@
     "badgeClear": "Abaixo do ponto de corte",
     "badgeAttention": "Vale investigar",
     "domainSegmentsLabel": "{domain}: {flagged} de {total} itens na faixa clinicamente relevante.",
-    "deliveryNote": "Acesso imediato na NURA. Depois da compra você escolhe se quer receber uma cópia por e-mail."
+    "deliveryNote": "Acesso imediato na NURA. Depois da compra você escolhe se quer receber uma cópia por e-mail.",
+    "premiumSending": "Abrindo pagamento…",
+    "premiumError": "Não conseguimos abrir o pagamento agora. Tente novamente em instantes."
   },
   "consent": {
     "ariaLabel": "Preferências de privacidade",

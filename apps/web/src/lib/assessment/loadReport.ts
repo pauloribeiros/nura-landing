@@ -20,6 +20,12 @@ import type { ScoreResult } from '@/domain/assessment/types';
  * scoring. Rebuilding it from the answers here would work and would be wrong:
  * the stored row is what a purchase is made against, and a report generated
  * from a different computation could disagree with it.
+ *
+ * Access is gated on an entitlement row. The check is a read, not a written
+ * rule: `assessment_entitlements` grants the browser SELECT and nothing else,
+ * so a row can only have come from the server after a provider confirmed
+ * payment. Someone without one gets the same `null` as someone asking about a
+ * session that is not theirs.
  */
 export async function loadReport(sessionId: string): Promise<ReportPlan | null> {
   if (!supabaseConfigured) return null;
@@ -33,6 +39,15 @@ export async function loadReport(sessionId: string): Promise<ReportPlan | null> 
       setAll: () => {},
     },
   });
+
+  // Gate first: no reason to read a result the caller may not see.
+  const { data: entitlement } = await supabase
+    .from('assessment_entitlements')
+    .select('id')
+    .eq('session_id', sessionId)
+    .maybeSingle();
+
+  if (!entitlement) return null;
 
   const { data: stored } = await supabase
     .from('assessment_results')

@@ -24,6 +24,7 @@
     "posthog-js": "^1.418.10",
     "react": "catalog:",
     "react-dom": "catalog:",
+    "stripe": "^22.5.0",
     "three": "^0.185.1"
   },
   "devDependencies": {

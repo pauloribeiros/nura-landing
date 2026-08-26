@@ -361,7 +361,6 @@
     "premiumPrice": "R$ 19.90",
     "premiumPriceNote": "one-time payment, no subscription",
     "premiumCta": "Unlock my full report",
-    "premiumSoon": "The in-depth report will be available soon.",
     "disclaimer": "This result comes from the ASRS-v1.1, a World Health Organization screening scale. It is informative, is not a diagnosis and does not replace assessment by a qualified professional.",
     "restart": "Take the assessment again",
     "settingNote": {
@@ -375,7 +374,9 @@
     "badgeClear": "Below the cutoff",
     "badgeAttention": "Worth investigating",
     "domainSegmentsLabel": "{domain}: {flagged} of {total} items in the clinically relevant range.",
-    "deliveryNote": "Immediate access on NURA. After purchase you choose whether to receive a copy by email."
+    "deliveryNote": "Immediate access on NURA. After purchase you choose whether to receive a copy by email.",
+    "premiumSending": "Opening checkout…",
+    "premiumError": "We could not open checkout right now. Please try again shortly."
   },
   "consent": {
     "ariaLabel": "Privacy preferences",
