@@ -417,5 +417,50 @@
     "s5": "Seus padrões no trabalho, nos estudos e na rotina",
     "s6": "O que levar e o que perguntar numa consulta",
     "lockedNote": "{count} seções disponíveis no relatório completo."
+  },
+  "report": {
+    "eyebrow": "Relatório completo",
+    "title": "Seus padrões de atenção, em detalhe",
+    "lead": "Este relatório foi montado a partir das respostas que você deu. Ele organiza o que apareceu e explica o que cada padrão costuma significar no dia a dia.",
+    "itemsLabel": "Itens que você respondeu na faixa clinicamente relevante:",
+    "disclaimer": "Este relatório interpreta respostas de um instrumento de rastreio (ASRS-v1.1, Organização Mundial da Saúde). É informativo, não constitui diagnóstico e não substitui avaliação de um profissional habilitado.",
+    "s1": {
+      "elevated": "Você marcou {count} dos 6 itens da Parte A na faixa que o instrumento considera relevante. O ponto de corte é {cutoff}. Suas respostas ficam na faixa que a escala descreve como altamente compatível com TDAH — um sinalizador de que vale investigar, não uma conclusão. Rastreio identifica quem deve ser avaliado; ele não avalia. A diferença importa: parte das pessoas nessa faixa recebe outro diagnóstico ao final, e parte não recebe nenhum.",
+      "notElevated": "Você marcou {count} dos 6 itens da Parte A na faixa relevante, abaixo do ponto de corte de {cutoff}. Pelo critério da escala, não apareceu um padrão elevado. Isso não descarta TDAH: rastreios são desenhados para errar mais para o lado de encontrar do que de deixar passar, e ainda assim escapam casos — especialmente em quem desenvolveu estratégias de compensação ao longo da vida."
+    },
+    "s2": {
+      "some": "Dos 9 itens ligados a desatenção, {flagged} apareceram nas suas respostas. Esses itens tratam de sustentar foco em tarefas longas, organizar etapas, lembrar de compromissos e concluir o que já foi começado. Quando vários aparecem juntos, costumam descrever alguém que inicia bem e perde tração no meio — não por falta de interesse, mas porque manter a atenção em algo que deixou de ser novo exige um esforço que nem todo mundo precisa fazer.",
+      "none": "Nenhum dos 9 itens ligados a desatenção apareceu na faixa relevante. Sustentar foco, organizar e concluir tarefas não se destacaram como dificuldade nas suas respostas."
+    },
+    "s3": {
+      "some": "Dos 9 itens ligados a hiperatividade e impulsividade, {flagged} apareceram. Esses itens tratam de inquietação, dificuldade de sossegar, falar demais, interromper e agir antes de pensar. Em adultos isso raramente parece a agitação visível da infância — costuma aparecer como inquietação interna, dificuldade de relaxar mesmo em descanso, ou decisões tomadas rápido demais.",
+      "none": "Nenhum dos 9 itens ligados a hiperatividade e impulsividade apareceu na faixa relevante. Inquietação e impulsividade não se destacaram nas suas respostas."
+    },
+    "s4": {
+      "inattentionHigher": "Suas respostas concentraram mais itens em desatenção ({inattention}) do que em hiperatividade e impulsividade ({hyperactivity}). Isso descreve o formato do que você respondeu, não um tipo. Perfis assim tendem a passar despercebidos por mais tempo, porque a dificuldade aparece como esquecimento ou desorganização — coisas que costumam ser lidas como desleixo em vez de sinal.",
+      "hyperactivityHigher": "Suas respostas concentraram mais itens em hiperatividade e impulsividade ({hyperactivity}) do que em desatenção ({inattention}). Isso descreve o formato do que você respondeu, não um tipo. Inquietação e impulsividade tendem a ser notadas mais cedo por quem convive com a pessoa do que por ela mesma.",
+      "similar": "Suas respostas ficaram equilibradas entre as duas dimensões — {inattention} itens de desatenção e {hyperactivity} de hiperatividade e impulsividade. Um perfil que aparece nas duas frentes costuma ser mais reconhecido por quem está em volta, porque afeta tanto a organização quanto o ritmo.",
+      "fewFlags": "Nenhuma das duas dimensões concentrou itens na faixa relevante. Suas respostas descrevem alguém cujas dificuldades de atenção e de ritmo não se destacaram neste instrumento."
+    },
+    "s5": {
+      "noSetting": "Padrões de atenção se manifestam de forma diferente conforme o ambiente. No trabalho costumam aparecer como prazos e reuniões; nos estudos, como dificuldade de retomar depois de interrupções; na rotina pessoal, como tarefas que se acumulam. Observar em qual contexto o incômodo é maior ajuda a descrever a situação numa consulta.",
+      "setting": {
+        "work": "Você indicou que percebe mais dificuldade no trabalho. Nesse ambiente os padrões costumam aparecer em prazos que escorregam, reuniões que exigem atenção sustentada e tarefas administrativas que se acumulam. Vale reparar se há diferença entre trabalho novo e trabalho repetitivo — a distância entre os dois costuma ser reveladora.",
+        "study": "Você indicou que percebe mais dificuldade nos estudos. Aqui os padrões costumam aparecer na hora de começar, na dificuldade de retomar depois de uma interrupção e em leituras que precisam ser refeitas. Vale reparar quanto tempo passa entre sentar para estudar e efetivamente começar.",
+        "home": "Você indicou que percebe mais dificuldade na rotina pessoal. Nesse contexto os padrões aparecem em tarefas domésticas que se acumulam, contas esquecidas e planos que não saem do lugar. É o ambiente com menos estrutura externa, e por isso costuma ser onde a dificuldade fica mais visível.",
+        "several": "Você indicou dificuldade em vários contextos. Isso é um dado relevante: um dos critérios que um profissional investiga é justamente se os sinais aparecem em mais de um ambiente, e não apenas numa situação específica. Vale mencionar isso explicitamente numa consulta."
+      },
+      "since": {
+        "childhood": "Você indicou perceber esses padrões desde a infância. Esse é um ponto que costuma ser perguntado logo no início de uma avaliação.",
+        "adolescence": "Você indicou perceber esses padrões desde a adolescência. Vale tentar lembrar de situações anteriores a isso — a infância é o período que uma avaliação costuma investigar.",
+        "adulthood": "Você indicou perceber esses padrões na vida adulta. Vale explorar se eles existiam antes de forma menos visível, quando havia mais estrutura externa.",
+        "recent": "Você indicou perceber esses padrões só recentemente. Mudanças recentes merecem atenção: sono ruim, estresse prolongado, ansiedade e depressão produzem sintomas parecidos e são investigados junto.",
+        "unsure": "Você indicou não saber desde quando percebe esses padrões. Tudo bem — reconstruir essa linha do tempo é parte do trabalho de uma avaliação, não um pré-requisito para procurá-la."
+      }
+    },
+    "s6": {
+      "elevated": "Se você decidir procurar um profissional — psiquiatra, neurologista ou psicólogo com experiência em TDAH adulto — leve este relatório. Ele não substitui a avaliação, mas poupa tempo de consulta. Um profissional vai investigar coisas que um questionário não alcança: quando os sinais começaram, em quantos contextos aparecem, o quanto atrapalham de fato, e o que mais poderia explicá-los. Vale chegar preparado para falar de exemplos concretos e recentes, não de impressões gerais.",
+      "notElevated": "Se os sinais continuarem incomodando no dia a dia, procurar um profissional continua fazendo sentido, mesmo com este resultado. Um rastreio abaixo do ponto de corte não encerra a questão — apenas indica que este instrumento específico não encontrou o padrão. Ansiedade, depressão, privação de sono e estresse prolongado produzem sintomas parecidos e merecem investigação própria."
+    }
   }
 }

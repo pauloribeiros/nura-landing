@@ -50,6 +50,7 @@ async function resolve(params: Params) {
   const loc = locale as Locale;
   const kind = sectionKind(loc, section);
   if (!kind) notFound();
+
   const assessment = assessmentBySlug(loc, slug);
   if (!assessment || !assessment.available) notFound();
   return { locale: loc, assessment, kind };
@@ -57,6 +58,7 @@ async function resolve(params: Params) {
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { locale, assessment, kind } = await resolve(params);
+
   const t = await getTranslations({ locale, namespace: `assessments.${assessment.id}.landing` });
   const path = assessmentLandingPath(locale, assessment);
 

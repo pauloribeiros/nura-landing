@@ -41,6 +41,15 @@ export interface ReportSection {
   params?: Record<string, string | number>;
   /** Instrument item ids this section quotes, in published order. */
   items?: string[];
+  /**
+   * An extra sentence, keyed separately from the body.
+   *
+   * Context answers arrive as keys — `childhood`, `recent` — not as prose, so
+   * interpolating one into a body string would print the key. Keeping it as
+   * its own key lets the catalogue hold a proper sentence for each value, and
+   * lets the section read fine when there is none.
+   */
+  noteKey?: string;
 }
 
 export interface ReportPlan {
@@ -120,7 +129,7 @@ export function buildReportPlan(
       // instead of inventing a setting the person never named.
       id: 's5',
       bodyKey: setting ? `setting.${setting}` : 'noSetting',
-      params: since ? { since } : undefined,
+      noteKey: since ? `since.${since}` : undefined,
     },
     {
       id: 's6',

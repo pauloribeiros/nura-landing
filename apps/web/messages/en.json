@@ -417,5 +417,50 @@
     "s5": "Your patterns at work, in study and in routine",
     "s6": "What to bring and what to ask at an appointment",
     "lockedNote": "{count} sections available in the full report."
+  },
+  "report": {
+    "eyebrow": "Full report",
+    "title": "Your attention patterns, in detail",
+    "lead": "This report was built from the answers you gave. It organises what came up and explains what each pattern tends to mean day to day.",
+    "itemsLabel": "Items you answered in the clinically relevant range:",
+    "disclaimer": "This report interprets answers to a screening instrument (ASRS-v1.1, World Health Organization). It is informative, is not a diagnosis and does not replace assessment by a qualified professional.",
+    "s1": {
+      "elevated": "You marked {count} of the 6 Part A items in the range the instrument treats as relevant. The cutoff is {cutoff}. Your answers fall in the range the scale describes as highly consistent with ADHD — a signal that it is worth investigating, not a conclusion. Screening identifies who should be assessed; it does not assess. That distinction matters: some people in this range receive a different diagnosis in the end, and some receive none.",
+      "notElevated": "You marked {count} of the 6 Part A items in the relevant range, below the cutoff of {cutoff}. By the scale's criterion, no elevated pattern appeared. This does not rule ADHD out: screening tools are built to err towards finding rather than missing, and cases still slip through — especially in people who developed coping strategies over the years."
+    },
+    "s2": {
+      "some": "Of the 9 items linked to inattention, {flagged} appeared in your answers. These items cover sustaining focus on long tasks, organising steps, remembering commitments and finishing what was started. When several appear together, they often describe someone who begins well and loses traction midway — not from lack of interest, but because holding attention on something that is no longer new takes an effort not everyone has to make.",
+      "none": "None of the 9 items linked to inattention appeared in the relevant range. Sustaining focus, organising and finishing tasks did not stand out as difficulties in your answers."
+    },
+    "s3": {
+      "some": "Of the 9 items linked to hyperactivity and impulsivity, {flagged} appeared. These cover restlessness, difficulty settling, talking too much, interrupting and acting before thinking. In adults this rarely looks like the visible agitation of childhood — it tends to show up as internal restlessness, difficulty relaxing even at rest, or decisions made too fast.",
+      "none": "None of the 9 items linked to hyperactivity and impulsivity appeared in the relevant range. Restlessness and impulsivity did not stand out in your answers."
+    },
+    "s4": {
+      "inattentionHigher": "Your answers concentrated more items in inattention ({inattention}) than in hyperactivity and impulsivity ({hyperactivity}). This describes the shape of what you answered, not a type. Profiles like this tend to go unnoticed for longer, because the difficulty reads as forgetfulness or disorganisation — things often taken for carelessness rather than signal.",
+      "hyperactivityHigher": "Your answers concentrated more items in hyperactivity and impulsivity ({hyperactivity}) than in inattention ({inattention}). This describes the shape of what you answered, not a type. Restlessness and impulsivity tend to be noticed earlier by the people around someone than by the person themselves.",
+      "similar": "Your answers were balanced across both dimensions — {inattention} inattention items and {hyperactivity} hyperactivity and impulsivity items. A profile showing on both fronts tends to be recognised sooner by people nearby, because it affects both organisation and pace.",
+      "fewFlags": "Neither dimension concentrated items in the relevant range. Your answers describe someone whose attention and pace difficulties did not stand out on this instrument."
+    },
+    "s5": {
+      "noSetting": "Attention patterns show up differently depending on the setting. At work they tend to appear as deadlines and meetings; in study, as difficulty resuming after interruptions; in personal routine, as tasks that pile up. Noticing where the difficulty bites hardest helps describe the situation at an appointment.",
+      "setting": {
+        "work": "You said difficulty shows up most at work. There the patterns tend to appear as slipping deadlines, meetings that demand sustained attention and admin tasks that accumulate. It is worth noticing whether new work differs from repetitive work — the gap between the two is often revealing.",
+        "study": "You said difficulty shows up most in your studies. Here the patterns tend to appear at the moment of starting, in difficulty resuming after an interruption, and in reading that has to be done twice. Notice how much time passes between sitting down and actually beginning.",
+        "home": "You said difficulty shows up most in your personal routine. In this context patterns appear as household tasks piling up, forgotten bills and plans that never move. It is the setting with the least external structure, which is why difficulty is often most visible there.",
+        "several": "You reported difficulty across several settings. That is relevant: one of the criteria a professional investigates is precisely whether signs appear in more than one environment rather than in a single situation. Worth mentioning explicitly at an appointment."
+      },
+      "since": {
+        "childhood": "You said you have noticed these patterns since childhood. This is usually asked early in an assessment.",
+        "adolescence": "You said you have noticed these patterns since adolescence. It is worth trying to recall earlier situations — childhood is the period an assessment tends to investigate.",
+        "adulthood": "You said you noticed these patterns in adulthood. Worth exploring whether they existed earlier in a less visible form, when there was more external structure.",
+        "recent": "You said you have noticed these patterns only recently. Recent changes deserve attention: poor sleep, prolonged stress, anxiety and depression produce similar symptoms and are investigated alongside.",
+        "unsure": "You said you are not sure how long you have noticed these patterns. That is fine — reconstructing that timeline is part of an assessment's work, not a prerequisite for seeking one."
+      }
+    },
+    "s6": {
+      "elevated": "If you decide to see a professional — a psychiatrist, neurologist or psychologist experienced in adult ADHD — take this report. It does not replace the assessment, but it saves appointment time. A professional will investigate what a questionnaire cannot reach: when the signs began, how many settings they appear in, how much they actually interfere, and what else could explain them. Come prepared to talk about concrete, recent examples rather than general impressions.",
+      "notElevated": "If the signs keep bothering you day to day, seeing a professional still makes sense, even with this result. A screening below the cutoff does not close the question — it only means this particular instrument did not find the pattern. Anxiety, depression, sleep deprivation and prolonged stress produce similar symptoms and deserve investigation of their own."
+    }
   }
 }

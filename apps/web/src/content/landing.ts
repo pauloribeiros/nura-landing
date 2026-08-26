@@ -77,6 +77,18 @@ export const assessmentLandingPath = (locale: Locale, a: AssessmentEntry) =>
 export const assessmentStartPath = (locale: Locale, a: AssessmentEntry) =>
   `/${locale}/${ROUTE_SEGMENTS.assessment[locale]}/${a.slug[locale]}`;
 
+/**
+ * A report lives on its own route, not under `[section]`.
+ *
+ * Its rendering mode is the opposite of every marketing page: per-person,
+ * read at request time from cookies, never prerendered. Sharing a route with
+ * statically generated pages made Next try to prerender it and fail on
+ * `cookies()`. The segment is short and unlocalised because the URL is
+ * private and never indexed — there is no reader to read it.
+ */
+export const reportPath = (locale: Locale, sessionId: string) =>
+  `/${locale}/r/${sessionId}`;
+
 /** Which kind of page a `[section]` segment addresses, if any. */
 export function sectionKind(locale: Locale, segment: string): 'catalog' | 'assessment' | null {
   if (ROUTE_SEGMENTS.catalog[locale] === segment) return 'catalog';
