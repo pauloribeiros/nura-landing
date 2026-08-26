@@ -358,10 +358,6 @@
     "nextNotElevated": "Se os sinais continuarem incomodando no dia a dia, procurar um profissional continua fazendo sentido. Ansiedade, depressão, estresse e privação de sono produzem sintomas parecidos e merecem a mesma atenção.",
     "premiumTitle": "Desbloqueie seu Relatório NURA Completo",
     "premiumLead": "Seu resultado aqui é uma visão inicial. O relatório organiza suas respostas e explica o que os padrões encontrados significam no dia a dia.",
-    "premiumB1": "Interpretação de cada dimensão, com contexto",
-    "premiumB2": "Como desatenção e impulsividade se combinam no seu perfil",
-    "premiumB3": "O que perguntar numa consulta, se você decidir procurar",
-    "premiumB4": "Acesso imediato na NURA e envio para o seu e-mail",
     "premiumPrice": "R$ 19,90",
     "premiumPriceNote": "pagamento único, sem assinatura",
     "premiumCta": "Desbloquear meu relatório completo",
@@ -374,9 +370,12 @@
       "home": "Você indicou que percebe mais dificuldade na rotina pessoal — vale levar exemplos concretos desse contexto para uma consulta.",
       "several": "Você indicou dificuldade em vários contextos. Justamente por aparecer em mais de um lugar, é um ponto importante a mencionar numa consulta."
     },
-    "guarantee": "7 dias para pedir reembolso, sem precisar justificar.",
     "stickyName": "Relatório completo",
-    "stickyCta": "Desbloquear"
+    "stickyCta": "Desbloquear",
+    "badgeClear": "Abaixo do ponto de corte",
+    "badgeAttention": "Vale investigar",
+    "domainSegmentsLabel": "{domain}: {flagged} de {total} itens na faixa clinicamente relevante.",
+    "deliveryNote": "Acesso imediato na NURA. Depois da compra você escolhe se quer receber uma cópia por e-mail."
   },
   "consent": {
     "ariaLabel": "Preferências de privacidade",

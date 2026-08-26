@@ -5,6 +5,16 @@
    --------------------------------------------------------------------------- */
 
 :root {
+  /* Status of a screening outcome. Deliberately NOT a traffic light: green /
+     amber / red is the colour language of medical urgency, and a positive
+     ADHD screen painted red frames neurodivergence as an alarm. Amber says
+     "look into this"; the clear state is cool and quiet. Neither says good
+     or bad. */
+  --status-attention: #f0b23c;
+  --status-attention-soft: rgba(240, 178, 60, 0.14);
+  --status-clear: #4fd1c5;
+  --status-clear-soft: rgba(79, 209, 197, 0.14);
+
   --nura-obsidian: #070b14;
   --nura-deep-navy: #101827;
   --nura-blue: #3b67ff;
@@ -545,8 +555,6 @@ a { color: inherit; text-decoration: none; }
 .result-domains ul { display: grid; gap: 18px; margin-top: 20px; list-style: none; }
 .result-domain-head { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; font-size: 15px; }
 .result-domain-head b { color: var(--nura-cyan); font: 700 12px var(--app-font-mono); }
-.result-domain-track { height: 4px; margin-top: 8px; border-radius: 99px; background: rgba(255,255,255,.12); overflow: hidden; }
-.result-domain-track span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--nura-blue), var(--nura-cyan)); }
 
 .result-next p { color: var(--text-on-dark-muted); font-size: 16px; line-height: 1.7; margin-top: 10px; }
 
@@ -654,83 +662,9 @@ a { color: inherit; text-decoration: none; }
   color: var(--nura-cool-gray);
 }
 
-/* ------------------------------------------------- report preview (locked) */
-/* A contents list, not a benefits list: it shows the product has a shape.
-   Nothing safety-relevant is ever locked here — see ReportPreview.tsx. */
-.report-preview {
-  margin-top: 32px;
-  padding: 24px;
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.03);
-}
-.report-preview h2 { margin: 0 0 8px; font-size: 1.12rem; }
-.report-preview-list { list-style: none; margin: 18px 0 0; padding: 0; }
-.report-preview-list li {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 13px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  color: var(--nura-cool-gray);
-}
-.report-preview-list li:first-child { border-top: 0; }
-.report-preview-index {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.74rem;
-  color: var(--nura-cyan);
-  flex-shrink: 0;
-}
-.report-preview-name { flex: 1; font-size: 0.92rem; line-height: 1.4; }
-.report-preview-lock { flex-shrink: 0; opacity: 0.55; }
 
-.result-guarantee {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 14px 0 0;
-  font-size: 0.86rem;
-  color: var(--nura-cool-gray);
-}
 
-/* --------------------------------------------------------- sticky offer */
-/* The offer follows the reader down a 3.8-screen page. Hidden until the free
-   result is behind them, and again while the real offer block is on screen. */
-.sticky-offer {
-  position: fixed;
-  inset-inline: 0;
-  bottom: 0;
-  z-index: 55;
-  padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
-  background: rgba(8, 11, 20, 0.92);
-  backdrop-filter: blur(12px);
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  transform: translateY(110%);
-  transition: transform 220ms ease;
-  pointer-events: none;
-}
-.sticky-offer.is-visible { transform: translateY(0); pointer-events: auto; }
-@media (prefers-reduced-motion: reduce) {
-  .sticky-offer { transition: none; }
-}
-.sticky-offer-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  max-width: 620px;
-  margin-inline: auto;
-}
-.sticky-offer-copy { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; }
-.sticky-offer-name {
-  font-size: 0.82rem;
-  color: var(--nura-cool-gray);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.sticky-offer-price { font-size: 1.02rem; font-weight: 600; }
-.sticky-offer .button { flex-shrink: 0; min-height: 44px; }
+
 
 /* Visible to screen readers, not on screen. Used where an icon carries meaning
    that would otherwise be announced once per row, or not at all. */
@@ -744,4 +678,67 @@ a { color: inherit; text-decoration: none; }
   clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
+}
+
+/* -------------------------------------------------------- status badge */
+.result-band-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.result-band-head .result-band-label { margin: 0; }
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.status-badge.is-attention { color: var(--status-attention); background: var(--status-attention-soft); }
+.status-badge.is-clear { color: var(--status-clear); background: var(--status-clear-soft); }
+
+/* ------------------------------------------------------ domain segments */
+/* One box per item, because the data is a count of items and not a ratio. */
+.domain-segments { display: flex; gap: 5px; margin-top: 10px; }
+.domain-segment {
+  flex: 1;
+  height: 10px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.11);
+}
+.domain-segment.is-filled { background: var(--nura-cyan); }
+
+/* ------------------------------------------- report sections in the offer */
+.report-sections { list-style: none; margin: 20px 0; padding: 0; }
+.report-sections li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  color: var(--nura-cool-gray);
+}
+.report-sections li:first-child { border-top: 0; }
+.report-section-index {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  color: var(--nura-cyan);
+  flex-shrink: 0;
+}
+.report-section-name { flex: 1; font-size: 0.9rem; line-height: 1.4; }
+.report-section-lock { flex-shrink: 0; opacity: 0.5; }
+
+.result-delivery {
+  margin: 14px 0 0;
+  font-size: 0.86rem;
+  color: var(--nura-cool-gray);
 }

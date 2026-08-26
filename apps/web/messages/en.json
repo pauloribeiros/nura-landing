@@ -358,10 +358,6 @@
     "nextNotElevated": "If the signs keep getting in the way day to day, seeing a professional still makes sense. Anxiety, depression, stress and sleep deprivation produce similar symptoms and deserve the same attention.",
     "premiumTitle": "Unlock your full NURA report",
     "premiumLead": "What you see here is an initial view. The report organises your answers and explains what the patterns mean day to day.",
-    "premiumB1": "Interpretation of each dimension, in context",
-    "premiumB2": "How inattention and impulsivity combine in your profile",
-    "premiumB3": "What to ask at an appointment, if you decide to seek one",
-    "premiumB4": "Immediate access on NURA and a copy sent to your email",
     "premiumPrice": "R$ 19.90",
     "premiumPriceNote": "one-time payment, no subscription",
     "premiumCta": "Unlock my full report",
@@ -374,9 +370,12 @@
       "home": "You said difficulty shows up most in your personal routine — concrete examples from that setting are worth taking to an appointment.",
       "several": "You reported difficulty across several settings. Appearing in more than one place is itself worth mentioning at an appointment."
     },
-    "guarantee": "Seven days to request a refund, no reason needed.",
     "stickyName": "Full report",
-    "stickyCta": "Unlock"
+    "stickyCta": "Unlock",
+    "badgeClear": "Below the cutoff",
+    "badgeAttention": "Worth investigating",
+    "domainSegmentsLabel": "{domain}: {flagged} of {total} items in the clinically relevant range.",
+    "deliveryNote": "Immediate access on NURA. After purchase you choose whether to receive a copy by email."
   },
   "consent": {
     "ariaLabel": "Privacy preferences",
