@@ -462,6 +462,28 @@
     "s6": {
       "elevated": "If you decide to see a professional — a psychiatrist, neurologist or psychologist experienced in adult ADHD — take this report. It does not replace the assessment, but it saves appointment time. A professional will investigate what a questionnaire cannot reach: when the signs began, how many settings they appear in, how much they actually interfere, and what else could explain them. Come prepared to talk about concrete, recent examples rather than general impressions.",
       "notElevated": "If the signs keep bothering you day to day, seeing a professional still makes sense, even with this result. A screening below the cutoff does not close the question — it only means this particular instrument did not find the pattern. Anxiety, depression, sleep deprivation and prolonged stress produce similar symptoms and deserve investigation of their own."
+    },
+    "print": "Save as PDF",
+    "meterLabel": "Part A items in the relevant range",
+    "meterCutoff": "Instrument cutoff: {cutoff} of 6.",
+    "flaggedLabel": "in the clinically relevant range",
+    "ofLabel": "of",
+    "distributionTitle": "How your answers were distributed",
+    "distributionItems": "items in total",
+    "stagesTitle": "Where this result sits",
+    "stages": {
+      "screening": {
+        "label": "Screening",
+        "body": "This is where you are. A short questionnaire that identifies who should be assessed. It does not say what someone has."
+      },
+      "assessment": {
+        "label": "Clinical assessment",
+        "body": "An interview with a professional, life history, further scales, and investigation of what else could explain the signs."
+      },
+      "diagnosis": {
+        "label": "Diagnostic conclusion",
+        "body": "Only a qualified professional reaches this, and not always at ADHD — some people receive another explanation, some receive none."
+      }
     }
   }
 }

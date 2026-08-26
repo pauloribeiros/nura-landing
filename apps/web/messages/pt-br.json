@@ -462,6 +462,28 @@
     "s6": {
       "elevated": "Se você decidir procurar um profissional — psiquiatra, neurologista ou psicólogo com experiência em TDAH adulto — leve este relatório. Ele não substitui a avaliação, mas poupa tempo de consulta. Um profissional vai investigar coisas que um questionário não alcança: quando os sinais começaram, em quantos contextos aparecem, o quanto atrapalham de fato, e o que mais poderia explicá-los. Vale chegar preparado para falar de exemplos concretos e recentes, não de impressões gerais.",
       "notElevated": "Se os sinais continuarem incomodando no dia a dia, procurar um profissional continua fazendo sentido, mesmo com este resultado. Um rastreio abaixo do ponto de corte não encerra a questão — apenas indica que este instrumento específico não encontrou o padrão. Ansiedade, depressão, privação de sono e estresse prolongado produzem sintomas parecidos e merecem investigação própria."
+    },
+    "print": "Salvar em PDF",
+    "meterLabel": "itens da Parte A na faixa relevante",
+    "meterCutoff": "Ponto de corte do instrumento: {cutoff} de 6.",
+    "flaggedLabel": "na faixa clinicamente relevante",
+    "ofLabel": "de",
+    "distributionTitle": "Como suas respostas se distribuíram",
+    "distributionItems": "itens no total",
+    "stagesTitle": "Onde este resultado se encaixa",
+    "stages": {
+      "screening": {
+        "label": "Rastreio",
+        "body": "É onde você está. Um questionário curto que identifica quem deve ser avaliado. Não diz o que a pessoa tem."
+      },
+      "assessment": {
+        "label": "Avaliação clínica",
+        "body": "Entrevista com um profissional, histórico de vida, escalas complementares e investigação do que mais poderia explicar os sinais."
+      },
+      "diagnosis": {
+        "label": "Conclusão diagnóstica",
+        "body": "Só um profissional habilitado chega aqui, e nem sempre chega em TDAH — parte das pessoas recebe outra explicação, parte não recebe nenhuma."
+      }
     }
   }
 }

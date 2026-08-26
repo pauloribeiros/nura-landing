@@ -1,4 +1,4 @@
-import { ASRS_DOMAINS, type AsrsDomain } from './instruments/asrs18';
+import { ASRS_DOMAINS, asrs18, type AsrsDomain } from './instruments/asrs18';
 import { isContextAnswer } from './context';
 import type { ScoreResult } from './types';
 
@@ -52,6 +52,22 @@ export interface ReportSection {
   noteKey?: string;
 }
 
+/**
+ * One answered item, with the frequency the person chose.
+ *
+ * Carried so the report can show the shape of the answers and not only the
+ * counts. The value is the instrument's own 0-4 scale; nothing is normalised
+ * or rescaled, because a rescaled frequency is no longer the answer given.
+ */
+export interface ItemResponse {
+  id: string;
+  /** 0..4 on the instrument's frequency scale. */
+  value: number;
+  domain: AsrsDomain;
+  part: 'A' | 'B';
+  flagged: boolean;
+}
+
 export interface ReportPlan {
   assessmentId: string;
   version: string;
@@ -59,6 +75,11 @@ export interface ReportPlan {
   scoringVersion: string;
   band: string;
   sections: ReportSection[];
+  /** Every item, in published order. Empty when the raw answers are absent. */
+  responses: ItemResponse[];
+  /** Count of items at each frequency, index 0..4. */
+  distribution: number[];
+  screen: { count: number; total: number; cutoff: number };
 }
 
 /** Flagged items for a domain, kept in the instrument's published order. */
@@ -84,6 +105,8 @@ export function balanceOf(inattention: number, hyperactivity: number): BalanceSh
 export function buildReportPlan(
   result: ScoreResult,
   contextAnswers: Record<string, string | undefined> = {},
+  /** Raw item values, 0-4. Optional: an older stored result may not have them. */
+  itemValues: Record<string, number> = {},
 ): ReportPlan {
   const band = result.bands['partA-screen'] ?? 'notElevated';
   const elevated = band === 'highlyConsistent';
@@ -140,12 +163,38 @@ export function buildReportPlan(
     },
   ];
 
+  // Which items are the six screening ones, taken from the instrument rather
+  // than from a list repeated here that could drift away from it.
+  const partA = new Set(
+    asrs18.questions.filter((q) => q.block === 'partA').map((q) => q.id),
+  );
+
+  // In published order within each domain, which is how the report reads them.
+  const responses: ItemResponse[] = (Object.keys(ASRS_DOMAINS) as AsrsDomain[]).flatMap(
+    (domain) =>
+      ASRS_DOMAINS[domain].map((id) => ({
+        id,
+        value: itemValues[id] ?? 0,
+        domain,
+        part: (partA.has(id) ? 'A' : 'B') as 'A' | 'B',
+        flagged: flagged.has(id),
+      })),
+  );
+
+  const distribution = [0, 0, 0, 0, 0];
+  for (const r of responses) {
+    if (r.value >= 0 && r.value <= 4) distribution[r.value] += 1;
+  }
+
   return {
     assessmentId: result.assessmentId,
     version: result.version,
     scoringVersion: result.scoringVersion,
     band,
     sections,
+    responses,
+    distribution,
+    screen: { count: screenCount, total: 6, cutoff: 4 },
   };
 }
 

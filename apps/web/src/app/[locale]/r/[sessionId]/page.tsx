@@ -8,7 +8,7 @@ import { SiteFooter } from '@/components/SiteFooter';
 import { ReportView } from '@/components/assessment/ReportView';
 import { loadReport } from '@/lib/assessment/loadReport';
 import { confirmCheckout } from '@/lib/payments/confirmCheckout';
-import { asrs18Prompts } from '@/domain/assessment/instruments/asrs18';
+import { asrs18ChoiceLabels, asrs18Prompts } from '@/domain/assessment/instruments/asrs18';
 
 /**
  * A person's report.
@@ -65,7 +65,11 @@ export default async function ReportPage({
         {/* The instrument only has published wording in pt-br, so a reader in
             another locale still sees the items as published rather than a
             translation NURA invented. */}
-        <ReportView plan={plan} prompts={asrs18Prompts[loc] ?? asrs18Prompts['pt-br']} />
+        <ReportView
+          plan={plan}
+          prompts={asrs18Prompts[loc] ?? asrs18Prompts['pt-br']}
+          choiceLabels={asrs18ChoiceLabels[loc] ?? asrs18ChoiceLabels['pt-br']}
+        />
       </main>
       <SiteFooter />
     </>

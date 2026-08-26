@@ -462,6 +462,28 @@
     "s6": {
       "elevated": "Si decides buscar un profesional — psiquiatra, neurólogo o psicólogo con experiencia en TDAH adulto — lleva este informe. No sustituye la evaluación, pero ahorra tiempo de consulta. Un profesional investigará lo que un cuestionario no alcanza: cuándo empezaron las señales, en cuántos contextos aparecen, cuánto interfieren de verdad, y qué más podría explicarlas. Conviene llegar preparado para hablar de ejemplos concretos y recientes, no de impresiones generales.",
       "notElevated": "Si las señales siguen molestando en el día a día, buscar un profesional sigue teniendo sentido, incluso con este resultado. Un cribado por debajo del punto de corte no cierra la cuestión — solo indica que este instrumento específico no encontró el patrón. Ansiedad, depresión, privación de sueño y estrés prolongado producen síntomas parecidos y merecen investigación propia."
+    },
+    "print": "Guardar en PDF",
+    "meterLabel": "ítems de la Parte A en el rango relevante",
+    "meterCutoff": "Punto de corte del instrumento: {cutoff} de 6.",
+    "flaggedLabel": "en el rango clínicamente relevante",
+    "ofLabel": "de",
+    "distributionTitle": "Cómo se distribuyeron tus respuestas",
+    "distributionItems": "ítems en total",
+    "stagesTitle": "Dónde encaja este resultado",
+    "stages": {
+      "screening": {
+        "label": "Cribado",
+        "body": "Aquí estás. Un cuestionario corto que identifica a quién debe evaluarse. No dice qué tiene la persona."
+      },
+      "assessment": {
+        "label": "Evaluación clínica",
+        "body": "Entrevista con un profesional, historia de vida, escalas complementarias e investigación de qué más podría explicar las señales."
+      },
+      "diagnosis": {
+        "label": "Conclusión diagnóstica",
+        "body": "Solo un profesional habilitado llega aquí, y no siempre a TDAH — parte de las personas recibe otra explicación, parte no recibe ninguna."
+      }
     }
   }
 }

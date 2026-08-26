@@ -5,6 +5,7 @@ import { createServerClient } from '@supabase/ssr';
 import { SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL, supabaseConfigured } from '@/lib/supabase/env';
 import { buildReportPlan, type ReportPlan } from '@/domain/assessment/report';
 import { isContextAnswer } from '@/domain/assessment/context';
+import { asrs18 } from '@/domain/assessment/instruments/asrs18';
 import type { ScoreResult } from '@/domain/assessment/types';
 
 /**
@@ -81,5 +82,16 @@ export async function loadReport(sessionId: string): Promise<ReportPlan | null> 
       .map((a) => [a.question_id, a.choice_id]),
   );
 
-  return buildReportPlan(result, context);
+  // The figures need the frequency chosen for each item, not only which ones
+  // cleared their threshold. Choice ids are turned into the instrument's own
+  // 0-4 values here rather than stored as numbers, so the scale stays the
+  // instrument's business.
+  const valueOf = new Map(asrs18.scales[0].choices.map((c) => [c.id, c.value]));
+  const itemValues = Object.fromEntries(
+    (answers ?? [])
+      .filter((a) => !isContextAnswer(a.question_id))
+      .map((a) => [a.question_id, valueOf.get(a.choice_id) ?? 0]),
+  );
+
+  return buildReportPlan(result, context, itemValues);
 }
