@@ -104,7 +104,10 @@ export async function POST(request: Request) {
     ],
     // Read back by the webhook. Both values were verified above.
     metadata: { sessionId, userId: auth.user.id, assessmentId: session.assessment_id },
-    success_url: `${SITE_URL}${reportPath(locale, sessionId)}?comprado=1`,
+    // `{CHECKOUT_SESSION_ID}` is substituted by Stripe. The report page uses
+    // it to confirm payment directly, so a redirect that outruns the webhook
+    // does not land a paying customer on a 404.
+    success_url: `${SITE_URL}${reportPath(locale, sessionId)}?pago={CHECKOUT_SESSION_ID}`,
     cancel_url: `${SITE_URL}/${locale}`,
   });
 

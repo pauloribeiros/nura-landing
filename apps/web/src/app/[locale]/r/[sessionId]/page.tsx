@@ -7,6 +7,7 @@ import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { ReportView } from '@/components/assessment/ReportView';
 import { loadReport } from '@/lib/assessment/loadReport';
+import { confirmCheckout } from '@/lib/payments/confirmCheckout';
 import { asrs18Prompts } from '@/domain/assessment/instruments/asrs18';
 
 /**
@@ -26,6 +27,7 @@ import { asrs18Prompts } from '@/domain/assessment/instruments/asrs18';
 export const dynamic = 'force-dynamic';
 
 type Params = Promise<{ locale: string; sessionId: string }>;
+type Search = Promise<{ pago?: string }>;
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { locale } = await params;
@@ -35,11 +37,22 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return { title: t('title'), robots: { index: false, follow: false } };
 }
 
-export default async function ReportPage({ params }: { params: Params }) {
+export default async function ReportPage({
+  params,
+  searchParams,
+}: {
+  params: Params;
+  searchParams: Search;
+}) {
   const { locale, sessionId } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   const loc = locale as Locale;
   setRequestLocale(loc);
+
+  // Arriving straight from checkout: confirm with Stripe before deciding, so
+  // a redirect that beat the webhook does not show a 404 to someone who paid.
+  const { pago } = await searchParams;
+  if (pago) await confirmCheckout(pago, sessionId);
 
   const plan = await loadReport(sessionId);
   // Not found and not yours give the same answer on purpose — see loadReport.
