@@ -972,3 +972,137 @@ a { color: inherit; text-decoration: none; }
 .report-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
 .report-brand-name { font-weight: 700; letter-spacing: 0.22em; font-size: 0.92rem; }
 .report-print { margin-top: 24px; }
+
+/* --------------------------------------------------------------- iq test */
+.iq-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 10px; }
+.iq-timer {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.9rem;
+  color: var(--nura-cool-gray);
+  font-variant-numeric: tabular-nums;
+  min-width: 5ch;
+  text-align: right;
+}
+
+.iq-enunciado { margin: 28px 0 20px; font-size: 1.06rem; line-height: 1.5; }
+
+/* Sequences and analogies read term by term, so the terms line up. */
+.iq-stimulus-text {
+  margin: 0 0 24px;
+  padding: 18px 20px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  font-family: var(--font-mono, monospace);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  overflow-x: auto;
+}
+
+/* The figures are black line art drawn for paper — on the near-black page they
+   need their own white ground or they simply do not exist. */
+.iq-figure {
+  display: block;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.iq-figure svg { display: block; width: 100%; height: auto; }
+.iq-figure-stimulus { max-width: 320px; margin: 0 auto 28px; }
+
+.iq-options { display: grid; gap: 10px; margin-bottom: 28px; }
+.iq-options.is-figures { grid-template-columns: 1fr 1fr; }
+.iq-options.is-text { grid-template-columns: 1fr; }
+
+.iq-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  transition: border-color 140ms ease, background 140ms ease;
+}
+.iq-options.is-figures .iq-option { flex-direction: column; align-items: stretch; }
+.iq-option:hover { border-color: rgba(255, 255, 255, 0.28); }
+.iq-option.is-chosen { border-color: var(--nura-cyan); background: rgba(34, 211, 229, 0.08); }
+/* The real input drives every state; it is hidden, never removed. */
+.iq-option input { position: absolute; opacity: 0; width: 0; height: 0; }
+.iq-option:has(input:focus-visible) { outline: 3px solid var(--nura-cyan); outline-offset: 2px; }
+
+.iq-option-letter {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.76rem;
+}
+.iq-options.is-figures .iq-option-letter { margin-bottom: 8px; }
+.iq-option.is-chosen .iq-option-letter { background: var(--nura-cyan); color: var(--nura-obsidian); }
+.iq-option-text { flex: 1; font-size: 0.95rem; line-height: 1.45; }
+.iq-option-check { flex-shrink: 0; color: var(--nura-cyan); }
+.iq-options.is-figures .iq-option-check { position: absolute; top: 12px; right: 12px; }
+
+/* --- working memory --- */
+.iq-memory-show { text-align: center; padding: 32px 0 12px; }
+.iq-memory-hint {
+  margin: 0 0 24px;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--nura-cyan);
+}
+.iq-memory-stimulus {
+  margin: 0 0 20px;
+  font-family: var(--font-mono, monospace);
+  font-size: clamp(2rem, 11vw, 3.4rem);
+  letter-spacing: 0.22em;
+  font-variant-numeric: tabular-nums;
+  word-break: break-word;
+}
+.iq-memory-countdown { margin: 0 0 28px; font-size: 0.9rem; color: var(--nura-cool-gray); }
+.iq-memory-gone {
+  margin: 0 0 28px;
+  min-height: clamp(3rem, 14vw, 4.6rem);
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  letter-spacing: 0.4em;
+  color: var(--nura-cool-gray);
+  opacity: 0.4;
+}
+
+.iq-free-entry { margin-bottom: 28px; }
+.iq-free-entry-field { display: block; }
+.iq-free-entry-field span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.84rem;
+  color: var(--nura-cool-gray);
+}
+.iq-free-entry-field input {
+  width: 100%;
+  min-height: 58px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  background: rgba(0, 0, 0, 0.25);
+  color: inherit;
+  font-family: var(--font-mono, monospace);
+  font-size: 1.4rem;
+  letter-spacing: 0.16em;
+  text-align: center;
+}
+.iq-free-entry-field input:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 2px; }
+
+@media (max-width: 380px) {
+  .iq-options.is-figures { gap: 8px; }
+  .iq-option { padding: 10px; }
+}

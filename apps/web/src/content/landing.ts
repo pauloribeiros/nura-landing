@@ -43,9 +43,11 @@ export const ASSESSMENTS: AssessmentEntry[] = [
   {
     id: 'cognition',
     index: '03',
-    slug: { 'pt-br': 'perfil-cognitivo', en: 'cognitive-profile', es: 'perfil-cognitivo' },
+    // Slug is "qi" because that is what people search for, even though the
+    // product never claims to produce an IQ score — see the disclaimer.
+    slug: { 'pt-br': 'qi', en: 'iq', es: 'ci' },
     featured: false,
-    available: false,
+    available: true,
   },
   {
     id: 'giftedness',
@@ -111,6 +113,9 @@ export const ASSESSMENT_RUN_LOCALES: Record<string, Locale[]> = {
   attention: asrs18Locales.filter((l): l is Locale =>
     (locales as readonly string[]).includes(l),
   ),
+  // The IQ items are NURA's own, written for the product, so there is no
+  // licensed translation to wait for — the copy is translated like the rest.
+  cognition: [...locales],
 };
 
 export const canRunAssessment = (locale: Locale, a: AssessmentEntry) =>

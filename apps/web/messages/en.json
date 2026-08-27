@@ -105,8 +105,40 @@
       "description": "Communication, interaction, routine and sensory processing."
     },
     "cognition": {
-      "title": "Cognition",
-      "description": "Reasoning, patterns, memory and attention."
+      "title": "IQ test",
+      "description": "Reasoning, patterns, memory and perception across 45 questions.",
+      "landing": {
+        "metaTitle": "Online IQ test — 45-question reasoning assessment | NURA",
+        "metaDescription": "A reasoning assessment with 45 questions across six cognitive dimensions: patterns, logic, matrices, spatial orientation, visual perception and working memory. Immediate result.",
+        "eyebrow": "Assessment 03",
+        "heroLine1": "IQ test:",
+        "heroLine2": "reasoning across",
+        "heroLine3": "six dimensions.",
+        "lead": "Forty-five questions of increasing difficulty, timed. You get a profile per dimension, not just a number.",
+        "intro": "Most online IQ tests hand back a number and nothing else. This one hands back where your reasoning holds and where it slips — because knowing you do better on patterns than on mental rotation is more useful than any score on its own.",
+        "forWhom": "For anyone curious about how their own thinking works who wants something more consistent than a social-media quiz. It serves as self-knowledge and as a starting point — not as a clinical assessment, and not as grounds for a career or study decision.",
+        "methodology": "Forty-five original items, written for NURA, across six dimensions: pattern recognition, analytical thinking, abstract reasoning, spatial orientation, visual perception and working memory. Difficulty rises through the test, and each correct answer is weighted by how hard the item is. Total time is recorded and shifts the result slightly — being right counts for far more than being fast.",
+        "limits": "This test does not produce an IQ. An IQ score is a normalised position within a standardisation sample, controlled for age and education, administered by a qualified professional — none of which exists here. What you get is a score on NURA's own scale and a performance profile by dimension. It is not for diagnosis, does not measure intelligence in full, and does not replace psychological assessment.",
+        "disclaimer": "A reasoning assessment for self-knowledge. It is not a psychological test, a diagnosis or a professional opinion.",
+        "covers": {
+          "focus": {
+            "title": "Patterns and logic",
+            "copy": "Number series and analogies: how you spot the rule behind a sequence and carry it forward."
+          },
+          "organisation": {
+            "title": "Abstract reasoning",
+            "copy": "Visual matrices where the answer depends on seeing the transformation, with no help from language."
+          },
+          "impulsivity": {
+            "title": "Space and perception",
+            "copy": "Mental rotation of figures, and spotting the element that breaks the pattern in a grid."
+          },
+          "routine": {
+            "title": "Working memory",
+            "copy": "Sequences shown for seconds and asked about after other questions have come in between."
+          }
+        }
+      }
     },
     "giftedness": {
       "title": "Giftedness",
@@ -478,6 +510,35 @@
         "label": "Diagnostic conclusion",
         "body": "Only a qualified professional reaches this, and not always at ADHD — some people receive another explanation, some receive none."
       }
+    }
+  },
+  "iq": {
+    "eyebrow": "Before you start",
+    "title": "Reasoning, attention and memory across 45 questions.",
+    "lead": "Forty-five questions across six cognitive dimensions, getting harder as you go. It takes 15 to 25 minutes.",
+    "note1": "Work at your own pace. Time is recorded, but being right counts for far more than being fast.",
+    "note2": "Some questions show something for a few seconds and ask about it later. Pay attention when that happens.",
+    "note3": "No paper, calculator or searching — the result is only useful if it reflects you.",
+    "disclaimer": "A reasoning assessment for self-knowledge. It is not a clinical IQ test, produces no diagnosis and does not replace assessment by a qualified professional.",
+    "start": "Start",
+    "progress": "{answered} of {total} answered",
+    "continue": "Continue",
+    "back": "Back",
+    "finish": "See my result",
+    "answerToContinue": "Answer to continue.",
+    "memoryHint": "Memorise this. It will disappear.",
+    "memorySeconds": "Disappears in {n}s",
+    "freeEntryLabel": "Type what you memorised",
+    "freeEntryPlaceholder": "0 0 0 0 0",
+    "freeEntryHint": "With or without spaces, either is fine.",
+    "computing": "Working out your result…",
+    "dimensions": {
+      "reconhecimento_padroes": "Pattern recognition",
+      "pensamento_analitico": "Analytical thinking",
+      "raciocinio_abstrato": "Abstract reasoning",
+      "orientacao_espacial": "Spatial orientation",
+      "percepcao_visual": "Visual perception",
+      "memoria_trabalho": "Working memory"
     }
   }
 }

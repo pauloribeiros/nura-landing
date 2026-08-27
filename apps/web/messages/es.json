@@ -105,8 +105,40 @@
       "description": "Comunicación, interacción, rutina y procesamiento sensorial."
     },
     "cognition": {
-      "title": "Cognición",
-      "description": "Razonamiento, patrones, memoria y atención."
+      "title": "Test de CI",
+      "description": "Razonamiento, patrones, memoria y percepción en 45 preguntas.",
+      "landing": {
+        "metaTitle": "Test de CI online — evaluación de razonamiento en 45 preguntas | NURA",
+        "metaDescription": "Evaluación de razonamiento con 45 preguntas en seis dimensiones cognitivas: patrones, lógica, matrices, orientación espacial, percepción visual y memoria de trabajo. Resultado inmediato.",
+        "eyebrow": "Evaluación 03",
+        "heroLine1": "Test de CI:",
+        "heroLine2": "razonamiento en",
+        "heroLine3": "seis dimensiones.",
+        "lead": "45 preguntas de dificultad creciente, cronometradas. Recibes un perfil por dimensión, no solo un número.",
+        "intro": "La mayoría de los tests de CI online devuelve un número y nada más. Este devuelve dónde se sostiene tu razonamiento y dónde resbala — porque saber que te va mejor en patrones que en rotación mental es más útil que cualquier puntuación aislada.",
+        "forWhom": "Para quien siente curiosidad por su propio funcionamiento cognitivo y quiere algo más consistente que un cuestionario de redes sociales. Sirve como autoconocimiento y como punto de partida — no como evaluación clínica ni como criterio para decidir carrera o estudios.",
+        "methodology": "Son 45 ítems originales, creados por NURA, repartidos en seis dimensiones: reconocimiento de patrones, pensamiento analítico, razonamiento abstracto, orientación espacial, percepción visual y memoria de trabajo. La dificultad crece a lo largo del test, y cada acierto pesa según la dificultad del ítem. El tiempo total se registra e influye levemente en el resultado — acertar pesa mucho más que ser rápido.",
+        "limits": "Este test no produce un CI. Una puntuación de CI es una posición normalizada dentro de una muestra de estandarización, con control de edad y escolaridad, aplicada por un profesional habilitado — nada de eso existe aquí. Lo que recibes es una puntuación en la escala de NURA y un perfil de desempeño por dimensión. No sirve para diagnóstico, no mide la inteligencia de forma completa y no sustituye la evaluación psicológica.",
+        "disclaimer": "Evaluación de razonamiento para autoconocimiento. No constituye test psicológico, diagnóstico ni dictamen profesional.",
+        "covers": {
+          "focus": {
+            "title": "Patrones y lógica",
+            "copy": "Series numéricas y analogías: cómo identificas la regla detrás de una secuencia y la aplicas adelante."
+          },
+          "organisation": {
+            "title": "Razonamiento abstracto",
+            "copy": "Matrices visuales donde la respuesta depende de percibir la transformación, sin apoyo del lenguaje."
+          },
+          "impulsivity": {
+            "title": "Espacio y percepción",
+            "copy": "Rotación mental de figuras y detección del elemento fuera del patrón en una cuadrícula."
+          },
+          "routine": {
+            "title": "Memoria de trabajo",
+            "copy": "Secuencias que aparecen por segundos y se preguntan después de otras preguntas en medio."
+          }
+        }
+      }
     },
     "giftedness": {
       "title": "Altas capacidades",
@@ -478,6 +510,35 @@
         "label": "Conclusión diagnóstica",
         "body": "Solo un profesional habilitado llega aquí, y no siempre a TDAH — parte de las personas recibe otra explicación, parte no recibe ninguna."
       }
+    }
+  },
+  "iq": {
+    "eyebrow": "Antes de empezar",
+    "title": "Razonamiento, atención y memoria en 45 preguntas.",
+    "lead": "Son 45 preguntas en seis dimensiones cognitivas, de dificultad creciente. Lleva de 15 a 25 minutos.",
+    "note1": "Ve a tu ritmo. El tiempo se registra, pero acertar pesa mucho más que ser rápido.",
+    "note2": "Algunas preguntas muestran algo unos segundos y lo preguntan después. Presta atención cuando ocurra.",
+    "note3": "Sin papel, calculadora ni búsquedas — el resultado solo sirve si te refleja.",
+    "disclaimer": "Evaluación de razonamiento para autoconocimiento. No es un test de CI clínico, no produce diagnóstico y no sustituye la evaluación de un profesional habilitado.",
+    "start": "Empezar",
+    "progress": "{answered} de {total} respondidas",
+    "continue": "Continuar",
+    "back": "Volver",
+    "finish": "Ver mi resultado",
+    "answerToContinue": "Responde para continuar.",
+    "memoryHint": "Memoriza. Esto va a desaparecer.",
+    "memorySeconds": "Desaparece en {n}s",
+    "freeEntryLabel": "Escribe lo que memorizaste",
+    "freeEntryPlaceholder": "0 0 0 0 0",
+    "freeEntryHint": "Puedes escribir con o sin espacios.",
+    "computing": "Calculando tu resultado…",
+    "dimensions": {
+      "reconhecimento_padroes": "Reconocimiento de patrones",
+      "pensamento_analitico": "Pensamiento analítico",
+      "raciocinio_abstrato": "Razonamiento abstracto",
+      "orientacao_espacial": "Orientación espacial",
+      "percepcao_visual": "Percepción visual",
+      "memoria_trabalho": "Memoria de trabajo"
     }
   }
 }

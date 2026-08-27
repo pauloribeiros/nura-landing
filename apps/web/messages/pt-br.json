@@ -105,8 +105,40 @@
       "description": "Comunicação, interação, rotina e processamento sensorial."
     },
     "cognition": {
-      "title": "Cognição",
-      "description": "Raciocínio, padrões, memória e atenção."
+      "title": "Teste de QI",
+      "description": "Raciocínio, padrões, memória e percepção em 45 questões.",
+      "landing": {
+        "metaTitle": "Teste de QI online — avaliação de raciocínio em 45 questões | NURA",
+        "metaDescription": "Avaliação de raciocínio com 45 questões em seis dimensões cognitivas: padrões, lógica, matrizes, orientação espacial, percepção visual e memória de trabalho. Resultado imediato.",
+        "eyebrow": "Avaliação 03",
+        "heroLine1": "Teste de QI:",
+        "heroLine2": "raciocínio em",
+        "heroLine3": "seis dimensões.",
+        "lead": "45 questões de dificuldade crescente, cronometradas. Você recebe um perfil por dimensão, não apenas um número.",
+        "intro": "A maior parte dos testes de QI online devolve um número e nada mais. Este devolve onde seu raciocínio se sustenta e onde ele escorrega — porque saber que você vai melhor em padrões do que em rotação mental é mais útil do que qualquer pontuação isolada.",
+        "forWhom": "Para quem tem curiosidade sobre o próprio funcionamento cognitivo e quer algo mais consistente que um quiz de rede social. Serve como autoconhecimento e como ponto de partida — não como avaliação clínica nem como critério para decisão de carreira ou estudo.",
+        "methodology": "São 45 itens originais, criados pela NURA, distribuídos em seis dimensões: reconhecimento de padrões, pensamento analítico, raciocínio abstrato, orientação espacial, percepção visual e memória de trabalho. A dificuldade cresce ao longo do teste, e cada acerto pesa conforme a dificuldade do item. O tempo total é registrado e influencia levemente o resultado — acertar pesa muito mais que ser rápido.",
+        "limits": "Este teste não produz um QI. Um escore de QI é uma posição normalizada dentro de uma amostra de padronização, com controle de idade e escolaridade, aplicado por profissional habilitado — nada disso existe aqui. O que você recebe é uma pontuação na escala da NURA e um perfil de desempenho por dimensão. Não serve para diagnóstico, não mede inteligência de forma completa e não substitui avaliação psicológica.",
+        "disclaimer": "Avaliação de raciocínio para autoconhecimento. Não constitui teste psicológico, diagnóstico ou parecer profissional.",
+        "covers": {
+          "focus": {
+            "title": "Padrões e lógica",
+            "copy": "Séries numéricas e analogias: como você identifica a regra por trás de uma sequência e a aplica adiante."
+          },
+          "organisation": {
+            "title": "Raciocínio abstrato",
+            "copy": "Matrizes visuais em que a resposta depende de perceber a transformação, sem apoio de linguagem."
+          },
+          "impulsivity": {
+            "title": "Espaço e percepção",
+            "copy": "Rotação mental de figuras e detecção do elemento fora do padrão numa grade."
+          },
+          "routine": {
+            "title": "Memória de trabalho",
+            "copy": "Sequências que aparecem por segundos e são cobradas depois de outras questões no meio."
+          }
+        }
+      }
     },
     "giftedness": {
       "title": "Altas habilidades",
@@ -478,6 +510,35 @@
         "label": "Conclusão diagnóstica",
         "body": "Só um profissional habilitado chega aqui, e nem sempre chega em TDAH — parte das pessoas recebe outra explicação, parte não recebe nenhuma."
       }
+    }
+  },
+  "iq": {
+    "eyebrow": "Antes de começar",
+    "title": "Raciocínio, atenção e memória em 45 questões.",
+    "lead": "São 45 questões em seis dimensões cognitivas, de dificuldade crescente. Leva de 15 a 25 minutos.",
+    "note1": "Responda no seu ritmo. O tempo é registrado, mas acertar pesa muito mais que ser rápido.",
+    "note2": "Algumas questões mostram algo por poucos segundos e cobram depois. Preste atenção quando isso aparecer.",
+    "note3": "Não use papel, calculadora ou busca — o resultado só serve se refletir você.",
+    "disclaimer": "Avaliação de raciocínio para autoconhecimento. Não é um teste de QI clínico, não produz diagnóstico e não substitui avaliação de um profissional habilitado.",
+    "start": "Começar",
+    "progress": "{answered} de {total} respondidas",
+    "continue": "Continuar",
+    "back": "Voltar",
+    "finish": "Ver meu resultado",
+    "answerToContinue": "Responda para continuar.",
+    "memoryHint": "Memorize. Isto vai desaparecer.",
+    "memorySeconds": "Desaparece em {n}s",
+    "freeEntryLabel": "Digite o que você memorizou",
+    "freeEntryPlaceholder": "0 0 0 0 0",
+    "freeEntryHint": "Pode digitar com ou sem espaços.",
+    "computing": "Calculando seu resultado…",
+    "dimensions": {
+      "reconhecimento_padroes": "Reconhecimento de padrões",
+      "pensamento_analitico": "Pensamento analítico",
+      "raciocinio_abstrato": "Raciocínio abstrato",
+      "orientacao_espacial": "Orientação espacial",
+      "percepcao_visual": "Percepção visual",
+      "memoria_trabalho": "Memória de trabalho"
     }
   }
 }

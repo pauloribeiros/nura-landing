@@ -21,6 +21,8 @@ import {
 } from '@/content/landing';
 import { asrs18, asrs18ChoiceLabels, asrs18Prompts } from '@/domain/assessment/instruments/asrs18';
 import { AssessmentRunner } from '@/components/assessment/AssessmentRunner';
+import { IqIntro } from '@/components/iq/IqIntro';
+import { publicItems } from '@/domain/iq/bank';
 import { AssessmentUnavailable } from '@/components/assessment/AssessmentUnavailable';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
@@ -98,23 +100,39 @@ export default async function AssessmentPage({ params }: { params: Params }) {
   setRequestLocale(locale);
 
   if (kind === 'assessment') {
+    // Which runner belongs to which assessment. A questionnaire and a timed
+    // reasoning test have almost nothing in common beyond the URL, so the
+    // dispatch is explicit rather than an abstraction over both.
+    const runner = () => {
+      if (!canRunAssessment(locale, assessment)) {
+        return (
+          <AssessmentUnavailable
+            fallbackHref={assessmentLandingPath(routing.defaultLocale, assessment)}
+          />
+        );
+      }
+
+      if (assessment.id === 'cognition') {
+        // The bank is read on the server and handed over already stripped of
+        // the answer key, so it travels in the page payload rather than in the
+        // JavaScript bundle of every visitor who never opens the test.
+        return <IqIntro items={publicItems()} />;
+      }
+
+      return (
+        <AssessmentRunner
+          definition={asrs18}
+          prompts={asrs18Prompts[locale]}
+          choiceLabels={asrs18ChoiceLabels[locale]}
+          locale={locale}
+        />
+      );
+    };
+
     return (
       <>
         <SiteHeader locale={locale} />
-        <main className="page page-dark">
-          {canRunAssessment(locale, assessment) ? (
-            <AssessmentRunner
-              definition={asrs18}
-              prompts={asrs18Prompts[locale]}
-              choiceLabels={asrs18ChoiceLabels[locale]}
-              locale={locale}
-            />
-          ) : (
-            <AssessmentUnavailable
-              fallbackHref={assessmentLandingPath(routing.defaultLocale, assessment)}
-            />
-          )}
-        </main>
+        <main className="page page-dark">{runner()}</main>
         <SiteFooter />
       </>
     );
