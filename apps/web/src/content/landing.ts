@@ -1,4 +1,5 @@
-import type { Locale } from '@/i18n/routing';
+import { locales, type Locale } from '@/i18n/routing';
+import { asrs18Locales } from '@/domain/assessment/instruments/asrs18';
 
 /**
  * Structure of the product content. Every user-facing string lives in
@@ -97,12 +98,19 @@ export function sectionKind(locale: Locale, segment: string): 'catalog' | 'asses
 }
 
 /**
- * Locales an assessment can actually be taken in. An instrument without an
- * officially validated translation is not offered rather than machine
- * translated, so the landing may exist in a locale the run does not.
+ * Locales an assessment can actually be taken in, so the landing may exist in
+ * a locale the run does not.
+ *
+ * Derived from each instrument rather than listed here. This used to be a
+ * hand-kept map, which meant the same fact lived in two files. The drift that
+ * causes is not cosmetic: it would let a locale be offered whose items are
+ * still a draft translation of a clinical instrument. The instrument owns the
+ * answer; this only asks it.
  */
 export const ASSESSMENT_RUN_LOCALES: Record<string, Locale[]> = {
-  attention: ['pt-br'],
+  attention: asrs18Locales.filter((l): l is Locale =>
+    (locales as readonly string[]).includes(l),
+  ),
 };
 
 export const canRunAssessment = (locale: Locale, a: AssessmentEntry) =>

@@ -118,43 +118,115 @@ export const asrs18: AssessmentDefinition = {
 };
 
 /**
- * Item prompts, per locale. Only locales with an officially validated
- * translation appear here: translating a validated instrument ourselves would
- * void the validation and breach the licence.
+ * The instrument's wording, per locale.
+ *
+ * `wording` records where each text came from, and it is not decoration. An
+ * item with one word changed measures something slightly different, and the
+ * ASRS licence forbids modifying the instrument — so a locale may only be
+ * offered once its text is the published one.
+ *
+ *  - `published` — transcribed from the official document for that language.
+ *  - `draft`     — written from knowledge of the instrument and NOT yet checked
+ *                  against the official document. Never offered to anyone.
+ *
+ * English is the source language: the ASRS-v1.1 was written in English by the
+ * WHO with Harvard, so using it is not translating. It still starts as a draft
+ * until someone compares it line by line with the published checklist.
+ *
+ * Spanish is absent on purpose. An official Spanish version exists, but
+ * producing one here would mean translating a validated instrument, which
+ * voids the validation. It drops in the moment the official text is at hand.
  */
-export const asrs18Prompts: Record<string, Record<string, string>> = {
+export interface LocalisedWording {
+  wording: 'published' | 'draft';
+  /** Where the text came from, so the claim above can be checked. */
+  source: string;
+  prompts: Record<string, string>;
+  choiceLabels: Record<string, string>;
+}
+
+export const ASRS_WORDING: Record<string, LocalisedWording> = {
   'pt-br': {
-    q1: 'Com que frequência você deixa um projeto pela metade depois de já ter feito as partes mais difíceis?',
-    q2: 'Com que frequência você tem dificuldade para fazer um trabalho que exige organização?',
-    q3: 'Com que frequência você tem dificuldade para lembrar de compromissos ou obrigações?',
-    q4: 'Quando você precisa fazer algo que exige muita concentração, com que frequência você evita ou adia o início?',
-    q5: 'Com que frequência você fica se mexendo na cadeira ou balançando as mãos ou os pés quando precisa ficar sentado(a) por muito tempo?',
-    q6: 'Com que frequência você se sente ativo(a) demais e necessitando fazer coisas, como se estivesse com um motor ligado?',
-    q7: 'Com que frequência você comete erros bobos por falta de atenção quando tem de trabalhar num projeto chato ou difícil?',
-    q8: 'Com que frequência você tem dificuldade para manter a atenção quando está fazendo um trabalho chato ou repetitivo?',
-    q9: 'Com que frequência você tem dificuldade para se concentrar no que as pessoas dizem, mesmo quando elas estão falando diretamente com você?',
-    q10: 'Com que frequência você coloca as coisas fora do lugar ou tem dificuldade de encontrar as coisas em casa ou no trabalho?',
-    q11: 'Com que frequência você se distrai com atividades ou barulho a sua volta?',
-    q12: 'Com que frequência você se levanta da cadeira em reuniões ou em outras situações onde deveria ficar sentado(a)?',
-    q13: 'Com que frequência você se sente inquieto(a) ou agitado(a)?',
-    q14: 'Com que frequência você tem dificuldade para sossegar e relaxar quando tem tempo livre para você?',
-    q15: 'Com que frequência você se pega falando demais em situações sociais?',
-    q16: 'Quando você está conversando, com que frequência você se pega terminando as frases das pessoas antes delas?',
-    q17: 'Com que frequência você tem dificuldade para esperar nas situações onde cada um tem a sua vez?',
-    q18: 'Com que frequência você interrompe os outros quando eles estão ocupados?',
+    wording: 'published',
+    source: 'Adaptacao brasileira (Mattos et al.), transcrita do PDF distribuido pela ABDA',
+    prompts: {
+      q1: 'Com que frequência você deixa um projeto pela metade depois de já ter feito as partes mais difíceis?',
+      q2: 'Com que frequência você tem dificuldade para fazer um trabalho que exige organização?',
+      q3: 'Com que frequência você tem dificuldade para lembrar de compromissos ou obrigações?',
+      q4: 'Quando você precisa fazer algo que exige muita concentração, com que frequência você evita ou adia o início?',
+      q5: 'Com que frequência você fica se mexendo na cadeira ou balançando as mãos ou os pés quando precisa ficar sentado(a) por muito tempo?',
+      q6: 'Com que frequência você se sente ativo(a) demais e necessitando fazer coisas, como se estivesse com um motor ligado?',
+      q7: 'Com que frequência você comete erros bobos por falta de atenção quando tem de trabalhar num projeto chato ou difícil?',
+      q8: 'Com que frequência você tem dificuldade para manter a atenção quando está fazendo um trabalho chato ou repetitivo?',
+      q9: 'Com que frequência você tem dificuldade para se concentrar no que as pessoas dizem, mesmo quando elas estão falando diretamente com você?',
+      q10: 'Com que frequência você coloca as coisas fora do lugar ou tem dificuldade de encontrar as coisas em casa ou no trabalho?',
+      q11: 'Com que frequência você se distrai com atividades ou barulho a sua volta?',
+      q12: 'Com que frequência você se levanta da cadeira em reuniões ou em outras situações onde deveria ficar sentado(a)?',
+      q13: 'Com que frequência você se sente inquieto(a) ou agitado(a)?',
+      q14: 'Com que frequência você tem dificuldade para sossegar e relaxar quando tem tempo livre para você?',
+      q15: 'Com que frequência você se pega falando demais em situações sociais?',
+      q16: 'Quando você está conversando, com que frequência você se pega terminando as frases das pessoas antes delas?',
+      q17: 'Com que frequência você tem dificuldade para esperar nas situações onde cada um tem a sua vez?',
+      q18: 'Com que frequência você interrompe os outros quando eles estão ocupados?',
+    },
+    choiceLabels: {
+      never: 'Nunca',
+      rarely: 'Quase nunca',
+      sometimes: 'De vez em quando',
+      often: 'Quase sempre',
+      'very-often': 'Sempre',
+    },
+  },
+
+  en: {
+    wording: 'draft',
+    source: 'ASRS-v1.1 source language (WHO / Harvard) — NOT yet checked against the published checklist',
+    prompts: {
+      q1: 'How often do you have trouble wrapping up the final details of a project, once the challenging parts have been done?',
+      q2: 'How often do you have difficulty getting things in order when you have to do a task that requires organization?',
+      q3: 'How often do you have problems remembering appointments or obligations?',
+      q4: 'When you have a task that requires a lot of thought, how often do you avoid or delay getting started?',
+      q5: 'How often do you fidget or squirm with your hands or feet when you have to sit down for a long time?',
+      q6: 'How often do you feel overly active and compelled to do things, like you were driven by a motor?',
+      q7: 'How often do you make careless mistakes when you have to work on a boring or difficult project?',
+      q8: 'How often do you have difficulty keeping your attention when you are doing boring or repetitive work?',
+      q9: 'How often do you have difficulty concentrating on what people say to you, even when they are speaking to you directly?',
+      q10: 'How often do you misplace or have difficulty finding things at home or at work?',
+      q11: 'How often are you distracted by activity or noise around you?',
+      q12: 'How often do you leave your seat in meetings or other situations in which you are expected to remain seated?',
+      q13: 'How often do you feel restless or fidgety?',
+      q14: 'How often do you have difficulty unwinding and relaxing when you have time to yourself?',
+      q15: 'How often do you find yourself talking too much when you are in social situations?',
+      q16: 'When you are in a conversation, how often do you find yourself finishing the sentences of the people you are talking to, before they can finish it themselves?',
+      q17: 'How often do you have difficulty waiting your turn in situations when turn taking is required?',
+      q18: 'How often do you interrupt others when they are busy?',
+    },
+    choiceLabels: {
+      never: 'Never',
+      rarely: 'Rarely',
+      sometimes: 'Sometimes',
+      often: 'Often',
+      'very-often': 'Very often',
+    },
   },
 };
 
-/** Choice labels, per locale. Same rule as the prompts. */
-export const asrs18ChoiceLabels: Record<string, Record<string, string>> = {
-  'pt-br': {
-    never: 'Nunca',
-    rarely: 'Quase nunca',
-    sometimes: 'De vez em quando',
-    often: 'Quase sempre',
-    'very-often': 'Sempre',
-  },
-};
+/**
+ * Locales the instrument may actually be offered in.
+ *
+ * Derived from the wording status rather than kept as a second list somewhere
+ * else — two lists of the same fact drift apart, and the drift here means
+ * offering a draft translation of a clinical instrument to a real person.
+ */
+export const asrs18Locales = Object.entries(ASRS_WORDING)
+  .filter(([, w]) => w.wording === 'published')
+  .map(([locale]) => locale);
 
-/** Locales the instrument can actually be offered in today. */
-export const asrs18Locales = Object.keys(asrs18Prompts);
+/** Prompts for every locale, drafts included. Gate on `asrs18Locales`. */
+export const asrs18Prompts: Record<string, Record<string, string>> = Object.fromEntries(
+  Object.entries(ASRS_WORDING).map(([locale, w]) => [locale, w.prompts]),
+);
+
+export const asrs18ChoiceLabels: Record<string, Record<string, string>> = Object.fromEntries(
+  Object.entries(ASRS_WORDING).map(([locale, w]) => [locale, w.choiceLabels]),
+);
