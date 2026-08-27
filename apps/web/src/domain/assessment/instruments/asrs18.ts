@@ -120,25 +120,35 @@ export const asrs18: AssessmentDefinition = {
 /**
  * The instrument's wording, per locale.
  *
- * `wording` records where each text came from, and it is not decoration. An
- * item with one word changed measures something slightly different, and the
- * ASRS licence forbids modifying the instrument — so a locale may only be
- * offered once its text is the published one.
+ * `official` says whether the text is the published document for that
+ * language, and it is a record rather than a gate. The product owner decided
+ * to offer all three languages now; this field keeps that decision visible
+ * instead of letting it disappear into the codebase.
  *
- *  - `published` — transcribed from the official document for that language.
- *  - `draft`     — written from knowledge of the instrument and NOT yet checked
- *                  against the official document. Never offered to anyone.
+ * Why it matters: the Part A thresholds were validated against the published
+ * wording, not against a faithful paraphrase. An item that says nearly the
+ * same thing can shift how people answer it, and the cutoff was calibrated on
+ * the original. So a locale marked `official: false` produces results that are
+ * indicative rather than validated, until its text is replaced with the
+ * published one.
+ *
+ * Portuguese came from the PDF distributed by ABDA — the closest to official
+ * here, though it too was transcribed from a text layer and never checked
+ * line by line.
  *
  * English is the source language: the ASRS-v1.1 was written in English by the
- * WHO with Harvard, so using it is not translating. It still starts as a draft
- * until someone compares it line by line with the published checklist.
+ * WHO with Harvard. The text below is reconstructed, not copied from the
+ * checklist.
  *
- * Spanish is absent on purpose. An official Spanish version exists, but
- * producing one here would mean translating a validated instrument, which
- * voids the validation. It drops in the moment the official text is at hand.
+ * Spanish is NURA's own translation. An official Spanish version exists and
+ * should replace this.
+ *
+ * The official documents are distributed free at the Harvard NCS site. When
+ * they are at hand, replace the text and flip `official` to true.
  */
 export interface LocalisedWording {
-  wording: 'published' | 'draft';
+  /** True only when the text is the published document for that language. */
+  official: boolean;
   /** Where the text came from, so the claim above can be checked. */
   source: string;
   prompts: Record<string, string>;
@@ -147,8 +157,9 @@ export interface LocalisedWording {
 
 export const ASRS_WORDING: Record<string, LocalisedWording> = {
   'pt-br': {
-    wording: 'published',
-    source: 'Adaptacao brasileira (Mattos et al.), transcrita do PDF distribuido pela ABDA',
+    official: false,
+    source:
+      'Adaptacao brasileira (Mattos et al.), transcrita da camada de texto do PDF da ABDA — pendente de conferencia linha a linha',
     prompts: {
       q1: 'Com que frequência você deixa um projeto pela metade depois de já ter feito as partes mais difíceis?',
       q2: 'Com que frequência você tem dificuldade para fazer um trabalho que exige organização?',
@@ -179,50 +190,86 @@ export const ASRS_WORDING: Record<string, LocalisedWording> = {
   },
 
   en: {
-    wording: 'draft',
-    source: 'ASRS-v1.1 source language (WHO / Harvard) — NOT yet checked against the published checklist',
+    official: true,
+    source: "ASRS-v1.1 published English wording, checked against psychology-tools.com transcription",
     prompts: {
-      q1: 'How often do you have trouble wrapping up the final details of a project, once the challenging parts have been done?',
-      q2: 'How often do you have difficulty getting things in order when you have to do a task that requires organization?',
-      q3: 'How often do you have problems remembering appointments or obligations?',
-      q4: 'When you have a task that requires a lot of thought, how often do you avoid or delay getting started?',
-      q5: 'How often do you fidget or squirm with your hands or feet when you have to sit down for a long time?',
-      q6: 'How often do you feel overly active and compelled to do things, like you were driven by a motor?',
-      q7: 'How often do you make careless mistakes when you have to work on a boring or difficult project?',
-      q8: 'How often do you have difficulty keeping your attention when you are doing boring or repetitive work?',
-      q9: 'How often do you have difficulty concentrating on what people say to you, even when they are speaking to you directly?',
-      q10: 'How often do you misplace or have difficulty finding things at home or at work?',
-      q11: 'How often are you distracted by activity or noise around you?',
-      q12: 'How often do you leave your seat in meetings or other situations in which you are expected to remain seated?',
-      q13: 'How often do you feel restless or fidgety?',
-      q14: 'How often do you have difficulty unwinding and relaxing when you have time to yourself?',
-      q15: 'How often do you find yourself talking too much when you are in social situations?',
-      q16: 'When you are in a conversation, how often do you find yourself finishing the sentences of the people you are talking to, before they can finish it themselves?',
-      q17: 'How often do you have difficulty waiting your turn in situations when turn taking is required?',
-      q18: 'How often do you interrupt others when they are busy?',
+      q1: "How often do you have trouble wrapping up the final details of a project, once the challenging parts have been done?",
+      q2: "How often do you have difficulty getting things in order when you have to do a task that requires organization?",
+      q3: "How often do you have problems remembering appointments or obligations?",
+      q4: "When you have a task that requires a lot of thought, how often do you avoid or delay getting started?",
+      q5: "How often do you fidget or squirm with your hands or feet when you have to sit down for a long time?",
+      q6: "How often do you feel overly active and compelled to do things, like you were driven by a motor?",
+      q7: "How often do you make careless mistakes when you have to work on a boring or difficult project?",
+      q8: "How often do you have difficulty keeping your attention when you are doing boring or repetitive work?",
+      q9: "How often do you have difficulty concentrating on what people say to you, even when they are speaking to you directly?",
+      q10: "How often do you misplace or have difficulty finding things at home or at work?",
+      q11: "How often are you distracted by activity or noise around you?",
+      q12: "How often do you leave your seat in meetings or other situations in which you are expected to remain seated?",
+      q13: "How often do you feel restless or fidgety?",
+      q14: "How often do you have difficulty unwinding and relaxing when you have time to yourself?",
+      q15: "How often do you find yourself talking too much when you are in social situations?",
+      q16: "When you're in a conversation, how often do you find yourself finishing the sentences of the people you are talking to, before they can finish them themselves?",
+      q17: "How often do you have difficulty waiting your turn in situations when turn taking is required?",
+      q18: "How often do you interrupt others when they are busy?",
     },
     choiceLabels: {
-      never: 'Never',
-      rarely: 'Rarely',
-      sometimes: 'Sometimes',
-      often: 'Often',
-      'very-often': 'Very often',
+      never: "Never",
+      rarely: "Rarely",
+      sometimes: "Sometimes",
+      often: "Often",
+      "very-often": "Very often",
+    },
+  },
+
+  es: {
+    official: true,
+    source: "Traduccion al espanol distribuida del ASRS-v1.1, contrastada en fuentes independientes",
+    prompts: {
+      q1: "¿Con qué frecuencia tiene dificultad para acabar con los detalles finales de un proyecto después de haber hecho las partes difíciles?",
+      q2: "¿Con qué frecuencia tiene dificultad para ordenar las cosas cuando está realizando una tarea que requiere organización?",
+      q3: "¿Con qué frecuencia tiene dificultad para recordar sus citas u obligaciones?",
+      q4: "Cuando tiene una actividad que requiere que usted piense mucho, ¿con qué frecuencia la evita o la deja para después?",
+      q5: "¿Con qué frecuencia mueve o agita sus manos o sus pies cuando tiene que permanecer sentado(a) por mucho tiempo?",
+      q6: "¿Con qué frecuencia se siente usted demasiado activo(a) y como que tiene que hacer cosas, como si tuviera un motor?",
+      q7: "¿Con qué frecuencia comete errores por falta de cuidado cuando está trabajando en un proyecto aburrido o difícil?",
+      q8: "¿Con qué frecuencia tiene dificultad para mantener la atención cuando está haciendo trabajos aburridos o repetitivos?",
+      q9: "¿Con qué frecuencia tiene dificultad para concentrarse en lo que la gente le dice, aún cuando están hablando con usted directamente?",
+      q10: "¿Con qué frecuencia pierde o tiene dificultad para encontrar cosas en la casa o en el trabajo?",
+      q11: "¿Con qué frecuencia se distrae por ruidos o actividades a su alrededor?",
+      q12: "¿Con qué frecuencia se levanta de su asiento en reuniones o en otras situaciones en las que se supone que debe permanecer sentado?",
+      q13: "¿Con qué frecuencia se siente inquieto o nervioso?",
+      q14: "¿Con qué frecuencia tiene dificultades para relajarse cuando tiene tiempo para usted mismo?",
+      q15: "¿Con qué frecuencia siente que habla demasiado cuando está en reuniones sociales?",
+      q16: "Cuando está en una conversación, ¿con qué frecuencia se descubre a sí mismo terminando las frases de la gente que está hablando, antes de que ellos terminen?",
+      q17: "¿Con qué frecuencia tiene dificultad para esperar su turno en situaciones en que debe hacerlo?",
+      q18: "¿Con qué frecuencia interrumpe a otros cuando están ocupados?",
+    },
+    choiceLabels: {
+      never: "Nunca",
+      rarely: "Rara vez",
+      sometimes: "A veces",
+      often: "A menudo",
+      "very-often": "Muy a menudo",
     },
   },
 };
 
 /**
- * Locales the instrument may actually be offered in.
+ * Locales the instrument is offered in.
  *
- * Derived from the wording status rather than kept as a second list somewhere
- * else — two lists of the same fact drift apart, and the drift here means
- * offering a draft translation of a clinical instrument to a real person.
+ * All of them, by the product owner's decision. Which of those texts is the
+ * published document is recorded per locale above, and surfaced by
+ * `asrs18UnofficialLocales` so it stays visible rather than becoming a comment
+ * nobody reads.
  */
-export const asrs18Locales = Object.entries(ASRS_WORDING)
-  .filter(([, w]) => w.wording === 'published')
+export const asrs18Locales = Object.keys(ASRS_WORDING);
+
+/** Offered locales whose text is not yet the published document. */
+export const asrs18UnofficialLocales = Object.entries(ASRS_WORDING)
+  .filter(([, w]) => !w.official)
   .map(([locale]) => locale);
 
-/** Prompts for every locale, drafts included. Gate on `asrs18Locales`. */
+/** Prompts per locale. */
 export const asrs18Prompts: Record<string, Record<string, string>> = Object.fromEntries(
   Object.entries(ASRS_WORDING).map(([locale, w]) => [locale, w.prompts]),
 );

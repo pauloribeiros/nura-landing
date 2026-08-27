@@ -261,9 +261,10 @@ describe('ASRS-18 definition', () => {
     }
   });
 
-  it('offers no locale it cannot serve an official translation for', () => {
-    // Translating a validated instrument ourselves would void the validation.
-    expect(asrs18Locales).toEqual(['pt-br']);
+  it('offers the instrument in every language the app supports', () => {
+    // Which of those texts is the published document is recorded per locale
+    // in the instrument and asserted in wording.test.ts.
+    expect(asrs18Locales.sort()).toEqual(['en', 'es', 'pt-br']);
   });
 
   it('has all 18 items, split 6 / 12 between the parts', () => {
