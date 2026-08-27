@@ -6,6 +6,7 @@ import { SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL, supabaseConfigured } from '@/li
 import { buildReportPlan, type ReportPlan } from '@/domain/assessment/report';
 import { isContextAnswer } from '@/domain/assessment/context';
 import { asrs18 } from '@/domain/assessment/instruments/asrs18';
+import { getSupabaseAdminClient } from '@/lib/supabase/server';
 import type { ScoreResult } from '@/domain/assessment/types';
 
 /**
@@ -27,8 +28,18 @@ import type { ScoreResult } from '@/domain/assessment/types';
  * so a row can only have come from the server after a provider confirmed
  * payment. Someone without one gets the same `null` as someone asking about a
  * session that is not theirs.
+ *
+ * A token opens the same door from a different device. The cookie proves the
+ * browser that bought; the token proves possession of the emailed link, which
+ * is how a person reaches their report from a phone or after clearing the
+ * browser. It is checked with the admin client because the caller has no
+ * session to check it against — but it grants exactly one report, the one it
+ * belongs to, and a revoked one grants nothing.
  */
-export async function loadReport(sessionId: string): Promise<ReportPlan | null> {
+export async function loadReport(
+  sessionId: string,
+  accessToken?: string,
+): Promise<ReportPlan | null> {
   if (!supabaseConfigured) return null;
 
   const cookieStore = await cookies();
@@ -42,15 +53,39 @@ export async function loadReport(sessionId: string): Promise<ReportPlan | null> 
   });
 
   // Gate first: no reason to read a result the caller may not see.
+  let entitled = false;
+
   const { data: entitlement } = await supabase
     .from('assessment_entitlements')
     .select('id')
     .eq('session_id', sessionId)
     .maybeSingle();
 
-  if (!entitlement) return null;
+  if (entitlement) entitled = true;
 
-  const { data: stored } = await supabase
+  if (!entitled && accessToken) {
+    const admin = getSupabaseAdminClient();
+    if (admin) {
+      // Matched on BOTH the token and the session: a valid token for one
+      // report must not open another named in the URL.
+      const { data: byToken } = await admin
+        .from('assessment_entitlements')
+        .select('id, revoked_at')
+        .eq('session_id', sessionId)
+        .eq('access_token', accessToken)
+        .maybeSingle();
+
+      if (byToken && !byToken.revoked_at) entitled = true;
+    }
+  }
+
+  if (!entitled) return null;
+
+  // With a token there is no caller session, so the reads that follow must not
+  // depend on one. The gate above already decided access.
+  const reader = entitlement ? supabase : (getSupabaseAdminClient() ?? supabase);
+
+  const { data: stored } = await reader
     .from('assessment_results')
     .select('assessment_id, version, scoring_version, scores, flags, flagged, bands, completeness')
     .eq('session_id', sessionId)
@@ -71,7 +106,7 @@ export async function loadReport(sessionId: string): Promise<ReportPlan | null> 
 
   // Context answers personalise the wording. Their absence is normal — they
   // are optional — so a failure to read them must not fail the report.
-  const { data: answers } = await supabase
+  const { data: answers } = await reader
     .from('assessment_answers')
     .select('question_id, choice_id')
     .eq('session_id', sessionId);

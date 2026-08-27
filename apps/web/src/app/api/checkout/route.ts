@@ -103,7 +103,14 @@ export async function POST(request: Request) {
       },
     ],
     // Read back by the webhook. Both values were verified above.
-    metadata: { sessionId, userId: auth.user.id, assessmentId: session.assessment_id },
+    metadata: {
+      sessionId,
+      userId: auth.user.id,
+      assessmentId: session.assessment_id,
+      // Read back by the webhook so the receipt goes out in the language the
+      // person was reading, not the default.
+      locale,
+    },
     // `{CHECKOUT_SESSION_ID}` is substituted by Stripe. The report page uses
     // it to confirm payment directly, so a redirect that outruns the webhook
     // does not land a paying customer on a 404.

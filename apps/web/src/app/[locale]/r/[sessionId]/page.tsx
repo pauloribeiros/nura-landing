@@ -27,7 +27,7 @@ import { asrs18ChoiceLabels, asrs18Prompts } from '@/domain/assessment/instrumen
 export const dynamic = 'force-dynamic';
 
 type Params = Promise<{ locale: string; sessionId: string }>;
-type Search = Promise<{ pago?: string }>;
+type Search = Promise<{ pago?: string; acesso?: string }>;
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { locale } = await params;
@@ -51,10 +51,12 @@ export default async function ReportPage({
 
   // Arriving straight from checkout: confirm with Stripe before deciding, so
   // a redirect that beat the webhook does not show a 404 to someone who paid.
-  const { pago } = await searchParams;
+  const { pago, acesso } = await searchParams;
   if (pago) await confirmCheckout(pago, sessionId);
 
-  const plan = await loadReport(sessionId);
+  // `acesso` comes from the emailed link and stands in for the cookie of the
+  // browser that bought — see loadReport.
+  const plan = await loadReport(sessionId, acesso);
   // Not found and not yours give the same answer on purpose — see loadReport.
   if (!plan) notFound();
 

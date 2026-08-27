@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import type Stripe from 'stripe';
 import { getStripe } from '@/lib/payments/stripe';
 import { getSupabaseAdminClient } from '@/lib/supabase/server';
+import { sendReportEmail } from '@/lib/email/sendReport';
 
 /**
  * Where a payment becomes access.
@@ -91,5 +92,20 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'grant-failed' }, { status: 500 });
   }
 
+  // Stripe collects an address at checkout, so this is the one a person chose
+  // to give for this purchase. Sent after access exists, never before: an
+  // email pointing at a report that is not yet unlocked is worse than none.
+  const email = checkout.customer_details?.email;
+  if (email) {
+    await sendReportEmail({
+      to: email,
+      sessionId,
+      locale: checkout.metadata?.locale ?? 'pt-br',
+    });
+  }
+
+  // Deliberately not part of the 2xx decision. The payment is settled and
+  // access is granted; asking Stripe to redeliver because an email bounced
+  // would re-run everything above for a problem retrying cannot fix.
   return NextResponse.json({ received: true, granted: true });
 }
