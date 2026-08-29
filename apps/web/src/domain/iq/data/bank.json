@@ -21,43 +21,43 @@
   {
     "id": "PER-01",
     "dimensao": "percepcao_visual",
-    "tipo": "odd_one_out",
+    "tipo": "contorno_aberto",
     "dificuldade": 1,
     "enunciado": "Qual figura é diferente das demais?",
     "estimulo": null,
     "formato_estimulo": "none",
     "alternativas": [
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 94.0,60.0 60.0,94.0 26.0,60.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 94.0,60.0 60.0,94.0 26.0,60.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 94.0,60.0 60.0,94.0 26.0,60.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"#111\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 94.0,60.0 60.0,94.0 26.0,60.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 94.0,60.0 60.0,94.0 26.0,60.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 94.0,60.0 60.0,94.0 26.0,60.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><circle cx=\"60\" cy=\"60\" r=\"34\" fill=\"none\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 89.4,77.0 30.6,77.0\" fill=\"none\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polyline points=\"60.0,26.0 94.0,60.0 60.0,94.0 26.0,60.0\" fill=\"none\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 92.3,49.5 80.0,87.5 40.0,87.5 27.7,49.5\" fill=\"none\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 94.0,60.0 60.0,94.0 26.0,60.0\" fill=\"none\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 89.4,43.0 89.4,77.0 60.0,94.0 30.6,77.0 30.6,43.0\" fill=\"none\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg>"
     ],
     "formato_alternativas": "svg",
     "correta": 2,
-    "regra": "5 polígonos vazados; o intruso é preenchido.",
+    "regra": "Cinco contornos fechados e um aberto (falta um lado do quadrado). Ha dois quadrados, um fechado e o aberto, e as outras quatro formas sao unicas cada uma: nenhuma propriedade alem de fechar o contorno elege uma so opcao.",
     "ordem": 2
   },
   {
     "id": "PER-02",
     "dimensao": "percepcao_visual",
-    "tipo": "odd_one_out",
+    "tipo": "preenchimento_intruso",
     "dificuldade": 1,
     "enunciado": "Qual figura é diferente das demais?",
     "estimulo": null,
     "formato_estimulo": "none",
     "alternativas": [
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"84.0,36.0 84.0,84.0 36.0,84.0 36.0,36.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 94.0,60.0 60.0,94.0 26.0,60.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 94.0,60.0 60.0,94.0 26.0,60.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 94.0,60.0 60.0,94.0 26.0,60.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 94.0,60.0 60.0,94.0 26.0,60.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 94.0,60.0 60.0,94.0 26.0,60.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 89.4,77.0 30.6,77.0\" fill=\"#111\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><circle cx=\"60\" cy=\"60\" r=\"34\" fill=\"#111\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 89.4,43.0 89.4,77.0 60.0,94.0 30.6,77.0 30.6,43.0\" fill=\"#111\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 92.3,49.5 80.0,87.5 40.0,87.5 27.7,49.5\" fill=\"#111\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 89.4,77.0 30.6,77.0\" fill=\"none\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 94.0,60.0 60.0,94.0 26.0,60.0\" fill=\"#111\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\"/></svg>"
     ],
     "formato_alternativas": "svg",
-    "correta": 0,
-    "regra": "5 polígonos na mesma orientação; o intruso está girado.",
+    "correta": 4,
+    "regra": "Cinco figuras cheias e uma vazada. Ha dois triangulos, um cheio e o vazado, e as outras quatro formas sao unicas cada uma — so o preenchimento separa uma das seis.",
     "ordem": 3
   },
   {
@@ -305,22 +305,22 @@
   {
     "id": "PER-03",
     "dimensao": "percepcao_visual",
-    "tipo": "odd_one_out",
+    "tipo": "divisao_ao_meio",
     "dificuldade": 2,
     "enunciado": "Qual figura é diferente das demais?",
     "estimulo": null,
     "formato_estimulo": "none",
     "alternativas": [
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 89.4,43.0 89.4,77.0 60.0,94.0 30.6,77.0 30.6,43.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 89.4,43.0 89.4,77.0 60.0,94.0 30.6,77.0 30.6,43.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 86.6,38.8 93.1,67.6 74.8,90.6 45.2,90.6 26.9,67.6 33.4,38.8\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 89.4,43.0 89.4,77.0 60.0,94.0 30.6,77.0 30.6,43.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 89.4,43.0 89.4,77.0 60.0,94.0 30.6,77.0 30.6,43.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 89.4,43.0 89.4,77.0 60.0,94.0 30.6,77.0 30.6,43.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><circle cx=\"60\" cy=\"60\" r=\"34\" fill=\"none\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><line x1=\"60.0\" y1=\"20\" x2=\"60.0\" y2=\"100\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linecap=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 89.4,43.0 89.4,77.0 60.0,94.0 30.6,77.0 30.6,43.0\" fill=\"none\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><line x1=\"60.0\" y1=\"20\" x2=\"60.0\" y2=\"100\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linecap=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 94.0,60.0 60.0,94.0 26.0,60.0\" fill=\"none\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><line x1=\"60.0\" y1=\"20\" x2=\"60.0\" y2=\"100\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linecap=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 89.4,43.0 89.4,77.0 60.0,94.0 30.6,77.0 30.6,43.0\" fill=\"none\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><line x1=\"77.7\" y1=\"20\" x2=\"77.7\" y2=\"100\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linecap=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 89.4,77.0 30.6,77.0\" fill=\"none\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><line x1=\"60.0\" y1=\"20\" x2=\"60.0\" y2=\"100\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linecap=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 92.3,49.5 80.0,87.5 40.0,87.5 27.7,49.5\" fill=\"none\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/><line x1=\"60.0\" y1=\"20\" x2=\"60.0\" y2=\"100\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linecap=\"round\"/></svg>"
     ],
     "formato_alternativas": "svg",
-    "correta": 2,
-    "regra": "5 polígonos de 6 lados; o intruso tem 7 lados.",
+    "correta": 3,
+    "regra": "Em cinco figuras a linha passa pelo meio e divide em duas metades; numa ela esta deslocada. Ha dois hexagonos, um cortado ao meio e o deslocado, e as outras quatro formas sao unicas — a posicao da linha e a unica propriedade que elege uma opcao.",
     "ordem": 15
   },
   {
