@@ -149,9 +149,6 @@
   "ESP-01": {
     "enunciado": "¿Cuántas aristas (las líneas donde se encuentran dos caras) tiene un cubo?"
   },
-  "ESP-03": {
-    "enunciado": "¿Cuál de las figuras es la de arriba, girada (sin reflejar)?"
-  },
   "ESP-04": {
     "enunciado": "¿Cuál de las figuras es la de arriba, girada (sin reflejar)?"
   },
@@ -160,6 +157,9 @@
   },
   "ESP-08": {
     "enunciado": "Una hoja se dobla por la mitad y otra vez por la mitad (4 capas). Haces un agujero con un perforador en el centro de la hoja doblada. Al desdoblarla, ¿cuántos agujeros aparecen?"
+  },
+  "ESP-09": {
+    "enunciado": "Un cuadrado se dobla por la mitad, se hace un agujero a través de ambas capas y luego se desdobla. ¿Qué hoja es el resultado?"
   },
   "MEM-01": {
     "enunciado": "Escribe la secuencia que memorizaste."

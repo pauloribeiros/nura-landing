@@ -528,7 +528,7 @@
     "back": "Back",
     "finish": "See my result",
     "answerToContinue": "Answer to continue.",
-    "memoryHint": "Memorise this sequence",
+    "memoryHint": "Memorise this sequence of numbers",
     "freeEntryLabel": "Type what you memorised",
     "freeEntryPlaceholder": "0 0 0 0 0",
     "freeEntryHint": "With or without spaces, either is fine.",
@@ -561,8 +561,7 @@
     "scoreFailedTitle": "We could not work out your result.",
     "scoreFailedBody": "Your answers did not reach the server. Check your connection and take the test again — unfortunately this attempt cannot be recovered.",
     "memoryWordHint": "Memorise this word",
-    "memoryWordNote": "We will ask about it later in the test.",
-    "memoryNote": "It disappears in 5 seconds and the question comes right after."
+    "memoryWordNote": "We will ask about it later in the test."
   },
   "iq_result": {
     "eyebrow": "Your result",

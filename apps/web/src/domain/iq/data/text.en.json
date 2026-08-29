@@ -149,9 +149,6 @@
   "ESP-01": {
     "enunciado": "How many edges (the lines where two faces meet) does a cube have?"
   },
-  "ESP-03": {
-    "enunciado": "Which figure is the one above, rotated (not mirrored)?"
-  },
   "ESP-04": {
     "enunciado": "Which figure is the one above, rotated (not mirrored)?"
   },
@@ -160,6 +157,9 @@
   },
   "ESP-08": {
     "enunciado": "A sheet of paper is folded in half, then in half again (4 layers). You punch a single hole through the middle of the folded sheet. When you unfold it, how many holes are there?"
+  },
+  "ESP-09": {
+    "enunciado": "A square sheet is folded in half, a hole is punched through both layers, and then it is unfolded. Which sheet is the result?"
   },
   "MEM-01": {
     "enunciado": "Type the sequence you memorised."

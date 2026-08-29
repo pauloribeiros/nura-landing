@@ -6,15 +6,14 @@ import type { PublicItem } from '@/domain/iq/bank';
 /**
  * Shows a working-memory stimulus for five seconds, then moves on.
  *
- * ONE SHAPE, TWO WORDINGS: what to memorise, the thing itself, and when it
- * will be asked about. A digit span is recalled on the very next screen and a
- * word twenty questions later, so only that last line differs.
+ * WHAT TO MEMORISE, AND THE THING ITSELF. Nothing else for a digit span: it
+ * is asked about on the very next screen, so there is nothing to warn anyone
+ * about, and a line explaining that only stands between the person and four
+ * digits they have five seconds to hold.
  *
- * The warning is in the sentence rather than in a ticking counter. Both are
- * honest — a stimulus that vanishes unannounced would test whether the person
- * happened to be looking — but a live countdown next to a word held for later
- * counted down to nothing, and the same screen reading two different ways was
- * the confusing part.
+ * A word is different — it is asked about twenty questions later, or at the
+ * very end — so that screen keeps one line saying so. That sentence is the
+ * task, not decoration.
  *
  * WHEN THE CLOCK HITS ZERO THE NEXT SCREEN IS ALREADY THERE. No button, and no
  * screen in between: this used to hold an empty "•••" for a beat, meant as
@@ -34,8 +33,7 @@ export function MemoryShow({
   onDone: () => void;
   copy: {
     hint: string;
-    note: string;
-    /** Used instead of the two above for a word, which is asked much later. */
+    /** Used instead of `hint` for a word, plus the line about when it returns. */
     wordHint: string;
     wordNote: string;
   };
@@ -69,7 +67,7 @@ export function MemoryShow({
     <div className="iq-memory-show">
       <p className="iq-memory-hint">{isWord ? copy.wordHint : copy.hint}</p>
       <p className="iq-memory-stimulus">{item.memoria?.estimulo}</p>
-      <p className="iq-memory-note">{isWord ? copy.wordNote : copy.note}</p>
+      {isWord ? <p className="iq-memory-note">{copy.wordNote}</p> : null}
     </div>
   );
 }

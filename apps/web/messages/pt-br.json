@@ -528,7 +528,7 @@
     "back": "Voltar",
     "finish": "Ver meu resultado",
     "answerToContinue": "Responda para continuar.",
-    "memoryHint": "Memorize esta sequência",
+    "memoryHint": "Memorize esta sequência de números",
     "freeEntryLabel": "Digite o que você memorizou",
     "freeEntryPlaceholder": "0 0 0 0 0",
     "freeEntryHint": "Pode digitar com ou sem espaços.",
@@ -561,8 +561,7 @@
     "scoreFailedTitle": "Não conseguimos calcular agora.",
     "scoreFailedBody": "Suas respostas não chegaram ao servidor. Verifique sua conexão e refaça o teste — infelizmente não dá para recuperar esta tentativa.",
     "memoryWordHint": "Memorize esta palavra",
-    "memoryWordNote": "Vamos perguntar sobre ela durante o teste.",
-    "memoryNote": "Ela some em 5 segundos e a pergunta vem logo depois."
+    "memoryWordNote": "Vamos perguntar sobre ela durante o teste."
   },
   "iq_result": {
     "eyebrow": "Seu resultado",
