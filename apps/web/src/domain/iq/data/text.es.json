@@ -14,14 +14,30 @@
   "ABS-05": {
     "enunciado": "¿Qué figura completa la matriz?"
   },
-  "ABS-06": {
-    "enunciado": "¿Qué figura completa la matriz?"
+  "ABS-09": {
+    "alternativas": [
+      "El hierro",
+      "El algodón",
+      "Pesan igual",
+      "Depende del volumen",
+      "Depende de la temperatura",
+      "Depende de la altitud"
+    ],
+    "enunciado": "¿Qué pesa más: un kilo de hierro o un kilo de algodón?"
   },
-  "ABS-07": {
-    "enunciado": "¿Qué figura completa la matriz?"
+  "ABS-10": {
+    "alternativas": [
+      "El espejo",
+      "El eco",
+      "El loro",
+      "La sombra",
+      "El viento",
+      "La memoria"
+    ],
+    "enunciado": "Hablo sin boca y respondo sin pensar; no tengo cuerpo, pero devuelvo lo que me das. ¿Qué soy?"
   },
-  "ABS-08": {
-    "enunciado": "¿Qué figura completa la matriz?"
+  "ABS-11": {
+    "enunciado": "En un cajón hay 8 calcetines azules y 6 negros, mezclados, a oscuras. ¿Cuántos calcetines tienes que sacar para garantizar un par azul?"
   },
   "ANA-01": {
     "alternativas": [
@@ -119,6 +135,17 @@
     "enunciado": "Lee las posiciones y responde.",
     "estimulo": "En una fila, Juan está detrás de Pedro y delante de Marcos. Lucas está delante de Pedro. ¿Quién está más adelante?"
   },
+  "ANA-09": {
+    "alternativas": [
+      "Uno de ellos devolvió el pez al agua",
+      "Eran solo tres personas: abuelo, padre e hijo",
+      "Un pez se escapó del cubo",
+      "Uno de los cuatro no pescó nada",
+      "Dos de ellos compartieron el mismo pez",
+      "Uno pescó dos y otro no pescó ninguno"
+    ],
+    "enunciado": "Dos padres y dos hijos fueron a pescar. Cada uno pescó un pez, pero volvieron con solo tres. ¿Por qué?"
+  },
   "ESP-01": {
     "enunciado": "¿Cuántas aristas (las líneas donde se encuentran dos caras) tiene un cubo?"
   },
@@ -134,11 +161,8 @@
   "ESP-05": {
     "enunciado": "¿Cuál de las figuras es la de arriba, girada (sin reflejar)?"
   },
-  "ESP-06": {
-    "enunciado": "¿Cuál de las figuras es la de arriba, girada (sin reflejar)?"
-  },
-  "ESP-07": {
-    "enunciado": "¿Cuál de las figuras es la de arriba, girada (sin reflejar)?"
+  "ESP-08": {
+    "enunciado": "Una hoja se dobla por la mitad y otra vez por la mitad (4 capas). Haces un agujero con un perforador en el centro de la hoja doblada. Al desdoblarla, ¿cuántos agujeros aparecen?"
   },
   "MEM-01": {
     "enunciado": "Escribe la secuencia que memorizaste."

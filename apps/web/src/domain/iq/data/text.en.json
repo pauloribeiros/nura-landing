@@ -14,14 +14,30 @@
   "ABS-05": {
     "enunciado": "Which figure completes the matrix?"
   },
-  "ABS-06": {
-    "enunciado": "Which figure completes the matrix?"
+  "ABS-09": {
+    "alternativas": [
+      "The iron",
+      "The cotton",
+      "They weigh the same",
+      "It depends on the volume",
+      "It depends on the temperature",
+      "It depends on the altitude"
+    ],
+    "enunciado": "Which weighs more: a kilo of iron or a kilo of cotton?"
   },
-  "ABS-07": {
-    "enunciado": "Which figure completes the matrix?"
+  "ABS-10": {
+    "alternativas": [
+      "The mirror",
+      "The echo",
+      "The parrot",
+      "The shadow",
+      "The wind",
+      "Memory"
+    ],
+    "enunciado": "I speak without a mouth and answer without thinking; I have no body, but I give back whatever you give me. What am I?"
   },
-  "ABS-08": {
-    "enunciado": "Which figure completes the matrix?"
+  "ABS-11": {
+    "enunciado": "A drawer holds 8 blue socks and 6 black ones, mixed together, in the dark. How many socks must you take out to be sure of a blue pair?"
   },
   "ANA-01": {
     "alternativas": [
@@ -119,6 +135,17 @@
     "enunciado": "Read the positions and answer.",
     "estimulo": "In a queue, John is behind Peter and ahead of Mark. Lucas is ahead of Peter. Who is furthest to the front?"
   },
+  "ANA-09": {
+    "alternativas": [
+      "One of them threw a fish back",
+      "There were only three people: grandfather, father and son",
+      "A fish escaped from the bucket",
+      "One of the four caught nothing",
+      "Two of them shared the same fish",
+      "One caught two and another caught none"
+    ],
+    "enunciado": "Two fathers and two sons went fishing. Each of them caught a fish, but they came home with only three. Why?"
+  },
   "ESP-01": {
     "enunciado": "How many edges (the lines where two faces meet) does a cube have?"
   },
@@ -134,11 +161,8 @@
   "ESP-05": {
     "enunciado": "Which figure is the one above, rotated (not mirrored)?"
   },
-  "ESP-06": {
-    "enunciado": "Which figure is the one above, rotated (not mirrored)?"
-  },
-  "ESP-07": {
-    "enunciado": "Which figure is the one above, rotated (not mirrored)?"
+  "ESP-08": {
+    "enunciado": "A sheet of paper is folded in half, then in half again (4 layers). You punch a single hole through the middle of the folded sheet. When you unfold it, how many holes are there?"
   },
   "MEM-01": {
     "enunciado": "Type the sequence you memorised."

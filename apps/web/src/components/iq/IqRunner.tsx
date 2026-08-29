@@ -176,6 +176,20 @@ export function IqRunner({
     <section className="runner iq-runner" ref={topRef} tabIndex={-1}>
       <div className="wrap runner-inner">
         <div className="iq-head">
+          {/* Going back lives up here, next to "where am I", instead of in a
+              row under the options. Down there it was a 46px button plus its
+              margin — 56px of screen spent on the one control almost nobody
+              uses, and with the longer questions it was the difference between
+              an item fitting the phone and not. */}
+          {canGoBack ? (
+            <button
+              type="button"
+              className="iq-back"
+              onClick={() => setSession((c) => (c ? goBack(c, Date.now()) : c))}
+            >
+              <ArrowLeft size={14} aria-hidden="true" /> {t('back')}
+            </button>
+          ) : null}
           <p className="runner-progress-label" role="status">
             {t('progress', { answered: answeredCount, total })}
           </p>
@@ -227,28 +241,14 @@ export function IqRunner({
               />
             )}
 
-            {/* Only free entry needs a button — a choice advances on its own. */}
-            {isFreeEntry || canGoBack ? (
-              <div className="runner-nav">
-                {canGoBack ? (
-                  <button
-                    type="button"
-                    className="button button-ghost"
-                    onClick={() => setSession((c) => (c ? goBack(c, Date.now()) : c))}
-                  >
-                    <ArrowLeft size={16} aria-hidden="true" /> {t('back')}
-                  </button>
-                ) : (
-                  <span />
-                )}
-                {isFreeEntry ? (
-                  <button type="button" className="button button-primary" onClick={next} disabled={!answered}>
-                    {session.stepIndex >= steps.length - 1 ? t('finish') : t('continue')}
-                    <ArrowRight size={16} aria-hidden="true" />
-                  </button>
-                ) : (
-                  <span />
-                )}
+            {/* Only free entry needs a button — a choice advances on its own,
+                and going back moved up to the head. */}
+            {isFreeEntry ? (
+              <div className="runner-nav runner-nav-end">
+                <button type="button" className="button button-primary" onClick={next} disabled={!answered}>
+                  {session.stepIndex >= steps.length - 1 ? t('finish') : t('continue')}
+                  <ArrowRight size={16} aria-hidden="true" />
+                </button>
               </div>
             ) : null}
           </>

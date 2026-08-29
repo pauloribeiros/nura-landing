@@ -1077,7 +1077,23 @@ body.is-running-test .header-actions .button { display: none; }
   body.is-running-test .runner-progress { margin-bottom: 0; }
 }
 
-.iq-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 10px; }
+.iq-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+/* Quiet on purpose: an escape hatch for a mis-tap, not a step in the flow. */
+.iq-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-right: auto;
+  padding: 4px 8px 4px 0;
+  color: var(--text-on-dark-faint);
+  font-size: 0.78rem;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.iq-back:hover { color: var(--text-on-dark); }
+.iq-back:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 2px; border-radius: 6px; }
+.runner-nav-end { justify-content: flex-end; }
 .iq-timer {
   font-family: var(--font-mono, monospace);
   font-size: 0.9rem;

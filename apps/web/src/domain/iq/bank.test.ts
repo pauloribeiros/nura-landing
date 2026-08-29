@@ -67,6 +67,36 @@ describe('item bank', () => {
     });
   });
 
+  describe('no item is another item twice', () => {
+    it('never repeats a stimulus with the same answer', () => {
+      // What this caught: ABS-04, ABS-06 and ABS-08 shipped the same matrix
+      // with the same correct figure, and ABS-03/ABS-07 likewise — only the
+      // option order differed. Someone solved it once and collected the
+      // difficulty-5 weight three times for free.
+      const seen = new Map<string, string>();
+
+      for (const item of ITEMS) {
+        if (item.correta === null || !item.estimulo) continue;
+        const fingerprint = `${item.estimulo}##${item.alternativas[item.correta]}`;
+        const first = seen.get(fingerprint);
+        expect(first, `${item.id} is ${first} again`).toBeUndefined();
+        seen.set(fingerprint, item.id);
+      }
+    });
+
+    it('never repeats a question with the same options', () => {
+      const seen = new Map<string, string>();
+
+      for (const item of ITEMS) {
+        if (item.formato_alternativas === 'entrada_livre') continue;
+        const fingerprint = `${item.enunciado}##${item.estimulo ?? ''}##${item.alternativas.join('|')}`;
+        const first = seen.get(fingerprint);
+        expect(first, `${item.id} is ${first} again`).toBeUndefined();
+        seen.set(fingerprint, item.id);
+      }
+    });
+  });
+
   describe('the opening', () => {
     it('does not spend the first ten screens on the easiest band', () => {
       // The first minutes decide whether someone believes the test measures
