@@ -63,18 +63,6 @@
     "enunciado": "Complete the analogy.",
     "estimulo": "Seed is to tree as egg is to ___"
   },
-  "ANA-03": {
-    "alternativas": [
-      "dark",
-      "sun",
-      "light",
-      "day",
-      "white",
-      "grey"
-    ],
-    "enunciado": "Complete the analogy.",
-    "estimulo": "Hot is to cold as bright is to ___"
-  },
   "ANA-04": {
     "alternativas": [
       "anthill",
@@ -121,6 +109,9 @@
       "One caught two and another caught none"
     ],
     "enunciado": "Two fathers and two sons went fishing. Each of them caught a fish, but they came home with only three. Why?"
+  },
+  "ANA-10": {
+    "enunciado": "Complete the sequence."
   },
   "ESP-01": {
     "enunciado": "How many edges (the lines where two faces meet) does a cube have?"

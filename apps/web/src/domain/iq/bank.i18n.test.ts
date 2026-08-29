@@ -11,7 +11,16 @@ import { ITEMS, bankLocales, itemsIn, publicItems } from './bank';
  */
 
 const translated = bankLocales.filter((l) => l !== 'pt-br');
-const hasLetters = (s: string) => /[A-Za-zÀ-ÿ]/.test(s);
+/**
+ * Whether a piece of text is PROSE rather than a code.
+ *
+ * Lowercase is the tell. "4, 8, 12, ?" and "FBG, GBF, HBI, IBH, ?" read the
+ * same in every language — one is numbers, the other is letters used as
+ * symbols — while anything a person reads as words has lowercase in it.
+ * Demanding a translation for a code would force three identical copies and
+ * an assertion that they differ.
+ */
+const isProse = (s: string) => /[a-zà-ÿ]/.test(s);
 
 describe.each(translated)('bank in %s', (locale) => {
   const items = itemsIn(locale);
@@ -48,13 +57,13 @@ describe.each(translated)('bank in %s', (locale) => {
       const item = byId.get(original.id)!;
       expect(item.enunciado, `${original.id} enunciado`).not.toBe(original.enunciado);
 
-      // A numeric series reads the same everywhere; only wording with letters
-      // in it has anything to translate.
-      if (original.formato_estimulo === 'texto' && hasLetters(original.estimulo ?? '')) {
+      // A numeric or letter series reads the same everywhere; only prose has
+      // anything to translate.
+      if (original.formato_estimulo === 'texto' && isProse(original.estimulo ?? '')) {
         expect(item.estimulo, `${original.id} estimulo`).not.toBe(original.estimulo);
       }
 
-      if (original.formato_alternativas === 'texto' && hasLetters(original.alternativas[0])) {
+      if (original.formato_alternativas === 'texto' && isProse(original.alternativas[0])) {
         expect(item.alternativas, `${original.id} alternativas`).not.toEqual(original.alternativas);
       }
     }

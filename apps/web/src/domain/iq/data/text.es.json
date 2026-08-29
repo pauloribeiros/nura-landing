@@ -63,18 +63,6 @@
     "enunciado": "Completa la analogía.",
     "estimulo": "Semilla es a árbol como huevo es a ___"
   },
-  "ANA-03": {
-    "alternativas": [
-      "oscuro",
-      "sol",
-      "luz",
-      "día",
-      "blanco",
-      "gris"
-    ],
-    "enunciado": "Completa la analogía.",
-    "estimulo": "Caliente es a frío como claro es a ___"
-  },
   "ANA-04": {
     "alternativas": [
       "hormiguero",
@@ -121,6 +109,9 @@
       "Uno pescó dos y otro no pescó ninguno"
     ],
     "enunciado": "Dos padres y dos hijos fueron a pescar. Cada uno pescó un pez, pero volvieron con solo tres. ¿Por qué?"
+  },
+  "ANA-10": {
+    "enunciado": "Completa la secuencia."
   },
   "ESP-01": {
     "enunciado": "¿Cuántas aristas (las líneas donde se encuentran dos caras) tiene un cubo?"

@@ -282,24 +282,24 @@
     "ordem": 13
   },
   {
-    "id": "ANA-03",
-    "tipo": "analogia_verbal",
-    "dificuldade": 2,
-    "estimulo": "Quente está para frio assim como claro está para ___",
-    "alternativas": [
-      "escuro",
-      "sol",
-      "luz",
-      "dia",
-      "branco",
-      "cinza"
-    ],
-    "correta": 0,
-    "regra": "Antônimo.",
+    "id": "ANA-10",
     "dimensao": "pensamento_analitico",
-    "enunciado": "Complete a analogia.",
+    "tipo": "serie_letras",
+    "dificuldade": 2,
+    "enunciado": "Complete a sequência.",
+    "estimulo": "FBG, GBF, HBI, IBH, ?",
     "formato_estimulo": "texto",
+    "alternativas": [
+      "IBJ",
+      "JBK",
+      "KBJ",
+      "JBL",
+      "HBK",
+      "KBL"
+    ],
     "formato_alternativas": "texto",
+    "correta": 1,
+    "regra": "Duas regras ao mesmo tempo: a letra do meio nunca muda, e as de fora andam duas casas a cada par (F,G depois H,I depois J,K) trocando de lugar dentro do par. O KBJ e o termo seguinte, nao este; os outros erram o incremento ou a letra do meio.",
     "ordem": 14
   },
   {
