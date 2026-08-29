@@ -1271,6 +1271,80 @@ body.is-running-test .header-actions .button { display: none; }
   .iq-option { padding: 8px; }
 }
 
+/* --------------------------------------------------------- iq calculating */
+.iq-calc { padding-top: 96px; }
+.iq-calc .runner-lead { margin-bottom: 22px; }
+.iq-calc-track {
+  height: 10px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+.iq-calc-track span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--nura-blue), var(--nura-cyan));
+  /* Matches the step interval, so the bar arrives with the tick instead of
+     racing ahead of the line it belongs to. */
+  transition: width 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.iq-calc-pct {
+  margin: 8px 0 22px;
+  font: 700 0.82rem var(--font-mono, monospace);
+  color: var(--nura-cyan);
+  font-variant-numeric: tabular-nums;
+}
+.iq-calc-list { display: grid; gap: 12px; list-style: none; margin: 0; padding: 0; }
+.iq-calc-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-on-dark-faint);
+  font-size: 0.96rem;
+  transition: color 240ms ease;
+}
+.iq-calc-list li.is-done { color: var(--text-on-dark); }
+.iq-calc-box {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  color: var(--nura-obsidian);
+  transition: background 240ms ease, border-color 240ms ease;
+}
+.is-done .iq-calc-box { background: var(--nura-cyan); border-color: var(--nura-cyan); }
+
+/* The one question, over the screen it interrupts. */
+.iq-ask {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(7, 11, 20, 0.72);
+  backdrop-filter: blur(3px);
+}
+.iq-ask-card {
+  width: min(360px, 100%);
+  padding: 26px 22px 20px;
+  border-radius: 20px;
+  background: var(--nura-deep-navy);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: center;
+}
+.iq-ask-card p { margin: 0 0 18px; font-size: 1.02rem; line-height: 1.45; }
+.iq-ask-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.iq-ask-actions .button { justify-content: center; }
+
+@media (prefers-reduced-motion: reduce) {
+  .iq-calc-track span { transition: none; }
+}
+
 /* --------------------------------------------------------- iq transitions */
 .iq-transition { padding: 32px 0 16px; }
 .iq-transition h2 { margin: 10px 0 24px; }

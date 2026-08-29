@@ -7,6 +7,7 @@ import type { PublicItem } from '@/domain/iq/bank';
 import type { IqResult as IqResultData } from '@/domain/iq/scoring';
 import type { IqSession } from '@/domain/iq/session';
 import { IqRunner } from './IqRunner';
+import { IqCalculating } from './IqCalculating';
 import { useFocusMode } from '@/lib/focusMode';
 import { IqResult } from './IqResult';
 import { ensureSession } from '@/lib/supabase/client';
@@ -30,12 +31,15 @@ export function IqIntro({ items }: { items: PublicItem[] }) {
   const [started, setStarted] = useState(false);
   const [state, setState] = useState<'idle' | 'scoring' | 'error'>('idle');
   const [result, setResult] = useState<IqResultData | null>(null);
+  // Held back until the calculating screen finishes its list, so the result
+  // does not appear behind it mid-animation.
+  const [pronto, setPronto] = useState<IqResultData | null>(null);
 
   // Focus mode from the moment the page opens until the result exists — the
   // intro included. Owned here rather than in the runner because this
   // component is the one that lives through every stage; two owners adding and
   // removing the same class would fight when one of them unmounted.
-  useFocusMode(result ? 'off' : started ? 'answering' : 'reading');
+  useFocusMode(pronto ? 'off' : started ? 'answering' : 'reading');
 
   /**
    * Sends the run to be scored.
@@ -59,7 +63,6 @@ export function IqIntro({ items }: { items: PublicItem[] }) {
       }
       const body = (await response.json()) as { result: IqResultData };
       setResult(body.result);
-      setState('idle');
     } catch {
       setState('error');
     }
@@ -82,14 +85,30 @@ export function IqIntro({ items }: { items: PublicItem[] }) {
   };
 
   const restart = () => {
+    setPronto(null);
     setResult(null);
     setState('idle');
     setStarted(false);
   };
 
-  if (result) return <IqResult result={result} onRestart={restart} />;
+  if (pronto) return <IqResult result={pronto} onRestart={restart} />;
 
-  if (state === 'scoring' || state === 'error') {
+  // The calculating screen goes up the instant the run ends and holds until
+  // the server answers — `pronto` is what lets it finish, so the bar can never
+  // complete before the result exists.
+  if (state === 'scoring') {
+    return (
+      <IqCalculating
+        pronto={result !== null}
+        onDone={() => {
+          if (result) setPronto(result);
+          setState('idle');
+        }}
+      />
+    );
+  }
+
+  if (state === 'error') {
     return (
       <section className="runner">
         <div className="wrap runner-inner">

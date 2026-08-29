@@ -563,7 +563,13 @@
     "memoryWordHint": "Memorize esta palavra",
     "memoryWordNote": "Vamos perguntar sobre ela durante o teste.",
     "memorySeconds": "{n, plural, one {Desaparece em <forte>#</forte> segundo} other {Desaparece em <forte>#</forte> segundos}}",
-    "transitionDimensions": "{n, plural, one {Já apareceu # das seis dimensões} other {Já apareceram # das seis dimensões}}: {lista}."
+    "transitionDimensions": "{n, plural, one {Já apareceu # das seis dimensões} other {Já apareceram # das seis dimensões}}: {lista}.",
+    "calcEyebrow": "Quase lá",
+    "calcTitle": "Montando o seu perfil.",
+    "calcLead": "Suas respostas estão sendo corrigidas e organizadas dimensão por dimensão.",
+    "calcAsk": "Este é o seu primeiro teste de QI?",
+    "calcYes": "Sim",
+    "calcNo": "Não"
   },
   "iq_result": {
     "eyebrow": "Seu resultado",

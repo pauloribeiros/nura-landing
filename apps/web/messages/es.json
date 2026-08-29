@@ -563,7 +563,13 @@
     "memoryWordHint": "Memoriza esta palabra",
     "memoryWordNote": "Te preguntaremos por ella durante el test.",
     "memorySeconds": "{n, plural, one {Desaparece en <forte>#</forte> segundo} other {Desaparece en <forte>#</forte> segundos}}",
-    "transitionDimensions": "{n, plural, one {Ya apareció # de las seis dimensiones} other {Ya aparecieron # de las seis dimensiones}}: {lista}."
+    "transitionDimensions": "{n, plural, one {Ya apareció # de las seis dimensiones} other {Ya aparecieron # de las seis dimensiones}}: {lista}.",
+    "calcEyebrow": "Casi listo",
+    "calcTitle": "Construyendo tu perfil.",
+    "calcLead": "Tus respuestas se están corrigiendo y organizando dimensión por dimensión.",
+    "calcAsk": "¿Es tu primer test de CI?",
+    "calcYes": "Sí",
+    "calcNo": "No"
   },
   "iq_result": {
     "eyebrow": "Tu resultado",

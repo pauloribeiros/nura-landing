@@ -563,7 +563,13 @@
     "memoryWordHint": "Memorise this word",
     "memoryWordNote": "We will ask about it later in the test.",
     "memorySeconds": "{n, plural, one {Disappears in <forte>#</forte> second} other {Disappears in <forte>#</forte> seconds}}",
-    "transitionDimensions": "{n, plural, one {# of the six dimensions has appeared} other {# of the six dimensions have appeared}}: {lista}."
+    "transitionDimensions": "{n, plural, one {# of the six dimensions has appeared} other {# of the six dimensions have appeared}}: {lista}.",
+    "calcEyebrow": "Almost there",
+    "calcTitle": "Building your profile.",
+    "calcLead": "Your answers are being scored and organised dimension by dimension.",
+    "calcAsk": "Is this your first IQ test?",
+    "calcYes": "Yes",
+    "calcNo": "No"
   },
   "iq_result": {
     "eyebrow": "Your result",
