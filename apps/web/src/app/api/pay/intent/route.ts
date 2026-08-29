@@ -75,31 +75,48 @@ export async function POST(request: Request) {
     .maybeSingle();
   if (jaPago) return NextResponse.json({ error: 'already-paid' }, { status: 409 });
 
-  const intent = await stripe.paymentIntents.create({
-    amount: PRICE_CENTS,
-    currency: CURRENCY,
+  /**
+   * Mesmo cuidado do checkout: um metodo que a conta nao habilitou faz o
+   * Stripe recusar a criacao inteira. Melhor abrir com o que a conta tem do
+   * que devolver erro para quem ja decidiu pagar.
+   */
+  const criarIntent = (comMetodo: boolean) =>
+    stripe.paymentIntents.create({
+      amount: PRICE_CENTS,
+      currency: CURRENCY,
     // Um intent por método, porque cada painel do acordeão monta o seu próprio
     // Payment Element e ele mostra o que o intent aceita. Só dois valores são
     // aceitos; qualquer outra coisa cai nos métodos configurados na conta.
-    ...(body.metodo === 'card'
-      ? { payment_method_types: ['card'] }
-      : body.metodo === 'pix'
-        ? { payment_method_types: ['pix'] }
-        : { automatic_payment_methods: { enabled: true } }),
+      ...(comMetodo && body.metodo === 'card'
+        ? { payment_method_types: ['card'] }
+        : comMetodo && body.metodo === 'pix'
+          ? { payment_method_types: ['pix'] }
+          : { automatic_payment_methods: { enabled: true } }),
     // O endereço que a pessoa digitou antes de pagar. Serve ao recibo do
     // Stripe e é por onde o webhook manda o relatório — não é segredo e não
     // decide preço nem acesso, então vir do cliente é aceitável.
-    ...(typeof body.email === 'string' && body.email.length <= 320
-      ? { receipt_email: body.email }
-      : {}),
-    // Lidos de volta pelo webhook. Os dois foram verificados acima.
-    metadata: {
-      sessionId,
-      userId: auth.user.id,
-      assessmentId: sessao.assessment_id,
-      locale: body.locale ?? '',
-    },
-  });
+      ...(typeof body.email === 'string' && body.email.length <= 320
+        ? { receipt_email: body.email }
+        : {}),
+      // Lidos de volta pelo webhook. Os dois foram verificados acima.
+      metadata: {
+        sessionId,
+        userId: auth.user.id,
+        assessmentId: sessao.assessment_id,
+        locale: body.locale ?? '',
+      },
+    });
+
+  let intent;
+  try {
+    intent = await criarIntent(true);
+  } catch (erro) {
+    const invalido =
+      erro instanceof Error && 'type' in erro && erro.type === 'StripeInvalidRequestError';
+    if (!invalido) throw erro;
+    console.warn('[nura] metodo indisponivel na conta, usando o padrao', body.metodo);
+    intent = await criarIntent(false);
+  }
 
   if (!intent.client_secret) {
     return NextResponse.json({ error: 'intent-failed' }, { status: 502 });

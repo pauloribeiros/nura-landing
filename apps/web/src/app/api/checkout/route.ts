@@ -93,12 +93,19 @@ export async function POST(request: Request) {
     : body.metodo === 'card' ? (['card'] as const)
     : undefined;
 
-  const checkout = await stripe.checkout.sessions.create({
-    mode: 'payment',
-    ...(metodos ? { payment_method_types: [...metodos] } : {}),
-    // Payment methods come from the Stripe dashboard rather than being listed
-    // here, so enabling Pix later needs no deploy.
-    line_items: [
+  /**
+   * Pedir um metodo que a conta nao tem habilitado e um erro do Stripe, nao
+   * uma falha nossa — e derrubar a compra por causa disso seria perder a
+   * venda por um detalhe de configuracao. Se o metodo escolhido nao existir
+   * na conta, a sessao e criada com o que a conta oferece.
+   */
+  const criarSessao = (comMetodo: boolean) =>
+    stripe.checkout.sessions.create({
+      mode: 'payment',
+      ...(comMetodo && metodos ? { payment_method_types: [...metodos] } : {}),
+      // Payment methods come from the Stripe dashboard rather than being listed
+      // here, so enabling Pix later needs no deploy.
+      line_items: [
       {
         quantity: 1,
         price_data: {
@@ -110,22 +117,33 @@ export async function POST(request: Request) {
           },
         },
       },
-    ],
-    // Read back by the webhook. Both values were verified above.
-    metadata: {
+      ],
+      // Read back by the webhook. Both values were verified above.
+      metadata: {
       sessionId,
       userId: auth.user.id,
       assessmentId: session.assessment_id,
       // Read back by the webhook so the receipt goes out in the language the
       // person was reading, not the default.
       locale,
-    },
-    // `{CHECKOUT_SESSION_ID}` is substituted by Stripe. The report page uses
-    // it to confirm payment directly, so a redirect that outruns the webhook
-    // does not land a paying customer on a 404.
-    success_url: `${SITE_URL}${reportPath(locale, sessionId)}?pago={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${SITE_URL}/${locale}`,
-  });
+      },
+      // `{CHECKOUT_SESSION_ID}` is substituted by Stripe. The report page uses
+      // it to confirm payment directly, so a redirect that outruns the webhook
+      // does not land a paying customer on a 404.
+      success_url: `${SITE_URL}${reportPath(locale, sessionId)}?pago={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${SITE_URL}/${locale}`,
+    });
+
+  let checkout;
+  try {
+    checkout = await criarSessao(Boolean(metodos));
+  } catch (erro) {
+    const invalido =
+      erro instanceof Error && 'type' in erro && erro.type === 'StripeInvalidRequestError';
+    if (!invalido || !metodos) throw erro;
+    console.warn('[nura] metodo indisponivel na conta, usando o padrao', body.metodo);
+    checkout = await criarSessao(false);
+  }
 
   if (!checkout.url) {
     return NextResponse.json({ error: 'checkout-failed' }, { status: 502 });
