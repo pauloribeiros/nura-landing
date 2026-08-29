@@ -259,7 +259,8 @@
     "privacy": "Privacidad",
     "start": "Empezar",
     "rights": "© {year} NURA. Todos los derechos reservados.",
-    "tagline": "Hecho para descubrir, no para etiquetar."
+    "tagline": "Hecho para descubrir, no para etiquetar.",
+    "credits": "Ilustraciones de Storyset"
   },
   "stickyCta": {
     "label": "Empezar evaluación"

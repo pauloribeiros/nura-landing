@@ -259,7 +259,8 @@
     "privacy": "Privacy",
     "start": "Start",
     "rights": "© {year} NURA. All rights reserved.",
-    "tagline": "Made to discover, not to label."
+    "tagline": "Made to discover, not to label.",
+    "credits": "Illustrations by Storyset"
   },
   "stickyCta": {
     "label": "Start assessment"

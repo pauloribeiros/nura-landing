@@ -22,6 +22,7 @@ import { MemoryShow } from './MemoryShow';
 import { FreeEntry } from './FreeEntry';
 import { Timer } from './Timer';
 import { BREAKS, TransitionScreen } from './TransitionScreen';
+import { preloadTransitionArt } from './TransitionArt';
 
 /**
  * Runs the IQ test.
@@ -89,6 +90,8 @@ export function IqRunner({
     setSession(
       createIqSession({ id: randomId(), startedAt: new Date().toISOString(), now: Date.now() }),
     );
+    // The first break is twelve questions away; the pictures have until then.
+    preloadTransitionArt();
   }, []);
 
   const step: Step | undefined = session ? steps[session.stepIndex] : undefined;
