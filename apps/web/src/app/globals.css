@@ -1210,8 +1210,8 @@ body.is-running-test .header-actions .button { display: none; }
   font-variant-numeric: tabular-nums;
   word-break: break-word;
 }
-.iq-memory-countdown { margin: 0 0 28px; font-size: 0.9rem; color: var(--nura-cool-gray); }
-/* Takes the countdown's place on a word screen: what happens next, not when. */
+/* When the thing on screen will be asked about — the line under every memory
+   stimulus, word or digits. */
 .iq-memory-note {
   max-width: 30ch;
   margin: 0 auto 28px;

@@ -1,22 +1,20 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import type { PublicItem } from '@/domain/iq/bank';
 
 /**
  * Shows a working-memory stimulus for five seconds, then moves on.
  *
- * TWO KINDS OF SCREEN, because the two items ask for different things.
+ * ONE SHAPE, TWO WORDINGS: what to memorise, the thing itself, and when it
+ * will be asked about. A digit span is recalled on the very next screen and a
+ * word twenty questions later, so only that last line differs.
  *
- * A digit span is recalled on the next screen, so the countdown is the point:
- * a stimulus that vanishes without warning tests whether the person happened
- * to be looking rather than what they can hold. Telling them how long they
- * have is part of the task.
- *
- * A word is asked about much later — twenty questions on, or at the very end.
- * There the screen says so and drops the clock: counting down to a question
- * that is not coming next only teaches the wrong expectation, and the sentence
- * "we will ask about it during the test" is the instruction that matters.
+ * The warning is in the sentence rather than in a ticking counter. Both are
+ * honest — a stimulus that vanishes unannounced would test whether the person
+ * happened to be looking — but a live countdown next to a word held for later
+ * counted down to nothing, and the same screen reading two different ways was
+ * the confusing part.
  *
  * WHEN THE CLOCK HITS ZERO THE NEXT SCREEN IS ALREADY THERE. No button, and no
  * screen in between: this used to hold an empty "•••" for a beat, meant as
@@ -36,15 +34,14 @@ export function MemoryShow({
   onDone: () => void;
   copy: {
     hint: string;
-    seconds: (n: number) => string;
-    /** Shown instead of the two above, for a word held for later. */
+    note: string;
+    /** Used instead of the two above for a word, which is asked much later. */
     wordHint: string;
     wordNote: string;
   };
 }) {
   const isWord = item.tipo === 'span_palavra';
   const total = item.memoria?.exibir_ms ?? 5000;
-  const [remaining, setRemaining] = useState(total);
 
   // Held in a ref so the countdown does not depend on the callback's identity.
   // As a dependency it restarted the five seconds every time the parent
@@ -56,13 +53,11 @@ export function MemoryShow({
 
   useEffect(() => {
     const startedAt = Date.now();
+    // Read from timestamps rather than counted down: a backgrounded tab
+    // throttles timers, and a counter would leave the stimulus on screen for
+    // as long as the person was away.
     const tick = window.setInterval(() => {
-      const left = total - (Date.now() - startedAt);
-      if (left > 0) {
-        setRemaining(left);
-        return;
-      }
-
+      if (Date.now() - startedAt < total) return;
       window.clearInterval(tick);
       doneRef.current();
     }, 100);
@@ -70,19 +65,11 @@ export function MemoryShow({
     return () => window.clearInterval(tick);
   }, [total, item.id]);
 
-  const seconds = Math.ceil(remaining / 1000);
-
   return (
     <div className="iq-memory-show">
       <p className="iq-memory-hint">{isWord ? copy.wordHint : copy.hint}</p>
       <p className="iq-memory-stimulus">{item.memoria?.estimulo}</p>
-      {isWord ? (
-        <p className="iq-memory-note">{copy.wordNote}</p>
-      ) : (
-        <p className="iq-memory-countdown" aria-live="off">
-          {copy.seconds(seconds)}
-        </p>
-      )}
+      <p className="iq-memory-note">{isWord ? copy.wordNote : copy.note}</p>
     </div>
   );
 }

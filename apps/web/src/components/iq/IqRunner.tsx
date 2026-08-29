@@ -206,7 +206,7 @@ export function IqRunner({
             onDone={next}
             copy={{
               hint: t('memoryHint'),
-              seconds: (n) => t('memorySeconds', { n }),
+              note: t('memoryNote'),
               wordHint: t('memoryWordHint'),
               wordNote: t('memoryWordNote'),
             }}
