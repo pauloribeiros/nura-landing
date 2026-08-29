@@ -26,11 +26,7 @@ export const ART_SRC = {
   middle: '/art/transicao-meio.svg',
   /** After 36 — two people raising a rising curve: the last stretch. */
   end: '/art/transicao-final.svg',
-  /**
-   * Between the ASRS screening block and the detail block. Currently a copy of
-   * `transicao-meio.svg` — replacing that one file with a picture of its own
-   * is the whole change; nothing here has to move.
-   */
+  /** Between the ASRS screening block and the detail block: someone reading. */
   tdah: '/art/transicao-tdah.svg',
 } as const;
 
