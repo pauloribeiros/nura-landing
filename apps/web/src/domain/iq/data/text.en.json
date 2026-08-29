@@ -36,6 +36,9 @@
   "ABS-12": {
     "enunciado": "Three of these follow the same rule. Which one breaks it?"
   },
+  "ABS-13": {
+    "enunciado": "Which tile completes the grid?"
+  },
   "ANA-01": {
     "alternativas": [
       "words",
@@ -108,30 +111,6 @@
     "enunciado": "Read the premises and choose the valid conclusion.",
     "estimulo": "All dogs are animals. All animals need water. Therefore:"
   },
-  "ANA-07": {
-    "alternativas": [
-      "composer",
-      "conductor",
-      "orchestra",
-      "musician",
-      "score",
-      "violin"
-    ],
-    "enunciado": "Complete the analogy.",
-    "estimulo": "Book is to author as symphony is to ___"
-  },
-  "ANA-08": {
-    "alternativas": [
-      "Lucas",
-      "Peter",
-      "John",
-      "Mark",
-      "Impossible to tell",
-      "Peter and Lucas tied"
-    ],
-    "enunciado": "Read the positions and answer.",
-    "estimulo": "In a queue, John is behind Peter and ahead of Mark. Lucas is ahead of Peter. Who is furthest to the front?"
-  },
   "ANA-09": {
     "alternativas": [
       "One of them threw a fish back",
@@ -145,9 +124,6 @@
   },
   "ESP-01": {
     "enunciado": "How many edges (the lines where two faces meet) does a cube have?"
-  },
-  "ESP-05": {
-    "enunciado": "Which figure is the one above, rotated (not mirrored)?"
   },
   "ESP-08": {
     "enunciado": "A sheet of paper is folded in half, then in half again (4 layers). You punch a single hole through the middle of the folded sheet. When you unfold it, how many holes are there?"
@@ -236,6 +212,18 @@
     "enunciado": "Which shape comes next in this sequence?",
     "estimulo": "Cylinder, Sphere, Cone, Cuboid, ?"
   },
+  "PAT-10": {
+    "alternativas": [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "enunciado": "Which day of the week comes next?",
+    "estimulo": "Sunday, Monday, Wednesday, Saturday, Wednesday, ?"
+  },
   "PER-01": {
     "enunciado": "Which figure is different from the others?"
   },
@@ -256,5 +244,8 @@
   },
   "PER-07": {
     "enunciado": "Which piece continues the grid pattern, keeping the same density and orientation?"
+  },
+  "PER-08": {
+    "enunciado": "Which piece fits the gap in the pattern?"
   }
 }

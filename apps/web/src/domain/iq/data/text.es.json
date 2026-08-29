@@ -36,6 +36,9 @@
   "ABS-12": {
     "enunciado": "Tres de estas siguen la misma regla. ¿Cuál la rompe?"
   },
+  "ABS-13": {
+    "enunciado": "¿Qué pieza completa la cuadrícula?"
+  },
   "ANA-01": {
     "alternativas": [
       "palabras",
@@ -108,30 +111,6 @@
     "enunciado": "Lee las premisas y elige la conclusión válida.",
     "estimulo": "Todo perro es animal. Todo animal necesita agua. Por lo tanto:"
   },
-  "ANA-07": {
-    "alternativas": [
-      "compositor",
-      "director",
-      "orquesta",
-      "músico",
-      "partitura",
-      "violín"
-    ],
-    "enunciado": "Completa la analogía.",
-    "estimulo": "Libro es a autor como sinfonía es a ___"
-  },
-  "ANA-08": {
-    "alternativas": [
-      "Lucas",
-      "Pedro",
-      "Juan",
-      "Marcos",
-      "Imposible saberlo",
-      "Pedro y Lucas empatados"
-    ],
-    "enunciado": "Lee las posiciones y responde.",
-    "estimulo": "En una fila, Juan está detrás de Pedro y delante de Marcos. Lucas está delante de Pedro. ¿Quién está más adelante?"
-  },
   "ANA-09": {
     "alternativas": [
       "Uno de ellos devolvió el pez al agua",
@@ -145,9 +124,6 @@
   },
   "ESP-01": {
     "enunciado": "¿Cuántas aristas (las líneas donde se encuentran dos caras) tiene un cubo?"
-  },
-  "ESP-05": {
-    "enunciado": "¿Cuál de las figuras es la de arriba, girada (sin reflejar)?"
   },
   "ESP-08": {
     "enunciado": "Una hoja se dobla por la mitad y otra vez por la mitad (4 capas). Haces un agujero con un perforador en el centro de la hoja doblada. Al desdoblarla, ¿cuántos agujeros aparecen?"
@@ -236,6 +212,18 @@
     "enunciado": "¿Qué figura sigue en esta secuencia?",
     "estimulo": "Cilindro, Esfera, Cono, Paralelepípedo, ?"
   },
+  "PAT-10": {
+    "alternativas": [
+      "Domingo",
+      "Lunes",
+      "Martes",
+      "Jueves",
+      "Viernes",
+      "Sábado"
+    ],
+    "enunciado": "¿Qué día de la semana viene a continuación?",
+    "estimulo": "Domingo, lunes, miércoles, sábado, miércoles, ?"
+  },
   "PER-01": {
     "enunciado": "¿Cuál figura es diferente de las demás?"
   },
@@ -256,5 +244,8 @@
   },
   "PER-07": {
     "enunciado": "¿Qué pieza continúa el patrón de la malla manteniendo densidad y orientación?"
+  },
+  "PER-08": {
+    "enunciado": "¿Qué pieza encaja en el hueco del patrón?"
   }
 }
