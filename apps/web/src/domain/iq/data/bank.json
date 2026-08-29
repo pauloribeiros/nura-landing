@@ -347,22 +347,22 @@
   {
     "id": "PER-04",
     "dimensao": "percepcao_visual",
-    "tipo": "simetria_intrusa",
+    "tipo": "ponto_dentro_fora",
     "dificuldade": 2,
     "enunciado": "Qual figura é diferente das demais?",
     "estimulo": null,
     "formato_estimulo": "none",
     "alternativas": [
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"28,92 28,56 60,30 92,56 92,92\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"48,28 72,28 72,48 92,48 92,72 72,72 72,92 48,92 48,72 28,72 28,48 48,48\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"30,28 90,28 30,92 90,92\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"34,26 60,26 60,68 94,68 94,94 34,94\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60,26 92,60 74,60 74,94 46,94 46,60 28,60\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"40,32 80,32 94,88 26,88\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>"
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><circle cx=\"60\" cy=\"60\" r=\"34\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\" stroke-linejoin=\"round\"/><circle cx=\"60\" cy=\"60\" r=\"6\" fill=\"#111\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 89.4,77.0 30.6,77.0\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\" stroke-linejoin=\"round\"/><circle cx=\"60\" cy=\"66\" r=\"6\" fill=\"#111\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><circle cx=\"60\" cy=\"60\" r=\"34\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\" stroke-linejoin=\"round\"/><circle cx=\"60\" cy=\"14\" r=\"6\" fill=\"#111\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 94.0,60.0 60.0,94.0 26.0,60.0\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\" stroke-linejoin=\"round\"/><circle cx=\"60\" cy=\"60\" r=\"6\" fill=\"#111\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 92.3,49.5 80.0,87.5 40.0,87.5 27.7,49.5\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\" stroke-linejoin=\"round\"/><circle cx=\"60\" cy=\"62\" r=\"6\" fill=\"#111\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 89.4,43.0 89.4,77.0 60.0,94.0 30.6,77.0 30.6,43.0\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\" stroke-linejoin=\"round\"/><circle cx=\"60\" cy=\"60\" r=\"6\" fill=\"#111\"/></svg>"
     ],
     "formato_alternativas": "svg",
-    "correta": 3,
-    "regra": "Cinco silhuetas tem eixo vertical de simetria (casa, cruz, ampulheta, seta, trapezio) e o L nao tem. Antes eram cinco desenhos identicos e um girado, que se resolve sem olhar de verdade.",
+    "correta": 2,
+    "regra": "Em cinco figuras o ponto esta dentro do contorno; na C esta fora. A versao anterior usava simetria vertical como regra, mas a ampulheta era a unica figura com contorno que se cruza e o trapezio o unico sem angulo reto — tres respostas defensaveis. Aqui numero de lados e curvatura nao elegem ninguem: quatro opcoes tem contagem de lados unica e ha dois circulos.",
     "ordem": 17
   },
   {
