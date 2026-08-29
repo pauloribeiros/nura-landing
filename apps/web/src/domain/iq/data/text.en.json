@@ -130,6 +130,12 @@
   "ESP-11": {
     "enunciado": "Three of the options are rotations of the shape above. Which one is not?"
   },
+  "ESP-12": {
+    "enunciado": "Which figure is the reflection of the shape in the mirror (the dashed line)?"
+  },
+  "ESP-13": {
+    "enunciado": "The first pair shows a transformation. Which figure completes the second pair?"
+  },
   "MEM-01": {
     "enunciado": "Type the sequence you memorised."
   },
@@ -172,19 +178,10 @@
   "PAT-01": {
     "enunciado": "Which number completes the sequence?"
   },
-  "PAT-02": {
-    "enunciado": "Which number completes the sequence?"
-  },
   "PAT-03": {
     "enunciado": "Which number completes the sequence?"
   },
-  "PAT-04": {
-    "enunciado": "Which number completes the sequence?"
-  },
   "PAT-05": {
-    "enunciado": "Which number completes the sequence?"
-  },
-  "PAT-06": {
     "enunciado": "Which number completes the sequence?"
   },
   "PAT-07": {
@@ -216,6 +213,9 @@
     ],
     "enunciado": "Which day of the week comes next?",
     "estimulo": "Sunday, Monday, Wednesday, Saturday, Wednesday, ?"
+  },
+  "PAT-11": {
+    "enunciado": "Which tile continues the sequence?"
   },
   "PER-01": {
     "enunciado": "Which figure is different from the others?"

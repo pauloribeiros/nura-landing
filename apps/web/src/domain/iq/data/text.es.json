@@ -130,6 +130,12 @@
   "ESP-11": {
     "enunciado": "Tres de las opciones son rotaciones de la figura de arriba. ¿Cuál no lo es?"
   },
+  "ESP-12": {
+    "enunciado": "¿Cuál de las figuras es el reflejo de la figura en el espejo (la línea discontinua)?"
+  },
+  "ESP-13": {
+    "enunciado": "El primer par muestra una transformación. ¿Qué figura completa el segundo par?"
+  },
   "MEM-01": {
     "enunciado": "Escribe la secuencia que memorizaste."
   },
@@ -172,19 +178,10 @@
   "PAT-01": {
     "enunciado": "¿Qué número completa la secuencia?"
   },
-  "PAT-02": {
-    "enunciado": "¿Qué número completa la secuencia?"
-  },
   "PAT-03": {
     "enunciado": "¿Qué número completa la secuencia?"
   },
-  "PAT-04": {
-    "enunciado": "¿Qué número completa la secuencia?"
-  },
   "PAT-05": {
-    "enunciado": "¿Qué número completa la secuencia?"
-  },
-  "PAT-06": {
     "enunciado": "¿Qué número completa la secuencia?"
   },
   "PAT-07": {
@@ -216,6 +213,9 @@
     ],
     "enunciado": "¿Qué día de la semana viene a continuación?",
     "estimulo": "Domingo, lunes, miércoles, sábado, miércoles, ?"
+  },
+  "PAT-11": {
+    "enunciado": "¿Qué ficha continúa la secuencia?"
   },
   "PER-01": {
     "enunciado": "¿Cuál figura es diferente de las demás?"
