@@ -560,7 +560,9 @@
       }
     },
     "scoreFailedTitle": "Não conseguimos calcular agora.",
-    "scoreFailedBody": "Suas respostas não chegaram ao servidor. Verifique sua conexão e refaça o teste — infelizmente não dá para recuperar esta tentativa."
+    "scoreFailedBody": "Suas respostas não chegaram ao servidor. Verifique sua conexão e refaça o teste — infelizmente não dá para recuperar esta tentativa.",
+    "memoryWordHint": "Memorize esta palavra",
+    "memoryWordNote": "Vamos perguntar sobre ela durante o teste."
   },
   "iq_result": {
     "eyebrow": "Seu resultado",

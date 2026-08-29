@@ -1195,6 +1195,14 @@ body.is-running-test .header-actions .button { display: none; }
   word-break: break-word;
 }
 .iq-memory-countdown { margin: 0 0 28px; font-size: 0.9rem; color: var(--nura-cool-gray); }
+/* Takes the countdown's place on a word screen: what happens next, not when. */
+.iq-memory-note {
+  max-width: 30ch;
+  margin: 0 auto 28px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-on-dark-muted);
+}
 
 .iq-free-entry { margin-bottom: 24px; }
 .iq-free-entry-field { display: block; }

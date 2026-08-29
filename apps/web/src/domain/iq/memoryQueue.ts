@@ -5,22 +5,21 @@ import type { Item } from './types';
  *
  * THE ORDER IT IS GIVEN IS THE ORDER IT KEEPS. This used to re-sort by
  * `ordem`, which silently undid the type interleaving done by the caller —
- * the items arrived spread out and left grouped again. Sorting belongs to
- * whoever decides the sequence, not to the step builder.
+ * items arrived spread out and left grouped again. Sorting belongs to whoever
+ * decides the sequence, not to the step builder.
  *
- * RECALL COMES IMMEDIATELY AFTER THE STIMULUS. It did not: interference
- * questions used to sit in between, per `gap_itens` in the bank, because that
- * is what makes a span task measure working memory rather than reading. In
- * testing it did not survive contact with a person — the recall arrived so far
- * from the stimulus that it read as an unrelated question, and one word recall
- * was missed entirely. A question nobody connects to what they saw measures
- * nothing at all, so the delay bought less than it cost.
+ * DIGITS ARE RECALLED IMMEDIATELY, WORDS ARE NOT. A digit span asks how much
+ * you can hold at once, and questions in between turned it into an unrelated
+ * question about a number nobody remembered seeing. A word is the opposite:
+ * "we will ask about this later" is the task, and asking on the next screen
+ * measures nothing but reading. So a word waits `gap_itens` reasoning
+ * questions — twenty for the first, which puts it a third of the way in, and
+ * a number nothing can reach for the second, which lands it at the very end.
  *
- * What that costs, stated plainly: the forward spans now measure immediate
- * span — how much is held at once — rather than how much survives
- * interference. MEM-07, which asks for the digits backwards, still requires
- * holding and manipulating, which is working memory under any definition.
- * `gap_itens` in the bank is no longer read by anything.
+ * Interference is counted in REASONING questions only. A memory stimulus is
+ * not interference: counting one would let a recall land between another
+ * stimulus and its own recall, which makes the person hold two things at once
+ * — a dual task, harder than either item was calibrated for.
  */
 
 export type Step =
@@ -28,18 +27,46 @@ export type Step =
   | { kind: 'memory-show'; item: Item }
   | { kind: 'memory-recall'; item: Item };
 
+/** Held over from a stimulus until enough questions have gone by. */
+interface Pending {
+  item: Item;
+  remaining: number;
+}
+
+const isDeferred = (item: Item) => item.tipo === 'span_palavra';
+
 export function buildRunOrder(items: Item[]): Step[] {
   const steps: Step[] = [];
+  const pending: Pending[] = [];
+
+  const placeReady = () => {
+    for (let i = pending.length - 1; i >= 0; i -= 1) {
+      if (pending[i].remaining <= 0) {
+        steps.push({ kind: 'memory-recall', item: pending[i].item });
+        pending.splice(i, 1);
+      }
+    }
+  };
 
   for (const item of items) {
     if (item.dimensao === 'memoria_trabalho' && item.memoria) {
       steps.push({ kind: 'memory-show', item });
-      steps.push({ kind: 'memory-recall', item });
+
+      if (isDeferred(item)) pending.push({ item, remaining: Math.max(1, item.memoria.gap_itens) });
+      else steps.push({ kind: 'memory-recall', item });
+
       continue;
     }
 
     steps.push({ kind: 'question', item });
+    for (const p of pending) p.remaining -= 1;
+    placeReady();
   }
+
+  // Whatever is still waiting when the questions run out is asked at the end,
+  // in the order it was shown. Dropping it would lose an item silently — and
+  // for the second word, the end is exactly where it belongs.
+  for (const p of pending) steps.push({ kind: 'memory-recall', item: p.item });
 
   return steps;
 }

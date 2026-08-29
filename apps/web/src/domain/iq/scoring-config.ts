@@ -8,7 +8,7 @@
  * stays traceable to the rules that produced it.
  */
 
-export const SCORING_VERSION = 'iq-2026-08';
+export const SCORING_VERSION = 'iq-2026-08b';
 
 /**
  * Where the scale starts before any item is answered.

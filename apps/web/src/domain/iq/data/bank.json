@@ -21,39 +21,39 @@
   {
     "id": "ESP-01",
     "dimensao": "orientacao_espacial",
-    "tipo": "rotacao_mental",
-    "dificuldade": 1,
-    "enunciado": "Qual das figuras é a figura acima girada (sem espelhar)?",
-    "estimulo": "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"96.7,60.0 67.5,83.2 27.0,84.0 33.9,41.1 68.7,33.1\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-    "formato_estimulo": "svg",
+    "tipo": "visualizacao_espacial",
+    "dificuldade": 2,
+    "enunciado": "Quantas arestas (as linhas onde duas faces se encontram) tem um cubo?",
+    "estimulo": null,
+    "formato_estimulo": "none",
     "alternativas": [
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"78.4,28.2 43.7,41.9 22.7,76.6 63.4,92.0 87.7,65.9\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"18.8,60.0 41.4,36.7 64.8,38.8 93.2,44.0 80.1,69.7 69.1,99.9 37.8,87.9\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"41.6,28.2 76.3,41.9 97.3,76.6 56.6,92.0 32.3,65.9\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"23.3,60.0 52.5,83.2 93.0,84.0 86.1,41.1 51.3,33.1\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,80.1 40.0,76.0 31.4,53.5 44.9,28.6 74.6,29.7 83.2,54.7 91.9,85.4\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"35.2,37.7 82.0,47.3 110.3,71.6 55.5,82.4 22.6,64.1\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      "12",
+      "8",
+      "6",
+      "16",
+      "10",
+      "24"
     ],
-    "formato_alternativas": "svg",
-    "correta": 2,
-    "regra": "Correta = base rotacionada 240°. Distratores: espelhamentos, figuras distintas e deformação não-uniforme.",
+    "formato_alternativas": "texto",
+    "correta": 0,
+    "regra": "Cubo: 12 arestas, 8 vértices, 6 faces. Os distratores são os outros dois números.",
     "ordem": 2
   },
   {
     "id": "ANA-01",
     "tipo": "analogia_verbal",
-    "dificuldade": 1,
-    "estimulo": "Médico está para hospital assim como professor está para ___",
+    "dificuldade": 2,
+    "estimulo": "Escultor está para mármore assim como poeta está para ___",
     "alternativas": [
-      "escola",
-      "livro",
-      "aluno",
-      "quadro",
+      "palavras",
+      "verso",
+      "papel",
       "caneta",
-      "prova"
+      "rima",
+      "livro"
     ],
     "correta": 0,
-    "regra": "Profissão→local.",
+    "regra": "Profissional→matéria-prima com que trabalha (não o produto nem a ferramenta).",
     "dimensao": "pensamento_analitico",
     "enunciado": "Complete a analogia.",
     "formato_estimulo": "texto",
@@ -63,18 +63,18 @@
   {
     "id": "ANA-02",
     "tipo": "analogia_verbal",
-    "dificuldade": 1,
-    "estimulo": "Pé está para sapato assim como mão está para ___",
+    "dificuldade": 2,
+    "estimulo": "Semente está para árvore assim como ovo está para ___",
     "alternativas": [
-      "luva",
-      "dedo",
-      "braço",
-      "anel",
-      "punho",
-      "unha"
+      "ave",
+      "ninho",
+      "casca",
+      "gema",
+      "granja",
+      "penas"
     ],
     "correta": 0,
-    "regra": "Parte do corpo→vestimenta.",
+    "regra": "Estágio inicial→organismo adulto (não o abrigo nem a parte).",
     "dimensao": "pensamento_analitico",
     "enunciado": "Complete a analogia.",
     "formato_estimulo": "texto",
@@ -147,18 +147,18 @@
   {
     "id": "PAT-01",
     "tipo": "serie_numerica",
-    "dificuldade": 1,
-    "estimulo": "4, 8, 12, 16, ?",
+    "dificuldade": 2,
+    "estimulo": "3, 6, 11, 18, ?",
     "alternativas": [
-      "20",
-      "18",
+      "27",
+      "25",
+      "26",
+      "29",
       "24",
-      "22",
-      "19",
-      "21"
+      "28"
     ],
     "correta": 0,
-    "regra": "PA +4.",
+    "regra": "Diferenças ímpares crescentes: +3, +5, +7, +9.",
     "dimensao": "reconhecimento_padroes",
     "enunciado": "Qual número completa a sequência?",
     "formato_estimulo": "texto",
@@ -168,18 +168,18 @@
   {
     "id": "PAT-02",
     "tipo": "serie_numerica",
-    "dificuldade": 1,
-    "estimulo": "2, 4, 8, 16, ?",
+    "dificuldade": 2,
+    "estimulo": "7, 10, 16, 28, ?",
     "alternativas": [
-      "32",
-      "24",
-      "30",
-      "28",
-      "20",
-      "64"
+      "52",
+      "44",
+      "48",
+      "56",
+      "40",
+      "50"
     ],
     "correta": 0,
-    "regra": "PG ×2.",
+    "regra": "A diferença dobra a cada passo: +3, +6, +12, +24.",
     "dimensao": "reconhecimento_padroes",
     "enunciado": "Qual número completa a sequência?",
     "formato_estimulo": "texto",
@@ -221,9 +221,9 @@
       "estimulo": "Cognitivo",
       "exibir_ms": 5000,
       "cobrar": "reconhecimento",
-      "gap_itens": 3
+      "gap_itens": 20
     },
-    "enunciado": "Qual palavra você memorizou?",
+    "enunciado": "Qual palavra você memorizou no início do teste?",
     "alternativas": [
       "Cognitivo",
       "Cognição",
@@ -679,9 +679,9 @@
       "estimulo": "Padrão",
       "exibir_ms": 5000,
       "cobrar": "reconhecimento",
-      "gap_itens": 4
+      "gap_itens": 999
     },
-    "enunciado": "Qual palavra você memorizou?",
+    "enunciado": "E a segunda palavra que você memorizou?",
     "alternativas": [
       "Padrão",
       "Padrinho",

@@ -25,27 +25,27 @@
   },
   "ANA-01": {
     "alternativas": [
-      "escuela",
-      "libro",
-      "alumno",
-      "pizarra",
+      "palabras",
+      "verso",
+      "papel",
       "bolígrafo",
-      "examen"
+      "rima",
+      "libro"
     ],
     "enunciado": "Completa la analogía.",
-    "estimulo": "Médico es a hospital como profesor es a ___"
+    "estimulo": "Escultor es a mármol como poeta es a ___"
   },
   "ANA-02": {
     "alternativas": [
-      "guante",
-      "dedo",
-      "brazo",
-      "anillo",
-      "muñeca",
-      "uña"
+      "ave",
+      "nido",
+      "cáscara",
+      "yema",
+      "granja",
+      "plumas"
     ],
     "enunciado": "Completa la analogía.",
-    "estimulo": "Pie es a zapato como mano es a ___"
+    "estimulo": "Semilla es a árbol como huevo es a ___"
   },
   "ANA-03": {
     "alternativas": [
@@ -120,7 +120,7 @@
     "estimulo": "En una fila, Juan está detrás de Pedro y delante de Marcos. Lucas está delante de Pedro. ¿Quién está más adelante?"
   },
   "ESP-01": {
-    "enunciado": "¿Cuál de las figuras es la de arriba, girada (sin reflejar)?"
+    "enunciado": "¿Cuántas aristas (las líneas donde se encuentran dos caras) tiene un cubo?"
   },
   "ESP-02": {
     "enunciado": "¿Cuál de las figuras es la de arriba, girada (sin reflejar)?"
@@ -158,7 +158,7 @@
       "Congénito",
       "Cogitar"
     ],
-    "enunciado": "¿Qué palabra memorizaste?",
+    "enunciado": "¿Qué palabra memorizaste al principio del test?",
     "memoria": "Cognitivo"
   },
   "MEM-05": {
@@ -173,7 +173,7 @@
       "Paradoja",
       "Párroco"
     ],
-    "enunciado": "¿Qué palabra memorizaste?",
+    "enunciado": "¿Y la segunda palabra que memorizaste?",
     "memoria": "Patrón"
   },
   "MEM-07": {

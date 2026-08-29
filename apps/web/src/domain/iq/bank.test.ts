@@ -67,6 +67,23 @@ describe('item bank', () => {
     });
   });
 
+  describe('the opening', () => {
+    it('does not spend the first ten screens on the easiest band', () => {
+      // The first minutes decide whether someone believes the test measures
+      // anything. Four-times-table sequences and doctor→hospital analogies
+      // read as a warm-up for a toy, and that impression does not come back.
+      const opening = ITEMS.slice(0, 10);
+      const trivial = opening.filter((i) => i.dificuldade === 1);
+      expect(trivial.length, 'too many difficulty-1 items in the opening').toBeLessThanOrEqual(4);
+    });
+
+    it('still opens with something answerable', () => {
+      // The other failure: a wall on screen one. At least one gentle item has
+      // to be in reach early.
+      expect(ITEMS.slice(0, 6).some((i) => i.dificuldade === 1)).toBe(true);
+    });
+  });
+
   describe('memory items', () => {
     const memory = ITEMS.filter((i) => i.dimensao === 'memoria_trabalho');
 

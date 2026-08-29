@@ -4,14 +4,21 @@ import { useEffect, useRef, useState } from 'react';
 import type { PublicItem } from '@/domain/iq/bank';
 
 /**
- * Shows a working-memory stimulus for five seconds, then asks about it.
+ * Shows a working-memory stimulus for five seconds, then moves on.
  *
- * The countdown is visible on purpose. A stimulus that vanishes without
- * warning turns the item into a test of luck — whether the person happened to
- * be looking — rather than of memory. Telling them how long they have is part
- * of the task, not a kindness.
+ * TWO KINDS OF SCREEN, because the two items ask for different things.
  *
- * WHEN THE CLOCK HITS ZERO THE QUESTION IS ALREADY THERE. No button, and no
+ * A digit span is recalled on the next screen, so the countdown is the point:
+ * a stimulus that vanishes without warning tests whether the person happened
+ * to be looking rather than what they can hold. Telling them how long they
+ * have is part of the task.
+ *
+ * A word is asked about much later — twenty questions on, or at the very end.
+ * There the screen says so and drops the clock: counting down to a question
+ * that is not coming next only teaches the wrong expectation, and the sentence
+ * "we will ask about it during the test" is the instruction that matters.
+ *
+ * WHEN THE CLOCK HITS ZERO THE NEXT SCREEN IS ALREADY THERE. No button, and no
  * screen in between: this used to hold an empty "•••" for a beat, meant as
  * punctuation, and it read as a rest stop on the way to somewhere else. The
  * stimulus disappearing IS the punctuation.
@@ -27,8 +34,15 @@ export function MemoryShow({
 }: {
   item: PublicItem;
   onDone: () => void;
-  copy: { hint: string; seconds: (n: number) => string };
+  copy: {
+    hint: string;
+    seconds: (n: number) => string;
+    /** Shown instead of the two above, for a word held for later. */
+    wordHint: string;
+    wordNote: string;
+  };
 }) {
+  const isWord = item.tipo === 'span_palavra';
   const total = item.memoria?.exibir_ms ?? 5000;
   const [remaining, setRemaining] = useState(total);
 
@@ -60,11 +74,15 @@ export function MemoryShow({
 
   return (
     <div className="iq-memory-show">
-      <p className="iq-memory-hint">{copy.hint}</p>
+      <p className="iq-memory-hint">{isWord ? copy.wordHint : copy.hint}</p>
       <p className="iq-memory-stimulus">{item.memoria?.estimulo}</p>
-      <p className="iq-memory-countdown" aria-live="off">
-        {copy.seconds(seconds)}
-      </p>
+      {isWord ? (
+        <p className="iq-memory-note">{copy.wordNote}</p>
+      ) : (
+        <p className="iq-memory-countdown" aria-live="off">
+          {copy.seconds(seconds)}
+        </p>
+      )}
     </div>
   );
 }

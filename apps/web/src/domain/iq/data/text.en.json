@@ -25,27 +25,27 @@
   },
   "ANA-01": {
     "alternativas": [
-      "school",
-      "book",
-      "student",
-      "board",
+      "words",
+      "verse",
+      "paper",
       "pen",
-      "exam"
+      "rhyme",
+      "book"
     ],
     "enunciado": "Complete the analogy.",
-    "estimulo": "Doctor is to hospital as teacher is to ___"
+    "estimulo": "Sculptor is to marble as poet is to ___"
   },
   "ANA-02": {
     "alternativas": [
-      "glove",
-      "finger",
-      "arm",
-      "ring",
-      "wrist",
-      "nail"
+      "bird",
+      "nest",
+      "shell",
+      "yolk",
+      "farm",
+      "feathers"
     ],
     "enunciado": "Complete the analogy.",
-    "estimulo": "Foot is to shoe as hand is to ___"
+    "estimulo": "Seed is to tree as egg is to ___"
   },
   "ANA-03": {
     "alternativas": [
@@ -120,7 +120,7 @@
     "estimulo": "In a queue, John is behind Peter and ahead of Mark. Lucas is ahead of Peter. Who is furthest to the front?"
   },
   "ESP-01": {
-    "enunciado": "Which figure is the one above, rotated (not mirrored)?"
+    "enunciado": "How many edges (the lines where two faces meet) does a cube have?"
   },
   "ESP-02": {
     "enunciado": "Which figure is the one above, rotated (not mirrored)?"
@@ -158,7 +158,7 @@
       "Congenital",
       "Cogitate"
     ],
-    "enunciado": "Which word did you memorise?",
+    "enunciado": "Which word did you memorise at the start of the test?",
     "memoria": "Cognitive"
   },
   "MEM-05": {
@@ -173,7 +173,7 @@
       "Paradox",
       "Patient"
     ],
-    "enunciado": "Which word did you memorise?",
+    "enunciado": "And the second word you memorised?",
     "memoria": "Pattern"
   },
   "MEM-07": {

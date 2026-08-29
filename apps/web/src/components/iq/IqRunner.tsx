@@ -190,7 +190,12 @@ export function IqRunner({
           <MemoryShow
             item={item}
             onDone={next}
-            copy={{ hint: t('memoryHint'), seconds: (n) => t('memorySeconds', { n }) }}
+            copy={{
+              hint: t('memoryHint'),
+              seconds: (n) => t('memorySeconds', { n }),
+              wordHint: t('memoryWordHint'),
+              wordNote: t('memoryWordNote'),
+            }}
           />
         ) : (
           <>
