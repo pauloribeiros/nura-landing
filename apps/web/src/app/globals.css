@@ -988,8 +988,22 @@ a { color: inherit; text-decoration: none; }
    under the bar exactly when someone reaches for it. */
 .iq-runner { padding: 96px 0 24px; }
 .iq-runner .runner-inner { gap: 0; }
-/* Set by the runner while a test is in progress — see IqRunner. */
+/* Set while a test is in progress — see useFocusMode. Applies to both tests. */
 body.is-running-test .footer { display: none; }
+
+@media (max-width: 680px) {
+  /* The header is the only fixed thing above the question; the rest of the
+     desktop breathing room is what stops one question fitting a phone. */
+  body.is-running-test .runner { padding: 76px 0 16px; }
+  body.is-running-test .runner-inner { gap: 16px; }
+  /* One ASRS question is a legend and five choices; this makes it fit a 667px
+     screen with the progress block above it. */
+  body.is-running-test .runner-question fieldset { padding: 16px; }
+  body.is-running-test .runner-question legend { font-size: 16px; line-height: 1.4; }
+  body.is-running-test .runner-choices { gap: 6px; margin-top: 14px; }
+  body.is-running-test .runner-choice { min-height: 46px; }
+  body.is-running-test .runner-progress { margin-bottom: 0; }
+}
 
 .iq-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 10px; }
 .iq-timer {
@@ -1159,7 +1173,7 @@ body.is-running-test .footer { display: none; }
 .iq-transition h2 { margin: 10px 0 24px; }
 /* The art is square, so height is the bound that matters: a break screen has
    to fit the same single screen every question fits. */
-.iq-art { display: block; width: auto; height: min(30dvh, 240px); margin: 0 auto 16px; }
+.transition-art { display: block; width: auto; height: min(30dvh, 240px); margin: 0 auto 16px; }
 
 @media (max-width: 680px) {
   .iq-transition { padding: 16px 0 12px; }
@@ -1168,7 +1182,7 @@ body.is-running-test .footer { display: none; }
 }
 
 @media (max-height: 700px) {
-  .iq-art { height: min(24dvh, 160px); margin-bottom: 10px; }
+  .transition-art { height: min(24dvh, 160px); margin-bottom: 10px; }
 }
 .iq-transition-meter {
   height: 10px;

@@ -2,7 +2,7 @@
 
 import { ArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { TransitionArt } from './TransitionArt';
+import { TransitionArt } from '../TransitionArt';
 
 /**
  * A breather between blocks of questions.

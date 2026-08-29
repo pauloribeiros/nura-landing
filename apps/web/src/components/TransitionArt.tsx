@@ -14,6 +14,8 @@
  *
  * `aria-hidden` throughout: each one restates the heading beside it, so a
  * screen reader announcing them would read the same thing twice.
+ *
+ * Shared by both tests, so a picture added for one is available to the other.
  */
 
 /** Which picture belongs to which break, and what it shows. */
@@ -24,16 +26,23 @@ export const ART_SRC = {
   middle: '/art/transicao-meio.svg',
   /** After 36 — two people raising a rising curve: the last stretch. */
   end: '/art/transicao-final.svg',
+  /**
+   * Between the ASRS screening block and the detail block. Currently a copy of
+   * `transicao-meio.svg` — replacing that one file with a picture of its own
+   * is the whole change; nothing here has to move.
+   */
+  tdah: '/art/transicao-tdah.svg',
 } as const;
 
 export type ArtVariant = keyof typeof ART_SRC;
 
 export function TransitionArt({ variant }: { variant: ArtVariant }) {
   return (
-    // eslint-disable-next-line @next/next/no-img-element -- a static SVG from
-    // /public: next/image cannot optimise it and would only add a wrapper.
+    // A static SVG from /public: next/image cannot optimise it and would only
+    // add a wrapper.
+    // eslint-disable-next-line @next/next/no-img-element
     <img
-      className="iq-art"
+      className="transition-art"
       src={ART_SRC[variant]}
       alt=""
       width={500}

@@ -16,13 +16,14 @@ import {
 } from '@/domain/iq/session';
 import type { Item } from '@/domain/iq/types';
 import { randomId } from '@/lib/randomId';
+import { useFocusMode } from '@/lib/focusMode';
 import { Stimulus } from './Stimulus';
 import { OptionGrid } from './OptionGrid';
 import { MemoryShow } from './MemoryShow';
 import { FreeEntry } from './FreeEntry';
 import { Timer } from './Timer';
 import { BREAKS, TransitionScreen } from './TransitionScreen';
-import { preloadTransitionArt } from './TransitionArt';
+import { preloadTransitionArt } from '../TransitionArt';
 
 /**
  * Runs the IQ test.
@@ -72,17 +73,8 @@ export function IqRunner({
   const advancing = useRef(false);
   const topRef = useRef<HTMLElement>(null);
 
-  // While the test is running the page is one task, and the site footer is
-  // 295px of navigation sitting under a question that otherwise fits the
-  // screen — it was the single largest reason the phone had to scroll. The
-  // links come back on the intro and the result, which is where someone would
-  // go looking for them. Removed by class rather than by not rendering it:
-  // the footer belongs to the root layout, and a running test is a state of
-  // the page, not a different page.
-  useEffect(() => {
-    document.body.classList.add('is-running-test');
-    return () => document.body.classList.remove('is-running-test');
-  }, []);
+  useFocusMode(true);
+
 
   // Started on mount rather than on a click: the intro screen belongs to the
   // page, and by the time this renders the person has already begun.
