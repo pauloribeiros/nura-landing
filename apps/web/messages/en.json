@@ -569,7 +569,9 @@
     "calcLead": "Your answers are being scored and organised dimension by dimension.",
     "calcAsk": "Is this your first IQ test?",
     "calcYes": "Yes",
-    "calcNo": "No"
+    "calcNo": "No",
+    "calcAskNumber": "The number you memorised was…",
+    "calcAskWord": "The second word you memorised was…"
   },
   "iq_result": {
     "eyebrow": "Your result",
@@ -585,5 +587,19 @@
     "weaknesses": "The lowest results came from {a} and {b}. Worth noticing whether that was real difficulty or fatigue — the hardest questions cluster at the end.",
     "disclaimer": "A reasoning assessment for self-knowledge. The score is on NURA's own scale and is not an IQ: an IQ score requires a standardisation sample, control for age and education, and administration by a qualified professional. It is not a psychological test or a diagnosis.",
     "restart": "Take it again"
+  },
+  "iq_gate": {
+    "eyebrow": "Your profile is ready",
+    "title": "Where should we send your report?",
+    "lead": "Forty-five answers organised into six cognitive dimensions, each one interpreted. Enter your email to receive it and unlock the full report.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@example.com",
+    "cta": "Continue",
+    "sending": "Opening checkout…",
+    "error": "We could not open checkout right now. Try again in a moment.",
+    "statTime": "Completion time",
+    "statSpeed": "Speed",
+    "statSpeedValue": "faster than {pct}%",
+    "legal": "We use your email to send the report and nothing else. Your answers are never shared."
   }
 }

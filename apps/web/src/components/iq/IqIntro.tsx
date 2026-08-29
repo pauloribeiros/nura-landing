@@ -1,13 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import type { PublicItem } from '@/domain/iq/bank';
 import type { IqResult as IqResultData } from '@/domain/iq/scoring';
 import type { IqSession } from '@/domain/iq/session';
 import { IqRunner } from './IqRunner';
-import { IqCalculating } from './IqCalculating';
+import { IqCalculating, type PerguntaCarregamento } from './IqCalculating';
+import { IqEmailGate } from './IqEmailGate';
 import { useFocusMode } from '@/lib/focusMode';
 import { IqResult } from './IqResult';
 import { ensureSession } from '@/lib/supabase/client';
@@ -34,6 +35,41 @@ export function IqIntro({ items }: { items: PublicItem[] }) {
   // Held back until the calculating screen finishes its list, so the result
   // does not appear behind it mid-animation.
   const [pronto, setPronto] = useState<IqResultData | null>(null);
+  // Devolvido pelo score: e o que o checkout usa para saber o que esta sendo
+  // vendido. Sem ele nao ha o que comprar.
+  const [sessionId, setSessionId] = useState<string | undefined>();
+
+  /**
+   * As perguntas que interrompem a tela de calculo.
+   *
+   * Duas delas cobram de novo o que foi memorizado, agora minutos depois — uma
+   * recordacao tardia, que e a unica coisa que esta tela esta bem posicionada
+   * para medir. As opcoes sao o valor verdadeiro e um chamariz derivado dele:
+   * os digitos ao contrario, e a outra palavra do proprio teste. Nao ha versao
+   * disso em que a resposta "certa" nao seja a que foi mostrada.
+   */
+  const perguntas = useMemo<PerguntaCarregamento[]>(() => {
+    const memoria = items.filter((i) => i.memoria?.estimulo);
+    const digitos = memoria.find((i) => i.tipo === 'span_digitos')?.memoria?.estimulo;
+    const palavras = memoria.filter((i) => i.tipo === 'span_palavra');
+
+    const lista: PerguntaCarregamento[] = [
+      { id: 'primeira-vez', texto: t('calcAsk'), opcoes: [t('calcNo'), t('calcYes')], apos: 1 },
+    ];
+
+    if (digitos) {
+      const invertido = digitos.split(' ').reverse().join(' ');
+      lista.push({ id: 'digitos', texto: t('calcAskNumber'), opcoes: [invertido, digitos], apos: 3 });
+    }
+
+    if (palavras.length >= 2) {
+      const segunda = palavras[1].memoria!.estimulo;
+      const primeira = palavras[0].memoria!.estimulo;
+      lista.push({ id: 'palavra', texto: t('calcAskWord'), opcoes: [primeira, segunda], apos: 5 });
+    }
+
+    return lista;
+  }, [items, t]);
 
   // Focus mode from the moment the page opens until the result exists — the
   // intro included. Owned here rather than in the runner because this
@@ -61,7 +97,8 @@ export function IqIntro({ items }: { items: PublicItem[] }) {
         setState('error');
         return;
       }
-      const body = (await response.json()) as { result: IqResultData };
+      const body = (await response.json()) as { sessionId?: string; result: IqResultData };
+      setSessionId(body.sessionId);
       setResult(body.result);
     } catch {
       setState('error');
@@ -91,7 +128,10 @@ export function IqIntro({ items }: { items: PublicItem[] }) {
     setStarted(false);
   };
 
-  if (pronto) return <IqResult result={pronto} onRestart={restart} />;
+  // O resultado nao e entregue nesta fase: quem termina vai para o e-mail e
+  // para o pagamento. `IqResult` continua no repositorio, pronto para voltar
+  // quando o relatorio existir.
+  if (pronto) return <IqEmailGate sessionId={sessionId} result={pronto} />;
 
   // The calculating screen goes up the instant the run ends and holds until
   // the server answers — `pronto` is what lets it finish, so the bar can never
@@ -100,6 +140,7 @@ export function IqIntro({ items }: { items: PublicItem[] }) {
     return (
       <IqCalculating
         pronto={result !== null}
+        perguntas={perguntas}
         onDone={() => {
           if (result) setPronto(result);
           setState('idle');

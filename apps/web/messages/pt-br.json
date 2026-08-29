@@ -569,7 +569,9 @@
     "calcLead": "Suas respostas estão sendo corrigidas e organizadas dimensão por dimensão.",
     "calcAsk": "Este é o seu primeiro teste de QI?",
     "calcYes": "Sim",
-    "calcNo": "Não"
+    "calcNo": "Não",
+    "calcAskNumber": "O número que você memorizou era…",
+    "calcAskWord": "A segunda palavra que você memorizou foi…"
   },
   "iq_result": {
     "eyebrow": "Seu resultado",
@@ -585,5 +587,19 @@
     "weaknesses": "Os resultados mais baixos vieram de {a} e {b}. Vale reparar se foi dificuldade real ou cansaço — as questões mais difíceis se concentram no fim do teste.",
     "disclaimer": "Avaliação de raciocínio para autoconhecimento. A pontuação está na escala da NURA e não é um QI: um escore de QI exige amostra de padronização, controle de idade e escolaridade e aplicação por profissional habilitado. Não constitui teste psicológico nem diagnóstico.",
     "restart": "Refazer o teste"
+  },
+  "iq_gate": {
+    "eyebrow": "Seu perfil está pronto",
+    "title": "Para onde enviamos o seu relatório?",
+    "lead": "São 45 respostas organizadas em seis dimensões cognitivas, com a interpretação de cada uma. Digite seu e-mail para receber e liberar o relatório completo.",
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "voce@exemplo.com",
+    "cta": "Continuar",
+    "sending": "Abrindo o pagamento…",
+    "error": "Não foi possível abrir o pagamento agora. Tente de novo em instantes.",
+    "statTime": "Tempo de conclusão",
+    "statSpeed": "Velocidade",
+    "statSpeedValue": "mais rápido que {pct}%",
+    "legal": "Usamos seu e-mail para enviar o relatório e nada além disso. Suas respostas não são compartilhadas."
   }
 }

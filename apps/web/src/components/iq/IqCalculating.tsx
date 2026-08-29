@@ -26,31 +26,60 @@ import { DIMENSOES } from '@/domain/iq/bank';
  * once it has: `pronto` gates the last step. A progress bar that completes
  * while the request is still in flight is a lie that gets caught the moment
  * the next screen fails to appear.
+ *
+ * THE QUESTIONS THAT INTERRUPT IT are real questions, not decoration. Two of
+ * them ask again for what was memorised — a delayed recall, minutes after the
+ * item itself, which is the one thing this screen is genuinely well placed to
+ * measure. The options are the true value and a decoy built from it, so there
+ * is no version of this where the "right" answer is not the one that was
+ * actually shown.
  */
 
 /** How long each line takes to tick. Six lines, so the floor is ~3.6s. */
 const PASSO_MS = 600;
 
-export function IqCalculating({ pronto, onDone }: { pronto: boolean; onDone: () => void }) {
+/** Uma pergunta mostrada por cima da tela, com duas saidas. */
+export interface PerguntaCarregamento {
+  id: string;
+  texto: string;
+  opcoes: [string, string];
+  /** Depois de quantas linhas marcadas ela aparece. */
+  apos: number;
+}
+
+export function IqCalculating({
+  pronto,
+  perguntas = [],
+  onDone,
+}: {
+  pronto: boolean;
+  perguntas?: PerguntaCarregamento[];
+  onDone: () => void;
+}) {
   const t = useTranslations('iq');
   const [passo, setPasso] = useState(0);
-  const [perguntou, setPerguntou] = useState(false);
+  const [respondidas, setRespondidas] = useState<string[]>([]);
+
+  // A primeira que couber no passo atual e ainda nao tiver sido respondida.
+  const aberta = perguntas.find((p) => passo >= p.apos && !respondidas.includes(p.id));
 
   useEffect(() => {
     // The last step waits for the real result; everything before it is just
     // slow enough to read.
     if (passo >= DIMENSOES.length) return;
     if (passo === DIMENSOES.length - 1 && !pronto) return;
+    // Uma pergunta aberta segura a barra: ela nao corre por baixo do dialogo.
+    if (aberta) return;
 
     const id = window.setTimeout(() => setPasso((p) => p + 1), PASSO_MS);
     return () => window.clearTimeout(id);
-  }, [passo, pronto]);
+  }, [passo, pronto, aberta]);
 
   useEffect(() => {
-    if (passo < DIMENSOES.length || !pronto) return;
+    if (passo < DIMENSOES.length || !pronto || aberta) return;
     const id = window.setTimeout(onDone, 450);
     return () => window.clearTimeout(id);
-  }, [passo, pronto, onDone]);
+  }, [passo, pronto, aberta, onDone]);
 
   const pct = Math.round((passo / DIMENSOES.length) * 100);
 
@@ -78,20 +107,23 @@ export function IqCalculating({ pronto, onDone }: { pronto: boolean; onDone: () 
         </ul>
       </div>
 
-      {/* Asked here rather than before the test: at the start it is one more
-          thing between the person and the first question, and the answer
-          changes nothing about how the test is scored. */}
-      {passo >= 2 && !perguntou ? (
-        <div className="iq-ask" role="dialog" aria-modal="true" aria-label={t('calcAsk')}>
+      {/* Asked here rather than before the test: at the start each one is one
+          more thing between the person and the first question. */}
+      {aberta ? (
+        <div className="iq-ask" role="dialog" aria-modal="true" aria-label={aberta.texto}>
           <div className="iq-ask-card">
-            <p>{t('calcAsk')}</p>
+            <p>{aberta.texto}</p>
             <div className="iq-ask-actions">
-              <button type="button" className="button button-ghost" onClick={() => setPerguntou(true)}>
-                {t('calcNo')}
-              </button>
-              <button type="button" className="button button-primary" onClick={() => setPerguntou(true)}>
-                {t('calcYes')}
-              </button>
+              {aberta.opcoes.map((opcao) => (
+                <button
+                  key={opcao}
+                  type="button"
+                  className="button button-primary"
+                  onClick={() => setRespondidas((r) => [...r, aberta.id])}
+                >
+                  {opcao}
+                </button>
+              ))}
             </div>
           </div>
         </div>

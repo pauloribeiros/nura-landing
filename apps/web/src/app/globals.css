@@ -1345,6 +1345,52 @@ body.is-running-test .header-actions .button { display: none; }
   .iq-calc-track span { transition: none; }
 }
 
+/* ----------------------------------------------------------- iq email gate */
+.iq-gate { padding-top: 96px; }
+.iq-gate h1 { max-width: 18ch; }
+.iq-gate-form { display: grid; gap: 14px; margin: 26px 0 6px; max-width: 420px; }
+.iq-gate-field span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.82rem;
+  color: var(--text-on-dark-faint);
+}
+.iq-gate-field input {
+  width: 100%;
+  min-height: 54px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  background: rgba(0, 0, 0, 0.25);
+  color: inherit;
+  font-size: 1rem;
+}
+.iq-gate-field input:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 2px; }
+.iq-gate-form .button { justify-content: center; min-height: 54px; }
+
+/* Os numeros embaixo do botao: o que ja e sabido sobre esta corrida. */
+.iq-gate-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  list-style: none;
+  margin: 24px 0 18px;
+  padding: 0;
+}
+.iq-gate-stats li { display: flex; align-items: center; gap: 8px; color: var(--nura-cyan); }
+.iq-gate-stat-label {
+  font: 11px var(--app-font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-on-dark-faint);
+}
+.iq-gate-stats b { color: var(--text-on-dark); font-variant-numeric: tabular-nums; }
+
+@media (max-width: 680px) {
+  .iq-gate { padding-top: 76px; }
+  .iq-gate-stats { gap: 8px 20px; }
+}
+
 /* --------------------------------------------------------- iq transitions */
 .iq-transition { padding: 32px 0 16px; }
 .iq-transition h2 { margin: 10px 0 24px; }

@@ -569,7 +569,9 @@
     "calcLead": "Tus respuestas se están corrigiendo y organizando dimensión por dimensión.",
     "calcAsk": "¿Es tu primer test de CI?",
     "calcYes": "Sí",
-    "calcNo": "No"
+    "calcNo": "No",
+    "calcAskNumber": "El número que memorizaste era…",
+    "calcAskWord": "La segunda palabra que memorizaste fue…"
   },
   "iq_result": {
     "eyebrow": "Tu resultado",
@@ -585,5 +587,19 @@
     "weaknesses": "Los resultados más bajos vinieron de {a} y {b}. Vale notar si fue dificultad real o cansancio — las preguntas más difíciles se concentran al final.",
     "disclaimer": "Evaluación de razonamiento para autoconocimiento. La puntuación está en la escala de NURA y no es un CI: una puntuación de CI exige muestra de estandarización, control de edad y escolaridad y aplicación por profesional habilitado. No constituye test psicológico ni diagnóstico.",
     "restart": "Rehacer el test"
+  },
+  "iq_gate": {
+    "eyebrow": "Tu perfil está listo",
+    "title": "¿A dónde enviamos tu informe?",
+    "lead": "Cuarenta y cinco respuestas organizadas en seis dimensiones cognitivas, cada una interpretada. Escribe tu correo para recibirlo y desbloquear el informe completo.",
+    "emailLabel": "Correo",
+    "emailPlaceholder": "tu@ejemplo.com",
+    "cta": "Continuar",
+    "sending": "Abriendo el pago…",
+    "error": "No pudimos abrir el pago ahora. Inténtalo de nuevo en un momento.",
+    "statTime": "Tiempo de finalización",
+    "statSpeed": "Velocidad",
+    "statSpeedValue": "más rápido que {pct}%",
+    "legal": "Usamos tu correo para enviarte el informe y nada más. Tus respuestas nunca se comparten."
   }
 }
