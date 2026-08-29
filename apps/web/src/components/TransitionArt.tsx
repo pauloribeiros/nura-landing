@@ -1,3 +1,7 @@
+'use client';
+
+import { useState } from 'react';
+
 /**
  * Illustrations for the break screens.
  *
@@ -16,6 +20,12 @@
  * screen reader announcing them would read the same thing twice.
  *
  * Shared by both tests, so a picture added for one is available to the other.
+ *
+ * A FAILED LOAD RENDERS NOTHING. The picture is decoration; the screen works
+ * without it. Left to the browser, a failure leaves a 240px box with a broken
+ * icon sitting above the headline — worse than the empty space it occupies,
+ * and it happens for reasons outside the page: a dropped connection, a
+ * restarted server, a phone changing networks mid-test.
  */
 
 /** Which picture belongs to which break, and what it shows. */
@@ -33,6 +43,9 @@ export const ART_SRC = {
 export type ArtVariant = keyof typeof ART_SRC;
 
 export function TransitionArt({ variant }: { variant: ArtVariant }) {
+  const [falhou, setFalhou] = useState(false);
+  if (falhou) return null;
+
   return (
     // A static SVG from /public: next/image cannot optimise it and would only
     // add a wrapper.
@@ -45,6 +58,7 @@ export function TransitionArt({ variant }: { variant: ArtVariant }) {
       height={500}
       aria-hidden="true"
       decoding="async"
+      onError={() => setFalhou(true)}
     />
   );
 }
