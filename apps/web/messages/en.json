@@ -601,5 +601,31 @@
     "statSpeed": "Speed",
     "statSpeedValue": "faster than {pct}%",
     "legal": "We use your email to send the report and nothing else. Your answers are never shared."
+  },
+  "iq_checkout": {
+    "eyebrow": "Last step",
+    "title": "How would you like to pay?",
+    "summaryTitle": "What you get",
+    "inclui1": "Your score and the profile across six dimensions",
+    "inclui2": "What each dimension measures, read one by one",
+    "inclui3": "The full report by email, as a PDF",
+    "inclui4": "Permanent access through the link, no expiry",
+    "total": "Total",
+    "price": "R$ 19.90",
+    "once": "One-time payment. No subscription, no recurring charge.",
+    "pix": {
+      "name": "Pix",
+      "note": "instant approval",
+      "body": "You get the Pix code on the next screen. Access opens automatically as soon as the payment lands."
+    },
+    "card": {
+      "name": "Credit or debit card",
+      "note": "single payment",
+      "body": "Card details are typed inside Stripe, not here. Wallets like Google Pay and Apple Pay show up at that step when your device has them."
+    },
+    "cta": "Pay {preco}",
+    "sending": "Opening checkout…",
+    "error": "We could not open checkout right now. Try again in a moment.",
+    "secure": "Payment handled by Stripe. NURA never sees or stores your card details."
   }
 }

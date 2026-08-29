@@ -59,23 +59,10 @@ export function IqEmailGate({
       return;
     }
 
-    try {
-      const resposta = await fetch('/api/checkout', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ sessionId, locale }),
-      });
-      if (!resposta.ok) {
-        setEstado('erro');
-        return;
-      }
-      const { url } = (await resposta.json()) as { url: string };
-      track('checkout_started', { assessment: 'cognition' });
-      // Navegação inteira: o destino é o domínio do Stripe, não o nosso.
-      window.location.href = url;
-    } catch {
-      setEstado('erro');
-    }
+    // Para a nossa página de pagamento, não direto ao Stripe: a escolha do
+    // meio de pagamento acontece na nossa casa, com o resumo do que está
+    // sendo comprado ao lado.
+    window.location.href = `/${locale}/p/${sessionId}`;
   };
 
   return (

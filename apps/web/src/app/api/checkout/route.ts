@@ -32,7 +32,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'not-configured' }, { status: 503 });
   }
 
-  let body: { sessionId?: string; locale?: string };
+  let body: { sessionId?: string; locale?: string; metodo?: string };
   try {
     body = await request.json();
   } catch {
@@ -85,8 +85,17 @@ export async function POST(request: Request) {
     return NextResponse.json({ url: `${SITE_URL}${reportPath(locale, sessionId)}` });
   }
 
+  // O método vem da página de pagamento, que já mostrou a escolha. Só dois
+  // valores são aceitos, e qualquer outra coisa cai no padrão da conta —
+  // um corpo de requisição não decide o que a conta aceita.
+  const metodos =
+    body.metodo === 'pix' ? (['pix'] as const)
+    : body.metodo === 'card' ? (['card'] as const)
+    : undefined;
+
   const checkout = await stripe.checkout.sessions.create({
     mode: 'payment',
+    ...(metodos ? { payment_method_types: [...metodos] } : {}),
     // Payment methods come from the Stripe dashboard rather than being listed
     // here, so enabling Pix later needs no deploy.
     line_items: [

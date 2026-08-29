@@ -601,5 +601,31 @@
     "statSpeed": "Velocidad",
     "statSpeedValue": "más rápido que {pct}%",
     "legal": "Usamos tu correo para enviarte el informe y nada más. Tus respuestas nunca se comparten."
+  },
+  "iq_checkout": {
+    "eyebrow": "Último paso",
+    "title": "¿Cómo prefieres pagar?",
+    "summaryTitle": "Lo que recibes",
+    "inclui1": "Tu puntuación y el perfil en seis dimensiones",
+    "inclui2": "La lectura de cada dimensión y lo que mide",
+    "inclui3": "El informe completo por correo, en PDF",
+    "inclui4": "Acceso permanente por el enlace, sin caducidad",
+    "total": "Total",
+    "price": "R$ 19,90",
+    "once": "Pago único. Sin suscripción ni cobro recurrente.",
+    "pix": {
+      "name": "Pix",
+      "note": "aprobación inmediata",
+      "body": "Recibes el código Pix en la siguiente pantalla. El acceso se abre automáticamente cuando el pago entra."
+    },
+    "card": {
+      "name": "Tarjeta de crédito o débito",
+      "note": "un solo pago",
+      "body": "Los datos de la tarjeta se escriben dentro de Stripe, no aquí. Carteras como Google Pay y Apple Pay aparecen en ese paso cuando tu dispositivo las tiene."
+    },
+    "cta": "Pagar {preco}",
+    "sending": "Abriendo el pago…",
+    "error": "No pudimos abrir el pago ahora. Inténtalo de nuevo en un momento.",
+    "secure": "Pago procesado por Stripe. NURA nunca ve ni guarda los datos de tu tarjeta."
   }
 }

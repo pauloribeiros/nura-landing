@@ -601,5 +601,31 @@
     "statSpeed": "Velocidade",
     "statSpeedValue": "mais rápido que {pct}%",
     "legal": "Usamos seu e-mail para enviar o relatório e nada além disso. Suas respostas não são compartilhadas."
+  },
+  "iq_checkout": {
+    "eyebrow": "Último passo",
+    "title": "Como você prefere pagar?",
+    "summaryTitle": "O que você recebe",
+    "inclui1": "Sua pontuação e o perfil nas seis dimensões",
+    "inclui2": "A leitura de cada dimensão, com o que ela mede",
+    "inclui3": "O relatório completo por e-mail, em PDF",
+    "inclui4": "Acesso permanente pelo link, sem prazo",
+    "total": "Total",
+    "price": "R$ 19,90",
+    "once": "Pagamento único. Sem assinatura e sem cobrança recorrente.",
+    "pix": {
+      "name": "Pix",
+      "note": "aprovação na hora",
+      "body": "Você recebe o código Pix na tela seguinte. A liberação é automática assim que o pagamento cai."
+    },
+    "card": {
+      "name": "Cartão de crédito ou débito",
+      "note": "à vista",
+      "body": "Os dados do cartão são digitados no ambiente do Stripe, não aqui. Carteiras como Google Pay e Apple Pay aparecem nesse passo quando o seu aparelho as tem."
+    },
+    "cta": "Pagar {preco}",
+    "sending": "Abrindo o pagamento…",
+    "error": "Não foi possível abrir o pagamento agora. Tente de novo em instantes.",
+    "secure": "Pagamento processado pelo Stripe. A NURA não vê nem guarda os dados do seu cartão."
   }
 }
