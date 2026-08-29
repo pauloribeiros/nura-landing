@@ -561,7 +561,8 @@
     "scoreFailedTitle": "No pudimos calcular ahora.",
     "scoreFailedBody": "Tus respuestas no llegaron al servidor. Revisa tu conexión y rehaz el test — lamentablemente este intento no se puede recuperar.",
     "memoryWordHint": "Memoriza esta palabra",
-    "memoryWordNote": "Te preguntaremos por ella durante el test."
+    "memoryWordNote": "Te preguntaremos por ella durante el test.",
+    "memorySeconds": "{n, plural, one {Desaparece en <forte>#</forte> segundo} other {Desaparece en <forte>#</forte> segundos}}"
   },
   "iq_result": {
     "eyebrow": "Tu resultado",

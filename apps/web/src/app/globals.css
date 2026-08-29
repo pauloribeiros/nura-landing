@@ -1203,7 +1203,13 @@ body.is-running-test .header-actions .button { display: none; }
   color: var(--nura-cyan);
 }
 .iq-memory-stimulus {
-  margin: 0 0 20px;
+  /* A sequencia dentro de um cartao: separa o que tem que ser memorizado do
+     titulo e da contagem, que sao instrucao. */
+  margin: 0 0 14px;
+  padding: 22px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
   font-family: var(--font-mono, monospace);
   font-size: clamp(2rem, 11vw, 3.4rem);
   letter-spacing: 0.22em;
@@ -1212,8 +1218,9 @@ body.is-running-test .header-actions .button { display: none; }
 }
 /* When the thing on screen will be asked about — the line under every memory
    stimulus, word or digits. */
+.iq-memory-count { color: var(--text-on-dark); font-weight: 700; }
 .iq-memory-note {
-  max-width: 30ch;
+  max-width: 34ch;
   margin: 0 auto 28px;
   font-size: 0.95rem;
   line-height: 1.5;

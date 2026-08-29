@@ -149,9 +149,6 @@
   "ESP-01": {
     "enunciado": "¿Cuántas aristas (las líneas donde se encuentran dos caras) tiene un cubo?"
   },
-  "ESP-04": {
-    "enunciado": "¿Cuál de las figuras es la de arriba, girada (sin reflejar)?"
-  },
   "ESP-05": {
     "enunciado": "¿Cuál de las figuras es la de arriba, girada (sin reflejar)?"
   },
@@ -160,6 +157,9 @@
   },
   "ESP-09": {
     "enunciado": "Un cuadrado se dobla por la mitad, se hace un agujero a través de ambas capas y luego se desdobla. ¿Qué hoja es el resultado?"
+  },
+  "ESP-10": {
+    "enunciado": "El primer par está relacionado del mismo modo que el segundo par. ¿Qué opción lo completa?"
   },
   "MEM-01": {
     "enunciado": "Escribe la secuencia que memorizaste."

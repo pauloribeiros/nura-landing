@@ -206,6 +206,11 @@ export function IqRunner({
             onDone={next}
             copy={{
               hint: t('memoryHint'),
+              seconds: (n) =>
+                t.rich('memorySeconds', {
+                  n,
+                  forte: (chunks) => <strong className="iq-memory-count">{chunks}</strong>,
+                }),
               wordHint: t('memoryWordHint'),
               wordNote: t('memoryWordNote'),
             }}

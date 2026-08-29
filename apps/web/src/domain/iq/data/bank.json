@@ -498,24 +498,24 @@
     "ordem": 23
   },
   {
-    "id": "ESP-04",
+    "id": "ESP-10",
     "dimensao": "orientacao_espacial",
-    "tipo": "rotacao_mental",
+    "tipo": "analogia_figural",
     "dificuldade": 3,
-    "enunciado": "Qual das figuras é a figura acima girada (sem espelhar)?",
-    "estimulo": "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"82.3,60.0 77.9,91.0 44.1,87.6 25.3,60.0 43.0,30.5 78.5,28.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
+    "enunciado": "O primeiro par está relacionado da mesma forma que o segundo par. Qual opção o completa?",
+    "estimulo": "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><rect x=\"8\" y=\"10\" width=\"34\" height=\"34\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"25\" cy=\"27\" r=\"4\" fill=\"#111\"/><path d=\"M50 27 h12\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M62 27 l-4 -3 M62 27 l-4 3\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"72\" y=\"10\" width=\"34\" height=\"34\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"106\" cy=\"10\" r=\"4\" fill=\"#111\"/><polygon points=\"8,100 42,100 25,66\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"25\" cy=\"89\" r=\"4\" fill=\"#111\"/><path d=\"M50 83 h12\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M62 83 l-4 -3 M62 83 l-4 3\" stroke=\"#111\" stroke-width=\"1.6\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"72\" y=\"66\" width=\"34\" height=\"34\" stroke=\"#111\" stroke-width=\"1.4\" fill=\"none\" stroke-dasharray=\"4 3\"/><text x=\"89\" y=\"90\" text-anchor=\"middle\" font-family=\"monospace\" font-size=\"20\" fill=\"#111\">?</text></svg>",
     "formato_estimulo": "svg",
     "alternativas": [
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"71.2,40.7 42.1,29.0 28.1,60.0 42.6,90.1 77.0,89.5 97.0,60.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"72.8,82.2 45.4,85.2 25.5,60.0 45.6,35.1 77.5,29.7 100.9,60.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"48.8,40.7 77.9,29.0 91.9,60.0 77.4,90.1 43.0,89.5 23.0,60.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"44.9,46.5 84.2,38.3 103.0,60.0 83.4,81.0 37.0,80.6 10.1,60.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,100.0 34.5,74.7 27.4,41.2 60.0,32.2 79.3,48.9 82.5,73.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"37.7,60.0 42.1,91.0 75.9,87.6 94.7,60.0 77.0,30.5 41.5,28.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"24,94 96,94 60,26\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"60\" cy=\"72\" r=\"7\" fill=\"#111\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"24,94 96,94 60,26\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"24\" cy=\"94\" r=\"7\" fill=\"#111\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><rect x=\"28\" y=\"28\" width=\"64\" height=\"64\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"92\" cy=\"28\" r=\"7\" fill=\"#111\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"24,94 96,94 60,26\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"96\" cy=\"26\" r=\"7\" fill=\"#111\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"24,94 96,94 60,26\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"60\" cy=\"26\" r=\"7\" fill=\"#111\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"24,94 96,94 60,26\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"96\" cy=\"94\" r=\"7\" fill=\"#111\"/></svg>"
     ],
     "formato_alternativas": "svg",
-    "correta": 2,
-    "regra": "Correta = base rotacionada 240°. Distratores: espelhamentos, figuras distintas e deformação não-uniforme.",
+    "correta": 3,
+    "regra": "O ponto sai de dentro da figura e vai para o canto superior direito da caixa que a contem; a figura nao muda. Distratores: ponto parado, outros tres cantos, o vertice de cima (que nao e o canto da caixa) e a transformacao certa aplicada ao quadrado em vez do triangulo.",
     "ordem": 24
   },
   {
