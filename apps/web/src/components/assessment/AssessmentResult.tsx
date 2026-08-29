@@ -135,6 +135,13 @@ export function AssessmentResult({
 
         {elevated ? (
           <div className="result-premium">
+            {/* Says out loud what the person is buying an explanation OF. The
+                card used to open with the same sentence for everyone, which
+                left the badge at the top of the page and the offer at the
+                bottom looking like two unrelated things. It repeats the count
+                already on screen and promises nothing the report does not
+                contain — the point is the connection, not new information. */}
+            <p className="result-premium-finding">{t('premiumFinding', { count })}</p>
             <h2>{t('premiumTitle')}</h2>
             <p className="runner-lead">{t('premiumLead')}</p>
 

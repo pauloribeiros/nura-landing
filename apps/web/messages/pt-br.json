@@ -403,7 +403,8 @@
     "domainSegmentsLabel": "{domain}: {flagged} de {total} itens na faixa clinicamente relevante.",
     "deliveryNote": "Acesso imediato na NURA. Depois da compra você escolhe se quer receber uma cópia por e-mail.",
     "premiumSending": "Abrindo pagamento…",
-    "premiumError": "Não conseguimos abrir o pagamento agora. Tente novamente em instantes."
+    "premiumError": "Não conseguimos abrir o pagamento agora. Tente novamente em instantes.",
+    "premiumFinding": "Sua triagem ficou acima do ponto de corte — {count} de 6 respostas na faixa de atenção. O relatório abre, item a item, o que apareceu e o que fazer com isso."
   },
   "consent": {
     "ariaLabel": "Preferências de privacidade",

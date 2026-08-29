@@ -403,7 +403,8 @@
     "domainSegmentsLabel": "{domain}: {flagged} de {total} ítems en el rango clínicamente relevante.",
     "deliveryNote": "Acceso inmediato en NURA. Tras la compra eliges si quieres recibir una copia por correo.",
     "premiumSending": "Abriendo el pago…",
-    "premiumError": "No pudimos abrir el pago ahora. Inténtalo de nuevo en unos instantes."
+    "premiumError": "No pudimos abrir el pago ahora. Inténtalo de nuevo en unos instantes.",
+    "premiumFinding": "Tu cribado quedó por encima del punto de corte: {count} de 6 respuestas en el rango de atención. El informe abre, punto por punto, lo que apareció y qué hacer con ello."
   },
   "consent": {
     "ariaLabel": "Preferencias de privacidad",

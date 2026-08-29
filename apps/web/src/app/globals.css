@@ -763,6 +763,17 @@ body.is-answering main { padding-bottom: 0; }
   to { opacity: 1; transform: none; }
 }
 
+/* Ties the offer back to the amber badge at the top of the page: same colour,
+   same claim, so the two read as one thread rather than two announcements. */
+.result-premium-finding {
+  margin: 0 0 14px;
+  padding-left: 14px;
+  border-left: 3px solid var(--status-attention);
+  color: var(--text-on-dark);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
 /* ------------------------------------------------------ domain segments */
 /* One box per item, because the data is a count of items and not a ratio. */
 .domain-segments { display: flex; gap: 5px; margin-top: 10px; }
