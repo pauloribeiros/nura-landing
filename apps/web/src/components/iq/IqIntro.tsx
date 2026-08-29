@@ -38,6 +38,8 @@ export function IqIntro({ items }: { items: PublicItem[] }) {
   // Devolvido pelo score: e o que o checkout usa para saber o que esta sendo
   // vendido. Sem ele nao ha o que comprar.
   const [sessionId, setSessionId] = useState<string | undefined>();
+  // Para onde o atalho de teste deve ir depois de criar a corrida.
+  const [atalho, setAtalho] = useState<string | null>(null);
 
   /**
    * As perguntas que interrompem a tela de calculo.
@@ -124,6 +126,14 @@ export function IqIntro({ items }: { items: PublicItem[] }) {
     setStarted(true);
   };
 
+  // `?fim=pagamento` pula tambem o calculo e o e-mail: a pagina de pagamento
+  // precisa de uma sessao deste aparelho, e essa e a unica forma de chegar
+  // nela sem responder o teste.
+  useEffect(() => {
+    if (atalho !== 'pagamento' || !sessionId) return;
+    window.location.href = `/${locale}/p/${sessionId}`;
+  }, [atalho, sessionId, locale]);
+
   /**
    * Atalho para o fim do teste, para conferir as telas finais.
    *
@@ -140,8 +150,10 @@ export function IqIntro({ items }: { items: PublicItem[] }) {
    */
   useEffect(() => {
     if (process.env.NEXT_PUBLIC_IQ_PREVIEW !== '1') return;
-    if (!new URLSearchParams(window.location.search).has('fim')) return;
+    const destino = new URLSearchParams(window.location.search).get('fim');
+    if (!destino) return;
     if (started || state !== 'idle' || result) return;
+    setAtalho(destino);
 
     let cancelado = false;
     void (async () => {
