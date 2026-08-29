@@ -149,9 +149,6 @@
   "ESP-01": {
     "enunciado": "How many edges (the lines where two faces meet) does a cube have?"
   },
-  "ESP-02": {
-    "enunciado": "Which figure is the one above, rotated (not mirrored)?"
-  },
   "ESP-03": {
     "enunciado": "Which figure is the one above, rotated (not mirrored)?"
   },
@@ -226,6 +223,18 @@
   },
   "PAT-08": {
     "enunciado": "Which number completes the sequence?"
+  },
+  "PAT-09": {
+    "alternativas": [
+      "Sphere",
+      "Cuboid",
+      "Cylinder",
+      "Cone",
+      "Pyramid",
+      "Cube"
+    ],
+    "enunciado": "Which shape comes next in this sequence?",
+    "estimulo": "Cylinder, Sphere, Cone, Cuboid, ?"
   },
   "PER-01": {
     "enunciado": "Which figure is different from the others?"

@@ -187,6 +187,27 @@
     "ordem": 9
   },
   {
+    "id": "PAT-09",
+    "dimensao": "reconhecimento_padroes",
+    "tipo": "sequencia_formas",
+    "dificuldade": 2,
+    "enunciado": "Qual a próxima figura desta sequência?",
+    "estimulo": "Cilindro, Esfera, Cone, Paralelepípedo, ?",
+    "formato_estimulo": "texto",
+    "alternativas": [
+      "Esfera",
+      "Paralelepípedo",
+      "Cilindro",
+      "Cone",
+      "Pirâmide",
+      "Cubo"
+    ],
+    "formato_alternativas": "texto",
+    "correta": 2,
+    "regra": "Ciclo de quatro que recomeca: a quinta figura repete a primeira. Os distratores sao as outras tres do ciclo, mais duas formas que nunca apareceram — quem nao viu o ciclo tende a escolher uma delas.",
+    "ordem": 10
+  },
+  {
     "id": "MEM-02",
     "tipo": "span_digitos",
     "dificuldade": 2,
@@ -211,7 +232,7 @@
     "dimensao": "memoria_trabalho",
     "formato_estimulo": "memoria",
     "formato_alternativas": "texto",
-    "ordem": 10
+    "ordem": 11
   },
   {
     "id": "MEM-04",
@@ -237,27 +258,6 @@
     "dimensao": "memoria_trabalho",
     "formato_estimulo": "memoria",
     "formato_alternativas": "texto",
-    "ordem": 11
-  },
-  {
-    "id": "ESP-02",
-    "dimensao": "orientacao_espacial",
-    "tipo": "rotacao_mental",
-    "dificuldade": 2,
-    "enunciado": "Qual das figuras é a figura acima girada (sem espelhar)?",
-    "estimulo": "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"93.1,60.0 84.8,91.1 54.8,82.6 36.5,71.3 39.5,50.1 52.7,28.0 73.7,42.8\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-    "formato_estimulo": "svg",
-    "alternativas": [
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"88.7,76.6 97.0,45.5 66.8,37.9 45.3,38.4 37.3,58.3 37.7,84.1 63.3,81.8\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,96.8 22.6,72.1 35.8,26.6 78.5,34.5 95.9,71.7\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"26.9,60.0 35.2,91.1 65.2,82.6 83.5,71.3 80.5,50.1 67.3,28.0 46.3,42.8\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"21.3,71.6 10.0,49.8 50.8,44.5 79.9,44.9 90.7,58.8 90.1,76.8 55.6,75.3\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"70.1,77.5 32.0,91.1 26.9,45.3 63.2,29.6 98.1,51.9\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"31.3,76.6 23.0,45.5 53.2,37.9 74.7,38.4 82.7,58.3 82.3,84.1 56.7,81.8\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
-    ],
-    "formato_alternativas": "svg",
-    "correta": 5,
-    "regra": "Correta = base rotacionada 150°. Distratores: espelhamentos, figuras distintas e deformação não-uniforme.",
     "ordem": 12
   },
   {

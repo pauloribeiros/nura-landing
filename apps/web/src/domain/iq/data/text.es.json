@@ -149,9 +149,6 @@
   "ESP-01": {
     "enunciado": "¿Cuántas aristas (las líneas donde se encuentran dos caras) tiene un cubo?"
   },
-  "ESP-02": {
-    "enunciado": "¿Cuál de las figuras es la de arriba, girada (sin reflejar)?"
-  },
   "ESP-03": {
     "enunciado": "¿Cuál de las figuras es la de arriba, girada (sin reflejar)?"
   },
@@ -226,6 +223,18 @@
   },
   "PAT-08": {
     "enunciado": "¿Qué número completa la secuencia?"
+  },
+  "PAT-09": {
+    "alternativas": [
+      "Esfera",
+      "Paralelepípedo",
+      "Cilindro",
+      "Cono",
+      "Pirámide",
+      "Cubo"
+    ],
+    "enunciado": "¿Qué figura sigue en esta secuencia?",
+    "estimulo": "Cilindro, Esfera, Cono, Paralelepípedo, ?"
   },
   "PER-01": {
     "enunciado": "¿Cuál figura es diferente de las demás?"
