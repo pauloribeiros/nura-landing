@@ -539,6 +539,40 @@
       "orientacao_espacial": "Orientação espacial",
       "percepcao_visual": "Percepção visual",
       "memoria_trabalho": "Memória de trabalho"
-    }
+    },
+    "transition": {
+      "start": {
+        "eyebrow": "Primeiro bloco concluído",
+        "title": "Aquecimento feito.",
+        "body": "As próximas questões ficam mais difíceis, e é assim que deve ser — a dificuldade cresce de propósito. Se travar numa, escolha a mais provável e siga."
+      },
+      "middle": {
+        "eyebrow": "Metade do caminho",
+        "title": "Você passou da metade.",
+        "body": "Daqui em diante os itens exigem mais passos até a resposta. Vale ler o enunciado com calma antes de olhar as alternativas."
+      },
+      "end": {
+        "eyebrow": "Reta final",
+        "title": "Faltam poucas.",
+        "body": "As últimas são as mais difíceis do teste. Errar aqui é esperado e não estraga o seu resultado — a dificuldade de cada item já é levada em conta."
+      }
+    },
+    "scoreFailedTitle": "Não conseguimos calcular agora.",
+    "scoreFailedBody": "Suas respostas não chegaram ao servidor. Verifique sua conexão e refaça o teste — infelizmente não dá para recuperar esta tentativa."
+  },
+  "iq_result": {
+    "eyebrow": "Seu resultado",
+    "title": "Como seu raciocínio se distribuiu.",
+    "scaleNote": "pontos na escala NURA — não é um QI",
+    "correct": "acertos",
+    "elapsed": "tempo total",
+    "noPercentile": "Ainda não mostramos comparação com outras pessoas. Um percentil só significa alguma coisa quando existe gente medida para comparar, e estamos reunindo essa base. Quando houver, o resultado vai dizer com quantas pessoas você está sendo comparado.",
+    "profileTitle": "Perfil por dimensão",
+    "profileLead": "Onde seu raciocínio se sustentou e onde escorregou, entre as seis dimensões do teste.",
+    "readingTitle": "Como ler isso",
+    "strengths": "Seus melhores resultados vieram de {a} e {b}. Isso descreve como você se saiu neste teste, num dia específico, e não um traço fixo seu.",
+    "weaknesses": "Os resultados mais baixos vieram de {a} e {b}. Vale reparar se foi dificuldade real ou cansaço — as questões mais difíceis se concentram no fim do teste.",
+    "disclaimer": "Avaliação de raciocínio para autoconhecimento. A pontuação está na escala da NURA e não é um QI: um escore de QI exige amostra de padronização, controle de idade e escolaridade e aplicação por profissional habilitado. Não constitui teste psicológico nem diagnóstico.",
+    "restart": "Refazer o teste"
   }
 }

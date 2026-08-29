@@ -20,6 +20,7 @@ import { OptionGrid } from './OptionGrid';
 import { MemoryShow } from './MemoryShow';
 import { FreeEntry } from './FreeEntry';
 import { Timer } from './Timer';
+import { BREAKS, TransitionScreen } from './TransitionScreen';
 
 /**
  * Runs the IQ test.
@@ -48,6 +49,8 @@ export function IqRunner({
 
   const [session, setSession] = useState<IqSession | null>(null);
   const [draft, setDraft] = useState('');
+  // Breaks already taken, so returning to a question does not show one twice.
+  const [breaksSeen, setBreaksSeen] = useState<number[]>([]);
   const topRef = useRef<HTMLElement>(null);
 
   // Started on mount rather than on a click: the intro screen belongs to the
@@ -62,12 +65,19 @@ export function IqRunner({
 
   // Every screen change returns to the top and takes focus with it — the same
   // reason as the assessment: the next question must not start below the fold.
+  //
+  // Keyed on the step INDEX alone, deliberately. Depending on `session` ran
+  // this on every answer, because recording one produces a new session object:
+  // picking an option scrolled the page back to the top mid-question. On a
+  // phone, where six figures mean scrolling down to see them, that threw the
+  // reader away from what they had just tapped.
+  const stepIndex = session?.stepIndex;
   useEffect(() => {
-    if (!session) return;
+    if (stepIndex === undefined) return;
     window.scrollTo({ top: 0, behavior: 'instant' });
     topRef.current?.focus({ preventScroll: true });
     setDraft('');
-  }, [session?.stepIndex, session]);
+  }, [stepIndex]);
 
   if (!session || !step) return null;
 
@@ -115,6 +125,29 @@ export function IqRunner({
 
   const answeredCount = session.respostas.length;
   const total = items.length;
+
+  // A break is due when the count has just crossed one of the marks and the
+  // person is on a question — never between a memory stimulus and its recall,
+  // which would sit inside the interference the item depends on.
+  const dueBreak =
+    step.kind === 'question'
+      ? BREAKS.find((b) => answeredCount >= b.after && !breaksSeen.includes(b.after))
+      : undefined;
+
+  if (dueBreak) {
+    return (
+      <section className="runner iq-runner" ref={topRef} tabIndex={-1}>
+        <div className="wrap runner-inner">
+          <TransitionScreen
+            answered={answeredCount}
+            total={total}
+            variant={dueBreak.variant}
+            onContinue={() => setBreaksSeen((seen) => [...seen, dueBreak.after])}
+          />
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="runner iq-runner" ref={topRef} tabIndex={-1}>

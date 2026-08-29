@@ -1106,3 +1106,54 @@ a { color: inherit; text-decoration: none; }
   .iq-options.is-figures { gap: 8px; }
   .iq-option { padding: 10px; }
 }
+
+/* --------------------------------------------------------- iq transitions */
+.iq-transition { padding: 48px 0 16px; }
+.iq-transition h2 { margin: 10px 0 24px; }
+.iq-transition-meter {
+  height: 10px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.iq-transition-meter span { display: block; height: 100%; background: var(--nura-cyan); border-radius: 5px; }
+.iq-transition-count {
+  margin: 0 0 24px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  color: var(--nura-cool-gray);
+}
+.iq-transition .runner-lead { margin-bottom: 28px; }
+
+/* ------------------------------------------------------------- iq result */
+.iq-score { padding: 28px 24px; border-radius: 18px; background: rgba(255, 255, 255, 0.04); margin-bottom: 20px; }
+.iq-score-value {
+  margin: 0;
+  font: 700 clamp(3.4rem, 16vw, 5rem)/1 var(--app-font-display, inherit);
+  color: var(--nura-cyan);
+  font-variant-numeric: tabular-nums;
+}
+/* Beside the number, because a number this shaped reads as an IQ unless the
+   page says otherwise where the eye already is. */
+.iq-score-scale { margin: 6px 0 20px; font-size: 0.86rem; color: var(--nura-cool-gray); }
+.iq-score-facts { display: flex; gap: 24px; flex-wrap: wrap; font-size: 0.88rem; color: var(--nura-cool-gray); }
+.iq-score-facts b { color: var(--text-on-dark, #fff); font-variant-numeric: tabular-nums; }
+
+.iq-no-percentile {
+  margin: 0 0 32px;
+  padding-left: 14px;
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--nura-cool-gray);
+}
+
+.iq-dimension-track {
+  height: 10px;
+  margin-top: 8px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+.iq-dimension-track span { display: block; height: 100%; background: var(--nura-cyan); border-radius: 5px; }

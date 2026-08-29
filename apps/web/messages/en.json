@@ -539,6 +539,40 @@
       "orientacao_espacial": "Spatial orientation",
       "percepcao_visual": "Visual perception",
       "memoria_trabalho": "Working memory"
-    }
+    },
+    "transition": {
+      "start": {
+        "eyebrow": "First block done",
+        "title": "Warm-up complete.",
+        "body": "The next questions get harder, and that is by design — difficulty rises on purpose. If one stops you, pick the most likely answer and move on."
+      },
+      "middle": {
+        "eyebrow": "Halfway",
+        "title": "You are past the middle.",
+        "body": "From here the items take more steps to reach an answer. It is worth reading the question carefully before looking at the options."
+      },
+      "end": {
+        "eyebrow": "Final stretch",
+        "title": "Nearly there.",
+        "body": "These last ones are the hardest in the test. Getting them wrong is expected and does not spoil your result — each item's difficulty is already accounted for."
+      }
+    },
+    "scoreFailedTitle": "We could not work out your result.",
+    "scoreFailedBody": "Your answers did not reach the server. Check your connection and take the test again — unfortunately this attempt cannot be recovered."
+  },
+  "iq_result": {
+    "eyebrow": "Your result",
+    "title": "How your reasoning was distributed.",
+    "scaleNote": "points on NURA's scale — not an IQ",
+    "correct": "correct",
+    "elapsed": "total time",
+    "noPercentile": "We are not showing a comparison with other people yet. A percentile only means something when there are measured people to compare against, and we are building that base. Once there is one, the result will say how many people you are being compared with.",
+    "profileTitle": "Profile by dimension",
+    "profileLead": "Where your reasoning held and where it slipped, across the test's six dimensions.",
+    "readingTitle": "How to read this",
+    "strengths": "Your strongest results came from {a} and {b}. That describes how you did on this test, on a particular day, not a fixed trait of yours.",
+    "weaknesses": "The lowest results came from {a} and {b}. Worth noticing whether that was real difficulty or fatigue — the hardest questions cluster at the end.",
+    "disclaimer": "A reasoning assessment for self-knowledge. The score is on NURA's own scale and is not an IQ: an IQ score requires a standardisation sample, control for age and education, and administration by a qualified professional. It is not a psychological test or a diagnosis.",
+    "restart": "Take it again"
   }
 }

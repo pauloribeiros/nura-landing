@@ -539,6 +539,40 @@
       "orientacao_espacial": "Orientación espacial",
       "percepcao_visual": "Percepción visual",
       "memoria_trabalho": "Memoria de trabajo"
-    }
+    },
+    "transition": {
+      "start": {
+        "eyebrow": "Primer bloque completado",
+        "title": "Calentamiento hecho.",
+        "body": "Las próximas preguntas se ponen más difíciles, y así debe ser — la dificultad crece a propósito. Si una te traba, elige la más probable y sigue."
+      },
+      "middle": {
+        "eyebrow": "Mitad del camino",
+        "title": "Pasaste la mitad.",
+        "body": "De aquí en adelante los ítems exigen más pasos hasta la respuesta. Vale leer el enunciado con calma antes de mirar las alternativas."
+      },
+      "end": {
+        "eyebrow": "Recta final",
+        "title": "Faltan pocas.",
+        "body": "Las últimas son las más difíciles del test. Fallar aquí es esperable y no estropea tu resultado — la dificultad de cada ítem ya está considerada."
+      }
+    },
+    "scoreFailedTitle": "No pudimos calcular ahora.",
+    "scoreFailedBody": "Tus respuestas no llegaron al servidor. Revisa tu conexión y rehaz el test — lamentablemente este intento no se puede recuperar."
+  },
+  "iq_result": {
+    "eyebrow": "Tu resultado",
+    "title": "Cómo se distribuyó tu razonamiento.",
+    "scaleNote": "puntos en la escala NURA — no es un CI",
+    "correct": "aciertos",
+    "elapsed": "tiempo total",
+    "noPercentile": "Todavía no mostramos comparación con otras personas. Un percentil solo significa algo cuando hay gente medida con quien comparar, y estamos reuniendo esa base. Cuando exista, el resultado dirá con cuántas personas te están comparando.",
+    "profileTitle": "Perfil por dimensión",
+    "profileLead": "Dónde se sostuvo tu razonamiento y dónde resbaló, entre las seis dimensiones del test.",
+    "readingTitle": "Cómo leer esto",
+    "strengths": "Tus mejores resultados vinieron de {a} y {b}. Eso describe cómo te fue en este test, en un día concreto, y no un rasgo fijo tuyo.",
+    "weaknesses": "Los resultados más bajos vinieron de {a} y {b}. Vale notar si fue dificultad real o cansancio — las preguntas más difíciles se concentran al final.",
+    "disclaimer": "Evaluación de razonamiento para autoconocimiento. La puntuación está en la escala de NURA y no es un CI: una puntuación de CI exige muestra de estandarización, control de edad y escolaridad y aplicación por profesional habilitado. No constituye test psicológico ni diagnóstico.",
+    "restart": "Rehacer el test"
   }
 }
