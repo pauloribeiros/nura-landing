@@ -29,14 +29,14 @@
     "alternativas": [
       "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><circle cx=\"60\" cy=\"60\" r=\"34\" fill=\"none\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg>",
       "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 89.4,77.0 30.6,77.0\" fill=\"none\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polyline points=\"60.0,26.0 94.0,60.0 60.0,94.0 26.0,60.0\" fill=\"none\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg>",
       "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 92.3,49.5 80.0,87.5 40.0,87.5 27.7,49.5\" fill=\"none\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 94.0,60.0 60.0,94.0 26.0,60.0\" fill=\"none\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"36.0,36.0 84.0,36.0 84.0,84.0 36.0,84.0\" fill=\"none\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><path d=\"M60.0 26.0 L92.3 49.5 M92.3 49.5 L80.0 87.5 M80.0 87.5 L68.8 87.5 M51.2 87.5 L40.0 87.5 M40.0 87.5 L27.7 49.5 M27.7 49.5 L60.0 26.0\" fill=\"none\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg>",
       "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 89.4,43.0 89.4,77.0 60.0,94.0 30.6,77.0 30.6,43.0\" fill=\"none\" stroke=\"#111\" stroke-width=\"2.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"/></svg>"
     ],
     "formato_alternativas": "svg",
-    "correta": 2,
-    "regra": "Cinco contornos fechados e um aberto (falta um lado do quadrado). Ha dois quadrados, um fechado e o aberto, e as outras quatro formas sao unicas cada uma: nenhuma propriedade alem de fechar o contorno elege uma so opcao.",
+    "correta": 4,
+    "regra": "Cinco contornos fechados e um com uma falha visivel no meio de um lado. Ha dois pentagonos, o inteiro e o com falha, e as outras quatro formas sao unicas cada uma. A falha e desenhada lado a lado, e nao como polilinha: a versao anterior deixava a figura parecendo uma seta, e a regra deixava de se ler.",
     "ordem": 2
   },
   {
