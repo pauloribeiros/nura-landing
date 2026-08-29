@@ -63,18 +63,6 @@
     "enunciado": "Complete the analogy.",
     "estimulo": "Seed is to tree as egg is to ___"
   },
-  "ANA-04": {
-    "alternativas": [
-      "anthill",
-      "honey",
-      "garden",
-      "soil",
-      "nest",
-      "termite mound"
-    ],
-    "enunciado": "Complete the analogy.",
-    "estimulo": "Bee is to hive as ant is to ___"
-  },
   "ANA-05": {
     "alternativas": [
       "sentence",
@@ -112,6 +100,17 @@
   },
   "ANA-10": {
     "enunciado": "Complete the sequence."
+  },
+  "ANA-11": {
+    "alternativas": [
+      "February",
+      "February, and 29 in leap years",
+      "All of them",
+      "None: February has 28 or 29",
+      "Only the 30-day months",
+      "It depends on the year"
+    ],
+    "enunciado": "Which month has 28 days?"
   },
   "ESP-01": {
     "enunciado": "How many edges (the lines where two faces meet) does a cube have?"

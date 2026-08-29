@@ -303,24 +303,24 @@
     "ordem": 14
   },
   {
-    "id": "ANA-04",
-    "tipo": "analogia_verbal",
-    "dificuldade": 2,
-    "estimulo": "Abelha está para colmeia assim como formiga está para ___",
-    "alternativas": [
-      "formigueiro",
-      "mel",
-      "jardim",
-      "terra",
-      "ninho",
-      "cupinzeiro"
-    ],
-    "correta": 0,
-    "regra": "Animal→habitação.",
+    "id": "ANA-11",
     "dimensao": "pensamento_analitico",
-    "enunciado": "Complete a analogia.",
-    "formato_estimulo": "texto",
+    "tipo": "armadilha_leitura",
+    "dificuldade": 2,
+    "enunciado": "Qual mês tem 28 dias?",
+    "estimulo": null,
+    "formato_estimulo": "none",
+    "alternativas": [
+      "Fevereiro",
+      "Fevereiro, e 29 nos anos bissextos",
+      "Todos eles",
+      "Nenhum: fevereiro tem 28 ou 29",
+      "Só os meses de 30 dias",
+      "Depende do ano"
+    ],
     "formato_alternativas": "texto",
+    "correta": 2,
+    "regra": "Todo mes tem pelo menos 28 dias; o enunciado nao diz \"apenas\". \"Fevereiro\" e a resposta automatica e vem primeiro de proposito; \"Nenhum: fevereiro tem 28 ou 29\" pega quem desconfiou da pegadinha e seguiu pelo caminho errado.",
     "ordem": 15
   },
   {
@@ -347,43 +347,43 @@
   {
     "id": "PER-04",
     "dimensao": "percepcao_visual",
-    "tipo": "odd_one_out",
+    "tipo": "simetria_intrusa",
     "dificuldade": 2,
     "enunciado": "Qual figura é diferente das demais?",
     "estimulo": null,
     "formato_estimulo": "none",
     "alternativas": [
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"80.0,32.5 92.3,70.5 60.0,94.0 27.7,70.5 40.0,32.5\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 92.3,49.5 80.0,87.5 40.0,87.5 27.7,49.5\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 92.3,49.5 80.0,87.5 40.0,87.5 27.7,49.5\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 92.3,49.5 80.0,87.5 40.0,87.5 27.7,49.5\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 92.3,49.5 80.0,87.5 40.0,87.5 27.7,49.5\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.0 92.3,49.5 80.0,87.5 40.0,87.5 27.7,49.5\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"28,92 28,56 60,30 92,56 92,92\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"48,28 72,28 72,48 92,48 92,72 72,72 72,92 48,92 48,72 28,72 28,48 48,48\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"30,28 90,28 30,92 90,92\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"34,26 60,26 60,68 94,68 94,94 34,94\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60,26 92,60 74,60 74,94 46,94 46,60 28,60\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"40,32 80,32 94,88 26,88\" fill=\"none\" stroke=\"#111\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>"
     ],
     "formato_alternativas": "svg",
-    "correta": 0,
-    "regra": "5 polígonos na mesma orientação; o intruso está girado.",
+    "correta": 3,
+    "regra": "Cinco silhuetas tem eixo vertical de simetria (casa, cruz, ampulheta, seta, trapezio) e o L nao tem. Antes eram cinco desenhos identicos e um girado, que se resolve sem olhar de verdade.",
     "ordem": 17
   },
   {
     "id": "ABS-02",
     "dimensao": "raciocinio_abstrato",
-    "tipo": "matriz_rotacao",
+    "tipo": "matriz_forma_tom",
     "dificuldade": 2,
     "enunciado": "Qual figura completa a matriz?",
-    "estimulo": "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><rect x=\"2\" y=\"2\" width=\"36\" height=\"36\" stroke=\"#111\" stroke-width=\"1.2\" fill=\"none\"/><line x1=\"4.0\" y1=\"20.0\" x2=\"36.0\" y2=\"20.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"36.0\" y1=\"20.0\" x2=\"29.1\" y2=\"24.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"36.0\" y1=\"20.0\" x2=\"29.1\" y2=\"16.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"40\" y=\"2\" width=\"36\" height=\"36\" stroke=\"#111\" stroke-width=\"1.2\" fill=\"none\"/><line x1=\"58.0\" y1=\"4.0\" x2=\"58.0\" y2=\"36.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"58.0\" y1=\"36.0\" x2=\"54.0\" y2=\"29.1\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"58.0\" y1=\"36.0\" x2=\"62.0\" y2=\"29.1\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"78\" y=\"2\" width=\"36\" height=\"36\" stroke=\"#111\" stroke-width=\"1.2\" fill=\"none\"/><line x1=\"112.0\" y1=\"20.0\" x2=\"80.0\" y2=\"20.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"80.0\" y1=\"20.0\" x2=\"86.9\" y2=\"16.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"80.0\" y1=\"20.0\" x2=\"86.9\" y2=\"24.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"2\" y=\"40\" width=\"36\" height=\"36\" stroke=\"#111\" stroke-width=\"1.2\" fill=\"none\"/><line x1=\"20.0\" y1=\"74.0\" x2=\"20.0\" y2=\"42.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"20.0\" y1=\"42.0\" x2=\"24.0\" y2=\"48.9\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"20.0\" y1=\"42.0\" x2=\"16.0\" y2=\"48.9\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"40\" y=\"40\" width=\"36\" height=\"36\" stroke=\"#111\" stroke-width=\"1.2\" fill=\"none\"/><line x1=\"42.0\" y1=\"58.0\" x2=\"74.0\" y2=\"58.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"74.0\" y1=\"58.0\" x2=\"67.1\" y2=\"62.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"74.0\" y1=\"58.0\" x2=\"67.1\" y2=\"54.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"78\" y=\"40\" width=\"36\" height=\"36\" stroke=\"#111\" stroke-width=\"1.2\" fill=\"none\"/><line x1=\"96.0\" y1=\"42.0\" x2=\"96.0\" y2=\"74.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"96.0\" y1=\"74.0\" x2=\"92.0\" y2=\"67.1\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"96.0\" y1=\"74.0\" x2=\"100.0\" y2=\"67.1\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"2\" y=\"78\" width=\"36\" height=\"36\" stroke=\"#111\" stroke-width=\"1.2\" fill=\"none\"/><line x1=\"36.0\" y1=\"96.0\" x2=\"4.0\" y2=\"96.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"4.0\" y1=\"96.0\" x2=\"10.9\" y2=\"92.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"4.0\" y1=\"96.0\" x2=\"10.9\" y2=\"100.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"40\" y=\"78\" width=\"36\" height=\"36\" stroke=\"#111\" stroke-width=\"1.2\" fill=\"none\"/><line x1=\"58.0\" y1=\"112.0\" x2=\"58.0\" y2=\"80.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"58.0\" y1=\"80.0\" x2=\"62.0\" y2=\"86.9\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"58.0\" y1=\"80.0\" x2=\"54.0\" y2=\"86.9\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"78\" y=\"78\" width=\"36\" height=\"36\" stroke=\"#2563eb\" stroke-width=\"2.5\" fill=\"#eff6ff\"/><text x=\"96\" y=\"104\" font-size=\"22\" fill=\"#2563eb\" text-anchor=\"middle\" font-family=\"Arial\" font-weight=\"bold\">?</text></svg>",
+    "estimulo": "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><circle cx=\"22.0\" cy=\"22.0\" r=\"11.0\" fill=\"#e4e4ee\" stroke=\"#111\" stroke-width=\"1.5\" stroke-linejoin=\"round\"/><circle cx=\"60.0\" cy=\"22.0\" r=\"11.0\" fill=\"#9a9ab8\" stroke=\"#111\" stroke-width=\"1.5\" stroke-linejoin=\"round\"/><circle cx=\"98.0\" cy=\"22.0\" r=\"11.0\" fill=\"#111111\" stroke=\"#111\" stroke-width=\"1.5\" stroke-linejoin=\"round\"/><rect x=\"11.0\" y=\"49.0\" width=\"22.0\" height=\"22.0\" fill=\"#e4e4ee\" stroke=\"#111\" stroke-width=\"1.5\" stroke-linejoin=\"round\"/><rect x=\"49.0\" y=\"49.0\" width=\"22.0\" height=\"22.0\" fill=\"#9a9ab8\" stroke=\"#111\" stroke-width=\"1.5\" stroke-linejoin=\"round\"/><rect x=\"87.0\" y=\"49.0\" width=\"22.0\" height=\"22.0\" fill=\"#111111\" stroke=\"#111\" stroke-width=\"1.5\" stroke-linejoin=\"round\"/><polygon points=\"22.0,85.7 33.5,107.5 10.4,107.5\" fill=\"#e4e4ee\" stroke=\"#111\" stroke-width=\"1.5\" stroke-linejoin=\"round\"/><polygon points=\"60.0,85.7 71.5,107.5 48.5,107.5\" fill=\"#9a9ab8\" stroke=\"#111\" stroke-width=\"1.5\" stroke-linejoin=\"round\"/><rect x=\"82.0\" y=\"82.0\" width=\"32\" height=\"32\" fill=\"none\" stroke=\"#111\" stroke-width=\"1.4\" stroke-dasharray=\"4 3\"/><text x=\"98.0\" y=\"104.0\" text-anchor=\"middle\" font-family=\"monospace\" font-size=\"18\" fill=\"#111\">?</text></svg>",
     "formato_estimulo": "svg",
     "alternativas": [
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><line x1=\"60.0\" y1=\"76.0\" x2=\"60.0\" y2=\"44.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"60.0\" y1=\"44.0\" x2=\"64.0\" y2=\"50.9\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"60.0\" y1=\"44.0\" x2=\"56.0\" y2=\"50.9\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><line x1=\"48.7\" y1=\"71.3\" x2=\"71.3\" y2=\"48.7\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"71.3\" y1=\"48.7\" x2=\"69.2\" y2=\"56.4\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"71.3\" y1=\"48.7\" x2=\"63.6\" y2=\"50.8\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><line x1=\"44.0\" y1=\"60.0\" x2=\"76.0\" y2=\"60.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"76.0\" y1=\"60.0\" x2=\"69.1\" y2=\"64.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"76.0\" y1=\"60.0\" x2=\"69.1\" y2=\"56.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><line x1=\"71.3\" y1=\"48.7\" x2=\"48.7\" y2=\"71.3\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"48.7\" y1=\"71.3\" x2=\"50.8\" y2=\"63.6\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"48.7\" y1=\"71.3\" x2=\"56.4\" y2=\"69.2\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><line x1=\"76.0\" y1=\"60.0\" x2=\"44.0\" y2=\"60.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"44.0\" y1=\"60.0\" x2=\"50.9\" y2=\"56.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"44.0\" y1=\"60.0\" x2=\"50.9\" y2=\"64.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
-      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><line x1=\"60.0\" y1=\"44.0\" x2=\"60.0\" y2=\"76.0\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"60.0\" y1=\"76.0\" x2=\"56.0\" y2=\"69.1\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><line x1=\"60.0\" y1=\"76.0\" x2=\"64.0\" y2=\"69.1\" stroke=\"#111\" stroke-width=\"2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.4 91.5,85.8 28.5,85.8\" fill=\"#9a9ab8\" stroke=\"#111\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><rect x=\"30.0\" y=\"30.0\" width=\"60.0\" height=\"60.0\" fill=\"#111111\" stroke=\"#111\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.4 91.5,85.8 28.5,85.8\" fill=\"#111111\" stroke=\"#111\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><circle cx=\"60.0\" cy=\"60.0\" r=\"30.0\" fill=\"#111111\" stroke=\"#111\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><polygon points=\"60.0,26.4 91.5,85.8 28.5,85.8\" fill=\"#e4e4ee\" stroke=\"#111\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>",
+      "<svg viewBox=\"0 0 120 120\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"120\" height=\"120\" fill=\"#fff\"/><rect x=\"30.0\" y=\"30.0\" width=\"60.0\" height=\"60.0\" fill=\"#9a9ab8\" stroke=\"#111\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>"
     ],
     "formato_alternativas": "svg",
     "correta": 2,
-    "regra": "Seta gira 90° por célula (início 0°). Alvo=0°.",
+    "regra": "Duas variaveis independentes: a linha define a forma (circulo, quadrado, triangulo) e a coluna define o tom (claro, medio, escuro). A celula que falta cruza triangulo com o tom mais escuro. Distratores: a forma certa nos outros dois tons e o tom certo nas outras duas formas.",
     "ordem": 18
   },
   {

@@ -63,18 +63,6 @@
     "enunciado": "Completa la analogía.",
     "estimulo": "Semilla es a árbol como huevo es a ___"
   },
-  "ANA-04": {
-    "alternativas": [
-      "hormiguero",
-      "miel",
-      "jardín",
-      "tierra",
-      "nido",
-      "termitero"
-    ],
-    "enunciado": "Completa la analogía.",
-    "estimulo": "Abeja es a colmena como hormiga es a ___"
-  },
   "ANA-05": {
     "alternativas": [
       "frase",
@@ -112,6 +100,17 @@
   },
   "ANA-10": {
     "enunciado": "Completa la secuencia."
+  },
+  "ANA-11": {
+    "alternativas": [
+      "Febrero",
+      "Febrero, y 29 en los años bisiestos",
+      "Todos ellos",
+      "Ninguno: febrero tiene 28 o 29",
+      "Solo los meses de 30 días",
+      "Depende del año"
+    ],
+    "enunciado": "¿Qué mes tiene 28 días?"
   },
   "ESP-01": {
     "enunciado": "¿Cuántas aristas (las líneas donde se encuentran dos caras) tiene un cubo?"
