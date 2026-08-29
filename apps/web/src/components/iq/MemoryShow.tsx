@@ -1,21 +1,20 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { PublicItem } from '@/domain/iq/bank';
 
 /**
- * Shows a working-memory stimulus, then takes it away.
+ * Shows a working-memory stimulus for five seconds, then asks about it.
  *
  * The countdown is visible on purpose. A stimulus that vanishes without
  * warning turns the item into a test of luck — whether the person happened to
  * be looking — rather than of memory. Telling them how long they have is part
  * of the task, not a kindness.
  *
- * Once the time is up the screen advances on its own. There is no "Continue"
- * to press and no way back: the stimulus is gone, and a button here would only
- * ask the person to confirm something that already happened. It also removes
- * the one moment where someone could sit staring at a blank screen wondering
- * whether the test had broken.
+ * WHEN THE CLOCK HITS ZERO THE QUESTION IS ALREADY THERE. No button, and no
+ * screen in between: this used to hold an empty "•••" for a beat, meant as
+ * punctuation, and it read as a rest stop on the way to somewhere else. The
+ * stimulus disappearing IS the punctuation.
  *
  * The clock is read from timestamps rather than counted down by interval. A
  * backgrounded tab throttles timers, and a counter would leave the stimulus on
@@ -30,9 +29,16 @@ export function MemoryShow({
   onDone: () => void;
   copy: { hint: string; seconds: (n: number) => string };
 }) {
-  const total = item.memoria?.exibir_ms ?? 4000;
+  const total = item.memoria?.exibir_ms ?? 5000;
   const [remaining, setRemaining] = useState(total);
-  const [hidden, setHidden] = useState(false);
+
+  // Held in a ref so the countdown does not depend on the callback's identity.
+  // As a dependency it restarted the five seconds every time the parent
+  // re-rendered, and the stimulus stayed up for as long as that kept
+  // happening — the exposure has to be the same for everyone or the item
+  // measures nothing comparable.
+  const doneRef = useRef(onDone);
+  doneRef.current = onDone;
 
   useEffect(() => {
     const startedAt = Date.now();
@@ -44,35 +50,21 @@ export function MemoryShow({
       }
 
       window.clearInterval(tick);
-      setRemaining(0);
-      setHidden(true);
-      // A short beat between the stimulus vanishing and the next screen, so
-      // the disappearance is seen as an event rather than as the page jumping.
-      window.setTimeout(onDone, 600);
+      doneRef.current();
     }, 100);
 
     return () => window.clearInterval(tick);
-  }, [total, onDone]);
+  }, [total, item.id]);
 
   const seconds = Math.ceil(remaining / 1000);
 
   return (
     <div className="iq-memory-show">
       <p className="iq-memory-hint">{copy.hint}</p>
-
-      {hidden ? (
-        <div className="iq-memory-gone" aria-live="polite">
-          <span aria-hidden="true">•••</span>
-        </div>
-      ) : (
-        <>
-          <p className="iq-memory-stimulus">{item.memoria?.estimulo}</p>
-          <p className="iq-memory-countdown" aria-live="off">
-            {copy.seconds(seconds)}
-          </p>
-        </>
-      )}
-
+      <p className="iq-memory-stimulus">{item.memoria?.estimulo}</p>
+      <p className="iq-memory-countdown" aria-live="off">
+        {copy.seconds(seconds)}
+      </p>
     </div>
   );
 }

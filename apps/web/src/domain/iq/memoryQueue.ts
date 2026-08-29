@@ -1,23 +1,26 @@
 import type { Item } from './types';
 
 /**
- * Builds the running order, with each memory recall placed after interference.
+ * Builds the running order: one screen per item, two for a memory item.
  *
- * A working-memory item is two screens, not one: the stimulus is shown and
- * hidden, other questions pass, and only then is it recalled. Without the
- * questions in between there is no memory to test — the answer would still be
- * on screen a second ago.
+ * THE ORDER IT IS GIVEN IS THE ORDER IT KEEPS. This used to re-sort by
+ * `ordem`, which silently undid the type interleaving done by the caller —
+ * the items arrived spread out and left grouped again. Sorting belongs to
+ * whoever decides the sequence, not to the step builder.
  *
- * THE COLLISION THIS EXISTS TO PREVENT. In the bank as delivered, MEM-02 sits
- * at ordem 10 with a gap of 1, and MEM-04 sits at ordem 11. Taken literally,
- * the interference between one stimulus and its recall is ANOTHER stimulus —
- * so the person holds two spans at once. That is a dual task: much harder than
- * either item was calibrated for, and it measures something else. Same shape
- * at MEM-05 (ordem 31) and MEM-06 (ordem 32).
+ * RECALL COMES IMMEDIATELY AFTER THE STIMULUS. It did not: interference
+ * questions used to sit in between, per `gap_itens` in the bank, because that
+ * is what makes a span task measure working memory rather than reading. In
+ * testing it did not survive contact with a person — the recall arrived so far
+ * from the stimulus that it read as an unrelated question, and one word recall
+ * was missed entirely. A question nobody connects to what they saw measures
+ * nothing at all, so the delay bought less than it cost.
  *
- * So interference is counted in REASONING items only. A memory stimulus never
- * counts towards another item's gap, and a recall is pushed further down the
- * list rather than landing on one.
+ * What that costs, stated plainly: the forward spans now measure immediate
+ * span — how much is held at once — rather than how much survives
+ * interference. MEM-07, which asks for the digits backwards, still requires
+ * holding and manipulating, which is working memory under any definition.
+ * `gap_itens` in the bank is no longer read by anything.
  */
 
 export type Step =
@@ -26,38 +29,17 @@ export type Step =
   | { kind: 'memory-recall'; item: Item };
 
 export function buildRunOrder(items: Item[]): Step[] {
-  const ordered = items.slice().sort((a, b) => a.ordem - b.ordem);
-
   const steps: Step[] = [];
-  // Recalls waiting for their interference to elapse, with how many reasoning
-  // questions still have to pass.
-  const pending: { item: Item; remaining: number }[] = [];
 
-  const placeReady = () => {
-    for (let i = pending.length - 1; i >= 0; i -= 1) {
-      if (pending[i].remaining <= 0) {
-        steps.push({ kind: 'memory-recall', item: pending[i].item });
-        pending.splice(i, 1);
-      }
-    }
-  };
-
-  for (const item of ordered) {
+  for (const item of items) {
     if (item.dimensao === 'memoria_trabalho' && item.memoria) {
-      // A stimulus is not interference — it does not decrement anything.
       steps.push({ kind: 'memory-show', item });
-      pending.push({ item, remaining: Math.max(1, item.memoria.gap_itens) });
+      steps.push({ kind: 'memory-recall', item });
       continue;
     }
 
     steps.push({ kind: 'question', item });
-    for (const p of pending) p.remaining -= 1;
-    placeReady();
   }
-
-  // Anything still waiting when the reasoning items run out is recalled at the
-  // end, in the order it was shown. Dropping it would silently lose an item.
-  for (const p of pending) steps.push({ kind: 'memory-recall', item: p.item });
 
   return steps;
 }

@@ -5,7 +5,7 @@
     "dificuldade": 1,
     "memoria": {
       "estimulo": "4 9 2 6",
-      "exibir_ms": 4000,
+      "exibir_ms": 5000,
       "cobrar": "sequencia_completa",
       "gap_itens": 1
     },
@@ -192,7 +192,7 @@
     "dificuldade": 2,
     "memoria": {
       "estimulo": "7 3 8 5",
-      "exibir_ms": 3000,
+      "exibir_ms": 5000,
       "cobrar": "posicional",
       "posicao": 2,
       "gap_itens": 1
@@ -219,11 +219,11 @@
     "dificuldade": 2,
     "memoria": {
       "estimulo": "Cognitivo",
-      "exibir_ms": 4000,
+      "exibir_ms": 5000,
       "cobrar": "reconhecimento",
       "gap_itens": 3
     },
-    "enunciado": "Qual palavra você memorizou no início?",
+    "enunciado": "Qual palavra você memorizou?",
     "alternativas": [
       "Cognitivo",
       "Cognição",
@@ -455,7 +455,7 @@
     "dificuldade": 3,
     "memoria": {
       "estimulo": "4 9 2 6 1",
-      "exibir_ms": 3000,
+      "exibir_ms": 5000,
       "cobrar": "posicional",
       "posicao": 4,
       "gap_itens": 2
@@ -650,7 +650,7 @@
     "dificuldade": 4,
     "memoria": {
       "estimulo": "5 1 9 4 7 2",
-      "exibir_ms": 2500,
+      "exibir_ms": 5000,
       "cobrar": "posicional",
       "posicao": 5,
       "gap_itens": 2
@@ -677,7 +677,7 @@
     "dificuldade": 4,
     "memoria": {
       "estimulo": "Padrão",
-      "exibir_ms": 2500,
+      "exibir_ms": 5000,
       "cobrar": "reconhecimento",
       "gap_itens": 4
     },
@@ -850,7 +850,7 @@
     "dificuldade": 5,
     "memoria": {
       "estimulo": "3 8 1 6 2",
-      "exibir_ms": 2000,
+      "exibir_ms": 5000,
       "cobrar": "inverso",
       "gap_itens": 1
     },

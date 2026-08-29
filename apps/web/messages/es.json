@@ -527,7 +527,7 @@
     "back": "Volver",
     "finish": "Ver mi resultado",
     "answerToContinue": "Responde para continuar.",
-    "memoryHint": "Memoriza. Esto va a desaparecer.",
+    "memoryHint": "Memoriza. Desaparece en 5s y la pregunta llega enseguida.",
     "memorySeconds": "Desaparece en {n}s",
     "freeEntryLabel": "Escribe lo que memorizaste",
     "freeEntryPlaceholder": "0 0 0 0 0",
