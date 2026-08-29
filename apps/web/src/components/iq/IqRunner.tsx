@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import type { PublicItem } from '@/domain/iq/bank';
 import { buildRunOrder, type Step } from '@/domain/iq/memoryQueue';
+import { interleaveByType } from '@/domain/iq/interleave';
 import {
   advance,
   answerFor,
@@ -29,10 +30,19 @@ import { BREAKS, TransitionScreen } from './TransitionScreen';
  * see `publicItems`. Nothing here knows which option is correct, which is why
  * scoring happens on submit rather than as the person goes.
  *
- * GOING BACK is allowed on reasoning items and blocked around memory ones. On
- * a reasoning item, revisiting an answer is a person thinking again, which is
- * what the test is for. Around a memory item it would show the stimulus a
- * second time, and the item stops measuring memory.
+ * CHOOSING AN OPTION ADVANCES. There is no Continue to press on a multiple
+ * choice screen: the tap that answers is the tap that moves on. It removes a
+ * button, removes the scroll to reach it, and is what the reference products
+ * do — one deliberate action per question instead of two.
+ *
+ * The move is delayed by a beat so the choice is visibly registered first.
+ * Advancing on the same frame reads as a mis-tap, and someone who is not sure
+ * what they pressed loses confidence in the whole test.
+ *
+ * Free entry keeps its button, because there is no single keystroke that means
+ * "done" — and going back keeps working on reasoning items, where revisiting
+ * an answer is a person thinking again. Around a memory item it stays blocked:
+ * that would show the stimulus a second time.
  */
 export function IqRunner({
   items,
@@ -45,13 +55,33 @@ export function IqRunner({
 
   // The run order is fixed for the whole session: rebuilding it mid-run could
   // move a recall away from the stimulus it belongs to.
-  const steps = useMemo(() => buildRunOrder(items as unknown as Item[]), [items]);
+  // Types are spread out before the run order is built, so the four
+  // odd-one-out items do not arrive as four near-identical screens in a row.
+  const steps = useMemo(
+    () => buildRunOrder(interleaveByType(items as unknown as Item[])),
+    [items],
+  );
 
   const [session, setSession] = useState<IqSession | null>(null);
   const [draft, setDraft] = useState('');
   // Breaks already taken, so returning to a question does not show one twice.
   const [breaksSeen, setBreaksSeen] = useState<number[]>([]);
+  // Set while the beat between choosing and moving plays, so a second tap in
+  // that window cannot advance twice.
+  const advancing = useRef(false);
   const topRef = useRef<HTMLElement>(null);
+
+  // While the test is running the page is one task, and the site footer is
+  // 295px of navigation sitting under a question that otherwise fits the
+  // screen — it was the single largest reason the phone had to scroll. The
+  // links come back on the intro and the result, which is where someone would
+  // go looking for them. Removed by class rather than by not rendering it:
+  // the footer belongs to the root layout, and a running test is a state of
+  // the page, not a different page.
+  useEffect(() => {
+    document.body.classList.add('is-running-test');
+    return () => document.body.classList.remove('is-running-test');
+  }, []);
 
   // Started on mount rather than on a click: the intro screen belongs to the
   // page, and by the time this renders the person has already begun.
@@ -77,6 +107,7 @@ export function IqRunner({
     window.scrollTo({ top: 0, behavior: 'instant' });
     topRef.current?.focus({ preventScroll: true });
     setDraft('');
+    advancing.current = false;
   }, [stepIndex]);
 
   if (!session || !step) return null;
@@ -167,11 +198,7 @@ export function IqRunner({
           <MemoryShow
             item={item}
             onDone={next}
-            copy={{
-              hint: t('memoryHint'),
-              seconds: (n) => t('memorySeconds', { n }),
-              continueLabel: t('continue'),
-            }}
+            copy={{ hint: t('memoryHint'), seconds: (n) => t('memorySeconds', { n }) }}
           />
         ) : (
           <>
@@ -193,30 +220,40 @@ export function IqRunner({
               <OptionGrid
                 item={item}
                 chosen={existing?.escolhaIndex}
-                onChoose={(index) => commit({ escolhaIndex: index })}
+                onChoose={(index) => {
+                  if (advancing.current) return;
+                  advancing.current = true;
+                  commit({ escolhaIndex: index });
+                  window.setTimeout(next, 260);
+                }}
                 letters={['A', 'B', 'C', 'D', 'E', 'F']}
               />
             )}
 
-            <div className="runner-nav">
-              {canGoBack ? (
-                <button
-                  type="button"
-                  className="button button-ghost"
-                  onClick={() => setSession((c) => (c ? goBack(c, Date.now()) : c))}
-                >
-                  <ArrowLeft size={16} aria-hidden="true" /> {t('back')}
-                </button>
-              ) : (
-                <span />
-              )}
-              <button type="button" className="button button-primary" onClick={next} disabled={!answered}>
-                {session.stepIndex >= steps.length - 1 ? t('finish') : t('continue')}
-                <ArrowRight size={16} aria-hidden="true" />
-              </button>
-            </div>
-
-            {!answered ? <p className="runner-hint">{t('answerToContinue')}</p> : null}
+            {/* Only free entry needs a button — a choice advances on its own. */}
+            {isFreeEntry || canGoBack ? (
+              <div className="runner-nav">
+                {canGoBack ? (
+                  <button
+                    type="button"
+                    className="button button-ghost"
+                    onClick={() => setSession((c) => (c ? goBack(c, Date.now()) : c))}
+                  >
+                    <ArrowLeft size={16} aria-hidden="true" /> {t('back')}
+                  </button>
+                ) : (
+                  <span />
+                )}
+                {isFreeEntry ? (
+                  <button type="button" className="button button-primary" onClick={next} disabled={!answered}>
+                    {session.stepIndex >= steps.length - 1 ? t('finish') : t('continue')}
+                    <ArrowRight size={16} aria-hidden="true" />
+                  </button>
+                ) : (
+                  <span />
+                )}
+              </div>
+            ) : null}
           </>
         )}
       </div>

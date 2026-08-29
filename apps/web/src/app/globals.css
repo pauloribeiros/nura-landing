@@ -974,6 +974,21 @@ a { color: inherit; text-decoration: none; }
 .report-print { margin-top: 24px; }
 
 /* --------------------------------------------------------------- iq test */
+/* ONE QUESTION, ONE SCREEN.
+   A question that does not fit turns every item into two jobs: read it, then
+   go hunting for the options. Measured on the phone this was tested on, a
+   figure item ran 2333px tall in a 694px viewport — three and a half screens
+   for one question, forty-five times over.
+   Everything in this block serves a single number: the item fits in 100dvh.
+
+   dvh and not vh: on iOS Safari the URL bar retracts and comes back, and vh
+   stays frozen at the tall value. With vh the bottom row of options would sit
+   under the bar exactly when someone reaches for it. */
+.iq-runner { padding: 96px 0 24px; }
+.iq-runner .runner-inner { gap: 0; }
+/* Set by the runner while a test is in progress — see IqRunner. */
+body.is-running-test .footer { display: none; }
+
 .iq-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 10px; }
 .iq-timer {
   font-family: var(--font-mono, monospace);
@@ -984,7 +999,7 @@ a { color: inherit; text-decoration: none; }
   text-align: right;
 }
 
-.iq-enunciado { margin: 28px 0 20px; font-size: 1.06rem; line-height: 1.5; }
+.iq-enunciado { margin: 22px 0 18px; font-size: clamp(0.98rem, 3.5vw, 1.06rem); line-height: 1.45; text-wrap: balance; }
 
 /* Sequences and analogies read term by term, so the terms line up. */
 .iq-stimulus-text {
@@ -1007,11 +1022,21 @@ a { color: inherit; text-decoration: none; }
   border-radius: 10px;
   overflow: hidden;
 }
-.iq-figure svg { display: block; width: 100%; height: auto; }
-.iq-figure-stimulus { max-width: 320px; margin: 0 auto 28px; }
+.iq-figure svg { display: block; width: 100%; height: 100%; }
+/* Sized by HEIGHT, because height is the scarce dimension on a phone. The
+   figures are all square, so one bound settles both. */
+.iq-figure-stimulus {
+  height: min(26dvh, 260px);
+  width: auto;
+  aspect-ratio: 1;
+  margin: 0 auto 18px;
+}
 
-.iq-options { display: grid; gap: 10px; margin-bottom: 28px; }
-.iq-options.is-figures { grid-template-columns: 1fr 1fr; }
+/* No bottom margin: nothing follows. Choosing an option is what advances. */
+.iq-options { display: grid; gap: 10px; margin-bottom: 0; }
+/* Every figure item in the bank has six alternatives, so three columns give
+   two tidy rows instead of three — the row that used to fall off the screen. */
+.iq-options.is-figures { grid-template-columns: repeat(3, 1fr); }
 .iq-options.is-text { grid-template-columns: 1fr; }
 
 .iq-option {
@@ -1026,7 +1051,7 @@ a { color: inherit; text-decoration: none; }
   cursor: pointer;
   transition: border-color 140ms ease, background 140ms ease;
 }
-.iq-options.is-figures .iq-option { flex-direction: column; align-items: stretch; }
+.iq-options.is-figures .iq-option { flex-direction: column; align-items: stretch; padding: 6px; gap: 0; }
 .iq-option:hover { border-color: rgba(255, 255, 255, 0.28); }
 .iq-option.is-chosen { border-color: var(--nura-cyan); background: rgba(34, 211, 229, 0.08); }
 /* The real input drives every state; it is hidden, never removed. */
@@ -1044,11 +1069,25 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--font-mono, monospace);
   font-size: 0.76rem;
 }
-.iq-options.is-figures .iq-option-letter { margin-bottom: 8px; }
+/* The letter moves into the corner of the figure instead of sitting on its own
+   line above it: the same information, ~34px cheaper per option. */
+.iq-options.is-figures .iq-option-letter {
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border-radius: 6px;
+  background: rgba(7, 11, 20, 0.72);
+  color: #fff;
+  font-size: 0.68rem;
+}
 .iq-option.is-chosen .iq-option-letter { background: var(--nura-cyan); color: var(--nura-obsidian); }
 .iq-option-text { flex: 1; font-size: 0.95rem; line-height: 1.45; }
 .iq-option-check { flex-shrink: 0; color: var(--nura-cyan); }
-.iq-options.is-figures .iq-option-check { position: absolute; top: 12px; right: 12px; }
+.iq-options.is-figures .iq-option-check { position: absolute; z-index: 1; top: 10px; right: 10px; }
 
 /* --- working memory --- */
 .iq-memory-show { text-align: center; padding: 32px 0 12px; }
@@ -1079,7 +1118,7 @@ a { color: inherit; text-decoration: none; }
   opacity: 0.4;
 }
 
-.iq-free-entry { margin-bottom: 28px; }
+.iq-free-entry { margin-bottom: 24px; }
 .iq-free-entry-field { display: block; }
 .iq-free-entry-field span {
   display: block;
@@ -1102,9 +1141,25 @@ a { color: inherit; text-decoration: none; }
 }
 .iq-free-entry-field input:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 2px; }
 
-@media (max-width: 380px) {
-  .iq-options.is-figures { gap: 8px; }
+@media (max-width: 680px) {
+  /* The header is the only fixed thing above the question; the rest of the
+     desktop breathing room is what stops the item fitting. */
+  .iq-runner { padding: 76px 0 16px; }
+  .iq-enunciado { margin: 14px 0 12px; }
+  .iq-options { gap: 8px; }
   .iq-option { padding: 10px; }
+  .iq-options.is-figures .iq-option { padding: 5px; }
+  .iq-option-text { font-size: 0.92rem; }
+  .iq-stimulus-text { margin-bottom: 16px; padding: 14px 16px; font-size: 1rem; }
+  .iq-figure-stimulus { height: min(22dvh, 190px); margin-bottom: 12px; }
+}
+
+/* Short screens — a landscape phone, or a browser with two toolbars showing. */
+@media (max-height: 700px) {
+  .iq-runner { padding: 68px 0 12px; }
+  .iq-figure-stimulus { height: min(20dvh, 150px); }
+  .iq-enunciado { margin: 10px 0 10px; font-size: 0.96rem; }
+  .iq-option { padding: 8px; }
 }
 
 /* --------------------------------------------------------- iq transitions */

@@ -11,10 +11,11 @@ import type { PublicItem } from '@/domain/iq/bank';
  * be looking — rather than of memory. Telling them how long they have is part
  * of the task, not a kindness.
  *
- * Once the time is up the stimulus is gone and cannot be brought back. There
- * is no "show again": the run order guarantees the recall comes later, and
- * going back is blocked for these items, because either would hand the answer
- * over.
+ * Once the time is up the screen advances on its own. There is no "Continue"
+ * to press and no way back: the stimulus is gone, and a button here would only
+ * ask the person to confirm something that already happened. It also removes
+ * the one moment where someone could sit staring at a blank screen wondering
+ * whether the test had broken.
  *
  * The clock is read from timestamps rather than counted down by interval. A
  * backgrounded tab throttles timers, and a counter would leave the stimulus on
@@ -27,7 +28,7 @@ export function MemoryShow({
 }: {
   item: PublicItem;
   onDone: () => void;
-  copy: { hint: string; seconds: (n: number) => string; continueLabel: string };
+  copy: { hint: string; seconds: (n: number) => string };
 }) {
   const total = item.memoria?.exibir_ms ?? 4000;
   const [remaining, setRemaining] = useState(total);
@@ -37,17 +38,21 @@ export function MemoryShow({
     const startedAt = Date.now();
     const tick = window.setInterval(() => {
       const left = total - (Date.now() - startedAt);
-      if (left <= 0) {
-        window.clearInterval(tick);
-        setRemaining(0);
-        setHidden(true);
-      } else {
+      if (left > 0) {
         setRemaining(left);
+        return;
       }
+
+      window.clearInterval(tick);
+      setRemaining(0);
+      setHidden(true);
+      // A short beat between the stimulus vanishing and the next screen, so
+      // the disappearance is seen as an event rather than as the page jumping.
+      window.setTimeout(onDone, 600);
     }, 100);
 
     return () => window.clearInterval(tick);
-  }, [total]);
+  }, [total, onDone]);
 
   const seconds = Math.ceil(remaining / 1000);
 
@@ -68,9 +73,6 @@ export function MemoryShow({
         </>
       )}
 
-      <button type="button" className="button button-primary" onClick={onDone} disabled={!hidden}>
-        {copy.continueLabel}
-      </button>
     </div>
   );
 }

@@ -2,6 +2,7 @@
 
 import { ArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { ART } from './TransitionArt';
 
 /**
  * A breather between blocks of questions.
@@ -32,9 +33,11 @@ export function TransitionScreen({
 }) {
   const t = useTranslations('iq');
   const pct = Math.round((answered / total) * 100);
+  const Art = ART[variant];
 
   return (
     <div className="iq-transition">
+      <Art />
       <p className="eyebrow eyebrow-light">{t(`transition.${variant}.eyebrow`)}</p>
       <h2>{t(`transition.${variant}.title`)}</h2>
 
