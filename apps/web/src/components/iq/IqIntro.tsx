@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import type { PublicItem } from '@/domain/iq/bank';
@@ -10,8 +10,8 @@ import { IqRunner } from './IqRunner';
 import { IqCalculating, type PerguntaCarregamento } from './IqCalculating';
 import { IqEmailGate } from './IqEmailGate';
 import { useFocusMode } from '@/lib/focusMode';
-import { IqResult } from './IqResult';
 import { ensureSession } from '@/lib/supabase/client';
+import { randomId } from '@/lib/randomId';
 
 /**
  * The screen before the test, and the one that owns the run.
@@ -75,7 +75,10 @@ export function IqIntro({ items }: { items: PublicItem[] }) {
   // intro included. Owned here rather than in the runner because this
   // component is the one that lives through every stage; two owners adding and
   // removing the same class would fight when one of them unmounted.
-  useFocusMode(pronto ? 'off' : started ? 'answering' : 'reading');
+  // Continua em modo foco depois do resultado: a tela de e-mail e a de
+  // pagamento sao onde uma saida custa mais, e o "Comecar" do cabecalho e
+  // exatamente uma saida.
+  useFocusMode(started || pronto ? 'answering' : 'reading');
 
   /**
    * Sends the run to be scored.
@@ -121,12 +124,53 @@ export function IqIntro({ items }: { items: PublicItem[] }) {
     setStarted(true);
   };
 
-  const restart = () => {
-    setPronto(null);
-    setResult(null);
-    setState('idle');
-    setStarted(false);
-  };
+  /**
+   * Atalho para o fim do teste, para conferir as telas finais.
+   *
+   * Existe porque a alternativa e responder 45 questoes a cada ajuste na tela
+   * de calculo, no e-mail ou no pagamento. Ele nao finge nada: cria uma
+   * corrida de verdade, com uma resposta, e manda para o mesmo `submit` que o
+   * teste inteiro usa. A sessao sai gravada no banco e pertence a este
+   * aparelho, que e o unico jeito de a pagina de pagamento abrir — um link
+   * pronto nao funcionaria no celular de outra pessoa.
+   *
+   * Atras de `NEXT_PUBLIC_IQ_PREVIEW=1` e de um parametro na URL, porque um
+   * visitante que caisse nele por acaso pularia o teste e chegaria ao
+   * pagamento com um resultado que nao e dele.
+   */
+  useEffect(() => {
+    if (process.env.NEXT_PUBLIC_IQ_PREVIEW !== '1') return;
+    if (!new URLSearchParams(window.location.search).has('fim')) return;
+    if (started || state !== 'idle' || result) return;
+
+    let cancelado = false;
+    void (async () => {
+      await ensureSession();
+      if (cancelado) return;
+      const agora = Date.now();
+      await submit({
+        id: randomId(),
+        startedAt: new Date(agora - 18 * 60 * 1000).toISOString(),
+        stepIndex: 0,
+        stepShownAt: agora,
+        // Uma resposta so, com o tempo total do teste inteiro: o suficiente
+        // para as telas finais terem numeros com que trabalhar.
+        respostas: items.slice(0, 1).map((item) => ({
+          itemId: item.id,
+          escolhaIndex: 0,
+          correta: false,
+          tempo_ms: 18 * 60 * 1000,
+        })),
+      });
+    })();
+
+    return () => {
+      cancelado = true;
+    };
+    // Roda uma vez: e um atalho de teste, nao um estado do app.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
 
   // O resultado nao e entregue nesta fase: quem termina vai para o e-mail e
   // para o pagamento. `IqResult` continua no repositorio, pronto para voltar

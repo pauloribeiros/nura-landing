@@ -8,6 +8,7 @@ import { routing, type Locale } from '@/i18n/routing';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL, supabaseConfigured } from '@/lib/supabase/env';
 import { CheckoutAccordion } from '@/components/iq/CheckoutAccordion';
+import { FocusMode } from '@/components/FocusMode';
 
 /**
  * A página de pagamento, na nossa casa em vez da do Stripe.
@@ -64,6 +65,7 @@ export default async function PaginaDePagamento({ params }: { params: Params }) 
 
   return (
     <>
+      <FocusMode />
       <SiteHeader locale={locale as Locale} />
       <main className="page page-dark">
         <section className="runner pay-page">
