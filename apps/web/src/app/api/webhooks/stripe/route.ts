@@ -48,26 +48,66 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'bad-signature' }, { status: 400 });
   }
 
-  if (event.type !== 'checkout.session.completed') {
+  /**
+   * Os dois jeitos de pagar chegam aqui.
+   *
+   * `checkout.session.completed` e a pagina hospedada pelo Stripe;
+   * `payment_intent.succeeded` e o pagamento feito dentro da nossa pagina, com
+   * os campos do Payment Element. O que o resto do codigo precisa saber e o
+   * mesmo nos dois casos, entao a diferenca acaba aqui.
+   */
+  let pago: {
+    ref: string;
+    sessionId?: string;
+    userId?: string;
+    assessmentId?: string;
+    locale?: string;
+    email?: string | null;
+    amount: number | null;
+    currency: string | null;
+  } | null = null;
+
+  if (event.type === 'checkout.session.completed') {
+    const checkout = event.data.object as Stripe.Checkout.Session;
+    // Uma sessao concluida ainda pode estar sem pagamento — uma transferencia
+    // aguardando compensacao, por exemplo.
+    if (checkout.payment_status !== 'paid') {
+      return NextResponse.json({ received: true, granted: false });
+    }
+    pago = {
+      ref: checkout.id,
+      sessionId: checkout.metadata?.sessionId,
+      userId: checkout.metadata?.userId,
+      assessmentId: checkout.metadata?.assessmentId,
+      locale: checkout.metadata?.locale,
+      email: checkout.customer_details?.email ?? null,
+      amount: checkout.amount_total,
+      currency: checkout.currency,
+    };
+  } else if (event.type === 'payment_intent.succeeded') {
+    const intent = event.data.object as Stripe.PaymentIntent;
+    pago = {
+      ref: intent.id,
+      sessionId: intent.metadata?.sessionId,
+      userId: intent.metadata?.userId,
+      assessmentId: intent.metadata?.assessmentId,
+      locale: intent.metadata?.locale,
+      email: intent.receipt_email,
+      amount: intent.amount_received ?? intent.amount,
+      currency: intent.currency,
+    };
+  }
+
+  if (!pago) {
     // Acknowledged and ignored. Answering 2xx keeps Stripe from retrying
     // events this endpoint has no opinion about.
     return NextResponse.json({ received: true });
   }
 
-  const checkout = event.data.object as Stripe.Checkout.Session;
-
-  // Only a paid session grants anything. A completed checkout can still be
-  // unpaid — a bank transfer awaiting clearing, for one.
-  if (checkout.payment_status !== 'paid') {
-    return NextResponse.json({ received: true, granted: false });
-  }
-
-  const sessionId = checkout.metadata?.sessionId;
-  const userId = checkout.metadata?.userId;
-  const assessmentId = checkout.metadata?.assessmentId;
+  const { ref, sessionId, userId, assessmentId } = pago;
 
   if (!sessionId || !userId || !assessmentId) {
-    console.error('[nura] paid checkout without metadata', checkout.id);
+    console.error('[nura] pagamento sem metadata', ref);
     // 200 on purpose: retrying will not add metadata that was never set, and
     // this needs a human, not another delivery.
     return NextResponse.json({ received: true, granted: false });
@@ -79,9 +119,9 @@ export async function POST(request: Request) {
     assessment_id: assessmentId,
     source: 'purchase',
     provider: 'stripe',
-    provider_ref: checkout.id,
-    amount_cents: checkout.amount_total,
-    currency: checkout.currency,
+    provider_ref: ref,
+    amount_cents: pago.amount,
+    currency: pago.currency,
   });
 
   // 23505 is a unique violation: this event already granted, or the session
@@ -92,15 +132,15 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'grant-failed' }, { status: 500 });
   }
 
-  // Stripe collects an address at checkout, so this is the one a person chose
-  // to give for this purchase. Sent after access exists, never before: an
-  // email pointing at a report that is not yet unlocked is worse than none.
-  const email = checkout.customer_details?.email;
-  if (email) {
+  // O endereco que a pessoa deu para esta compra — no checkout hospedado, o
+  // que o Stripe coletou; na nossa pagina, o que ela digitou antes de pagar.
+  // Enviado depois que o acesso existe, nunca antes: um e-mail apontando para
+  // um relatorio que ainda nao foi liberado e pior do que nenhum.
+  if (pago.email) {
     await sendReportEmail({
-      to: email,
+      to: pago.email,
       sessionId,
-      locale: checkout.metadata?.locale ?? 'pt-br',
+      locale: pago.locale ?? 'pt-br',
     });
   }
 

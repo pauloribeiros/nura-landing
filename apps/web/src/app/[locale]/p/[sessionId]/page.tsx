@@ -33,9 +33,17 @@ import { FocusMode } from '@/components/FocusMode';
 export const dynamic = 'force-dynamic';
 
 type Params = Promise<{ locale: string; sessionId: string }>;
+type Busca = Promise<{ pago?: string }>;
 
-export default async function PaginaDePagamento({ params }: { params: Params }) {
+export default async function PaginaDePagamento({
+  params,
+  searchParams,
+}: {
+  params: Params;
+  searchParams: Busca;
+}) {
   const { locale, sessionId } = await params;
+  const { pago } = await searchParams;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
 
@@ -59,6 +67,14 @@ export default async function PaginaDePagamento({ params }: { params: Params }) 
     .eq('session_id', sessionId)
     .maybeSingle();
   if (!resultado) notFound();
+
+  // O e-mail que a pessoa deu na tela anterior, para o recibo do Stripe e
+  // para o envio do relatório — ela não digita duas vezes.
+  const { data: lead } = await comoVisitante
+    .from('assessment_leads')
+    .select('email')
+    .eq('session_id', sessionId)
+    .maybeSingle();
 
   const t = await getTranslations({ locale, namespace: 'iq_checkout' });
   const inclui = ['inclui1', 'inclui2', 'inclui3', 'inclui4'] as const;
@@ -93,7 +109,14 @@ export default async function PaginaDePagamento({ params }: { params: Params }) 
                 <p className="pay-once">{t('once')}</p>
               </aside>
 
-              <CheckoutAccordion sessionId={sessionId} />
+              {pago ? (
+                <div className="pay-done">
+                  <p className="pay-done-title">{t('doneTitle')}</p>
+                  <p>{t('doneBody')}</p>
+                </div>
+              ) : (
+                <CheckoutAccordion sessionId={sessionId} email={lead?.email ?? undefined} />
+              )}
             </div>
           </div>
         </section>

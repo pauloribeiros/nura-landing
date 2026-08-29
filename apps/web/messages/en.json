@@ -616,16 +616,25 @@
     "pix": {
       "name": "Pix",
       "note": "instant approval",
-      "body": "You get the Pix code on the next screen. Access opens automatically as soon as the payment lands."
+      "body": "The Pix code appears right here. Access opens automatically as soon as the payment lands."
     },
     "card": {
       "name": "Credit or debit card",
       "note": "single payment",
-      "body": "Card details are typed inside Stripe, not here. Wallets like Google Pay and Apple Pay show up at that step when your device has them."
+      "body": "Fill in the fields below. They belong to Stripe: your card number never passes through NURA."
     },
     "cta": "Pay {preco}",
     "sending": "Opening checkout…",
     "error": "We could not open checkout right now. Try again in a moment.",
-    "secure": "Payment handled by Stripe. NURA never sees or stores your card details."
+    "secure": "Payment handled by Stripe. NURA never sees or stores your card details.",
+    "wallet": {
+      "name": "Apple Pay or Google Pay",
+      "note": "one tap",
+      "body": "Pay with the card already on your device, without typing anything."
+    },
+    "carregando": "Loading the payment form…",
+    "semChave": "Payment unavailable: the Stripe publishable key is not configured.",
+    "doneTitle": "Payment confirmed.",
+    "doneBody": "The full report goes to your email as soon as it is ready. You can also come back through this same link."
   }
 }

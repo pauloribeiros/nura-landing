@@ -616,16 +616,25 @@
     "pix": {
       "name": "Pix",
       "note": "aprobación inmediata",
-      "body": "Recibes el código Pix en la siguiente pantalla. El acceso se abre automáticamente cuando el pago entra."
+      "body": "El código Pix aparece aquí mismo. El acceso se abre automáticamente cuando el pago entra."
     },
     "card": {
       "name": "Tarjeta de crédito o débito",
       "note": "un solo pago",
-      "body": "Los datos de la tarjeta se escriben dentro de Stripe, no aquí. Carteras como Google Pay y Apple Pay aparecen en ese paso cuando tu dispositivo las tiene."
+      "body": "Completa los campos de abajo. Son de Stripe: el número de tu tarjeta nunca pasa por NURA."
     },
     "cta": "Pagar {preco}",
     "sending": "Abriendo el pago…",
     "error": "No pudimos abrir el pago ahora. Inténtalo de nuevo en un momento.",
-    "secure": "Pago procesado por Stripe. NURA nunca ve ni guarda los datos de tu tarjeta."
+    "secure": "Pago procesado por Stripe. NURA nunca ve ni guarda los datos de tu tarjeta.",
+    "wallet": {
+      "name": "Apple Pay o Google Pay",
+      "note": "un toque",
+      "body": "Paga con la tarjeta que ya está en tu dispositivo, sin escribir nada."
+    },
+    "carregando": "Cargando el formulario de pago…",
+    "semChave": "Pago no disponible: falta configurar la clave pública de Stripe.",
+    "doneTitle": "Pago confirmado.",
+    "doneBody": "El informe completo va a tu correo en cuanto esté listo. También puedes volver por este mismo enlace."
   }
 }

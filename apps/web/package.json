@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "@react-three/fiber": "^9.7.0",
+    "@stripe/react-stripe-js": "^6.8.2",
+    "@stripe/stripe-js": "^9.14.0",
     "@supabase/ssr": "^0.12.4",
     "@supabase/supabase-js": "^2.112.3",
     "gsap": "^3.15.0",
