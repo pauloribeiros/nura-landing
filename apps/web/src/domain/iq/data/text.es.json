@@ -8,12 +8,6 @@
   "ABS-03": {
     "enunciado": "¿Qué figura completa la matriz?"
   },
-  "ABS-04": {
-    "enunciado": "¿Qué figura completa la matriz?"
-  },
-  "ABS-05": {
-    "enunciado": "¿Qué figura completa la matriz?"
-  },
   "ABS-09": {
     "alternativas": [
       "El hierro",
@@ -38,6 +32,9 @@
   },
   "ABS-11": {
     "enunciado": "En un cajón hay 8 calcetines azules y 6 negros, mezclados, a oscuras. ¿Cuántos calcetines tienes que sacar para garantizar un par azul?"
+  },
+  "ABS-12": {
+    "enunciado": "Tres de estas siguen la misma regla. ¿Cuál la rompe?"
   },
   "ANA-01": {
     "alternativas": [
@@ -161,6 +158,9 @@
   "ESP-10": {
     "enunciado": "El primer par está relacionado del mismo modo que el segundo par. ¿Qué opción lo completa?"
   },
+  "ESP-11": {
+    "enunciado": "Tres de las opciones son rotaciones de la figura de arriba. ¿Cuál no lo es?"
+  },
   "MEM-01": {
     "enunciado": "Escribe la secuencia que memorizaste."
   },
@@ -183,7 +183,7 @@
     "memoria": "Cognitivo"
   },
   "MEM-05": {
-    "enunciado": "¿Cuál era el 5.º dígito?"
+    "enunciado": "¿Cuál era el 3.º dígito?"
   },
   "MEM-06": {
     "alternativas": [

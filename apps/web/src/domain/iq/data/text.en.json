@@ -8,12 +8,6 @@
   "ABS-03": {
     "enunciado": "Which figure completes the matrix?"
   },
-  "ABS-04": {
-    "enunciado": "Which figure completes the matrix?"
-  },
-  "ABS-05": {
-    "enunciado": "Which figure completes the matrix?"
-  },
   "ABS-09": {
     "alternativas": [
       "The iron",
@@ -38,6 +32,9 @@
   },
   "ABS-11": {
     "enunciado": "A drawer holds 8 blue socks and 6 black ones, mixed together, in the dark. How many socks must you take out to be sure of a blue pair?"
+  },
+  "ABS-12": {
+    "enunciado": "Three of these follow the same rule. Which one breaks it?"
   },
   "ANA-01": {
     "alternativas": [
@@ -161,6 +158,9 @@
   "ESP-10": {
     "enunciado": "The first pair are related in the same way as the second pair. Which option completes it?"
   },
+  "ESP-11": {
+    "enunciado": "Three of the options are rotations of the shape above. Which one is not?"
+  },
   "MEM-01": {
     "enunciado": "Type the sequence you memorised."
   },
@@ -183,7 +183,7 @@
     "memoria": "Cognitive"
   },
   "MEM-05": {
-    "enunciado": "Which was the 5th digit?"
+    "enunciado": "Which was the 3rd digit?"
   },
   "MEM-06": {
     "alternativas": [
