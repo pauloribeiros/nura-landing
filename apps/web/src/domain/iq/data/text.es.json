@@ -1,0 +1,227 @@
+{
+  "ABS-01": {
+    "enunciado": "¿Qué figura completa la matriz?"
+  },
+  "ABS-02": {
+    "enunciado": "¿Qué figura completa la matriz?"
+  },
+  "ABS-03": {
+    "enunciado": "¿Qué figura completa la matriz?"
+  },
+  "ABS-04": {
+    "enunciado": "¿Qué figura completa la matriz?"
+  },
+  "ABS-05": {
+    "enunciado": "¿Qué figura completa la matriz?"
+  },
+  "ABS-06": {
+    "enunciado": "¿Qué figura completa la matriz?"
+  },
+  "ABS-07": {
+    "enunciado": "¿Qué figura completa la matriz?"
+  },
+  "ABS-08": {
+    "enunciado": "¿Qué figura completa la matriz?"
+  },
+  "ANA-01": {
+    "alternativas": [
+      "escuela",
+      "libro",
+      "alumno",
+      "pizarra",
+      "bolígrafo",
+      "examen"
+    ],
+    "enunciado": "Completa la analogía.",
+    "estimulo": "Médico es a hospital como profesor es a ___"
+  },
+  "ANA-02": {
+    "alternativas": [
+      "guante",
+      "dedo",
+      "brazo",
+      "anillo",
+      "muñeca",
+      "uña"
+    ],
+    "enunciado": "Completa la analogía.",
+    "estimulo": "Pie es a zapato como mano es a ___"
+  },
+  "ANA-03": {
+    "alternativas": [
+      "oscuro",
+      "sol",
+      "luz",
+      "día",
+      "blanco",
+      "gris"
+    ],
+    "enunciado": "Completa la analogía.",
+    "estimulo": "Caliente es a frío como claro es a ___"
+  },
+  "ANA-04": {
+    "alternativas": [
+      "hormiguero",
+      "miel",
+      "jardín",
+      "tierra",
+      "nido",
+      "termitero"
+    ],
+    "enunciado": "Completa la analogía.",
+    "estimulo": "Abeja es a colmena como hormiga es a ___"
+  },
+  "ANA-05": {
+    "alternativas": [
+      "frase",
+      "texto",
+      "sílaba",
+      "alfabeto",
+      "sonido",
+      "verbo"
+    ],
+    "enunciado": "Completa la analogía.",
+    "estimulo": "Letra es a palabra como palabra es a ___"
+  },
+  "ANA-06": {
+    "alternativas": [
+      "Todo perro necesita agua",
+      "Todo animal es perro",
+      "Ningún perro necesita agua",
+      "Algunos perros no son animales",
+      "El agua es un animal",
+      "No todo perro es animal"
+    ],
+    "enunciado": "Lee las premisas y elige la conclusión válida.",
+    "estimulo": "Todo perro es animal. Todo animal necesita agua. Por lo tanto:"
+  },
+  "ANA-07": {
+    "alternativas": [
+      "compositor",
+      "director",
+      "orquesta",
+      "músico",
+      "partitura",
+      "violín"
+    ],
+    "enunciado": "Completa la analogía.",
+    "estimulo": "Libro es a autor como sinfonía es a ___"
+  },
+  "ANA-08": {
+    "alternativas": [
+      "Lucas",
+      "Pedro",
+      "Juan",
+      "Marcos",
+      "Imposible saberlo",
+      "Pedro y Lucas empatados"
+    ],
+    "enunciado": "Lee las posiciones y responde.",
+    "estimulo": "En una fila, Juan está detrás de Pedro y delante de Marcos. Lucas está delante de Pedro. ¿Quién está más adelante?"
+  },
+  "ESP-01": {
+    "enunciado": "¿Cuál de las figuras es la de arriba, girada (sin reflejar)?"
+  },
+  "ESP-02": {
+    "enunciado": "¿Cuál de las figuras es la de arriba, girada (sin reflejar)?"
+  },
+  "ESP-03": {
+    "enunciado": "¿Cuál de las figuras es la de arriba, girada (sin reflejar)?"
+  },
+  "ESP-04": {
+    "enunciado": "¿Cuál de las figuras es la de arriba, girada (sin reflejar)?"
+  },
+  "ESP-05": {
+    "enunciado": "¿Cuál de las figuras es la de arriba, girada (sin reflejar)?"
+  },
+  "ESP-06": {
+    "enunciado": "¿Cuál de las figuras es la de arriba, girada (sin reflejar)?"
+  },
+  "ESP-07": {
+    "enunciado": "¿Cuál de las figuras es la de arriba, girada (sin reflejar)?"
+  },
+  "MEM-01": {
+    "enunciado": "Escribe la secuencia que memorizaste."
+  },
+  "MEM-02": {
+    "enunciado": "¿Cuál era el 2.º dígito?"
+  },
+  "MEM-03": {
+    "enunciado": "¿Cuál era el 4.º dígito?"
+  },
+  "MEM-04": {
+    "alternativas": [
+      "Cognitivo",
+      "Cognición",
+      "Cognado",
+      "Consciente",
+      "Congénito",
+      "Cogitar"
+    ],
+    "enunciado": "¿Qué palabra memorizaste?",
+    "memoria": "Cognitivo"
+  },
+  "MEM-05": {
+    "enunciado": "¿Cuál era el 5.º dígito?"
+  },
+  "MEM-06": {
+    "alternativas": [
+      "Patrón",
+      "Padrino",
+      "Padrastro",
+      "Panadería",
+      "Paradoja",
+      "Párroco"
+    ],
+    "enunciado": "¿Qué palabra memorizaste?",
+    "memoria": "Patrón"
+  },
+  "MEM-07": {
+    "enunciado": "Escribe la secuencia en orden INVERSO."
+  },
+  "PAT-01": {
+    "enunciado": "¿Qué número completa la secuencia?"
+  },
+  "PAT-02": {
+    "enunciado": "¿Qué número completa la secuencia?"
+  },
+  "PAT-03": {
+    "enunciado": "¿Qué número completa la secuencia?"
+  },
+  "PAT-04": {
+    "enunciado": "¿Qué número completa la secuencia?"
+  },
+  "PAT-05": {
+    "enunciado": "¿Qué número completa la secuencia?"
+  },
+  "PAT-06": {
+    "enunciado": "¿Qué número completa la secuencia?"
+  },
+  "PAT-07": {
+    "enunciado": "¿Qué número completa la secuencia?"
+  },
+  "PAT-08": {
+    "enunciado": "¿Qué número completa la secuencia?"
+  },
+  "PER-01": {
+    "enunciado": "¿Cuál figura es diferente de las demás?"
+  },
+  "PER-02": {
+    "enunciado": "¿Cuál figura es diferente de las demás?"
+  },
+  "PER-03": {
+    "enunciado": "¿Cuál figura es diferente de las demás?"
+  },
+  "PER-04": {
+    "enunciado": "¿Cuál figura es diferente de las demás?"
+  },
+  "PER-05": {
+    "enunciado": "¿Qué pieza continúa el patrón de la malla manteniendo densidad y orientación?"
+  },
+  "PER-06": {
+    "enunciado": "¿Qué pieza continúa el patrón de la malla manteniendo densidad y orientación?"
+  },
+  "PER-07": {
+    "enunciado": "¿Qué pieza continúa el patrón de la malla manteniendo densidad y orientación?"
+  }
+}

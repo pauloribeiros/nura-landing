@@ -1,0 +1,227 @@
+{
+  "ABS-01": {
+    "enunciado": "Which figure completes the matrix?"
+  },
+  "ABS-02": {
+    "enunciado": "Which figure completes the matrix?"
+  },
+  "ABS-03": {
+    "enunciado": "Which figure completes the matrix?"
+  },
+  "ABS-04": {
+    "enunciado": "Which figure completes the matrix?"
+  },
+  "ABS-05": {
+    "enunciado": "Which figure completes the matrix?"
+  },
+  "ABS-06": {
+    "enunciado": "Which figure completes the matrix?"
+  },
+  "ABS-07": {
+    "enunciado": "Which figure completes the matrix?"
+  },
+  "ABS-08": {
+    "enunciado": "Which figure completes the matrix?"
+  },
+  "ANA-01": {
+    "alternativas": [
+      "school",
+      "book",
+      "student",
+      "board",
+      "pen",
+      "exam"
+    ],
+    "enunciado": "Complete the analogy.",
+    "estimulo": "Doctor is to hospital as teacher is to ___"
+  },
+  "ANA-02": {
+    "alternativas": [
+      "glove",
+      "finger",
+      "arm",
+      "ring",
+      "wrist",
+      "nail"
+    ],
+    "enunciado": "Complete the analogy.",
+    "estimulo": "Foot is to shoe as hand is to ___"
+  },
+  "ANA-03": {
+    "alternativas": [
+      "dark",
+      "sun",
+      "light",
+      "day",
+      "white",
+      "grey"
+    ],
+    "enunciado": "Complete the analogy.",
+    "estimulo": "Hot is to cold as bright is to ___"
+  },
+  "ANA-04": {
+    "alternativas": [
+      "anthill",
+      "honey",
+      "garden",
+      "soil",
+      "nest",
+      "termite mound"
+    ],
+    "enunciado": "Complete the analogy.",
+    "estimulo": "Bee is to hive as ant is to ___"
+  },
+  "ANA-05": {
+    "alternativas": [
+      "sentence",
+      "text",
+      "syllable",
+      "alphabet",
+      "sound",
+      "verb"
+    ],
+    "enunciado": "Complete the analogy.",
+    "estimulo": "Letter is to word as word is to ___"
+  },
+  "ANA-06": {
+    "alternativas": [
+      "All dogs need water",
+      "All animals are dogs",
+      "No dog needs water",
+      "Some dogs are not animals",
+      "Water is an animal",
+      "Not all dogs are animals"
+    ],
+    "enunciado": "Read the premises and choose the valid conclusion.",
+    "estimulo": "All dogs are animals. All animals need water. Therefore:"
+  },
+  "ANA-07": {
+    "alternativas": [
+      "composer",
+      "conductor",
+      "orchestra",
+      "musician",
+      "score",
+      "violin"
+    ],
+    "enunciado": "Complete the analogy.",
+    "estimulo": "Book is to author as symphony is to ___"
+  },
+  "ANA-08": {
+    "alternativas": [
+      "Lucas",
+      "Peter",
+      "John",
+      "Mark",
+      "Impossible to tell",
+      "Peter and Lucas tied"
+    ],
+    "enunciado": "Read the positions and answer.",
+    "estimulo": "In a queue, John is behind Peter and ahead of Mark. Lucas is ahead of Peter. Who is furthest to the front?"
+  },
+  "ESP-01": {
+    "enunciado": "Which figure is the one above, rotated (not mirrored)?"
+  },
+  "ESP-02": {
+    "enunciado": "Which figure is the one above, rotated (not mirrored)?"
+  },
+  "ESP-03": {
+    "enunciado": "Which figure is the one above, rotated (not mirrored)?"
+  },
+  "ESP-04": {
+    "enunciado": "Which figure is the one above, rotated (not mirrored)?"
+  },
+  "ESP-05": {
+    "enunciado": "Which figure is the one above, rotated (not mirrored)?"
+  },
+  "ESP-06": {
+    "enunciado": "Which figure is the one above, rotated (not mirrored)?"
+  },
+  "ESP-07": {
+    "enunciado": "Which figure is the one above, rotated (not mirrored)?"
+  },
+  "MEM-01": {
+    "enunciado": "Type the sequence you memorised."
+  },
+  "MEM-02": {
+    "enunciado": "Which was the 2nd digit?"
+  },
+  "MEM-03": {
+    "enunciado": "Which was the 4th digit?"
+  },
+  "MEM-04": {
+    "alternativas": [
+      "Cognitive",
+      "Cognition",
+      "Cognate",
+      "Conscious",
+      "Congenital",
+      "Cogitate"
+    ],
+    "enunciado": "Which word did you memorise?",
+    "memoria": "Cognitive"
+  },
+  "MEM-05": {
+    "enunciado": "Which was the 5th digit?"
+  },
+  "MEM-06": {
+    "alternativas": [
+      "Pattern",
+      "Patron",
+      "Partner",
+      "Pasture",
+      "Paradox",
+      "Patient"
+    ],
+    "enunciado": "Which word did you memorise?",
+    "memoria": "Pattern"
+  },
+  "MEM-07": {
+    "enunciado": "Type the sequence in REVERSE order."
+  },
+  "PAT-01": {
+    "enunciado": "Which number completes the sequence?"
+  },
+  "PAT-02": {
+    "enunciado": "Which number completes the sequence?"
+  },
+  "PAT-03": {
+    "enunciado": "Which number completes the sequence?"
+  },
+  "PAT-04": {
+    "enunciado": "Which number completes the sequence?"
+  },
+  "PAT-05": {
+    "enunciado": "Which number completes the sequence?"
+  },
+  "PAT-06": {
+    "enunciado": "Which number completes the sequence?"
+  },
+  "PAT-07": {
+    "enunciado": "Which number completes the sequence?"
+  },
+  "PAT-08": {
+    "enunciado": "Which number completes the sequence?"
+  },
+  "PER-01": {
+    "enunciado": "Which figure is different from the others?"
+  },
+  "PER-02": {
+    "enunciado": "Which figure is different from the others?"
+  },
+  "PER-03": {
+    "enunciado": "Which figure is different from the others?"
+  },
+  "PER-04": {
+    "enunciado": "Which figure is different from the others?"
+  },
+  "PER-05": {
+    "enunciado": "Which piece continues the grid pattern, keeping the same density and orientation?"
+  },
+  "PER-06": {
+    "enunciado": "Which piece continues the grid pattern, keeping the same density and orientation?"
+  },
+  "PER-07": {
+    "enunciado": "Which piece continues the grid pattern, keeping the same density and orientation?"
+  }
+}

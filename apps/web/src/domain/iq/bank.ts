@@ -1,4 +1,6 @@
 import raw from './data/bank.json';
+import textEn from './data/text.en.json';
+import textEs from './data/text.es.json';
 import type { Dimensao, Item } from './types';
 
 /**
@@ -26,6 +28,60 @@ export const DIMENSOES: Dimensao[] = [
   'memoria_trabalho',
 ];
 
+/**
+ * The wording of an item in a language other than the one the bank is written
+ * in. Figures are never in here: an SVG of a rotated cube is the same question
+ * everywhere, and duplicating 135 KB of markup per locale to change nothing
+ * would be absurd.
+ *
+ * ORDER IS THE CONTRACT. `correta` is an index into `alternativas`, so a
+ * translation that reorders the options silently marks the wrong answer right.
+ * `bank.i18n.test.ts` pins the length and the pt-br position of the key.
+ */
+interface ItemText {
+  enunciado?: string;
+  estimulo?: string;
+  alternativas?: string[];
+  /** Only for the word-span items: the word itself has to be in the language. */
+  memoria?: string;
+}
+
+const TEXT: Record<string, Record<string, ItemText>> = {
+  en: textEn as Record<string, ItemText>,
+  es: textEs as Record<string, ItemText>,
+};
+
+/** The locales whose item wording exists. Everything else falls back to pt-br. */
+export const bankLocales = ['pt-br', ...Object.keys(TEXT)];
+
+/**
+ * The bank as read in `locale`.
+ *
+ * Falls back item by item rather than all or nothing: a missing entry shows
+ * the Portuguese wording, which is wrong but answerable, where a crash or a
+ * blank question is neither.
+ */
+export function itemsIn(locale: string): Item[] {
+  const table = TEXT[locale];
+  if (!table) return ITEMS;
+
+  return ITEMS.map((item) => {
+    const text = table[item.id];
+    if (!text) return item;
+
+    return {
+      ...item,
+      enunciado: text.enunciado ?? item.enunciado,
+      estimulo: text.estimulo ?? item.estimulo,
+      alternativas: text.alternativas ?? item.alternativas,
+      memoria:
+        item.memoria && text.memoria
+          ? { ...item.memoria, estimulo: text.memoria }
+          : item.memoria,
+    };
+  });
+}
+
 export const byId = (id: string) => ITEMS.find((i) => i.id === id);
 
 export const itemsOf = (dimensao: Dimensao) => ITEMS.filter((i) => i.dimensao === dimensao);
@@ -46,5 +102,5 @@ export const itemsOf = (dimensao: Dimensao) => ITEMS.filter((i) => i.dimensao ==
  */
 export type PublicItem = Omit<Item, 'regra' | 'correta'>;
 
-export const publicItems = (): PublicItem[] =>
-  ITEMS.map(({ regra: _regra, correta: _correta, ...rest }) => rest);
+export const publicItems = (locale = 'pt-br'): PublicItem[] =>
+  itemsIn(locale).map(({ regra: _regra, correta: _correta, ...rest }) => rest);

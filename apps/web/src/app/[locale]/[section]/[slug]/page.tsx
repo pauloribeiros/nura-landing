@@ -116,7 +116,7 @@ export default async function AssessmentPage({ params }: { params: Params }) {
         // The bank is read on the server and handed over already stripped of
         // the answer key, so it travels in the page payload rather than in the
         // JavaScript bundle of every visitor who never opens the test.
-        return <IqIntro items={publicItems()} />;
+        return <IqIntro items={publicItems(locale)} />;
       }
 
       return (
