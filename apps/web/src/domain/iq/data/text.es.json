@@ -39,6 +39,9 @@
   "ABS-13": {
     "enunciado": "¿Qué pieza completa la cuadrícula?"
   },
+  "ABS-14": {
+    "enunciado": "¿Qué pieza completa la cuadrícula?"
+  },
   "ANA-01": {
     "alternativas": [
       "palabras",
@@ -229,13 +232,10 @@
   "PER-05": {
     "enunciado": "¿Qué pieza continúa el patrón de la malla manteniendo densidad y orientación?"
   },
-  "PER-06": {
-    "enunciado": "¿Qué pieza continúa el patrón de la malla manteniendo densidad y orientación?"
-  },
-  "PER-07": {
-    "enunciado": "¿Qué pieza continúa el patrón de la malla manteniendo densidad y orientación?"
-  },
   "PER-08": {
     "enunciado": "¿Qué pieza encaja en el hueco del patrón?"
+  },
+  "PER-09": {
+    "enunciado": "¿Qué pieza completa la cuadrícula?"
   }
 }

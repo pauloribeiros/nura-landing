@@ -149,6 +149,14 @@ export function IqRunner({
   const answeredCount = session.respostas.length;
   const total = items.length;
 
+  // Which dimensions the answers so far have touched — the honest version of
+  // "you are ahead of 23% of people", and the only comparison the data
+  // supports before there is a measured sample.
+  const respondidos = new Set(session.respostas.map((r) => r.itemId));
+  const dimensoesVistas = [
+    ...new Set(items.filter((i) => respondidos.has(i.id)).map((i) => i.dimensao)),
+  ];
+
   // A break is due when the count has just crossed one of the marks and the
   // person is on a question — never between a memory stimulus and its recall,
   // which would sit inside the interference the item depends on.
@@ -165,6 +173,7 @@ export function IqRunner({
             answered={answeredCount}
             total={total}
             variant={dueBreak.variant}
+            dimensoes={dimensoesVistas}
             onContinue={() => setBreaksSeen((seen) => [...seen, dueBreak.after])}
           />
         </div>

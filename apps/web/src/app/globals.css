@@ -1301,7 +1301,13 @@ body.is-running-test .header-actions .button { display: none; }
   font-size: 0.8rem;
   color: var(--nura-cool-gray);
 }
-.iq-transition .runner-lead { margin-bottom: 28px; }
+.iq-transition .runner-lead { margin-bottom: 14px; }
+.iq-transition-dimensions {
+  margin: 0 0 26px;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--nura-cyan);
+}
 
 /* ------------------------------------------------------------- iq result */
 .iq-score { padding: 28px 24px; border-radius: 18px; background: rgba(255, 255, 255, 0.04); margin-bottom: 20px; }

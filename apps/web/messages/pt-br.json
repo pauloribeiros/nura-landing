@@ -544,25 +544,26 @@
     "transition": {
       "start": {
         "eyebrow": "Primeiro bloco concluído",
-        "title": "Aquecimento feito.",
-        "body": "As próximas questões ficam mais difíceis, e é assim que deve ser — a dificuldade cresce de propósito. Se travar numa, escolha a mais provável e siga."
+        "title": "Um padrão está começando a aparecer no seu jeito de pensar.",
+        "body": "Cada resposta acrescenta detalhe ao seu perfil: como você reconhece padrões, o que segura na memória e como reage quando a dificuldade sobe. As próximas ficam mais difíceis de propósito."
       },
       "middle": {
         "eyebrow": "Metade do caminho",
-        "title": "Você passou da metade.",
-        "body": "Daqui em diante os itens exigem mais passos até a resposta. Vale ler o enunciado com calma antes de olhar as alternativas."
+        "title": "Daqui em diante é onde o perfil ganha contorno.",
+        "body": "As questões do meio são as que mais separam um jeito de raciocinar do outro. Vale ler o enunciado com calma antes de olhar as alternativas; se travar numa, escolha a mais provável e siga."
       },
       "end": {
         "eyebrow": "Reta final",
-        "title": "Faltam poucas.",
-        "body": "As últimas são as mais difíceis do teste. Errar aqui é esperado e não estraga o seu resultado — a dificuldade de cada item já é levada em conta."
+        "title": "Você está quase lá — faltam só {restantes} perguntas.",
+        "body": "Você já respondeu {pct}% do teste. As últimas são as mais difíceis, e é para isso que elas existem: definir o topo da escala. Errar aqui não estraga o que você já construiu."
       }
     },
     "scoreFailedTitle": "Não conseguimos calcular agora.",
     "scoreFailedBody": "Suas respostas não chegaram ao servidor. Verifique sua conexão e refaça o teste — infelizmente não dá para recuperar esta tentativa.",
     "memoryWordHint": "Memorize esta palavra",
     "memoryWordNote": "Vamos perguntar sobre ela durante o teste.",
-    "memorySeconds": "{n, plural, one {Desaparece em <forte>#</forte> segundo} other {Desaparece em <forte>#</forte> segundos}}"
+    "memorySeconds": "{n, plural, one {Desaparece em <forte>#</forte> segundo} other {Desaparece em <forte>#</forte> segundos}}",
+    "transitionDimensions": "{n, plural, one {Já apareceu # das seis dimensões} other {Já apareceram # das seis dimensões}}: {lista}."
   },
   "iq_result": {
     "eyebrow": "Seu resultado",
