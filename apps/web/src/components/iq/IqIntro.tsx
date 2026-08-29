@@ -35,7 +35,7 @@ export function IqIntro({ items }: { items: PublicItem[] }) {
   // intro included. Owned here rather than in the runner because this
   // component is the one that lives through every stage; two owners adding and
   // removing the same class would fight when one of them unmounted.
-  useFocusMode(!result);
+  useFocusMode(result ? 'off' : started ? 'answering' : 'reading');
 
   /**
    * Sends the run to be scored.

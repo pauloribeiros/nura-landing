@@ -96,7 +96,7 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
   // that window cannot skip a question.
   const advancing = useRef(false);
 
-  useFocusMode(stage !== 'done');
+  useFocusMode(stage === 'done' ? 'off' : stage === 'intro' ? 'reading' : 'answering');
 
   // Advancing a page swaps the questions in place, leaving the viewport where
   // the person left it — halfway down, looking at question 12's choices while

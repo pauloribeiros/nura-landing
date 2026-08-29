@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
-import { FEATURED_ASSESSMENT, assessmentLandingPath, catalogPath } from '@/content/landing';
+import { catalogPath } from '@/content/landing';
 import { LocaleSwitcher } from './LocaleSwitcher';
 
 /**
@@ -12,12 +12,16 @@ import { LocaleSwitcher } from './LocaleSwitcher';
  * carries the section anchors and the scroll-driven CTA state; those make no
  * sense once the visitor has left the landing.
  *
- * `ctaHref` exists because the default destination — the featured assessment's
- * landing — is a link to the current page once the visitor is already on that
- * landing. Tapping "Começar" there did nothing, which on a phone is the whole
- * funnel: the hero CTA sits below the fold at 375x812, so the header button is
- * the one a visitor reaches first. Pages that know where "start" should go
- * pass it.
+ * "Começar" goes to the catalogue — the page that asks what the visitor would
+ * like to find out and lists what is available. It used to go straight to the
+ * featured assessment, which decided for them; from anywhere that is not that
+ * assessment's page, being handed a menu beats being handed one door.
+ *
+ * `ctaHref` overrides it for pages that know better. An assessment's own
+ * landing passes its start path: there, "Começar" means start THIS one, and
+ * the default would have been a link to the page the visitor is already on —
+ * a dead tap, and on a phone the whole funnel, since the hero CTA sits below
+ * the fold at 375x812 and the header button is the one reached first.
  */
 export function SiteHeader({ locale, ctaHref }: { locale: Locale; ctaHref?: string }) {
   const t = useTranslations('nav');
@@ -47,7 +51,7 @@ export function SiteHeader({ locale, ctaHref }: { locale: Locale; ctaHref?: stri
           <LocaleSwitcher />
           <Link
             className="button button-primary"
-            href={ctaHref ?? strip(assessmentLandingPath(locale, FEATURED_ASSESSMENT))}
+            href={ctaHref ?? strip(catalogPath(locale))}
           >
             {t('start')} <span className="desktop-only">{t('startFreeSuffix')}</span>
           </Link>

@@ -596,6 +596,24 @@ a { color: inherit; text-decoration: none; }
 .consent-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 .consent-actions .button { min-height: 40px; }
 
+/* The banner is fixed, so the page owes it the space it covers — otherwise a
+   button at the bottom of the screen is simply unreachable. The height comes
+   from the banner itself; see ConsentBanner. */
+body.has-consent main { padding-bottom: calc(var(--consent-height, 0px) + 28px); }
+/* Never over a question — the strict half of focus mode. */
+body.is-answering .consent-banner { display: none; }
+body.is-answering main { padding-bottom: 0; }
+
+@media (max-width: 680px) {
+  /* Half the screen for a cookie question is too much of a first impression. */
+  .consent-banner { inset-inline: 10px; bottom: 10px; padding: 14px 16px; border-radius: 14px; }
+  .consent-banner p { margin-bottom: 10px; font-size: 0.84rem; line-height: 1.45; }
+  /* Both answers on one line: stacked, they added a whole button's height to a
+     card that is already covering the page. */
+  .consent-actions { gap: 8px; flex-wrap: nowrap; }
+  .consent-actions .button { min-height: 38px; padding-inline: 12px; font-size: 0.8rem; white-space: nowrap; }
+}
+
 /* ------------------------------------------------------- runner step label */
 /* Position, never theme — the ASRS licence forbids regrouping items, so the
    label says where you are, not what the items are about. */

@@ -83,7 +83,8 @@ export function Header() {
             <button type="button" className="header-login" onClick={() => notify(tf('loginSoon'))}>
               {t('login')}
             </button>
-            <CtaLink to="featured" withIcon={false}>
+            {/* The menu, not one door — same reasoning as SiteHeader. */}
+            <CtaLink to="catalog" withIcon={false}>
               {t('start')} <span className="desktop-only">{t('startFreeSuffix')}</span>
             </CtaLink>
             <button
