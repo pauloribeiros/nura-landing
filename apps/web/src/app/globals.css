@@ -1027,6 +1027,12 @@ a { color: inherit; text-decoration: none; }
 .iq-runner .runner-inner { gap: 0; }
 /* Set while a test is in progress — see useFocusMode. Applies to both tests. */
 body.is-running-test .footer { display: none; }
+/* The header's "Começar" is a way out of the test and into another page, sat
+   in the corner of every question. On the test page there is nothing to start
+   — the person already did. The locale switcher stays; it is the one control
+   that still means something here. It all comes back on the result, where
+   starting another assessment is a real next step. */
+body.is-running-test .header-actions .button { display: none; }
 
 @media (max-width: 680px) {
   /* The header is the only fixed thing above the question; the rest of the

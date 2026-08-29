@@ -7,6 +7,7 @@ import type { PublicItem } from '@/domain/iq/bank';
 import type { IqResult as IqResultData } from '@/domain/iq/scoring';
 import type { IqSession } from '@/domain/iq/session';
 import { IqRunner } from './IqRunner';
+import { useFocusMode } from '@/lib/focusMode';
 import { IqResult } from './IqResult';
 import { ensureSession } from '@/lib/supabase/client';
 
@@ -29,6 +30,12 @@ export function IqIntro({ items }: { items: PublicItem[] }) {
   const [started, setStarted] = useState(false);
   const [state, setState] = useState<'idle' | 'scoring' | 'error'>('idle');
   const [result, setResult] = useState<IqResultData | null>(null);
+
+  // Focus mode from the moment the page opens until the result exists — the
+  // intro included. Owned here rather than in the runner because this
+  // component is the one that lives through every stage; two owners adding and
+  // removing the same class would fight when one of them unmounted.
+  useFocusMode(!result);
 
   /**
    * Sends the run to be scored.

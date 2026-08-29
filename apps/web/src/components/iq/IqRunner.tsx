@@ -16,7 +16,6 @@ import {
 } from '@/domain/iq/session';
 import type { Item } from '@/domain/iq/types';
 import { randomId } from '@/lib/randomId';
-import { useFocusMode } from '@/lib/focusMode';
 import { Stimulus } from './Stimulus';
 import { OptionGrid } from './OptionGrid';
 import { MemoryShow } from './MemoryShow';
@@ -72,8 +71,6 @@ export function IqRunner({
   // that window cannot advance twice.
   const advancing = useRef(false);
   const topRef = useRef<HTMLElement>(null);
-
-  useFocusMode(true);
 
 
   // Started on mount rather than on a click: the intro screen belongs to the
