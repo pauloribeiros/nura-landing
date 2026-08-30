@@ -1469,6 +1469,11 @@ body.is-running-test .header-actions .button { display: none; }
   transition: border-color 180ms ease, background 180ms ease;
 }
 .pay-item.is-open { border-color: var(--nura-cyan); background: rgba(34, 211, 229, 0.06); }
+/* Um metodo que a conta nao processa: continua a vista, apagado, para quem
+   procura o Pix saber que ele existe e nao esta disponivel agora. */
+.pay-item.is-off { opacity: 0.5; border-style: dashed; }
+.pay-item.is-off .pay-head { cursor: not-allowed; }
+.pay-item.is-off .pay-head svg { color: var(--text-on-dark-faint); }
 .pay-item h3 { margin: 0; font: inherit; }
 
 .pay-head {

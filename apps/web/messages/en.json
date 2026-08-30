@@ -637,6 +637,8 @@
     "doneTitle": "Payment confirmed.",
     "doneBody": "The full report goes to your email as soon as it is ready. You can also come back through this same link.",
     "subtitle": "Choose how you would like to pay to unlock the full report.",
-    "waiting": "Copy the code, open your banking app and pay. You can come back here: the moment it lands, this page opens on its own."
+    "waiting": "Copy the code, open your banking app and pay. You can come back here: the moment it lands, this page opens on its own.",
+    "unavailable": "unavailable",
+    "unavailableBody": "Pix is unavailable right now. Use a card or a digital wallet — it takes the same time."
   }
 }

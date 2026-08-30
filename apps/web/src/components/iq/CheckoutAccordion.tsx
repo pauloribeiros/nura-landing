@@ -66,8 +66,9 @@ export function CheckoutAccordion({ sessionId, email }: { sessionId: string; ema
   const [aberto, setAberto] = useState<Metodo>('pix');
   const [segredos, setSegredos] = useState<Partial<Record<'card' | 'pix', string>>>({});
   const [erro, setErro] = useState(false);
-  // Metodos que a conta do Stripe nao processa: some do acordeao em vez de
-  // abrir prometendo Pix e mostrando cartao.
+  // Metodos que a conta do Stripe nao processa. Continuam na lista, apagados e
+  // marcados como indisponiveis: some-los faria a pessoa procurar o Pix e nao
+  // achar, sem saber se e a pagina ou a vista dela. Dito, ela escolhe outro.
   const [indisponiveis, setIndisponiveis] = useState<string[]>([]);
   const [carteiras, setCarteiras] = useState(false);
 
@@ -119,9 +120,7 @@ export function CheckoutAccordion({ sessionId, email }: { sessionId: string; ema
 
   const itens: { id: Metodo; icone: React.ReactNode }[] = [
     ...(carteiras ? [{ id: 'wallet' as const, icone: <Wallet size={18} aria-hidden="true" /> }] : []),
-    ...(indisponiveis.includes('pix')
-      ? []
-      : [{ id: 'pix' as const, icone: <QrCode size={18} aria-hidden="true" /> }]),
+    { id: 'pix', icone: <QrCode size={18} aria-hidden="true" /> },
     { id: 'card', icone: <CreditCard size={18} aria-hidden="true" /> },
   ];
 
@@ -153,17 +152,23 @@ export function CheckoutAccordion({ sessionId, email }: { sessionId: string; ema
       ) : null}
 
       {itens.map(({ id, icone }) => {
-        const expandido = aberto === id;
+        const indisponivel = indisponiveis.includes(id);
+        const expandido = aberto === id && !indisponivel;
         const segredo = id === 'pix' ? segredos.pix : segredos.card;
 
         return (
-          <section key={id} className={`pay-item ${expandido ? 'is-open' : ''}`}>
+          <section
+            key={id}
+            className={`pay-item ${expandido ? 'is-open' : ''} ${indisponivel ? 'is-off' : ''}`}
+          >
             <h3>
               <button
                 type="button"
                 className="pay-head"
-                aria-expanded={expandido}
-                aria-controls={`pay-panel-${id}`}
+                aria-expanded={indisponivel ? undefined : expandido}
+                aria-controls={indisponivel ? undefined : `pay-panel-${id}`}
+                aria-disabled={indisponivel || undefined}
+                disabled={indisponivel}
                 id={`pay-head-${id}`}
                 onClick={() => abrir(id)}
               >
@@ -172,13 +177,15 @@ export function CheckoutAccordion({ sessionId, email }: { sessionId: string; ema
                 </span>
                 {icone}
                 <span className="pay-name">{t(`${id}.name`)}</span>
-                <span className="pay-note">{t(`${id}.note`)}</span>
+                <span className="pay-note">
+                  {indisponivel ? t('unavailable') : t(`${id}.note`)}
+                </span>
               </button>
             </h3>
 
             <div className="pay-panel" id={`pay-panel-${id}`} role="region" aria-labelledby={`pay-head-${id}`}>
               <div className="pay-panel-inner" inert={!expandido}>
-                <p>{t(`${id}.body`)}</p>
+                <p>{indisponivel ? t('unavailableBody') : t(`${id}.body`)}</p>
 
                 {id === 'wallet' ? null : !stripePromise ? (
                   <p className="runner-hint">{t('semChave')}</p>

@@ -637,6 +637,8 @@
     "doneTitle": "Pagamento confirmado.",
     "doneBody": "O relatório completo vai para o seu e-mail assim que ficar pronto. Você também pode voltar por este mesmo link.",
     "subtitle": "Escolha como prefere pagar para liberar o relatório completo.",
-    "waiting": "Copie o código, abra o app do banco e pague. Pode voltar para cá: assim que o Pix cair, esta página libera sozinha."
+    "waiting": "Copie o código, abra o app do banco e pague. Pode voltar para cá: assim que o Pix cair, esta página libera sozinha.",
+    "unavailable": "indisponível",
+    "unavailableBody": "O Pix está indisponível no momento. Use cartão ou uma carteira digital — leva o mesmo tempo."
   }
 }

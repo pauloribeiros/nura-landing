@@ -637,6 +637,8 @@
     "doneTitle": "Pago confirmado.",
     "doneBody": "El informe completo va a tu correo en cuanto esté listo. También puedes volver por este mismo enlace.",
     "subtitle": "Elige cómo prefieres pagar para desbloquear el informe completo.",
-    "waiting": "Copia el código, abre la app del banco y paga. Puedes volver aquí: en cuanto entre, esta página se abre sola."
+    "waiting": "Copia el código, abre la app del banco y paga. Puedes volver aquí: en cuanto entre, esta página se abre sola.",
+    "unavailable": "no disponible",
+    "unavailableBody": "Pix no está disponible ahora. Usa tarjeta o una billetera digital — tarda lo mismo."
   }
 }
