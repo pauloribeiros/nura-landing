@@ -108,6 +108,10 @@ export async function POST(request: Request) {
     });
 
   let intent;
+  // Se o metodo pedido nao existe na conta, quem chamou precisa SABER — senao
+  // o painel do Pix acaba mostrando um formulario de cartao, que e pior do que
+  // nao oferecer Pix nenhum.
+  let atendido = true;
   try {
     intent = await criarIntent(true);
   } catch (erro) {
@@ -115,6 +119,7 @@ export async function POST(request: Request) {
       erro instanceof Error && 'type' in erro && erro.type === 'StripeInvalidRequestError';
     if (!invalido) throw erro;
     console.warn('[nura] metodo indisponivel na conta, usando o padrao', body.metodo);
+    atendido = false;
     intent = await criarIntent(false);
   }
 
@@ -122,5 +127,5 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'intent-failed' }, { status: 502 });
   }
 
-  return NextResponse.json({ clientSecret: intent.client_secret });
+  return NextResponse.json({ clientSecret: intent.client_secret, atendido });
 }

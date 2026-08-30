@@ -66,6 +66,9 @@ export function CheckoutAccordion({ sessionId, email }: { sessionId: string; ema
   const [aberto, setAberto] = useState<Metodo>('pix');
   const [segredos, setSegredos] = useState<Partial<Record<'card' | 'pix', string>>>({});
   const [erro, setErro] = useState(false);
+  // Metodos que a conta do Stripe nao processa: some do acordeao em vez de
+  // abrir prometendo Pix e mostrando cartao.
+  const [indisponiveis, setIndisponiveis] = useState<string[]>([]);
   const [carteiras, setCarteiras] = useState(false);
 
   /** Abre o intent daquele método uma vez só e guarda o segredo. */
@@ -82,7 +85,15 @@ export function CheckoutAccordion({ sessionId, email }: { sessionId: string; ema
           setErro(true);
           return;
         }
-        const { clientSecret } = (await resposta.json()) as { clientSecret: string };
+        const { clientSecret, atendido } = (await resposta.json()) as {
+          clientSecret: string;
+          atendido?: boolean;
+        };
+        if (atendido === false) {
+          setIndisponiveis((atual) => (atual.includes(metodo) ? atual : [...atual, metodo]));
+          setAberto((atualAberto) => (atualAberto === metodo ? 'card' : atualAberto));
+          return;
+        }
         setSegredos((atual) => ({ ...atual, [metodo]: clientSecret }));
       } catch {
         setErro(true);
@@ -108,7 +119,9 @@ export function CheckoutAccordion({ sessionId, email }: { sessionId: string; ema
 
   const itens: { id: Metodo; icone: React.ReactNode }[] = [
     ...(carteiras ? [{ id: 'wallet' as const, icone: <Wallet size={18} aria-hidden="true" /> }] : []),
-    { id: 'pix', icone: <QrCode size={18} aria-hidden="true" /> },
+    ...(indisponiveis.includes('pix')
+      ? []
+      : [{ id: 'pix' as const, icone: <QrCode size={18} aria-hidden="true" /> }]),
     { id: 'card', icone: <CreditCard size={18} aria-hidden="true" /> },
   ];
 
