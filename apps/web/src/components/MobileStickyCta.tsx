@@ -31,7 +31,7 @@ export function MobileStickyCta() {
 
   return (
     <div className={`mobile-cta ${visible ? 'visible' : ''}`}>
-      <CtaLink to="featured" className="button button-primary button-wide">
+      <CtaLink to="catalog" className="button button-primary button-wide">
         {t('label')}
       </CtaLink>
     </div>

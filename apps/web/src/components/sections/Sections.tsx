@@ -31,7 +31,10 @@ export function Hero() {
             {t('subtitle')}
           </p>
           <div className="hero-actions reveal-item" style={{ '--i': 3 } as CSSProperties}>
-            <CtaLink to="featured">{t('cta')}</CtaLink>
+            {/* Para o catalogo, nao para a avaliacao em destaque: quem chega
+                nao sabe qual teste quer, e escolher por ele custa um clique a
+                mais para todo mundo que queria outro. */}
+            <CtaLink to="catalog">{t('cta')}</CtaLink>
           </div>
           <div className="hero-meta reveal-item" style={{ '--i': 4 } as CSSProperties}>
             <span>{t('metaFree')}</span>
@@ -267,7 +270,7 @@ export function PremiumSection() {
         <aside className="reveal">
           <h3>{t('asideTitle')}</h3>
           <p>{t('asideCopy')}</p>
-          <CtaLink to="featured" className="button button-primary button-wide">
+          <CtaLink to="catalog" className="button button-primary button-wide">
             {t('asideCta')}
           </CtaLink>
         </aside>
@@ -340,7 +343,7 @@ export function FinalCta() {
         <p className="eyebrow eyebrow-light">{t('eyebrow')}</p>
         <h2>{t('title')}</h2>
         <p>{t('copy')}</p>
-        <CtaLink to="featured" className="button button-light">
+        <CtaLink to="catalog" className="button button-light">
           {t('cta')}
         </CtaLink>
       </div>
@@ -366,7 +369,7 @@ export function Footer() {
             <a href={`#${SECTION_IDS.profile}`}>{t('profile')}</a>
             <a href={`#${SECTION_IDS.faq}`}>{t('faq')}</a>
             <a href={`#${SECTION_IDS.trust}`}>{t('privacy')}</a>
-            <CtaLink to="featured" className="text-link" iconSize={13}>
+            <CtaLink to="catalog" className="text-link" iconSize={13}>
               {t('start')}
             </CtaLink>
           </nav>

@@ -9,7 +9,7 @@ import { SITE_URL } from '@/lib/site';
 import {
   ASSESSMENTS,
   ROUTE_SEGMENTS,
-  assessmentLandingPath,
+  assessmentStartPath,
 } from '@/content/landing';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
@@ -85,10 +85,14 @@ export default async function CatalogPage({ params }: { params: Params }) {
 
         <div className="wrap catalog-list">
           {available.map((item) => (
+            /* Direto para a avaliacao, nao para a landing dela: a landing
+               repete o que a propria tela de abertura do teste ja diz, e
+               cobra um clique de todo mundo que ja escolheu aqui. Ela
+               continua existindo para quem chega pela busca. */
             <Link
               key={item.id}
               className="catalog-card"
-              href={assessmentLandingPath(loc, item).replace(`/${locale}`, '')}
+              href={assessmentStartPath(loc, item).replace(`/${locale}`, '')}
             >
               <span className="catalog-index">{item.index}</span>
               <div className="catalog-body">
