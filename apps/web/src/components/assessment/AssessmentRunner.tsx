@@ -26,13 +26,14 @@ import {
   saveSession,
 } from '@/lib/supabase/assessmentStore';
 import { AssessmentResult } from './AssessmentResult';
+import { Calculating, type PerguntaCarregamento } from '../Calculating';
 import { TransitionArt } from '../TransitionArt';
 import { useFocusMode } from '@/lib/focusMode';
 import { track } from '@/lib/analytics';
 import { randomId } from '@/lib/randomId';
 import { scoreOnServer } from '@/lib/assessment/scoreOnServer';
 
-type Stage = 'intro' | 'questions' | 'transition' | 'context' | 'done';
+type Stage = 'intro' | 'questions' | 'transition' | 'calculating' | 'done';
 
 /**
  * Stages are labelled by position — "step 2 of 3" — and never by theme.
@@ -88,7 +89,6 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
   const [stage, setStage] = useState<Stage>('intro');
   const [session, setSession] = useState<AssessmentSession | null>(null);
   const [resumable, setResumable] = useState<AssessmentSession | null>(null);
-  const [contextIndex, setContextIndex] = useState(0);
   const liveRef = useRef<HTMLDivElement>(null);
   const topRef = useRef<HTMLElement>(null);
   const firstRender = useRef(true);
@@ -97,6 +97,24 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
   const advancing = useRef(false);
 
   useFocusMode(stage === 'done' ? 'off' : stage === 'intro' ? 'reading' : 'answering');
+
+  /**
+   * As perguntas de contexto, agora feitas por cima da tela de calculo.
+   *
+   * Elas nunca entraram na pontuacao — servem para personalizar uma linha do
+   * relatorio. Perguntadas aqui, deixam de ser tres telas entre terminar o
+   * teste e ver o resultado.
+   */
+  const perguntasContexto = useMemo<PerguntaCarregamento[]>(
+    () =>
+      ASRS_CONTEXT.map((pergunta, i) => ({
+        id: pergunta.id,
+        texto: t(`ctx.${pergunta.id}.prompt`),
+        opcoes: pergunta.choices.map((escolha) => t(`ctx.${pergunta.id}.${escolha.id}`)),
+        apos: 2 + i * 2,
+      })),
+    [t],
+  );
 
   // Advancing a page swaps the questions in place, leaving the viewport where
   // the person left it — halfway down, looking at question 12's choices while
@@ -115,7 +133,7 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
     window.scrollTo({ top: 0, behavior: 'instant' });
     topRef.current?.focus({ preventScroll: true });
     advancing.current = false;
-  }, [stage, session?.pageIndex, contextIndex]);
+  }, [stage, session?.pageIndex]);
 
   // Offer to resume before anything else, so a refresh does not silently
   // discard answers the person already gave.
@@ -233,9 +251,11 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
         // database actually holds rather than from anything the browser says.
         void scoreOnServer(current.id);
         track('assessment_completed', { assessment: definition.assessmentId });
-        // The instrument is finished and the result already exists at this
-        // point; context is asked in between, and skipping it changes nothing.
-        setStage(ASRS_CONTEXT.length > 0 ? 'context' : 'done');
+        // O instrumento acabou e o resultado ja existe. As perguntas de
+        // contexto passaram a ser feitas durante o calculo, em vez de num
+        // estagio proprio: sao tres telas a menos entre a ultima resposta e o
+        // resultado, e elas nunca mexeram na pontuacao.
+        setStage('calculating');
       }
       return;
     }
@@ -287,73 +307,38 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
     );
   }
 
-  if (stage === 'context') {
-    const question = ASRS_CONTEXT[contextIndex];
-    const chosen = answerFor(question.id);
-
-    const leaveContext = () => {
-      const answered = ASRS_CONTEXT.filter((q) => answerFor(q.id)).length;
-      track('context_completed', { assessment: definition.assessmentId, answered });
-      setStage('done');
-    };
-
-    const nextContext = () => {
-      if (contextIndex < ASRS_CONTEXT.length - 1) setContextIndex(contextIndex + 1);
-      else leaveContext();
-    };
-
+  if (stage === 'calculating') {
     return (
-      <section className="runner runner-context" ref={topRef} tabIndex={-1}>
-        <div className="wrap runner-inner">
-          <p className="eyebrow eyebrow-light">{t('contextEyebrow')}</p>
-          <h2>{t('contextTitle')}</h2>
-          <p className="runner-lead">{t('contextLead')}</p>
-          {/* Said plainly rather than buried: these do not touch the score.
-              Someone answering them should know they are helping personalise a
-              report, not adding to a clinical measure. */}
-          <p className="runner-hint">{t('contextNoScore')}</p>
-
-          <p className="runner-progress-label" role="status">
-            {t('contextProgress', { step: contextIndex + 1, total: ASRS_CONTEXT.length })}
-          </p>
-
-          <fieldset className="runner-question">
-            <legend>{t(`ctx.${question.id}.prompt`)}</legend>
-            <div className="runner-choices">
-              {question.choices.map((choice) => (
-                <label
-                  key={choice.id}
-                  className={`runner-choice ${chosen === choice.id ? 'is-chosen' : ''}`}
-                >
-                  <input
-                    type="radio"
-                    name={question.id}
-                    value={choice.id}
-                    checked={chosen === choice.id}
-                    onChange={() => {
-                      if (advancing.current) return;
-                      advancing.current = true;
-                      choose(question.id, choice.id);
-                      window.setTimeout(nextContext, 260);
-                    }}
-                  />
-                  <span>{t(`ctx.${question.id}.${choice.id}`)}</span>
-                  {chosen === choice.id ? <Check size={15} aria-hidden="true" /> : null}
-                </label>
-              ))}
-            </div>
-          </fieldset>
-
-          <div className="runner-nav">
-            {/* Skipping is a real option, presented as one. A courtesy question
-                that blocks the result costs more completions than it is worth.
-                It is the only button here — answering advances by itself. */}
-            <button type="button" className="button button-ghost" onClick={leaveContext}>
-              {t('contextSkip')}
-            </button>
-          </div>
-        </div>
-      </section>
+      <Calculating
+        // O resultado ja existe: foi calculado no navegador a partir das
+        // respostas, e gravado no servidor em paralelo. A tela existe para dar
+        // corpo ao que acabou de acontecer, nao para esperar por ele.
+        pronto
+        linhas={[
+          t('calc.answers'),
+          t('calc.partA'),
+          t('calc.partB'),
+          t('calc.inattention'),
+          t('calc.hyperactivity'),
+          t('calc.profile'),
+        ]}
+        eyebrow={t('calc.eyebrow')}
+        titulo={t('calc.title')}
+        lead={t('calc.lead')}
+        perguntas={perguntasContexto}
+        onResponder={(perguntaId, indice) => {
+          const pergunta = ASRS_CONTEXT.find((p) => p.id === perguntaId);
+          const escolha = pergunta?.choices[indice];
+          if (escolha) choose(perguntaId, escolha.id);
+        }}
+        onDone={() => {
+          track('context_completed', {
+            assessment: definition.assessmentId,
+            answered: ASRS_CONTEXT.filter((q) => answerFor(q.id)).length,
+          });
+          setStage('done');
+        }}
+      />
     );
   }
 

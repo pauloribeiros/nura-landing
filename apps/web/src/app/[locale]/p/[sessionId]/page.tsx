@@ -56,7 +56,7 @@ export default async function PaginaDePagamento({
 
   const { data: sessao } = await comoVisitante
     .from('assessment_sessions')
-    .select('id')
+    .select('id, assessment_id')
     .eq('id', sessionId)
     .maybeSingle();
   if (!sessao) notFound();
@@ -77,7 +77,11 @@ export default async function PaginaDePagamento({
     .maybeSingle();
 
   const t = await getTranslations({ locale, namespace: 'iq_checkout' });
-  const inclui = ['inclui1', 'inclui2', 'inclui3', 'inclui4'] as const;
+  // O que esta sendo vendido muda com a avaliacao; o resto da pagina nao.
+  const inclui =
+    sessao.assessment_id === 'attention'
+      ? (['atencao1', 'atencao2', 'atencao3', 'atencao4'] as const)
+      : (['inclui1', 'inclui2', 'inclui3', 'inclui4'] as const);
 
   return (
     <>

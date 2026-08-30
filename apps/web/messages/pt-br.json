@@ -364,6 +364,17 @@
         "professionalSuggested": "Indicação de um profissional",
         "curiosity": "Curiosidade"
       }
+    },
+    "calc": {
+      "eyebrow": "Quase lá",
+      "title": "Montando o seu resultado.",
+      "lead": "Suas respostas estão sendo conferidas contra o critério do instrumento.",
+      "answers": "Respostas registradas",
+      "partA": "Parte A — triagem",
+      "partB": "Parte B — detalhamento",
+      "inattention": "Desatenção",
+      "hyperactivity": "Hiperatividade e impulsividade",
+      "profile": "Resultado montado"
     }
   },
   "result_screen": {
@@ -639,6 +650,10 @@
     "subtitle": "Escolha como prefere pagar para liberar o relatório completo.",
     "waiting": "Copie o código, abra o app do banco e pague. Pode voltar para cá: assim que o Pix cair, esta página libera sozinha.",
     "unavailable": "indisponível",
-    "unavailableBody": "O Pix está indisponível no momento. Use cartão ou uma carteira digital — leva o mesmo tempo."
+    "unavailableBody": "O Pix está indisponível no momento. Use cartão ou uma carteira digital — leva o mesmo tempo.",
+    "atencao1": "A leitura das suas respostas, item a item",
+    "atencao2": "O que apareceu em desatenção e em hiperatividade",
+    "atencao3": "O relatório completo por e-mail, em PDF",
+    "atencao4": "Acesso permanente pelo link, sem prazo"
   }
 }

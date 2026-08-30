@@ -7,7 +7,8 @@ import type { PublicItem } from '@/domain/iq/bank';
 import type { IqResult as IqResultData } from '@/domain/iq/scoring';
 import type { IqSession } from '@/domain/iq/session';
 import { IqRunner } from './IqRunner';
-import { IqCalculating, type PerguntaCarregamento } from './IqCalculating';
+import { Calculating, type PerguntaCarregamento } from '../Calculating';
+import { DIMENSOES } from '@/domain/iq/bank';
 import { IqEmailGate } from './IqEmailGate';
 import { useFocusMode } from '@/lib/focusMode';
 import { ensureSession } from '@/lib/supabase/client';
@@ -205,8 +206,12 @@ export function IqIntro({ items }: { items: PublicItem[] }) {
   // complete before the result exists.
   if (state === 'scoring') {
     return (
-      <IqCalculating
+      <Calculating
         pronto={result !== null}
+        linhas={DIMENSOES.map((d) => t(`dimensions.${d}`))}
+        eyebrow={t('calcEyebrow')}
+        titulo={t('calcTitle')}
+        lead={t('calcLead')}
         perguntas={perguntas}
         onDone={() => {
           if (result) setPronto(result);

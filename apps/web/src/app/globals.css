@@ -1339,6 +1339,10 @@ body.is-running-test .header-actions .button { display: none; }
 }
 .iq-ask-card p { margin: 0 0 18px; font-size: 1.02rem; line-height: 1.45; }
 .iq-ask-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+/* Mais de duas saidas viram lista: dois botoes lado a lado sao uma escolha,
+   quatro sao um menu, e menu em coluna se le mais rapido. */
+.iq-ask-actions.is-list { grid-template-columns: 1fr; }
+.iq-ask-actions.is-list .button { justify-content: flex-start; text-align: left; }
 .iq-ask-actions .button { justify-content: center; }
 
 @media (prefers-reduced-motion: reduce) {

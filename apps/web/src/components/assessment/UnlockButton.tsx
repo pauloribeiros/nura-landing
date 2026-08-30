@@ -6,10 +6,12 @@ import { useLocale, useTranslations } from 'next-intl';
 import { track } from '@/lib/analytics';
 
 /**
- * Sends the reader to checkout.
+ * Sends the reader to the payment page.
  *
- * It knows only a session id. Price and product are decided server side from
- * that id alone, so there is nothing here worth tampering with.
+ * Para a nossa pagina, nao direto ao Stripe: e la que a pessoa ve o que esta
+ * comprando ao lado da escolha do meio de pagamento, e e la que os campos do
+ * cartao aparecem sem ela sair do site. A pagina resolve dono e preco do lado
+ * do servidor a partir do id da sessao, entao nao ha nada aqui para adulterar.
  *
  * Disabled without a session id, which happens when a result is rendered from
  * a local run that never reached the database — there would be nothing to buy
@@ -24,26 +26,7 @@ export function UnlockButton({ sessionId }: { sessionId?: string }) {
     if (!sessionId) return;
     setState('sending');
     track('checkout_started', { assessment: 'attention' });
-
-    try {
-      const response = await fetch('/api/checkout', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ sessionId, locale }),
-      });
-
-      if (!response.ok) {
-        setState('error');
-        return;
-      }
-
-      const { url } = (await response.json()) as { url: string };
-      // A full navigation rather than a router push: the destination is
-      // Stripe's domain, not ours.
-      window.location.href = url;
-    } catch {
-      setState('error');
-    }
+    window.location.href = `/${locale}/p/${sessionId}`;
   };
 
   return (

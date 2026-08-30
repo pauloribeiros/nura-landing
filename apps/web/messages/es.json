@@ -364,6 +364,17 @@
         "professionalSuggested": "Indicación de un profesional",
         "curiosity": "Curiosidad"
       }
+    },
+    "calc": {
+      "eyebrow": "Casi listo",
+      "title": "Construyendo tu resultado.",
+      "lead": "Tus respuestas se están comparando con el criterio del instrumento.",
+      "answers": "Respuestas registradas",
+      "partA": "Parte A — cribado",
+      "partB": "Parte B — detalle",
+      "inattention": "Falta de atención",
+      "hyperactivity": "Hiperactividad e impulsividad",
+      "profile": "Resultado construido"
     }
   },
   "result_screen": {
@@ -639,6 +650,10 @@
     "subtitle": "Elige cómo prefieres pagar para desbloquear el informe completo.",
     "waiting": "Copia el código, abre la app del banco y paga. Puedes volver aquí: en cuanto entre, esta página se abre sola.",
     "unavailable": "no disponible",
-    "unavailableBody": "Pix no está disponible ahora. Usa tarjeta o una billetera digital — tarda lo mismo."
+    "unavailableBody": "Pix no está disponible ahora. Usa tarjeta o una billetera digital — tarda lo mismo.",
+    "atencao1": "La lectura de tus respuestas, punto por punto",
+    "atencao2": "Lo que apareció en falta de atención y en hiperactividad",
+    "atencao3": "El informe completo por correo, en PDF",
+    "atencao4": "Acceso permanente por el enlace, sin caducidad"
   }
 }

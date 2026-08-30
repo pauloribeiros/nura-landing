@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { Check } from 'lucide-react';
-import { useTranslations } from 'next-intl';
-import { DIMENSOES } from '@/domain/iq/bank';
 
 /**
  * The screen between the last answer and the result.
@@ -17,9 +15,10 @@ import { DIMENSOES } from '@/domain/iq/bank';
  *
  * WHAT IT DOES NOT SAY is "our AI is analysing your answers". Nothing here is
  * AI: the scorer is arithmetic over an answer key, and saying otherwise would
- * be inventing a capability to impress. The lines it does show — memory,
- * speed, pattern recognition — are the six dimensions in `DIMENSOES`, and each
- * one is genuinely part of the score.
+ * be inventing a capability to impress. The lines come from whoever renders
+ * this screen, and each one has to name something the scorer genuinely
+ * computes — the six cognitive dimensions in the IQ test, the two ASRS blocks
+ * in the attention one.
  *
  * THE FLOOR AND THE CEILING. The list advances on a timer so it can be read,
  * but the screen never finishes before the server answers, and never lingers
@@ -35,28 +34,39 @@ import { DIMENSOES } from '@/domain/iq/bank';
  * actually shown.
  */
 
-/** How long each line takes to tick. Six lines, so the floor is ~3.6s. */
+/** How long each line takes to tick. Six lines make a floor of ~3.6s. */
 const PASSO_MS = 600;
 
 /** Uma pergunta mostrada por cima da tela, com duas saidas. */
 export interface PerguntaCarregamento {
   id: string;
   texto: string;
-  opcoes: [string, string];
+  opcoes: string[];
   /** Depois de quantas linhas marcadas ela aparece. */
   apos: number;
 }
 
-export function IqCalculating({
+export function Calculating({
   pronto,
+  linhas,
   perguntas = [],
+  titulo,
+  lead,
+  eyebrow,
+  onResponder,
   onDone,
 }: {
   pronto: boolean;
+  /** Uma linha por etapa real do calculo, na ordem em que sao marcadas. */
+  linhas: string[];
   perguntas?: PerguntaCarregamento[];
+  titulo: string;
+  lead: string;
+  eyebrow: string;
+  /** Chamado quando uma pergunta e respondida, com o indice da opcao. */
+  onResponder?: (perguntaId: string, indice: number) => void;
   onDone: () => void;
 }) {
-  const t = useTranslations('iq');
   const [passo, setPasso] = useState(0);
   const [respondidas, setRespondidas] = useState<string[]>([]);
 
@@ -66,8 +76,8 @@ export function IqCalculating({
   useEffect(() => {
     // The last step waits for the real result; everything before it is just
     // slow enough to read.
-    if (passo >= DIMENSOES.length) return;
-    if (passo === DIMENSOES.length - 1 && !pronto) return;
+    if (passo >= linhas.length) return;
+    if (passo === linhas.length - 1 && !pronto) return;
     // Uma pergunta aberta segura a barra: ela nao corre por baixo do dialogo.
     if (aberta) return;
 
@@ -76,19 +86,19 @@ export function IqCalculating({
   }, [passo, pronto, aberta]);
 
   useEffect(() => {
-    if (passo < DIMENSOES.length || !pronto || aberta) return;
+    if (passo < linhas.length || !pronto || aberta) return;
     const id = window.setTimeout(onDone, 450);
     return () => window.clearTimeout(id);
   }, [passo, pronto, aberta, onDone]);
 
-  const pct = Math.round((passo / DIMENSOES.length) * 100);
+  const pct = Math.round((passo / linhas.length) * 100);
 
   return (
     <section className="runner iq-calc">
       <div className="wrap runner-inner">
-        <p className="eyebrow eyebrow-light">{t('calcEyebrow')}</p>
-        <h1>{t('calcTitle')}</h1>
-        <p className="runner-lead">{t('calcLead')}</p>
+        <p className="eyebrow eyebrow-light">{eyebrow}</p>
+        <h1>{titulo}</h1>
+        <p className="runner-lead">{lead}</p>
 
         <div className="iq-calc-track" role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100}>
           <span style={{ width: `${pct}%` }} />
@@ -96,12 +106,12 @@ export function IqCalculating({
         <p className="iq-calc-pct">{pct}%</p>
 
         <ul className="iq-calc-list">
-          {DIMENSOES.map((d, i) => (
-            <li key={d} className={i < passo ? 'is-done' : ''}>
+          {linhas.map((linha, i) => (
+            <li key={linha} className={i < passo ? 'is-done' : ''}>
               <span className="iq-calc-box" aria-hidden="true">
                 {i < passo ? <Check size={13} strokeWidth={3} /> : null}
               </span>
-              {t(`dimensions.${d}`)}
+              {linha}
             </li>
           ))}
         </ul>
@@ -113,13 +123,16 @@ export function IqCalculating({
         <div className="iq-ask" role="dialog" aria-modal="true" aria-label={aberta.texto}>
           <div className="iq-ask-card">
             <p>{aberta.texto}</p>
-            <div className="iq-ask-actions">
-              {aberta.opcoes.map((opcao) => (
+            <div className={`iq-ask-actions ${aberta.opcoes.length > 2 ? 'is-list' : ''}`}>
+              {aberta.opcoes.map((opcao, indice) => (
                 <button
                   key={opcao}
                   type="button"
                   className="button button-primary"
-                  onClick={() => setRespondidas((r) => [...r, aberta.id])}
+                  onClick={() => {
+                    onResponder?.(aberta.id, indice);
+                    setRespondidas((r) => [...r, aberta.id]);
+                  }}
                 >
                   {opcao}
                 </button>
