@@ -603,8 +603,8 @@
     "legal": "Usamos tu correo para enviarte el informe y nada más. Tus respuestas nunca se comparten."
   },
   "iq_checkout": {
-    "eyebrow": "Último paso",
-    "title": "¿Cómo prefieres pagar?",
+    "eyebrow": "Perfil completado",
+    "title": "¡Felicidades, tu puntuación está lista!",
     "summaryTitle": "Lo que recibes",
     "inclui1": "Tu puntuación y el perfil en seis dimensiones",
     "inclui2": "La lectura de cada dimensión y lo que mide",
@@ -616,7 +616,7 @@
     "pix": {
       "name": "Pix",
       "note": "aprobación inmediata",
-      "body": "El código Pix aparece aquí mismo. El acceso se abre automáticamente cuando el pago entra."
+      "body": "Pulsa pagar y el código QR aparece aquí mismo. El acceso se abre automáticamente cuando el pago entra."
     },
     "card": {
       "name": "Tarjeta de crédito o débito",
@@ -635,6 +635,8 @@
     "carregando": "Cargando el formulario de pago…",
     "semChave": "Pago no disponible: falta configurar la clave pública de Stripe.",
     "doneTitle": "Pago confirmado.",
-    "doneBody": "El informe completo va a tu correo en cuanto esté listo. También puedes volver por este mismo enlace."
+    "doneBody": "El informe completo va a tu correo en cuanto esté listo. También puedes volver por este mismo enlace.",
+    "subtitle": "Elige cómo prefieres pagar para desbloquear el informe completo.",
+    "waiting": "Copia el código, abre la app del banco y paga. Puedes volver aquí: en cuanto entre, esta página se abre sola."
   }
 }

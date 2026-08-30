@@ -603,8 +603,8 @@
     "legal": "Usamos seu e-mail para enviar o relatório e nada além disso. Suas respostas não são compartilhadas."
   },
   "iq_checkout": {
-    "eyebrow": "Último passo",
-    "title": "Como você prefere pagar?",
+    "eyebrow": "Perfil concluído",
+    "title": "Parabéns, sua pontuação ficou pronta!",
     "summaryTitle": "O que você recebe",
     "inclui1": "Sua pontuação e o perfil nas seis dimensões",
     "inclui2": "A leitura de cada dimensão, com o que ela mede",
@@ -616,7 +616,7 @@
     "pix": {
       "name": "Pix",
       "note": "aprovação na hora",
-      "body": "O código Pix aparece aqui mesmo. A liberação é automática assim que o pagamento cai."
+      "body": "Clique em pagar e o QR Code aparece aqui mesmo. A liberação é automática assim que o pagamento cai."
     },
     "card": {
       "name": "Cartão de crédito ou débito",
@@ -635,6 +635,8 @@
     "carregando": "Carregando o formulário de pagamento…",
     "semChave": "Pagamento indisponível: falta configurar a chave pública do Stripe.",
     "doneTitle": "Pagamento confirmado.",
-    "doneBody": "O relatório completo vai para o seu e-mail assim que ficar pronto. Você também pode voltar por este mesmo link."
+    "doneBody": "O relatório completo vai para o seu e-mail assim que ficar pronto. Você também pode voltar por este mesmo link.",
+    "subtitle": "Escolha como prefere pagar para liberar o relatório completo.",
+    "waiting": "Copie o código, abra o app do banco e pague. Pode voltar para cá: assim que o Pix cair, esta página libera sozinha."
   }
 }

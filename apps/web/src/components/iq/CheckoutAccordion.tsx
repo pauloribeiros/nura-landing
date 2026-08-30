@@ -61,7 +61,9 @@ const appearance = {
 export function CheckoutAccordion({ sessionId, email }: { sessionId: string; email?: string }) {
   const t = useTranslations('iq_checkout');
   const locale = useLocale();
-  const [aberto, setAberto] = useState<Metodo>('card');
+  // Pix aberto por padrao: no celular e o caminho mais curto — nada para
+  // digitar, aprovacao na hora, e e o metodo que mais converte no Brasil.
+  const [aberto, setAberto] = useState<Metodo>('pix');
   const [segredos, setSegredos] = useState<Partial<Record<'card' | 'pix', string>>>({});
   const [erro, setErro] = useState(false);
   const [carteiras, setCarteiras] = useState(false);
@@ -89,8 +91,11 @@ export function CheckoutAccordion({ sessionId, email }: { sessionId: string; ema
     [segredos, sessionId, locale, email],
   );
 
-  // O cartão abre por padrão, e é o mesmo intent que as carteiras usam.
+  // O Pix abre por padrão; o intent do cartão vem junto porque é ele que as
+  // carteiras usam, e o Express Checkout precisa dele para saber se há
+  // Apple Pay ou Google Pay neste aparelho.
   useEffect(() => {
+    void pedirSegredo('pix');
     void pedirSegredo('card');
     // Uma vez: o segredo é guardado e `pedirSegredo` sai cedo depois disso.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -103,8 +108,8 @@ export function CheckoutAccordion({ sessionId, email }: { sessionId: string; ema
 
   const itens: { id: Metodo; icone: React.ReactNode }[] = [
     ...(carteiras ? [{ id: 'wallet' as const, icone: <Wallet size={18} aria-hidden="true" /> }] : []),
-    { id: 'card', icone: <CreditCard size={18} aria-hidden="true" /> },
     { id: 'pix', icone: <QrCode size={18} aria-hidden="true" /> },
+    { id: 'card', icone: <CreditCard size={18} aria-hidden="true" /> },
   ];
 
   const retorno =
@@ -170,7 +175,12 @@ export function CheckoutAccordion({ sessionId, email }: { sessionId: string; ema
                     stripe={stripePromise}
                     options={{ clientSecret: segredo, appearance, locale: locale as 'pt-BR' }}
                   >
-                    <Formulario retorno={retorno} rotulo={t('cta', { preco: t('price') })} enviando={t('sending')} />
+                    <Formulario
+                      retorno={retorno}
+                      rotulo={t('cta', { preco: t('price') })}
+                      enviando={t('sending')}
+                      aguardando={t('waiting')}
+                    />
                   </Elements>
                 ) : (
                   <p className="runner-hint">{t('carregando')}</p>
@@ -191,21 +201,31 @@ export function CheckoutAccordion({ sessionId, email }: { sessionId: string; ema
  * Os campos do Stripe e o botão que confirma.
  *
  * `redirect: 'if_required'` mantém quem paga com cartão nesta página: só sai
- * dela quem escolheu um método que exige sair (o app do banco, no 3-D Secure).
- * O Pix mostra o QR aqui mesmo, no próprio elemento.
+ * dela quem escolheu um método que exige sair.
+ *
+ * O QUE O PIX ENSINOU: confirmar sem erro não quer dizer pago. No cartão o
+ * pagamento acaba ali; no Pix ele nasce em `requires_action` e o Stripe mostra
+ * o QR na própria tela, esperando o app do banco. A primeira versão daqui
+ * navegava para a página de retorno assim que `confirmPayment` voltava sem
+ * erro — e levava embora justamente o QR que a pessoa precisava ler. Agora
+ * quem manda é o STATUS: só `succeeded` sai da página; `requires_action` e
+ * `processing` ficam, com a tela do Stripe visível, e a página pergunta ao
+ * Stripe de tempos em tempos se o pagamento caiu.
  */
 function Formulario({
   retorno,
   rotulo,
   enviando,
+  aguardando,
 }: {
   retorno: string;
   rotulo: string;
   enviando: string;
+  aguardando: string;
 }) {
   const stripe = useStripe();
   const elements = useElements();
-  const [estado, setEstado] = useState<'idle' | 'enviando'>('idle');
+  const [estado, setEstado] = useState<'idle' | 'enviando' | 'aguardando'>('idle');
   const [mensagem, setMensagem] = useState<string | null>(null);
 
   const pagar = async (evento: React.FormEvent) => {
@@ -216,7 +236,7 @@ function Formulario({
     setMensagem(null);
     track('checkout_started', { assessment: 'cognition' });
 
-    const { error } = await stripe.confirmPayment({
+    const { error, paymentIntent } = await stripe.confirmPayment({
       elements,
       confirmParams: { return_url: retorno },
       redirect: 'if_required',
@@ -231,15 +251,36 @@ function Formulario({
       return;
     }
 
-    window.location.href = retorno;
+    if (paymentIntent?.status === 'succeeded') {
+      window.location.href = retorno;
+      return;
+    }
+
+    // Pix, boleto, qualquer coisa que dependa de um segundo passo: a tela do
+    // Stripe com o QR fica onde está, e daqui a página só pergunta se caiu.
+    setEstado('aguardando');
+    const segredo = paymentIntent?.client_secret;
+    if (!segredo) return;
+
+    const relogio = window.setInterval(async () => {
+      const { paymentIntent: atual } = await stripe.retrievePaymentIntent(segredo);
+      if (atual?.status === 'succeeded') {
+        window.clearInterval(relogio);
+        window.location.href = retorno;
+      }
+    }, 3000);
   };
 
   return (
     <form onSubmit={pagar} className="pay-form">
       <PaymentElement options={{ layout: 'tabs' }} />
-      <button type="submit" className="button button-primary" disabled={!stripe || estado === 'enviando'}>
-        {estado === 'enviando' ? enviando : rotulo}
-      </button>
+      {estado === 'aguardando' ? (
+        <p className="pay-waiting">{aguardando}</p>
+      ) : (
+        <button type="submit" className="button button-primary" disabled={!stripe || estado === 'enviando'}>
+          {estado === 'enviando' ? enviando : rotulo}
+        </button>
+      )}
       {mensagem ? <p className="runner-hint">{mensagem}</p> : null}
     </form>
   );

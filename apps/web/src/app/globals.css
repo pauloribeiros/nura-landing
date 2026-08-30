@@ -1393,6 +1393,40 @@ body.is-running-test .header-actions .button { display: none; }
 
 /* ------------------------------------------------------------ pagina de pagamento */
 .pay-page { padding-top: 96px; }
+/* O titulo da recompensa: metade em gradiente, com um brilho por tras. */
+.pay-title { position: relative; max-width: 16ch; }
+.pay-title::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: -10%;
+  top: 10%;
+  width: 70%;
+  height: 80%;
+  background: radial-gradient(closest-side, rgba(34, 211, 229, 0.18), transparent 70%);
+  filter: blur(18px);
+  pointer-events: none;
+}
+.pay-subtitle { margin-top: 12px; max-width: 42ch; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .pay-title { animation: pay-title-in 620ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .pay-subtitle { animation: pay-title-in 620ms cubic-bezier(0.16, 1, 0.3, 1) 120ms both; }
+}
+@keyframes pay-title-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+.pay-waiting {
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(34, 211, 229, 0.08);
+  border: 1px solid rgba(34, 211, 229, 0.3);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
 .pay-grid { display: grid; gap: 22px; margin-top: 26px; }
 @media (min-width: 900px) { .pay-grid { grid-template-columns: 1fr 1.15fr; gap: 32px; align-items: start; } }
 
@@ -1522,6 +1556,22 @@ body.is-running-test .header-actions .button { display: none; }
   font-size: 0.78rem;
   line-height: 1.5;
   color: var(--text-on-dark-faint);
+}
+
+/* O celular e onde isso vai ser usado: o Pix e o metodo, e o codigo
+   copia-e-cola do Stripe cresce depois de montar. O painel precisa de respiro
+   lateral para o codigo nao encostar na borda, e de menos padding em volta
+   para o botao de pagar caber sem rolar. */
+@media (max-width: 680px) {
+  .pay-page { padding-top: 76px; }
+  .pay-grid { gap: 16px; margin-top: 20px; }
+  .pay-summary { padding: 18px; }
+  .pay-panel-inner { padding: 0 12px; }
+  .is-open .pay-panel-inner { padding: 0 12px 14px; }
+  .pay-form { gap: 12px; }
+  .pay-head { min-height: 56px; padding: 12px 14px; gap: 9px; }
+  .pay-note { font-size: 10px; }
+  .pay-title { max-width: none; }
 }
 
 /* --------------------------------------------------------- iq transitions */

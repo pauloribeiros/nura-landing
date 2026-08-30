@@ -87,7 +87,11 @@ export default async function PaginaDePagamento({
         <section className="runner pay-page">
           <div className="wrap runner-inner">
             <p className="eyebrow eyebrow-light">{t('eyebrow')}</p>
-            <h1>{t('title')}</h1>
+            {/* O título é a recompensa de vinte minutos de teste: chega com um
+                brilho e uma entrada de uma vez só. O subtítulo carrega a
+                instrução, para a comemoração não custar clareza. */}
+            <h1 className="pay-title">{t('title')}</h1>
+            <p className="runner-lead pay-subtitle">{t('subtitle')}</p>
 
             <div className="pay-grid">
               {/* O que está sendo comprado, ao lado de como pagar: a pessoa

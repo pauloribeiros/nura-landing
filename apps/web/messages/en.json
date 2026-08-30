@@ -603,8 +603,8 @@
     "legal": "We use your email to send the report and nothing else. Your answers are never shared."
   },
   "iq_checkout": {
-    "eyebrow": "Last step",
-    "title": "How would you like to pay?",
+    "eyebrow": "Profile complete",
+    "title": "Congratulations — your score is ready!",
     "summaryTitle": "What you get",
     "inclui1": "Your score and the profile across six dimensions",
     "inclui2": "What each dimension measures, read one by one",
@@ -616,7 +616,7 @@
     "pix": {
       "name": "Pix",
       "note": "instant approval",
-      "body": "The Pix code appears right here. Access opens automatically as soon as the payment lands."
+      "body": "Press pay and the QR code appears right here. Access opens automatically as soon as the payment lands."
     },
     "card": {
       "name": "Credit or debit card",
@@ -635,6 +635,8 @@
     "carregando": "Loading the payment form…",
     "semChave": "Payment unavailable: the Stripe publishable key is not configured.",
     "doneTitle": "Payment confirmed.",
-    "doneBody": "The full report goes to your email as soon as it is ready. You can also come back through this same link."
+    "doneBody": "The full report goes to your email as soon as it is ready. You can also come back through this same link.",
+    "subtitle": "Choose how you would like to pay to unlock the full report.",
+    "waiting": "Copy the code, open your banking app and pay. You can come back here: the moment it lands, this page opens on its own."
   }
 }
