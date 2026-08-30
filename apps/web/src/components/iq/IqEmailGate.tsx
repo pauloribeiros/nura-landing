@@ -72,8 +72,8 @@ export function IqEmailGate({
         <h1>{t('title')}</h1>
         <p className="runner-lead">{t('lead')}</p>
 
-        <form className="iq-gate-form" onSubmit={seguir}>
-          <label className="iq-gate-field">
+        <form className="gate-form" onSubmit={seguir}>
+          <label className="gate-field">
             <span>{t('emailLabel')}</span>
             <input
               type="email"

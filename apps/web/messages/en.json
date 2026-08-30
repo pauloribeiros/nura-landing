@@ -401,6 +401,8 @@
     "premiumPrice": "R$ 19.90",
     "premiumPriceNote": "one-time payment, no subscription",
     "premiumCta": "Unlock my full report",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@example.com",
     "disclaimer": "This result comes from the ASRS-v1.1, a World Health Organization screening scale. It is informative, is not a diagnosis and does not replace assessment by a qualified professional.",
     "restart": "Take the assessment again",
     "settingNote": {
@@ -412,7 +414,7 @@
     "badgeClear": "Below the cutoff",
     "badgeAttention": "Worth investigating",
     "domainSegmentsLabel": "{domain}: {flagged} of {total} items in the clinically relevant range.",
-    "deliveryNote": "Immediate access on NURA. After purchase you choose whether to receive a copy by email.",
+    "deliveryNote": "Immediate access on NURA, plus a copy sent to the email you enter.",
     "premiumSending": "Opening checkout…",
     "premiumError": "We could not open checkout right now. Please try again shortly.",
     "premiumFinding": "Your screening came out above the cutoff — {count} of 6 answers in the attention range. The report goes through what showed up, item by item, and what to do with it."

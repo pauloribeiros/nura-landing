@@ -163,7 +163,7 @@ export function AssessmentResult({
             <div className="price">
               {t('premiumPrice')} <small>{t('premiumPriceNote')}</small>
             </div>
-            <UnlockButton sessionId={sessionId} />
+            <UnlockButton sessionId={sessionId} assessmentId={result.assessmentId} />
 
             <p className="result-delivery">{t('deliveryNote')}</p>
           </div>

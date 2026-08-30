@@ -401,6 +401,8 @@
     "premiumPrice": "R$ 19,90",
     "premiumPriceNote": "pago único, sin suscripción",
     "premiumCta": "Desbloquear mi informe completo",
+    "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "tu@ejemplo.com",
     "disclaimer": "Este resultado proviene de la ASRS-v1.1, escala de cribado de la Organización Mundial de la Salud. Es informativo, no constituye diagnóstico y no sustituye la evaluación de un profesional habilitado.",
     "restart": "Repetir la evaluación",
     "settingNote": {
@@ -412,7 +414,7 @@
     "badgeClear": "Por debajo del punto de corte",
     "badgeAttention": "Vale la pena investigar",
     "domainSegmentsLabel": "{domain}: {flagged} de {total} ítems en el rango clínicamente relevante.",
-    "deliveryNote": "Acceso inmediato en NURA. Tras la compra eliges si quieres recibir una copia por correo.",
+    "deliveryNote": "Acceso inmediato en NURA y una copia al correo que indiques.",
     "premiumSending": "Abriendo el pago…",
     "premiumError": "No pudimos abrir el pago ahora. Inténtalo de nuevo en unos instantes.",
     "premiumFinding": "Tu cribado quedó por encima del punto de corte: {count} de 6 respuestas en el rango de atención. El informe abre, punto por punto, lo que apareció y qué hacer con ello."

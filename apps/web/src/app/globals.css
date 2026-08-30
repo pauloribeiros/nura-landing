@@ -1349,17 +1349,17 @@ body.is-running-test .header-actions .button { display: none; }
   .iq-calc-track span { transition: none; }
 }
 
-/* ----------------------------------------------------------- iq email gate */
+/* ------------------------------------------- campo de e-mail antes do pagamento */
 .iq-gate { padding-top: 96px; }
 .iq-gate h1 { max-width: 18ch; }
-.iq-gate-form { display: grid; gap: 14px; margin: 26px 0 6px; max-width: 420px; }
-.iq-gate-field span {
+.gate-form { display: grid; gap: 14px; margin: 26px 0 6px; max-width: 420px; }
+.gate-field span {
   display: block;
   margin-bottom: 8px;
   font-size: 0.82rem;
   color: var(--text-on-dark-faint);
 }
-.iq-gate-field input {
+.gate-field input {
   width: 100%;
   min-height: 54px;
   padding: 0 16px;
@@ -1369,8 +1369,8 @@ body.is-running-test .header-actions .button { display: none; }
   color: inherit;
   font-size: 1rem;
 }
-.iq-gate-field input:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 2px; }
-.iq-gate-form .button { justify-content: center; min-height: 54px; }
+.gate-field input:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 2px; }
+.gate-form .button { justify-content: center; min-height: 54px; }
 
 /* Os numeros embaixo do botao: o que ja e sabido sobre esta corrida. */
 .iq-gate-stats {
