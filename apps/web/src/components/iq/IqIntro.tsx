@@ -149,8 +149,19 @@ export function IqIntro({ items }: { items: PublicItem[] }) {
    * pagamento com um resultado que nao e dele.
    */
   useEffect(() => {
-    if (process.env.NEXT_PUBLIC_IQ_PREVIEW !== '1') return;
-    const destino = new URLSearchParams(window.location.search).get('fim');
+    const busca = new URLSearchParams(window.location.search);
+    // Liberado pela variavel de ambiente ou pela chave na URL. A chave existe
+    // porque configurar a variavel exige um redeploy a cada ambiente novo, e o
+    // atalho e usado justamente para nao repetir 45 questoes a cada ajuste.
+    //
+    // ELA E UMA PORTA E PRECISA SER FECHADA antes de trafego pago: quem cair
+    // nela pula o teste e chega ao pagamento com um resultado que nao e dele.
+    // Fechar e apagar a constante abaixo.
+    const liberado =
+      process.env.NEXT_PUBLIC_IQ_PREVIEW === '1' || busca.get('chave') === 'nura-qa-2026';
+    if (!liberado) return;
+
+    const destino = busca.get('fim');
     if (!destino) return;
     if (started || state !== 'idle' || result) return;
     setAtalho(destino);
