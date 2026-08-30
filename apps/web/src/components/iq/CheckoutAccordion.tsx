@@ -133,9 +133,14 @@ export function CheckoutAccordion({ sessionId, email }: { sessionId: string; ema
     <div className="pay-accordion">
       {/* Fica montado fora do acordeão: é ele que diz se há Apple Pay ou
           Google Pay neste aparelho, e sem essa resposta o item não deve
-          aparecer prometendo algo que não vai abrir. */}
+          aparecer prometendo algo que não vai abrir.
+          NUNCA dentro de `display: none`: o elemento do Stripe precisa estar
+          no layout para se medir e decidir se a carteira existe. Escondido,
+          ele respondia que nao havia nenhuma — que foi por isso que o Apple
+          Pay nao apareceu no iPhone. Sem carteira ele desenha nada e o
+          container fica com altura zero por conta propria. */}
       {stripePromise && segredos.card ? (
-        <div className={carteiras ? 'pay-wallet-probe is-live' : 'pay-wallet-probe'}>
+        <div className="pay-wallet-probe">
           <Elements
             stripe={stripePromise}
             options={{ clientSecret: segredos.card, appearance, locale: locale as 'pt-BR' }}

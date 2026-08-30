@@ -1542,10 +1542,11 @@ body.is-running-test .header-actions .button { display: none; }
 .pay-form { display: grid; gap: 16px; }
 .pay-form .button { width: 100%; justify-content: center; min-height: 52px; }
 
-/* A sonda das carteiras: montada sempre, visível só quando o aparelho tem
-   Apple Pay ou Google Pay para oferecer. */
-.pay-wallet-probe { display: none; }
-.pay-wallet-probe.is-live { display: block; margin-bottom: 4px; }
+/* A sonda das carteiras. Fica no layout SEMPRE: o elemento do Stripe precisa
+   se medir para saber se ha Apple Pay ou Google Pay, e dentro de display:none
+   ele responde que nao ha nenhuma. Sem carteira, ele nao desenha nada e isto
+   ocupa zero — nao precisa ser escondido. */
+.pay-wallet-probe:not(:empty) { margin-bottom: 4px; }
 
 .pay-done {
   padding: 22px;
