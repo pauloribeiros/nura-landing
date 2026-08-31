@@ -168,21 +168,82 @@ a { color: inherit; text-decoration: none; }
 .statement h2 em { color: var(--nura-cyan); font-style: normal; }
 .statement-copy { max-width: 420px; margin-left: auto; color: #b6c0d2; font-size: 16px; line-height: 1.65; }
 
-.paths { position: relative; overflow: hidden; color: var(--nura-graphite); background: radial-gradient(circle at 86% 12%, rgba(117,87,255,.13), transparent 25%), linear-gradient(118deg, #e9effb 0%, #f2f4fc 52%, #e7f5f4 100%); }
-.paths:before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .42; background-image: linear-gradient(rgba(59,103,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(59,103,255,.07) 1px, transparent 1px); background-size: 64px 64px; mask-image: linear-gradient(90deg, #000, transparent 72%); -webkit-mask-image: linear-gradient(90deg, #000, transparent 72%); }
+/* --------------------------------------------------------------- paths ---
+   Um indice, nao uma vitrine. O que sustenta a secao e a tipografia e o
+   sistema de fios; nao ha gradiente arco-iris nem grade de fundo, que eram o
+   que fazia o bloco parecer gerado. O papel e quase branco de proposito: a
+   secao vem depois de um bloco escuro e o contraste ja e o suficiente. */
+.paths { position: relative; color: var(--nura-graphite); background: #f4f5f7; }
+.paths:before {
+  /* Um unico traco de cor, no fio de cima da lista, no lugar do fundo
+     colorido inteiro. */
+  content: ""; position: absolute; inset: 0 0 auto; height: 3px;
+  background: linear-gradient(90deg, var(--nura-blue), var(--nura-cyan) 62%, transparent);
+}
 .paths .wrap { position: relative; }
-.section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; }
-.text-link { min-height: 44px; display: inline-flex; align-items: center; gap: 6px; color: var(--nura-blue); font-weight: 700; font-size: 13px; white-space: nowrap; }
-.text-link:hover { gap: 10px; }
-.path-grid { display: grid; gap: 0; margin-top: 58px; border-top: 1px solid rgba(99,116,151,.34); }
-.path-card { min-height: 210px; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 26px 0 24px; border-bottom: 1px solid rgba(99,116,151,.34); transition: background .25s ease, padding .25s ease; }
-.path-card:hover { padding-left: 12px; background: linear-gradient(90deg, rgba(255,255,255,.42), transparent); }
-.path-index { color: #5f6b80; font: 10px var(--app-font-mono); }
-.path-card h3 { margin: 18px 0 7px; font: 700 25px var(--app-font-display); letter-spacing: -.045em; }
-.path-card p { max-width: 260px; margin: 0; color: var(--text-on-tint); font-size: 14px; line-height: 1.55; }
-.path-action { width: fit-content; min-height: 44px; display: inline-flex; align-items: center; gap: 11px; margin-top: 28px; padding: 10px 14px; color: #16264a; border: 1px solid rgba(85,109,164,.42); border-radius: 999px; background: linear-gradient(145deg, rgba(255,255,255,.8), rgba(229,237,255,.46)); box-shadow: inset 0 1px 0 rgba(255,255,255,.9), inset 0 -1px 0 rgba(59,103,255,.08), 0 8px 20px rgba(45,69,122,.1); backdrop-filter: blur(14px); cursor: pointer; font: 700 11px var(--app-font-mono); letter-spacing: .01em; text-decoration: none; transition: color .2s ease, gap .2s ease, border-color .2s ease, background .2s ease, transform .2s ease, box-shadow .2s ease; }
-.path-action:hover { gap: 15px; color: #fff; border-color: var(--nura-blue); background: linear-gradient(135deg, #3b67ff, #5578ff); box-shadow: 0 11px 24px rgba(59,103,255,.25), inset 0 1px 0 rgba(255,255,255,.34); transform: translateY(-2px); }
-.path-more { margin-top: 26px; color: var(--text-on-tint); font-size: 12px; }
+
+.paths-head { max-width: 640px; }
+.paths-lead { max-width: 46ch; margin: 20px 0 0; color: var(--text-on-tint); font-size: 16px; line-height: 1.65; }
+
+.path-list { margin: 54px 0 0; padding: 0; list-style: none; border-top: 1px solid rgba(24,34,54,.14); }
+.path-row { border-bottom: 1px solid rgba(24,34,54,.14); }
+
+/* A linha inteira e o alvo — nao ha botao dentro do item, porque o item ja e
+   o botao. Grid de tres colunas para o numero, o texto e o estado ficarem
+   alinhados entre as linhas, e nao cada um por conta propria. */
+.path-hit {
+  display: grid; grid-template-columns: 44px 1fr auto; align-items: baseline;
+  gap: 0 20px; padding: 30px 0; color: inherit; text-decoration: none;
+  transition: padding .28s cubic-bezier(.22,.61,.36,1), background .28s ease;
+}
+.path-num { color: #8b93a5; font: 400 11px var(--app-font-mono); letter-spacing: .06em; }
+.path-body { display: block; }
+.path-name {
+  display: block; font: 700 clamp(24px, 2.7vw, 34px)/1.15 var(--app-font-display);
+  letter-spacing: -.045em; transition: color .2s ease;
+}
+.path-desc { display: block; max-width: 44ch; margin-top: 9px; color: var(--text-on-tint); font-size: 15px; line-height: 1.55; }
+
+/* O estado alinhado a direita: "Comecar ->" no que abre, "Em breve" no que
+   ainda nao. A diferenca de peso e de cor entre os dois e o que da ritmo a
+   lista — antes as tres linhas tinham exatamente o mesmo tom. */
+.path-state {
+  display: inline-flex; align-items: center; gap: 9px; white-space: nowrap;
+  font: 700 12px var(--app-font-mono); letter-spacing: .04em;
+}
+.is-open .path-state { color: var(--nura-blue); }
+.is-open .path-state svg { transition: transform .28s cubic-bezier(.22,.61,.36,1); }
+.is-soon .path-state { color: #8b93a5; font-weight: 400; }
+.is-soon .path-hit { cursor: default; }
+.is-soon .path-name { color: #59617a; }
+
+a.path-hit:hover { padding-left: 16px; background: linear-gradient(90deg, rgba(255,255,255,.9), rgba(255,255,255,0) 70%); }
+a.path-hit:hover .path-name { color: var(--nura-blue); }
+a.path-hit:hover .path-state svg, a.path-hit:hover > svg { transform: translateX(5px); }
+a.path-hit:focus-visible { outline: 3px solid var(--nura-blue); outline-offset: -3px; }
+
+/* A ultima linha continua a lista em vez de flutuar embaixo dela. Aqui a
+   seta anda junto do texto — nao ha estado a alinhar a direita, e uma seta
+   sozinha no fim da linha ficaria orfa. */
+.path-all .path-hit { grid-template-columns: 44px max-content 1fr; gap: 0 12px; padding: 22px 0; }
+.path-all .path-name { color: var(--nura-blue); font: 700 14px var(--app-font-mono); letter-spacing: .02em; }
+.path-all .path-hit > svg { color: var(--nura-blue); align-self: center; transition: transform .28s cubic-bezier(.22,.61,.36,1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .path-hit, .is-open .path-state svg { transition: none; }
+  a.path-hit:hover { padding-left: 0; }
+  a.path-hit:hover .path-state svg, a.path-hit:hover > svg { transform: none; }
+  .path-all .path-hit > svg { transition: none; }
+}
+
+/* No celular o estado desce para baixo do texto: espremido na mesma linha do
+   titulo ele quebrava o titulo em duas. */
+@media (max-width: 719px) {
+  .path-hit { grid-template-columns: 34px 1fr; gap: 0 14px; padding: 24px 0; }
+  .path-state { grid-column: 2; margin-top: 14px; }
+  .path-all .path-hit { grid-template-columns: 34px max-content 1fr; }
+  .path-all .path-state { margin-top: 0; }
+}
 
 .featured { min-height: 720px; position: relative; display: flex; align-items: center; background: transparent; }
 .featured:after { content: "01"; position: absolute; right: 8vw; bottom: 8%; color: rgba(34,211,229,.1); font: 700 clamp(150px, 20vw, 300px)/.7 var(--app-font-display); letter-spacing: -.12em; pointer-events: none; }
@@ -268,10 +329,6 @@ a { color: inherit; text-decoration: none; }
 @media (min-width: 640px) {
   .wrap { width: min(1180px, calc(100% - 72px)); }
   .section { padding: 112px 0; }
-  .path-grid { grid-template-columns: repeat(3, 1fr); }
-  .path-card { min-height: 270px; padding: 30px 26px 28px 0; border-bottom: 0; border-right: 1px solid var(--rule-tint); }
-  .path-card + .path-card { padding-left: 26px; }
-  .path-card:last-child { border-right: 0; }
   .featured-grid, .result-grid, .premium-grid { grid-template-columns: 1.05fr .95fr; }
   .trust-grid { grid-template-columns: .9fr 1.1fr; gap: 70px; }
   .faq-layout { grid-template-columns: .7fr 1.3fr; gap: 80px; }
@@ -285,7 +342,6 @@ a { color: inherit; text-decoration: none; }
   .hero-inner { padding-top: 100px; }
   .scroll-hint { display: flex; }
   .statement-inner { grid-template-columns: 1.2fr .8fr; align-items: flex-end; gap: 70px; }
-  .path-grid { grid-template-columns: repeat(3, 1fr); }
   .steps { grid-template-columns: repeat(3, 1fr); border-top: 0; gap: 28px; }.step { position: relative; min-height: 250px; display: block; padding: 26px 25px; border: 1px solid var(--rule-light); border-radius: 20px; }.step-mark { display: block; width: 38px; height: 38px; margin: 32px 0 33px; border: 1px solid var(--nura-blue); border-radius: 50%; position: relative; }.step-mark:after { content: ""; position: absolute; width: 7px; height: 7px; top: 15px; left: 15px; background: var(--nura-cyan); border-radius: 50%; box-shadow: 0 0 12px var(--nura-cyan); }.profile-grid { grid-template-columns: .9fr 1.1fr; }.result-card { margin-left: auto; max-width: 480px; }.premium aside { margin-top: 60px; }.final-cta { padding: 140px 0; }
 }
 @media (prefers-reduced-motion: reduce) {

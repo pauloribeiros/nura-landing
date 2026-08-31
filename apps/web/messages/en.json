@@ -35,7 +35,7 @@
     "cta": "Start my discovery",
     "metaFree": "Free to start",
     "metaInstant": "Immediate result",
-    "metaNoCard": "No card required",
+    "metaTailored": "Made for you",
     "scrollHint": "scroll to explore"
   },
   "statement": {
@@ -50,10 +50,10 @@
     "copy": "Explore how your attention works day to day. Look at patterns related to attention, organisation, impulsivity and routine through a quick, structured experience.",
     "durationValue": "3–5 min",
     "durationLabel": "approximate time",
-    "freeValue": "Free",
-    "freeLabel": "initial result",
-    "cardValue": "No",
-    "cardLabel": "card required",
+    "reportValue": "Full report",
+    "reportLabel": "detailed and personalised",
+    "forYouValue": "Made for you",
+    "forYouLabel": "individual analysis",
     "cta": "Take the free assessment",
     "note": "A screening and self-knowledge tool. The result does not constitute a medical diagnosis.",
     "titleLine3": "for adults."
@@ -62,8 +62,10 @@
     "sectionEyebrow": "Start wherever it makes sense",
     "sectionTitleLine1": "What would you like",
     "sectionTitleLine2": "to discover?",
+    "sectionLead": "Four assessments, each about a different dimension. Two are open; the others arrive when they are ready.",
     "seeAll": "See all assessments",
     "start": "Start",
+    "soonLabel": "Coming soon",
     "attention": {
       "title": "ADHD: self-report for adults",
       "description": "Attention, organisation and impulsivity in everyday life.",
@@ -143,8 +145,7 @@
     "giftedness": {
       "title": "Giftedness",
       "description": "Characteristics related to different cognitive potentials."
-    },
-    "explore": "Explore assessment"
+    }
   },
   "how": {
     "eyebrow": "A simple journey",
@@ -296,10 +297,10 @@
   },
   "assessmentLanding": {
     "durationLabel": "approximate time",
-    "freeLabel": "initial result",
-    "cardLabel": "card required",
-    "freeValue": "Free",
-    "cardValue": "No",
+    "reportLabel": "detailed and personalised",
+    "forYouLabel": "individual analysis",
+    "reportValue": "Full report",
+    "forYouValue": "Made for you",
     "coversTitle": "What you will explore",
     "forWhomTitle": "Who it is for",
     "methodologyTitle": "Methodology",

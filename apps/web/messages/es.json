@@ -35,7 +35,7 @@
     "cta": "Empezar mi descubrimiento",
     "metaFree": "Gratis para empezar",
     "metaInstant": "Resultado inmediato",
-    "metaNoCard": "Sin tarjeta",
+    "metaTailored": "Hecho para ti",
     "scrollHint": "desplázate para explorar"
   },
   "statement": {
@@ -50,10 +50,10 @@
     "copy": "Explora cómo funciona tu atención en el día a día. Evalúa patrones relacionados con la atención, la organización, la impulsividad y la rutina en una experiencia rápida y estructurada.",
     "durationValue": "3–5 min",
     "durationLabel": "tiempo aproximado",
-    "freeValue": "Gratis",
-    "freeLabel": "resultado inicial",
-    "cardValue": "No",
-    "cardLabel": "necesitas tarjeta",
+    "reportValue": "Informe completo",
+    "reportLabel": "detallado y personalizado",
+    "forYouValue": "Hecho para ti",
+    "forYouLabel": "análisis individual",
     "cta": "Hacer la evaluación gratuita",
     "note": "Herramienta de cribado y autoconocimiento. El resultado no constituye un diagnóstico médico.",
     "titleLine3": "para adultos."
@@ -62,8 +62,10 @@
     "sectionEyebrow": "Empieza por donde tenga sentido",
     "sectionTitleLine1": "¿Qué te gustaría",
     "sectionTitleLine2": "descubrir?",
+    "sectionLead": "Cuatro evaluaciones, cada una sobre una dimensión distinta. Dos ya están abiertas; las demás llegan cuando estén listas.",
     "seeAll": "Ver todas las evaluaciones",
     "start": "Empezar",
+    "soonLabel": "Próximamente",
     "attention": {
       "title": "TDAH: autoevaluación para adultos",
       "description": "Atención, organización e impulsividad en el día a día.",
@@ -143,8 +145,7 @@
     "giftedness": {
       "title": "Altas capacidades",
       "description": "Características relacionadas con distintos potenciales cognitivos."
-    },
-    "explore": "Explorar evaluación"
+    }
   },
   "how": {
     "eyebrow": "Un recorrido sencillo",
@@ -296,10 +297,10 @@
   },
   "assessmentLanding": {
     "durationLabel": "tiempo aproximado",
-    "freeLabel": "resultado inicial",
-    "cardLabel": "necesitas tarjeta",
-    "freeValue": "Gratis",
-    "cardValue": "No",
+    "reportLabel": "detallado y personalizado",
+    "forYouLabel": "análisis individual",
+    "reportValue": "Informe completo",
+    "forYouValue": "Hecho para ti",
     "coversTitle": "Qué vas a explorar",
     "forWhomTitle": "Para quién es",
     "methodologyTitle": "Metodología",

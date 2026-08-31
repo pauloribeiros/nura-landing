@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { ArrowRight, Clock3, CreditCard, Sparkles } from 'lucide-react';
+import { ArrowRight, Clock3, FileText, UserRound } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { LOCALE_META, locales, routing, type Locale } from '@/i18n/routing';
 import { SITE_URL } from '@/lib/site';
@@ -228,14 +228,14 @@ export default async function AssessmentPage({ params }: { params: Params }) {
               <span>{tl('durationLabel')}</span>
             </li>
             <li>
-              <Sparkles size={17} aria-hidden="true" />
-              <b>{tl('freeValue')}</b>
-              <span>{tl('freeLabel')}</span>
+              <FileText size={17} aria-hidden="true" />
+              <b>{tl('reportValue')}</b>
+              <span>{tl('reportLabel')}</span>
             </li>
             <li>
-              <CreditCard size={17} aria-hidden="true" />
-              <b>{tl('cardValue')}</b>
-              <span>{tl('cardLabel')}</span>
+              <UserRound size={17} aria-hidden="true" />
+              <b>{tl('forYouValue')}</b>
+              <span>{tl('forYouLabel')}</span>
             </li>
           </ul>
 

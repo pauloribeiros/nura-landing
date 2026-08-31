@@ -1,7 +1,10 @@
-import type { CSSProperties } from 'react';
-import { Check, LockKeyhole, ShieldCheck } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import type { CSSProperties, ReactNode } from 'react';
+import { ArrowRight, Check, LockKeyhole, ShieldCheck } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
+import type { Locale } from '@/i18n/routing';
 import {
+  assessmentStartPath,
   GRID_ASSESSMENTS,
   HOW_IT_WORKS_STEPS,
   PREMIUM_BENEFITS,
@@ -41,7 +44,7 @@ export function Hero() {
             <i />
             <span>{t('metaInstant')}</span>
             <i />
-            <span>{t('metaNoCard')}</span>
+            <span>{t('metaTailored')}</span>
           </div>
         </div>
       </div>
@@ -94,12 +97,12 @@ export function FeaturedAssessment() {
               {t('durationLabel')}
             </span>
             <span>
-              <strong>{t('freeValue')}</strong>
-              {t('freeLabel')}
+              <strong>{t('reportValue')}</strong>
+              {t('reportLabel')}
             </span>
             <span>
-              <strong>{t('cardValue')}</strong>
-              {t('cardLabel')}
+              <strong>{t('forYouValue')}</strong>
+              {t('forYouLabel')}
             </span>
           </div>
           <div className="reveal-item" style={{ '--i': 4 } as CSSProperties}>
@@ -117,40 +120,91 @@ export function FeaturedAssessment() {
 
 /* --------------------------------------------------------------- paths --- */
 
+/**
+ * O catalogo em forma de indice, nao de vitrine.
+ *
+ * A versao anterior eram tres cartoes iguais, cada um com o seu botao
+ * "Explorar avaliacao" — e dois deles apontavam para avaliacoes que ainda nao
+ * existem. Tres botoes identicos lado a lado nao sao hierarquia: sao a mesma
+ * decisao repetida tres vezes, e duas delas levavam a uma pagina onde a pessoa
+ * descobria que aquilo era "em breve".
+ *
+ * Agora a linha inteira e o alvo, e so quem esta pronto e clicavel. O que
+ * ainda nao abriu aparece como item de roteiro, sem seta e sem borda de botao:
+ * a diferenca entre "da para fazer" e "vem por ai" fica visivel antes do
+ * clique, e e ela que da ritmo a lista.
+ *
+ * Um unico "ver todas" fecha o bloco. Havia dois — um no topo e outro no rodape
+ * da secao — dizendo a mesma coisa com as mesmas palavras.
+ */
 export function AssessmentPaths() {
   const t = useTranslations('assessments');
+  const locale = useLocale() as Locale;
+
   return (
     <section className="section paths" id={SECTION_IDS.assessments}>
       <div className="wrap">
-        <div className="section-head reveal">
-          <div>
-            <p className="eyebrow">{t('sectionEyebrow')}</p>
-            <RevealLines
-              className="section-title"
-              lines={[t('sectionTitleLine1'), t('sectionTitleLine2')]}
-            />
-          </div>
-          <CtaLink to="catalog" className="text-link desktop-only" iconSize={15}>
-            {t('seeAll')}
-          </CtaLink>
+        <div className="paths-head reveal">
+          <p className="eyebrow">{t('sectionEyebrow')}</p>
+          <RevealLines
+            className="section-title"
+            lines={[t('sectionTitleLine1'), t('sectionTitleLine2')]}
+          />
+          <p className="paths-lead">{t('sectionLead')}</p>
         </div>
-        <div className="path-grid reveal">
-          {GRID_ASSESSMENTS.map((item) => (
-            <article className="path-card" key={item.id}>
-              <div>
-                <span className="path-index">{item.index}</span>
-                <h3>{t(`${item.id}.title`)}</h3>
-                <p>{t(`${item.id}.description`)}</p>
-              </div>
-              <CtaLink to="catalog" className="path-action" iconSize={14}>
-                {t('explore')}
-              </CtaLink>
-            </article>
-          ))}
-        </div>
-        <CtaLink to="catalog" className="text-link path-more" iconSize={15}>
-          {t('seeAll')}
-        </CtaLink>
+
+        <ol className="path-list reveal">
+          {GRID_ASSESSMENTS.map((item) => {
+            const dentro: ReactNode = (
+              <>
+                <span className="path-num" aria-hidden="true">
+                  {item.index}
+                </span>
+                <span className="path-body">
+                  <span className="path-name">{t(`${item.id}.title`)}</span>
+                  <span className="path-desc">{t(`${item.id}.description`)}</span>
+                </span>
+                <span className="path-state">
+                  {item.available ? (
+                    <>
+                      {t('start')}
+                      <ArrowRight size={15} aria-hidden="true" />
+                    </>
+                  ) : (
+                    t('soonLabel')
+                  )}
+                </span>
+              </>
+            );
+
+            return (
+              <li className={`path-row ${item.available ? 'is-open' : 'is-soon'}`} key={item.id}>
+                {item.available ? (
+                  <Link
+                    className="path-hit"
+                    href={assessmentStartPath(locale, item).replace(`/${locale}`, '')}
+                  >
+                    {dentro}
+                  </Link>
+                ) : (
+                  /* Sem link: nao ha para onde ir, e um alvo que nao leva a
+                     lugar nenhum custa mais confianca do que a curiosidade que
+                     ele desperta. */
+                  <div className="path-hit">{dentro}</div>
+                )}
+              </li>
+            );
+          })}
+
+          <li className="path-row path-all">
+            <CtaLink to="catalog" className="path-hit" iconSize={15}>
+              <span className="path-num" aria-hidden="true" />
+              <span className="path-body">
+                <span className="path-name">{t('seeAll')}</span>
+              </span>
+            </CtaLink>
+          </li>
+        </ol>
       </div>
     </section>
   );
