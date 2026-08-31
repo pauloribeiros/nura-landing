@@ -145,22 +145,15 @@ export function IqIntro({ items }: { items: PublicItem[] }) {
    * aparelho, que e o unico jeito de a pagina de pagamento abrir — um link
    * pronto nao funcionaria no celular de outra pessoa.
    *
-   * Atras de `NEXT_PUBLIC_IQ_PREVIEW=1` e de um parametro na URL, porque um
-   * visitante que caisse nele por acaso pularia o teste e chegaria ao
-   * pagamento com um resultado que nao e dele.
+   * SO ATRAS DE `NEXT_PUBLIC_IQ_PREVIEW=1`. Existia tambem uma chave na URL,
+   * porque a variavel exige um redeploy a cada ambiente novo — mas ela vivia
+   * no bundle do cliente, ou seja, qualquer pessoa que abrisse o DevTools
+   * tinha a porta na mao. A variavel e lida em tempo de build: sem ela ligada,
+   * este bloco inteiro nao faz nada em producao.
    */
   useEffect(() => {
+    if (process.env.NEXT_PUBLIC_IQ_PREVIEW !== '1') return;
     const busca = new URLSearchParams(window.location.search);
-    // Liberado pela variavel de ambiente ou pela chave na URL. A chave existe
-    // porque configurar a variavel exige um redeploy a cada ambiente novo, e o
-    // atalho e usado justamente para nao repetir 45 questoes a cada ajuste.
-    //
-    // ELA E UMA PORTA E PRECISA SER FECHADA antes de trafego pago: quem cair
-    // nela pula o teste e chega ao pagamento com um resultado que nao e dele.
-    // Fechar e apagar a constante abaixo.
-    const liberado =
-      process.env.NEXT_PUBLIC_IQ_PREVIEW === '1' || busca.get('chave') === 'nura-qa-2026';
-    if (!liberado) return;
 
     const destino = busca.get('fim');
     if (!destino) return;
