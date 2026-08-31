@@ -257,11 +257,20 @@
     "assessments": "Assessments",
     "profile": "NURA Profile",
     "faq": "FAQ",
-    "privacy": "Privacy",
+    "privacy": "Privacy policy",
     "start": "Start",
-    "rights": "© {year} NURA. All rights reserved.",
     "tagline": "Made to discover, not to label.",
-    "credits": "Illustrations by Storyset"
+    "credits": "Illustrations by Storyset",
+    "navTitle": "About us",
+    "legalTitle": "Legal",
+    "legalLabel": "Legal documents",
+    "terms": "Terms and conditions",
+    "cookies": "Cookie policy",
+    "refund": "Refund policy",
+    "instagram": "NURA on Instagram",
+    "legalCopyright": "Copyright © {year} NURA.",
+    "legalEntity": "{razao}, CNPJ {cnpj}. {endereco}.",
+    "legalRest": "All rights reserved. All trade marks mentioned here are the property of their respective owners. The assessments are for information and self-knowledge, are not a diagnosis and do not replace assessment by a qualified professional."
   },
   "stickyCta": {
     "label": "Start assessment"
@@ -614,7 +623,12 @@
     "statTime": "Completion time",
     "statSpeed": "Speed",
     "statSpeedValue": "faster than {pct}%",
-    "legal": "We use your email to send the report and nothing else. Your answers are never shared."
+    "legal": "We use your email to send the report and nothing else. Your answers are never shared.",
+    "waitTitle": "Your answers are saved.",
+    "waitLead": "You answered all 45 questions and your result is recorded. The full IQ report is still being written — leave your email and we will let you know the moment it opens.",
+    "waitCta": "Let me know",
+    "savedTitle": "Noted.",
+    "savedBody": "We will write to {email} as soon as the full report is available. You will not have to take the test again: your result is already saved."
   },
   "iq_checkout": {
     "eyebrow": "Profile complete",
@@ -657,6 +671,11 @@
     "atencao1": "Your answers read one by one",
     "atencao2": "What showed up in inattention and in hyperactivity",
     "atencao3": "The full report by email, as a PDF",
-    "atencao4": "Permanent access through the link, no expiry"
+    "atencao4": "Permanent access through the link, no expiry",
+    "pendingTitle": "This report is not available yet.",
+    "pendingBody": "Your result is recorded and stays saved. The full report for this assessment is still being written, which is why nothing is on sale here.",
+    "pendingNote": "You have not been charged.",
+    "pendingHead": "Your answers are saved.",
+    "pendingLead": "Your result is recorded. All that is missing is this assessment’s full report, still being written."
   }
 }

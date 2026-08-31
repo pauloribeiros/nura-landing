@@ -20,6 +20,7 @@ import { ResultCard } from '../ResultCard';
 import { RevealLines } from '../RevealLines';
 import { ScrollGlow } from '../ScrollGlow';
 import { LocaleSwitcher } from '../LocaleSwitcher';
+import { FooterLegalColumn, FooterLegalLine, FooterSocial } from '../FooterLegal';
 
 /* ---------------------------------------------------------------- hero --- */
 
@@ -419,19 +420,24 @@ export function Footer() {
           <div>
             <NuraLogo light={false} />
             <p className="footer-copy">{t('copy')}</p>
+            <FooterSocial />
           </div>
-          <nav className="footer-nav" aria-label={tn('footerLabel')}>
+          {/* "Privacidade" saiu daqui: era uma ancora para uma secao de
+              marketing desta mesma pagina, com nome de documento legal. O
+              documento de verdade vive na coluna ao lado. */}
+          <nav className="footer-col" aria-label={tn('footerLabel')}>
+            <h2 className="footer-col-title">{t('navTitle')}</h2>
             <a href={`#${SECTION_IDS.assessments}`}>{t('assessments')}</a>
             <a href={`#${SECTION_IDS.profile}`}>{t('profile')}</a>
             <a href={`#${SECTION_IDS.faq}`}>{t('faq')}</a>
-            <a href={`#${SECTION_IDS.trust}`}>{t('privacy')}</a>
             <CtaLink to="catalog" className="text-link" iconSize={13}>
               {t('start')}
             </CtaLink>
           </nav>
+          <FooterLegalColumn />
         </div>
+        <FooterLegalLine />
         <div className="footer-bottom">
-          <span>{t('rights', { year: new Date().getFullYear() })}</span>
           <span>{t('tagline')}</span>
           {/* Required by the Storyset licence: the break-screen illustrations
               are free for commercial use only while this credit is visible.

@@ -257,11 +257,20 @@
     "assessments": "Evaluaciones",
     "profile": "Perfil NURA",
     "faq": "Dudas",
-    "privacy": "Privacidad",
+    "privacy": "Política de privacidad",
     "start": "Empezar",
-    "rights": "© {year} NURA. Todos los derechos reservados.",
     "tagline": "Hecho para descubrir, no para etiquetar.",
-    "credits": "Ilustraciones de Storyset"
+    "credits": "Ilustraciones de Storyset",
+    "navTitle": "Sobre nosotros",
+    "legalTitle": "Legal",
+    "legalLabel": "Documentos legales",
+    "terms": "Términos y condiciones",
+    "cookies": "Política de cookies",
+    "refund": "Política de reembolso",
+    "instagram": "NURA en Instagram",
+    "legalCopyright": "Copyright © {year} NURA.",
+    "legalEntity": "{razao}, CNPJ {cnpj}. {endereco}.",
+    "legalRest": "Todos los derechos reservados. Todas las marcas registradas aquí mencionadas son propiedad de sus respectivos dueños. Las evaluaciones tienen finalidad informativa y de autoconocimiento, no constituyen diagnóstico y no sustituyen la evaluación de un profesional habilitado."
   },
   "stickyCta": {
     "label": "Empezar evaluación"
@@ -614,7 +623,12 @@
     "statTime": "Tiempo de finalización",
     "statSpeed": "Velocidad",
     "statSpeedValue": "más rápido que {pct}%",
-    "legal": "Usamos tu correo para enviarte el informe y nada más. Tus respuestas nunca se comparten."
+    "legal": "Usamos tu correo para enviarte el informe y nada más. Tus respuestas nunca se comparten.",
+    "waitTitle": "Tus respuestas quedaron guardadas.",
+    "waitLead": "Respondiste las 45 preguntas y tu resultado está registrado. El informe completo del test de CI todavía se está escribiendo — déjanos tu correo y te avisamos en cuanto se abra.",
+    "waitCta": "Quiero que me avisen",
+    "savedTitle": "Listo, anotado.",
+    "savedBody": "Te avisamos a {email} en cuanto el informe completo esté disponible. No tendrás que repetir el test: tu resultado ya está guardado."
   },
   "iq_checkout": {
     "eyebrow": "Perfil completado",
@@ -657,6 +671,11 @@
     "atencao1": "La lectura de tus respuestas, punto por punto",
     "atencao2": "Lo que apareció en falta de atención y en hiperactividad",
     "atencao3": "El informe completo por correo, en PDF",
-    "atencao4": "Acceso permanente por el enlace, sin caducidad"
+    "atencao4": "Acceso permanente por el enlace, sin caducidad",
+    "pendingTitle": "Este informe todavía no está disponible.",
+    "pendingBody": "Tu resultado está registrado y sigue guardado. El informe completo de esta evaluación todavía se está escribiendo, por eso no hay nada a la venta aquí.",
+    "pendingNote": "No se te ha cobrado nada.",
+    "pendingHead": "Tus respuestas quedaron guardadas.",
+    "pendingLead": "Tu resultado está registrado. Solo falta el informe completo de esta evaluación, que todavía se está escribiendo."
   }
 }

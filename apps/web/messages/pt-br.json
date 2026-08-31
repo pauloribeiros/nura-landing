@@ -257,11 +257,20 @@
     "assessments": "Avaliações",
     "profile": "NURA Perfil",
     "faq": "Dúvidas",
-    "privacy": "Privacidade",
+    "privacy": "Política de privacidade",
     "start": "Começar",
-    "rights": "© {year} NURA. Todos os direitos reservados.",
     "tagline": "Feito para descobrir, não para rotular.",
-    "credits": "Ilustrações de Storyset"
+    "credits": "Ilustrações de Storyset",
+    "navTitle": "Sobre nós",
+    "legalTitle": "Jurídico",
+    "legalLabel": "Documentos legais",
+    "terms": "Termos e condições",
+    "cookies": "Política de cookies",
+    "refund": "Política de reembolso",
+    "instagram": "NURA no Instagram",
+    "legalCopyright": "Copyright © {year} NURA.",
+    "legalEntity": "{razao}, CNPJ {cnpj}. {endereco}.",
+    "legalRest": "Todos os direitos reservados. Todas as marcas registradas aqui mencionadas são propriedade de seus respectivos donos. As avaliações têm finalidade informativa e de autoconhecimento, não constituem diagnóstico e não substituem a avaliação de um profissional habilitado."
   },
   "stickyCta": {
     "label": "Começar avaliação"
@@ -614,7 +623,12 @@
     "statTime": "Tempo de conclusão",
     "statSpeed": "Velocidade",
     "statSpeedValue": "mais rápido que {pct}%",
-    "legal": "Usamos seu e-mail para enviar o relatório e nada além disso. Suas respostas não são compartilhadas."
+    "legal": "Usamos seu e-mail para enviar o relatório e nada além disso. Suas respostas não são compartilhadas.",
+    "waitTitle": "Suas respostas ficaram guardadas.",
+    "waitLead": "Você respondeu às 45 questões e o seu resultado está registrado. O relatório completo do teste de QI ainda está sendo escrito — deixe seu e-mail e avisamos assim que ele abrir.",
+    "waitCta": "Quero ser avisado",
+    "savedTitle": "Pronto, anotamos.",
+    "savedBody": "Avisamos em {email} assim que o relatório completo estiver disponível. Você não precisa refazer o teste: o seu resultado já está guardado."
   },
   "iq_checkout": {
     "eyebrow": "Perfil concluído",
@@ -657,6 +671,11 @@
     "atencao1": "A leitura das suas respostas, item a item",
     "atencao2": "O que apareceu em desatenção e em hiperatividade",
     "atencao3": "O relatório completo por e-mail, em PDF",
-    "atencao4": "Acesso permanente pelo link, sem prazo"
+    "atencao4": "Acesso permanente pelo link, sem prazo",
+    "pendingTitle": "Este relatório ainda não está disponível.",
+    "pendingBody": "Seu resultado está registrado e continua guardado. O relatório completo desta avaliação ainda está sendo escrito, e por isso não colocamos nada à venda aqui.",
+    "pendingNote": "Nada foi cobrado.",
+    "pendingHead": "Suas respostas ficaram guardadas.",
+    "pendingLead": "O seu resultado está registrado. Falta só o relatório completo desta avaliação, que ainda está sendo escrito."
   }
 }

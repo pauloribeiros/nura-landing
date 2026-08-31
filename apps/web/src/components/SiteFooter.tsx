@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { LocaleSwitcher } from './LocaleSwitcher';
+import { FooterLegalColumn, FooterLegalLine, FooterSocial } from './FooterLegal';
 
 /** Compact footer for inner pages. */
 export function SiteFooter() {
@@ -19,10 +20,12 @@ export function SiteFooter() {
               {tb('name')}
             </Link>
             <p className="footer-copy">{t('copy')}</p>
+            <FooterSocial />
           </div>
+          <FooterLegalColumn />
         </div>
+        <FooterLegalLine />
         <div className="footer-bottom">
-          <span>{t('rights', { year: new Date().getFullYear() })}</span>
           <span>{t('tagline')}</span>
           {/* Required by the Storyset licence: the break-screen illustrations
               are free for commercial use only while this credit is visible.

@@ -344,9 +344,20 @@ a.path-hit:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 
 .faq { color: var(--nura-graphite); background: linear-gradient(125deg, #eff1f8, #f3edf8); }.faq-layout { display: grid; gap: 40px; }.faq-list { border-top: 1px solid #d2d8e6; }.faq-item { border-bottom: 1px solid #d2d8e6; }.faq-question { width: 100%; min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 14px 0; color: var(--nura-graphite); background: transparent; border: 0; cursor: pointer; text-align: left; font: 700 16px var(--app-font-display); }.faq-question svg { flex: 0 0 auto; color: var(--nura-blue); transition: transform .2s ease; }.faq-question.open svg { transform: rotate(45deg); }.faq-answer { max-width: 600px; padding: 0 42px 20px 0; color: var(--text-on-tint); font-size: 14px; line-height: 1.65; }
 
 .final-cta { position: relative; overflow: hidden; background: var(--nura-obsidian); }.final-cta:before { content: ""; position: absolute; width: 480px; height: 480px; right: -220px; bottom: -280px; border: 1px solid rgba(34,211,229,.28); border-radius: 50%; box-shadow: 0 0 0 50px rgba(117,87,255,.05), 0 0 0 100px rgba(59,103,255,.04); }.final-inner { position: relative; z-index: 1; text-align: center; }.final-cta h2 { max-width: 700px; margin: 16px auto 0; color: var(--text-on-dark); font: 700 clamp(39px, 6vw, 72px)/1.02 var(--app-font-display); letter-spacing: -.065em; }.final-cta p { max-width: 470px; margin: 20px auto 27px; color: var(--text-on-dark-muted); font-size: 16px; line-height: 1.6; }.final-cta .button { min-width: 236px; }
-.footer { padding: 32px 0 46px; color: #8e9ab0; background: var(--nura-obsidian); border-top: 1px solid rgba(255,255,255,.09); }.footer-grid { display: flex; flex-direction: column; gap: 25px; }.footer-brand { color: var(--text-on-dark); }.footer-copy { max-width: 260px; margin: 12px 0 0; font-size: 12px; line-height: 1.55; }.footer-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 24px; font-size: 12px; }.footer-nav a { min-height: 44px; display: inline-flex; align-items: center; }.footer-nav a:hover { color: #fff; }.footer-credit { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.footer { padding: 32px 0 46px; color: #8e9ab0; background: var(--nura-obsidian); border-top: 1px solid rgba(255,255,255,.09); }.footer-grid { display: flex; flex-direction: column; gap: 25px; }.footer-brand { color: var(--text-on-dark); }.footer-copy { max-width: 260px; margin: 12px 0 0; font-size: 12px; line-height: 1.55; }/* Colunas do rodape: um titulo curto e os links embaixo, como um indice. */
+.footer-col { display: flex; flex-direction: column; gap: 2px; font-size: 13px; }
+.footer-col-title { margin: 0 0 6px; color: var(--text-on-dark); font: 700 12px var(--app-font-mono); letter-spacing: .06em; text-transform: uppercase; }
+.footer-col a { min-height: 40px; display: inline-flex; align-items: center; }
+.footer-col a:hover { color: #fff; }
+/* O unico perfil que a NURA mantem. */
+.footer-social { width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; margin-top: 16px; border: 1px solid rgba(255,255,255,.16); border-radius: 50%; transition: color .2s ease, border-color .2s ease; }
+.footer-social:hover { color: #fff; border-color: rgba(255,255,255,.42); }
+/* A linha legal: identificacao do fornecedor e limites do servico. Fica em
+   corpo pequeno porque e obrigacao a ser cumprida, nao argumento de venda —
+   mas legivel, que e o que a obrigacao exige. */
+.footer-legal-line { max-width: 78ch; margin: 34px 0 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.09); color: #78849a; font-size: 11px; line-height: 1.7; }.footer-credit { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 .footer-credit:hover { color: #fff; }
-.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 35px; padding-top: 17px; border-top: 1px solid rgba(255,255,255,.09); color: #7a869c; font-size: 11px; }
+.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 18px; color: #7a869c; font-size: 11px; }
 .toast { position: fixed; z-index: 40; right: 18px; bottom: 18px; max-width: calc(100% - 36px); padding: 14px 17px; color: #fff; border: 1px solid rgba(34,211,229,.35); border-radius: 13px; background: var(--nura-deep-navy); box-shadow: 0 18px 40px rgba(0,0,0,.3); font-size: 13px; animation: toast-in .35s ease both; }.toast strong { display: block; margin-bottom: 3px; color: var(--nura-cyan); }
 .js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s cubic-bezier(.16, 1, .3, 1); }.reveal.visible { opacity: 1; transform: translateY(0); }
 @keyframes toast-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -361,7 +372,7 @@ a.path-hit:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 
   .featured-grid, .result-grid, .premium-grid { grid-template-columns: 1.05fr .95fr; }
   .trust-grid { grid-template-columns: .9fr 1.1fr; gap: 70px; }
   .faq-layout { grid-template-columns: .7fr 1.3fr; gap: 80px; }
-  .footer-grid { flex-direction: row; justify-content: space-between; align-items: flex-start; }
+  .footer-grid { flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 48px; }
 }
 @media (min-width: 900px) {
   .desktop-only { display: inline-flex; }
@@ -434,6 +445,23 @@ a.path-hit:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 
 
 .page { position: relative; z-index: 1; }
 .page-dark { color: var(--text-on-dark); background: var(--nura-obsidian); }
+
+/* ----------------------------------------------------- documentos legais ---
+   Medida de leitura estreita e hierarquia calma: sao textos longos que alguem
+   le por obrigacao ou por desconfianca, e nos dois casos o que ajuda e nao
+   atrapalhar. */
+.legal { padding: 116px 0 96px; }
+.legal-inner { max-width: 720px; }
+.legal-head { padding-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,.12); }
+.legal-head h1 { margin: 0; font: 700 clamp(32px, 5vw, 52px)/1.05 var(--app-font-display); letter-spacing: -.055em; }
+.legal-summary { margin: 20px 0 0; max-width: 58ch; color: var(--text-on-dark-muted); font-size: 16px; line-height: 1.7; }
+.legal-updated { margin: 14px 0 0; color: var(--text-on-dark-faint); font: 400 12px var(--app-font-mono); letter-spacing: .04em; }
+.legal-section { margin-top: 42px; scroll-margin-top: 96px; }
+.legal-section h2 { margin: 0 0 14px; font: 700 20px var(--app-font-display); letter-spacing: -.035em; }
+.legal-section p { margin: 0 0 14px; color: var(--text-on-dark-muted); font-size: 15px; line-height: 1.75; }
+.legal-section ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.legal-section li { position: relative; padding-left: 20px; color: var(--text-on-dark-muted); font-size: 15px; line-height: 1.7; }
+.legal-section li:before { content: ""; position: absolute; top: 10px; left: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--nura-cyan); }
 
 .page-head { padding: 132px 0 12px; display: grid; gap: 16px; }
 .page-head h1 { max-width: 16ch; font: 700 clamp(38px, 6vw, 68px)/1.02 var(--app-font-display); letter-spacing: -.06em; text-wrap: balance; }
@@ -1456,6 +1484,15 @@ body.is-running-test .header-actions .button { display: none; }
 }
 .gate-field input:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 2px; }
 .gate-form .button { justify-content: center; min-height: 54px; }
+/* Confirmacao de que o e-mail entrou na lista de espera. */
+.gate-saved { max-width: 520px; margin: 26px 0 6px; padding: 22px 24px; border-left: 3px solid var(--nura-cyan); background: rgba(34,211,229,.07); border-radius: 0 14px 14px 0; }
+.gate-saved-title { margin: 0 0 8px; font: 700 18px var(--app-font-display); letter-spacing: -.03em; }
+.gate-saved p { margin: 0; color: var(--text-on-dark-muted); font-size: 15px; line-height: 1.6; }
+/* Avaliacao sem relatorio escrito: o lugar do checkout. */
+.pay-pending { max-width: 560px; padding: 26px 28px; border: 1px solid rgba(255,255,255,.14); border-radius: 18px; background: rgba(255,255,255,.03); }
+.pay-pending-title { margin: 0 0 10px; font: 700 20px var(--app-font-display); letter-spacing: -.035em; }
+.pay-pending p { margin: 0; color: var(--text-on-dark-muted); font-size: 15px; line-height: 1.6; }
+.pay-pending-note { margin-top: 14px !important; color: var(--nura-cyan) !important; font: 700 12px var(--app-font-mono) !important; letter-spacing: .04em; }
 
 /* Os numeros embaixo do botao: o que ja e sabido sobre esta corrida. */
 .iq-gate-stats {
