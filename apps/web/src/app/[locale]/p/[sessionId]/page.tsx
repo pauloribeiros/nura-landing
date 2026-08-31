@@ -9,6 +9,7 @@ import { SiteHeader } from '@/components/SiteHeader';
 import { SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL, supabaseConfigured } from '@/lib/supabase/env';
 import { CheckoutAccordion } from '@/components/iq/CheckoutAccordion';
 import { FocusMode } from '@/components/FocusMode';
+import { reportIsSellable } from '@/content/landing';
 
 /**
  * A página de pagamento, na nossa casa em vez da do Stripe.
@@ -77,6 +78,15 @@ export default async function PaginaDePagamento({
     .maybeSingle();
 
   const t = await getTranslations({ locale, namespace: 'iq_checkout' });
+
+  /**
+   * Avaliacao sem relatorio escrito nao mostra pagamento.
+   *
+   * As rotas de `/api` ja recusam, entao ninguem consegue pagar por aqui de
+   * qualquer forma — mas uma pagina que oferece um botao que o servidor vai
+   * negar e pior do que nao oferecer nada. Aqui a pessoa le o que aconteceu.
+   */
+  const aVenda = reportIsSellable(sessao.assessment_id);
   // O que esta sendo vendido muda com a avaliacao; o resto da pagina nao.
   const inclui =
     sessao.assessment_id === 'attention'
@@ -94,9 +104,18 @@ export default async function PaginaDePagamento({
             {/* O título é a recompensa de vinte minutos de teste: chega com um
                 brilho e uma entrada de uma vez só. O subtítulo carrega a
                 instrução, para a comemoração não custar clareza. */}
-            <h1 className="pay-title">{t('title')}</h1>
-            <p className="runner-lead pay-subtitle">{t('subtitle')}</p>
+            {/* Sem nada a venda, a comemoracao e o "escolha como prefere
+                pagar" contradiziam o aviso logo abaixo. */}
+            <h1 className="pay-title">{aVenda ? t('title') : t('pendingHead')}</h1>
+            <p className="runner-lead pay-subtitle">{aVenda ? t('subtitle') : t('pendingLead')}</p>
 
+            {!aVenda ? (
+              <div className="pay-pending">
+                <p className="pay-pending-title">{t('pendingTitle')}</p>
+                <p>{t('pendingBody')}</p>
+                <p className="pay-pending-note">{t('pendingNote')}</p>
+              </div>
+            ) : (
             <div className="pay-grid">
               {/* O que está sendo comprado, ao lado de como pagar: a pessoa
                   não precisa lembrar de cor o que viu na tela anterior. */}
@@ -126,6 +145,7 @@ export default async function PaginaDePagamento({
                 <CheckoutAccordion sessionId={sessionId} email={lead?.email ?? undefined} />
               )}
             </div>
+            )}
           </div>
         </section>
       </main>

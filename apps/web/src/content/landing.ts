@@ -23,6 +23,20 @@ export interface AssessmentEntry {
    * pages for non-existent products cost more in SEO than they earn.
    */
   available: boolean;
+  /**
+   * Se existe um relatorio pago escrito para esta avaliacao.
+   *
+   * Separado de `available` porque sao duas coisas diferentes: dá para fazer o
+   * teste (available) sem que haja o que vender no fim (reportReady). O de QI
+   * esta exatamente nesse estado — a corrida e pontuada e guardada, mas
+   * `ReportView` so conhece os dominios da ASRS, entao quem pagasse receberia
+   * o relatorio do TDAH com as perguntas erradas.
+   *
+   * Quem manda e o servidor: as rotas de pagamento recusam uma avaliacao com
+   * isto em `false`. Quando o relatorio de QI existir, vira `true` e o funil
+   * volta inteiro — nao ha nada mais a desfazer.
+   */
+  reportReady: boolean;
 }
 
 /**
@@ -37,6 +51,7 @@ export const ASSESSMENTS: AssessmentEntry[] = [
     slug: { 'pt-br': 'tdah', en: 'adhd', es: 'tdah' },
     featured: true,
     available: true,
+    reportReady: true,
   },
   {
     id: 'cognition',
@@ -46,6 +61,8 @@ export const ASSESSMENTS: AssessmentEntry[] = [
     slug: { 'pt-br': 'qi', en: 'iq', es: 'ci' },
     featured: false,
     available: true,
+    // O relatorio de QI ainda nao existe como conteudo. Ver `reportReady`.
+    reportReady: false,
   },
   {
     id: 'autism',
@@ -53,6 +70,7 @@ export const ASSESSMENTS: AssessmentEntry[] = [
     slug: { 'pt-br': 'espectro-autista', en: 'autism-spectrum', es: 'espectro-autista' },
     featured: false,
     available: false,
+    reportReady: false,
   },
   {
     id: 'giftedness',
@@ -60,8 +78,19 @@ export const ASSESSMENTS: AssessmentEntry[] = [
     slug: { 'pt-br': 'altas-habilidades', en: 'giftedness', es: 'altas-capacidades' },
     featured: false,
     available: false,
+    reportReady: false,
   },
 ];
+
+/**
+ * Se ha um relatorio a vender para esta avaliacao.
+ *
+ * Recebe o `assessment_id` gravado na sessao, entao serve tanto ao servidor
+ * quanto ao cliente. Um id desconhecido responde `false`: se nao sabemos o que
+ * e, nao vendemos.
+ */
+export const reportIsSellable = (assessmentId: string) =>
+  ASSESSMENTS.find((a) => a.id === assessmentId)?.reportReady === true;
 
 export const FEATURED_ASSESSMENT = ASSESSMENTS.find((a) => a.featured)!;
 export const GRID_ASSESSMENTS = ASSESSMENTS.filter((a) => !a.featured);
@@ -72,6 +101,15 @@ export function assessmentBySlug(locale: Locale, slug: string) {
 }
 
 /** Route segments. Localised so the URLs read naturally in each market. */
+/**
+ * Perfil oficial no Instagram — a unica rede que a NURA mantem.
+ *
+ * Vazio significa "ainda nao existe", e o icone simplesmente nao e desenhado.
+ * Um icone de rede social que leva a uma pagina inexistente custa mais
+ * confianca do que a ausencia dele.
+ */
+export const INSTAGRAM_URL = '';
+
 export const ROUTE_SEGMENTS = {
   catalog: { 'pt-br': 'testes', en: 'tests', es: 'tests' },
   assessment: { 'pt-br': 'avaliacao', en: 'assessment', es: 'evaluacion' },

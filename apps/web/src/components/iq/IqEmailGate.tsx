@@ -9,6 +9,7 @@ import {
   percentilSimuladoLigado,
 } from '@/domain/iq/percentilSimulado';
 import { saveLead } from '@/lib/supabase/leadStore';
+import { reportIsSellable } from '@/content/landing';
 import { track } from '@/lib/analytics';
 
 /**
@@ -24,6 +25,12 @@ import { track } from '@/lib/analytics';
  * o endereço fica — é a única coisa que sobrevive a uma desistência, e é para
  * isso que ele é pedido antes e não depois.
  *
+ * ENQUANTO O RELATÓRIO DE QI NÃO EXISTIR, esta tela não leva ao pagamento: o
+ * e-mail vira uma lista de espera e a pessoa lê que o relatório ainda está
+ * sendo escrito. Cobrar aqui entregaria o relatório do TDAH com as perguntas
+ * erradas — `reportReady`, em `content/landing`, é quem decide, e o servidor
+ * recusa de qualquer forma.
+ *
  * "MAIS RÁPIDO QUE X%" só aparece com `NEXT_PUBLIC_IQ_PERCENTIL_SIMULADO=1`.
  * O número é simulado, não medido, e o arquivo que o produz diz isso em toda
  * linha. Sem a variável, a tela mostra só o tempo, que é real.
@@ -38,7 +45,8 @@ export function IqEmailGate({
   const t = useTranslations('iq_gate');
   const locale = useLocale();
   const [email, setEmail] = useState('');
-  const [estado, setEstado] = useState<'idle' | 'enviando' | 'erro'>('idle');
+  const [estado, setEstado] = useState<'idle' | 'enviando' | 'guardado' | 'erro'>('idle');
+  const aVenda = reportIsSellable('cognition');
 
   const minutos = Math.floor(result.tempoTotal_ms / 60000);
   const segundos = Math.floor((result.tempoTotal_ms % 60000) / 1000);
@@ -52,7 +60,14 @@ export function IqEmailGate({
     track('lead_submitted', { assessment: 'cognition', source: 'iq_gate' });
 
     // Guardado primeiro: um checkout abandonado ainda deixa o contato.
-    await saveLead({ email: email.trim(), assessmentId: 'cognition', sessionId, locale });
+    const salvo = await saveLead({ email: email.trim(), assessmentId: 'cognition', sessionId, locale });
+
+    // Sem relatório para vender, o e-mail é o fim do caminho — e é uma lista
+    // de espera de gente que acabou de fazer o teste inteiro.
+    if (!aVenda) {
+      setEstado(salvo ? 'guardado' : 'erro');
+      return;
+    }
 
     if (!sessionId) {
       setEstado('erro');
@@ -69,9 +84,15 @@ export function IqEmailGate({
     <section className="runner iq-gate">
       <div className="wrap runner-inner">
         <p className="eyebrow eyebrow-light">{t('eyebrow')}</p>
-        <h1>{t('title')}</h1>
-        <p className="runner-lead">{t('lead')}</p>
+        <h1>{aVenda ? t('title') : t('waitTitle')}</h1>
+        <p className="runner-lead">{aVenda ? t('lead') : t('waitLead')}</p>
 
+        {estado === 'guardado' ? (
+          <div className="gate-saved">
+            <p className="gate-saved-title">{t('savedTitle')}</p>
+            <p>{t('savedBody', { email: email.trim() })}</p>
+          </div>
+        ) : (
         <form className="gate-form" onSubmit={seguir}>
           <label className="gate-field">
             <span>{t('emailLabel')}</span>
@@ -87,10 +108,11 @@ export function IqEmailGate({
           </label>
 
           <button type="submit" className="button button-primary" disabled={!valido || estado === 'enviando'}>
-            {estado === 'enviando' ? t('sending') : t('cta')}
+            {estado === 'enviando' ? t('sending') : aVenda ? t('cta') : t('waitCta')}
             <ArrowRight size={16} aria-hidden="true" />
           </button>
         </form>
+        )}
 
         {estado === 'erro' ? <p className="runner-hint">{t('error')}</p> : null}
 

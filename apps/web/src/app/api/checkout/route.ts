@@ -4,7 +4,7 @@ import { cookies } from 'next/headers';
 import { SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL, supabaseConfigured } from '@/lib/supabase/env';
 import { CURRENCY, PRICE_CENTS, getStripe } from '@/lib/payments/stripe';
 import { SITE_URL } from '@/lib/site';
-import { reportPath } from '@/content/landing';
+import { reportIsSellable, reportPath } from '@/content/landing';
 import { routing, type Locale } from '@/i18n/routing';
 
 /**
@@ -62,6 +62,13 @@ export async function POST(request: Request) {
 
   // Not yours and not real give the same answer, so ids cannot be probed.
   if (!session) return NextResponse.json({ error: 'not-found' }, { status: 404 });
+
+  // Uma avaliacao cujo relatorio ainda nao foi escrito nao entra em cobranca.
+  // A checagem e aqui, no servidor, e nao so na tela: e o unico ponto por onde
+  // o dinheiro passa, e uma tela pode ser contornada.
+  if (!reportIsSellable(session.assessment_id)) {
+    return NextResponse.json({ error: 'report-not-ready' }, { status: 409 });
+  }
 
   // Selling a report for a run that was never scored would take money for
   // something that cannot be delivered.

@@ -3,6 +3,7 @@ import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 import { SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL, supabaseConfigured } from '@/lib/supabase/env';
 import { CURRENCY, PRICE_CENTS, getStripe } from '@/lib/payments/stripe';
+import { reportIsSellable } from '@/content/landing';
 
 /**
  * Abre um PaymentIntent para uma corrida.
@@ -58,6 +59,13 @@ export async function POST(request: Request) {
     .eq('id', sessionId)
     .maybeSingle();
   if (!sessao) return NextResponse.json({ error: 'not-found' }, { status: 404 });
+
+  // Uma avaliacao cujo relatorio ainda nao foi escrito nao entra em cobranca.
+  // A checagem e aqui, no servidor, e nao so na tela: e o unico ponto por onde
+  // o dinheiro passa, e uma tela pode ser contornada.
+  if (!reportIsSellable(sessao.assessment_id)) {
+    return NextResponse.json({ error: 'report-not-ready' }, { status: 409 });
+  }
 
   // Vender o relatório de uma corrida que nunca foi pontuada seria receber por
   // algo que não existe do outro lado.
