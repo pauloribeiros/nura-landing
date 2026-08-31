@@ -25,6 +25,11 @@ export interface AssessmentEntry {
   available: boolean;
 }
 
+/**
+ * A ordem aqui e a ordem na tela: indice, catalogo e a lista da home leem
+ * este array direto. O que ja abriu vem antes do que ainda nao abriu, para a
+ * primeira coisa que a pessoa encontra ser uma que ela pode fazer agora.
+ */
 export const ASSESSMENTS: AssessmentEntry[] = [
   {
     id: 'attention',
@@ -34,20 +39,20 @@ export const ASSESSMENTS: AssessmentEntry[] = [
     available: true,
   },
   {
-    id: 'autism',
-    index: '02',
-    slug: { 'pt-br': 'espectro-autista', en: 'autism-spectrum', es: 'espectro-autista' },
-    featured: false,
-    available: false,
-  },
-  {
     id: 'cognition',
-    index: '03',
+    index: '02',
     // Slug is "qi" because that is what people search for, even though the
     // product never claims to produce an IQ score — see the disclaimer.
     slug: { 'pt-br': 'qi', en: 'iq', es: 'ci' },
     featured: false,
     available: true,
+  },
+  {
+    id: 'autism',
+    index: '03',
+    slug: { 'pt-br': 'espectro-autista', en: 'autism-spectrum', es: 'espectro-autista' },
+    featured: false,
+    available: false,
   },
   {
     id: 'giftedness',
