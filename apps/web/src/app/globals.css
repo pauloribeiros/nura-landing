@@ -171,22 +171,51 @@ a { color: inherit; text-decoration: none; }
 /* --------------------------------------------------------------- paths ---
    Um indice, nao uma vitrine. O que sustenta a secao e a tipografia e o
    sistema de fios; nao ha gradiente arco-iris nem grade de fundo, que eram o
-   que fazia o bloco parecer gerado. O papel e quase branco de proposito: a
-   secao vem depois de um bloco escuro e o contraste ja e o suficiente. */
-.paths { position: relative; color: var(--nura-graphite); background: #f4f5f7; }
-.paths:before {
-  /* Um unico traco de cor, no fio de cima da lista, no lugar do fundo
-     colorido inteiro. */
-  content: ""; position: absolute; inset: 0 0 auto; height: 3px;
-  background: linear-gradient(90deg, var(--nura-blue), var(--nura-cyan) 62%, transparent);
+   que fazia o bloco parecer gerado.
+
+   O FUNDO E DE PETROLEO, nao do azul-marinho das outras secoes escuras. O
+   site ja usa obsidiana (#070b14) no hero e no CTA final, e navy com violeta
+   no NURA Perfil; repetir um deles aqui juntaria tres blocos escuros num
+   borrao so. Este puxa o ciano da marca para dentro da superficie, entao a
+   secao se le como um lugar diferente sem sair da paleta.
+
+   O GRAO E O QUE TIRA O AR DE TEMPLATE. Um chapado escuro com um degrade por
+   cima e exatamente o fundo que qualquer gerador entrega; a textura fina da
+   materia a superficie e nenhuma outra secao tem. Vem de um SVG embutido —
+   sem arquivo, sem requisicao. */
+.paths {
+  position: relative; overflow: hidden; isolation: isolate;
+  color: var(--text-on-dark);
+  background: linear-gradient(176deg, #10303b 0%, #0b2530 48%, #081d26 100%);
 }
-.paths .wrap { position: relative; }
+/* A luz que anda com a rolagem. `--p` vem do ScrollGlow e vale 0 quando o
+   bloco entra por baixo e 1 quando sai por cima; sem JavaScript ele fica em
+   .5, que e uma composicao estatica valida e nao um fundo quebrado. */
+.paths-glow {
+  --p: .5;
+  position: absolute; inset: 0; z-index: -2; pointer-events: none;
+  background:
+    radial-gradient(120% 92% at calc(86% - var(--p) * 30%) calc(-16% + var(--p) * 46%), rgba(34,211,229,.22), transparent 58%),
+    radial-gradient(96% 76% at calc(2% + var(--p) * 26%) calc(116% - var(--p) * 44%), rgba(59,103,255,.18), transparent 62%);
+}
+/* O fio de cor no topo: fecha a secao clara que vem antes e abre esta. */
+.paths:before {
+  content: ""; position: absolute; inset: 0 0 auto; height: 3px; z-index: 2;
+  background: linear-gradient(90deg, var(--nura-cyan), var(--nura-blue) 58%, transparent);
+}
+.paths:after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  opacity: .5; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='.42'/%3E%3C/svg%3E");
+}
+.paths .wrap { position: relative; z-index: 1; }
+.paths .eyebrow { color: var(--nura-cyan); }
 
 .paths-head { max-width: 640px; }
-.paths-lead { max-width: 46ch; margin: 20px 0 0; color: var(--text-on-tint); font-size: 16px; line-height: 1.65; }
+.paths-lead { max-width: 46ch; margin: 20px 0 0; color: var(--text-on-dark-muted); font-size: 16px; line-height: 1.65; }
 
-.path-list { margin: 54px 0 0; padding: 0; list-style: none; border-top: 1px solid rgba(24,34,54,.14); }
-.path-row { border-bottom: 1px solid rgba(24,34,54,.14); }
+.path-list { margin: 54px 0 0; padding: 0; list-style: none; border-top: 1px solid rgba(150,205,215,.2); }
+.path-row { border-bottom: 1px solid rgba(150,205,215,.2); }
 
 /* A linha inteira e o alvo — nao ha botao dentro do item, porque o item ja e
    o botao. Grid de tres colunas para o numero, o texto e o estado ficarem
@@ -196,13 +225,13 @@ a { color: inherit; text-decoration: none; }
   gap: 0 20px; padding: 30px 0; color: inherit; text-decoration: none;
   transition: padding .28s cubic-bezier(.22,.61,.36,1), background .28s ease;
 }
-.path-num { color: #8b93a5; font: 400 11px var(--app-font-mono); letter-spacing: .06em; }
+.path-num { color: #7d97a0; font: 400 11px var(--app-font-mono); letter-spacing: .06em; }
 .path-body { display: block; }
 .path-name {
   display: block; font: 700 clamp(24px, 2.7vw, 34px)/1.15 var(--app-font-display);
   letter-spacing: -.045em; transition: color .2s ease;
 }
-.path-desc { display: block; max-width: 44ch; margin-top: 9px; color: var(--text-on-tint); font-size: 15px; line-height: 1.55; }
+.path-desc { display: block; max-width: 44ch; margin-top: 9px; color: var(--text-on-dark-muted); font-size: 15px; line-height: 1.55; }
 
 /* O estado alinhado a direita: "Comecar ->" no que abre, "Em breve" no que
    ainda nao. A diferenca de peso e de cor entre os dois e o que da ritmo a
@@ -211,23 +240,23 @@ a { color: inherit; text-decoration: none; }
   display: inline-flex; align-items: center; gap: 9px; white-space: nowrap;
   font: 700 12px var(--app-font-mono); letter-spacing: .04em;
 }
-.is-open .path-state { color: var(--nura-blue); }
+.is-open .path-state { color: var(--nura-cyan); }
 .is-open .path-state svg { transition: transform .28s cubic-bezier(.22,.61,.36,1); }
-.is-soon .path-state { color: #8b93a5; font-weight: 400; }
+.is-soon .path-state { color: #7d97a0; font-weight: 400; }
 .is-soon .path-hit { cursor: default; }
-.is-soon .path-name { color: #59617a; }
+.is-soon .path-name { color: #93a8b1; }
 
-a.path-hit:hover { padding-left: 16px; background: linear-gradient(90deg, rgba(255,255,255,.9), rgba(255,255,255,0) 70%); }
-a.path-hit:hover .path-name { color: var(--nura-blue); }
+a.path-hit:hover { padding-left: 16px; background: linear-gradient(90deg, rgba(34,211,229,.1), rgba(34,211,229,0) 68%); }
+a.path-hit:hover .path-name { color: var(--nura-cyan); }
 a.path-hit:hover .path-state svg, a.path-hit:hover > svg { transform: translateX(5px); }
-a.path-hit:focus-visible { outline: 3px solid var(--nura-blue); outline-offset: -3px; }
+a.path-hit:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: -3px; }
 
 /* A ultima linha continua a lista em vez de flutuar embaixo dela. Aqui a
    seta anda junto do texto — nao ha estado a alinhar a direita, e uma seta
    sozinha no fim da linha ficaria orfa. */
 .path-all .path-hit { grid-template-columns: 44px max-content 1fr; gap: 0 12px; padding: 22px 0; }
-.path-all .path-name { color: var(--nura-blue); font: 700 14px var(--app-font-mono); letter-spacing: .02em; }
-.path-all .path-hit > svg { color: var(--nura-blue); align-self: center; transition: transform .28s cubic-bezier(.22,.61,.36,1); }
+.path-all .path-name { color: var(--nura-cyan); font: 700 14px var(--app-font-mono); letter-spacing: .02em; }
+.path-all .path-hit > svg { color: var(--nura-cyan); align-self: center; transition: transform .28s cubic-bezier(.22,.61,.36,1); }
 
 @media (prefers-reduced-motion: reduce) {
   .path-hit, .is-open .path-state svg { transition: none; }

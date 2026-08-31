@@ -18,6 +18,7 @@ import { NuraLogo } from '../Header';
 import { FaqList } from '../FaqList';
 import { ResultCard } from '../ResultCard';
 import { RevealLines } from '../RevealLines';
+import { ScrollGlow } from '../ScrollGlow';
 import { LocaleSwitcher } from '../LocaleSwitcher';
 
 /* ---------------------------------------------------------------- hero --- */
@@ -143,6 +144,7 @@ export function AssessmentPaths() {
 
   return (
     <section className="section paths" id={SECTION_IDS.assessments}>
+      <ScrollGlow className="paths-glow" />
       <div className="wrap">
         <div className="paths-head reveal">
           <p className="eyebrow">{t('sectionEyebrow')}</p>
