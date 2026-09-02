@@ -269,7 +269,7 @@
     "refund": "Refund policy",
     "instagram": "NURA on Instagram",
     "legalCopyright": "Copyright © {year} NURA.",
-    "legalEntity": "{razao}, CNPJ {cnpj}. {endereco}.",
+    "legalEntity": "{razao}, {rotulo} {documento}. {endereco}.",
     "legalRest": "All rights reserved. All trade marks mentioned here are the property of their respective owners. The assessments are for information and self-knowledge, are not a diagnosis and do not replace assessment by a qualified professional."
   },
   "stickyCta": {

@@ -70,7 +70,8 @@ export function FooterLegalLine() {
       {operadorIdentificado
         ? `${t('legalEntity', {
             razao: OPERADOR.razaoSocial,
-            cnpj: OPERADOR.cnpj,
+            rotulo: OPERADOR.documentoRotulo,
+            documento: OPERADOR.documento,
             endereco: OPERADOR.endereco,
           })} `
         : ''}

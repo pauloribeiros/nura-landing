@@ -269,7 +269,7 @@
     "refund": "Política de reembolso",
     "instagram": "NURA no Instagram",
     "legalCopyright": "Copyright © {year} NURA.",
-    "legalEntity": "{razao}, CNPJ {cnpj}. {endereco}.",
+    "legalEntity": "{razao}, {rotulo} {documento}. {endereco}.",
     "legalRest": "Todos os direitos reservados. Todas as marcas registradas aqui mencionadas são propriedade de seus respectivos donos. As avaliações têm finalidade informativa e de autoconhecimento, não constituem diagnóstico e não substituem a avaliação de um profissional habilitado."
   },
   "stickyCta": {

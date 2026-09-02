@@ -30,10 +30,19 @@ import type { Locale } from '@/i18n/routing';
  * paginas passam a existir sozinhas.
  */
 export const OPERADOR = {
-  /** Razao social completa, como no cartao CNPJ. */
+  /** Razao social completa, ou o nome civil de quem vende como pessoa fisica. */
   razaoSocial: '',
+  /**
+   * "CNPJ" ou "CPF".
+   *
+   * O Decreto 7.962/2013, art. 2o, I, aceita os dois: quem vende online se
+   * identifica pelo CNPJ, "quando houver", e pelo CPF quando nao houver. O
+   * rotulo e um campo porque a frase muda com ele, e escrever "CNPJ" ao lado
+   * de um CPF seria informacao errada num documento que existe para informar.
+   */
+  documentoRotulo: '',
   /** Apenas digitos ou formatado — sai na tela como estiver escrito aqui. */
-  cnpj: '',
+  documento: '',
   /** Endereco fisico completo, com municipio e UF. */
   endereco: '',
   /** Onde o consumidor fala sobre a compra. */
@@ -128,7 +137,7 @@ const privacidadePt: DocumentoLegal = {
     {
       titulo: '1. Quem trata seus dados',
       paragrafos: [
-        `O controlador dos dados pessoais tratados na NURA é ${OPERADOR.razaoSocial}, inscrita no CNPJ ${OPERADOR.cnpj}, com endereço em ${OPERADOR.endereco}.`,
+        `O controlador dos dados pessoais tratados na NURA é ${OPERADOR.razaoSocial}, ${OPERADOR.documentoRotulo} ${OPERADOR.documento}, com endereço em ${OPERADOR.endereco}.`,
         `Para qualquer assunto relativo a dados pessoais, inclusive o exercício dos direitos descritos na seção 8, fale com o nosso encarregado pelo e-mail ${OPERADOR.emailEncarregado}.`,
       ],
     },
@@ -262,7 +271,7 @@ const termosPt: DocumentoLegal = {
     {
       titulo: '1. Quem oferece o serviço',
       paragrafos: [
-        `A NURA é operada por ${OPERADOR.razaoSocial}, CNPJ ${OPERADOR.cnpj}, com endereço em ${OPERADOR.endereco}. O canal de atendimento ao consumidor é o e-mail ${OPERADOR.emailContato}.`,
+        `A NURA é operada por ${OPERADOR.razaoSocial}, ${OPERADOR.documentoRotulo} ${OPERADOR.documento}, com endereço em ${OPERADOR.endereco}. O canal de atendimento ao consumidor é o e-mail ${OPERADOR.emailContato}.`,
       ],
     },
     {
@@ -354,7 +363,7 @@ const privacidadeEn: DocumentoLegal = {
     {
       titulo: '1. Who handles your data',
       paragrafos: [
-        `The controller of personal data at NURA is ${OPERADOR.razaoSocial}, registered under Brazilian company number (CNPJ) ${OPERADOR.cnpj}, at ${OPERADOR.endereco}.`,
+        `The controller of personal data at NURA is ${OPERADOR.razaoSocial}, Brazilian tax number (${OPERADOR.documentoRotulo}) ${OPERADOR.documento}, at ${OPERADOR.endereco}.`,
         `For anything concerning personal data, including the rights described in section 8, write to our data protection officer at ${OPERADOR.emailEncarregado}.`,
       ],
     },
@@ -484,7 +493,7 @@ const termosEn: DocumentoLegal = {
     {
       titulo: '1. Who provides the service',
       paragrafos: [
-        `NURA is operated by ${OPERADOR.razaoSocial}, CNPJ ${OPERADOR.cnpj}, at ${OPERADOR.endereco}. The customer service channel is ${OPERADOR.emailContato}.`,
+        `NURA is operated by ${OPERADOR.razaoSocial}, ${OPERADOR.documentoRotulo} ${OPERADOR.documento}, at ${OPERADOR.endereco}. The customer service channel is ${OPERADOR.emailContato}.`,
       ],
     },
     {
@@ -576,7 +585,7 @@ const privacidadeEs: DocumentoLegal = {
     {
       titulo: '1. Quién trata tus datos',
       paragrafos: [
-        `El responsable de los datos personales tratados en NURA es ${OPERADOR.razaoSocial}, inscrita con el CNPJ ${OPERADOR.cnpj}, con domicilio en ${OPERADOR.endereco}.`,
+        `El responsable de los datos personales tratados en NURA es ${OPERADOR.razaoSocial}, ${OPERADOR.documentoRotulo} ${OPERADOR.documento}, con domicilio en ${OPERADOR.endereco}.`,
         `Para cualquier asunto relativo a datos personales, incluido el ejercicio de los derechos descritos en la sección 8, escribe a nuestro encargado a ${OPERADOR.emailEncarregado}.`,
       ],
     },
@@ -706,7 +715,7 @@ const termosEs: DocumentoLegal = {
     {
       titulo: '1. Quién ofrece el servicio',
       paragrafos: [
-        `NURA es operada por ${OPERADOR.razaoSocial}, CNPJ ${OPERADOR.cnpj}, con domicilio en ${OPERADOR.endereco}. El canal de atención al consumidor es ${OPERADOR.emailContato}.`,
+        `NURA es operada por ${OPERADOR.razaoSocial}, ${OPERADOR.documentoRotulo} ${OPERADOR.documento}, con domicilio en ${OPERADOR.endereco}. El canal de atención al consumidor es ${OPERADOR.emailContato}.`,
       ],
     },
     {
