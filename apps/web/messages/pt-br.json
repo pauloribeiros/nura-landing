@@ -361,7 +361,7 @@
     "disclaimer": "Instrumento de rastreio e autoconhecimento. O resultado é informativo, não constitui diagnóstico e não substitui avaliação de um profissional habilitado.",
     "start": "Começar",
     "resume": "Continuar de onde parei",
-    "resumeFound": "Você já respondeu {answered} de 18 perguntas nesta avaliação.",
+    "resumeFound": "Você já respondeu {answered} de {total} perguntas nesta avaliação.",
     "startOver": "Começar do zero",
     "progress": "{answered} de {total} respondidas",
     "back": "Voltar",
@@ -891,6 +891,65 @@
         "title": "Falta pouco.",
         "lead": "Este último trecho fecha os quatro territórios que o teste percorre. Depois dele, montamos o seu resultado."
       }
+    },
+    "intro": {
+      "introLead": "São {count} afirmações sobre o seu jeito de se comunicar, a sua rotina, os seus sentidos e o seu foco. Leva de 8 a 12 minutos.",
+      "noRightAnswer": "Não existe resposta certa ou errada — você marca o quanto concorda com cada afirmação.",
+      "disclaimer": "Escala própria da NURA, sem estudo de validação. O resultado é informativo, não constitui diagnóstico e não substitui avaliação de um profissional habilitado."
     }
+  },
+  "espectro_result": {
+    "eyebrow": "Seu resultado",
+    "title": "O que suas respostas mostraram.",
+    "scaleLabel": "Escala NURA — 40 itens",
+    "count": "{count} de 40 traços reconhecidos",
+    "noCutoff": "Esta escala não tem ponto de corte clínico. As faixas descrevem, não classificam.",
+    "badge": {
+      "poucos": "Poucos traços",
+      "alguns": "Alguns traços",
+      "muitos": "Muitos traços"
+    },
+    "bandTitle": {
+      "poucos": "Você reconheceu poucos desses traços em si.",
+      "alguns": "Você reconheceu parte desses traços em si.",
+      "muitos": "Você reconheceu muitos desses traços em si."
+    },
+    "bandBody": {
+      "poucos": "Isso descreve as suas respostas de hoje, e nada além. Não descarta nada: muita gente autista responde baixo em questionários assim, por ter aprendido cedo a mascarar, por não reconhecer em palavras o que sente, ou porque o traço aparece em contextos que estas perguntas não alcançaram. Se algo continua te incomodando, o resultado baixo aqui não é motivo para parar de investigar.",
+      "alguns": "Uma parte dos territórios apareceu, outra não. Esse é o resultado mais comum, e também o mais fácil de ler errado nas duas direções — não confirma nem descarta. O que ele oferece é um mapa de onde olhar: os territórios que apareceram são os que valem observação no seu dia a dia, e os que não apareceram provavelmente não são o seu ponto de atrito.",
+      "muitos": "Vários traços apareceram, distribuídos pelos territórios. Isso não é um diagnóstico e não pode virar um sozinho — mas é um resultado que merece ser levado a sério em vez de arquivado. Se esses padrões atrapalham a sua vida de forma persistente, vale procurar avaliação com quem trabalha com autismo adulto."
+    },
+    "domainsTitle": "Onde os traços apareceram",
+    "domainsLead": "Os 40 itens se dividem em quatro territórios de dez. Aqui está quantos você reconheceu em cada um.",
+    "domains": {
+      "comunicacao": "Comunicação e reciprocidade",
+      "rotina": "Rotina e repetição",
+      "sensorial": "Processamento sensorial",
+      "foco": "Foco e detalhe"
+    },
+    "domainCount": "{flagged} de {total} itens",
+    "domainNone": "Nenhum item nesta faixa.",
+    "domainSegmentsLabel": "{domain}: {flagged} de {total} itens reconhecidos.",
+    "nextTitle": "O que fazer com isso",
+    "next": {
+      "poucos": "Se você fez este teste por causa de algo concreto que te incomoda, o resultado baixo não responde a essa pergunta — ele só diz que estes 40 itens não capturaram. Vale descrever a um profissional o que te trouxe aqui, com exemplos do seu dia, em vez de partir de um rótulo.",
+      "alguns": "Leve os territórios que apareceram para uma conversa com um profissional, com exemplos concretos. A pergunta útil não é se você está no espectro, e sim o que explica o que você sente e o que ajuda — e essas duas respostas às vezes são independentes do diagnóstico.",
+      "muitos": "Procure um psicólogo ou psiquiatra com experiência em autismo adulto. Diagnóstico em adultos exige história de vida, e não um questionário: leve exemplos de infância, de escola, de trabalho e de relações. Se você tem alguém que te conhece desde cedo, a lembrança dessa pessoa costuma valer muito na avaliação."
+    },
+    "strongest": "Foi em {domain} que mais traços apareceram — é o território que vale observar primeiro.",
+    "premiumFinding": "Você reconheceu {count} dos 40 traços. O relatório abre, item a item, o que apareceu, o que não apareceu, e o que mais poderia explicar o que você sente.",
+    "premiumTitle": "Desbloqueie seu Relatório NURA Completo",
+    "premiumLead": "Seu resultado aqui é uma visão inicial. O relatório organiza suas respostas e explica o que os padrões encontrados significam no dia a dia.",
+    "reportSections": {
+      "s1": "Como ler o seu resultado",
+      "s2": "Comunicação: o que apareceu nas suas respostas",
+      "s3": "Rotina, repetição e o que a previsibilidade sustenta",
+      "s4": "O seu perfil sensorial",
+      "s5": "Foco, detalhe e interesses profundos",
+      "s6": "O que levar e o que perguntar numa avaliação"
+    },
+    "deliveryNote": "Acesso imediato na NURA e uma cópia no e-mail que você informar.",
+    "disclaimer": "Este resultado vem da Escala NURA de traços do espectro, uma escala própria sem estudo de validação. É informativo, não constitui diagnóstico e não substitui avaliação de um profissional habilitado.",
+    "restart": "Refazer a avaliação"
   }
 }

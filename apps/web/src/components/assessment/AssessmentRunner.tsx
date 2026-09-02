@@ -29,6 +29,7 @@ import { AssessmentResult } from './AssessmentResult';
 import { Calculating, type PerguntaCarregamento } from '../Calculating';
 import { TransitionArt, type ArtVariant } from '../TransitionArt';
 import { ScaleCircles } from './ScaleCircles';
+import { EspectroResult } from './EspectroResult';
 import { useFocusMode } from '@/lib/focusMode';
 import { track } from '@/lib/analytics';
 import { randomId } from '@/lib/randomId';
@@ -81,6 +82,21 @@ interface Props {
   transitions?: { eyebrow: string; title: string; lead: string }[];
   /** Qual ilustracao acompanha cada pausa. */
   transitionArt?: ArtVariant[];
+  /**
+   * Perguntas feitas por cima da tela de calculo.
+   *
+   * Nao entram na pontuacao — personalizam uma linha do relatorio. Vinham
+   * fixas da ASRS, entao o teste de espectro perguntaria "em qual contexto
+   * voce percebe mais dificuldade" com as opcoes do TDAH.
+   */
+  contextQuestions?: PerguntaCarregamento[];
+  /**
+   * A abertura, quando o instrumento precisa da sua.
+   *
+   * A da ASRS fala em atencao, em frequencia e em rastreio — tres coisas que
+   * nao valem para uma escala de concordancia sobre tracos do espectro.
+   */
+  introCopy?: { lead: string; noRightAnswer: string; disclaimer: string };
 
   locale: string;
 }
@@ -108,6 +124,8 @@ export function AssessmentRunner({
   blockLabels,
   transitions,
   transitionArt,
+  contextQuestions,
+  introCopy,
 }: Props) {
   const t = useTranslations('runner');
   const pages = useMemo(() => paginate(definition, PAGE_SIZE), [definition]);
@@ -145,7 +163,7 @@ export function AssessmentRunner({
    * relatorio. Perguntadas aqui, deixam de ser tres telas entre terminar o
    * teste e ver o resultado.
    */
-  const perguntasContexto = useMemo<PerguntaCarregamento[]>(
+  const perguntasContextoAsrs = useMemo<PerguntaCarregamento[]>(
     () =>
       ASRS_CONTEXT.map((pergunta, i) => ({
         id: pergunta.id,
@@ -224,19 +242,21 @@ export function AssessmentRunner({
         <div className="wrap runner-inner">
           <p className="eyebrow eyebrow-light">{t('introEyebrow')}</p>
           <h1>{t('introTitle')}</h1>
-          <p className="runner-lead">{t('introLead', { count: definition.questions.length })}</p>
+          <p className="runner-lead">
+            {introCopy?.lead ?? t('introLead', { count: definition.questions.length })}
+          </p>
 
           <ul className="runner-notes">
             <li>{t('noteHonest')}</li>
-            <li>{t('noteNoRightAnswer')}</li>
+            <li>{introCopy?.noRightAnswer ?? t('noteNoRightAnswer')}</li>
             <li>{t('noteResume')}</li>
           </ul>
 
-          <p className="runner-disclaimer">{t('disclaimer')}</p>
+          <p className="runner-disclaimer">{introCopy?.disclaimer ?? t('disclaimer')}</p>
 
           {resumable ? (
             <div className="runner-resume">
-              <p>{t('resumeFound', { answered: resumable.answers.length })}</p>
+              <p>{t('resumeFound', { answered: resumable.answers.length, total: definition.questions.length })}</p>
               <div className="runner-actions">
                 <button type="button" className="button button-primary" onClick={() => begin(resumable)}>
                   {t('resume')} <ArrowRight size={16} aria-hidden="true" />
@@ -371,7 +391,7 @@ export function AssessmentRunner({
         eyebrow={t('calc.eyebrow')}
         titulo={t('calc.title')}
         lead={t('calc.lead')}
-        perguntas={perguntasContexto}
+        perguntas={contextQuestions ?? perguntasContextoAsrs}
         onResponder={(perguntaId, indice) => {
           const pergunta = ASRS_CONTEXT.find((p) => p.id === perguntaId);
           const escolha = pergunta?.choices[indice];
@@ -389,6 +409,21 @@ export function AssessmentRunner({
   }
 
   if (stage === 'done') {
+    /**
+     * Cada avaliacao tem a sua tela de resultado. O despacho e explicito pelo
+     * mesmo motivo do da rota: um padrao silencioso aqui mostraria desatencao
+     * e hiperatividade para quem respondeu sobre sons e rotina.
+     */
+    if (definition.assessmentId === 'autism') {
+      return (
+        <EspectroResult
+          result={scoreAssessment(definition, session.answers)}
+          sessionId={session.id}
+          onRestart={restart}
+        />
+      );
+    }
+
     return (
       <AssessmentResult
         result={scoreAssessment(definition, session.answers)}

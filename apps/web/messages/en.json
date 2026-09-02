@@ -361,7 +361,7 @@
     "disclaimer": "A screening and self-knowledge instrument. The result is informative, is not a diagnosis and does not replace assessment by a qualified professional.",
     "start": "Start",
     "resume": "Pick up where I left off",
-    "resumeFound": "You have already answered {answered} of 18 questions.",
+    "resumeFound": "You have already answered {answered} of {total} questions in this assessment.",
     "startOver": "Start over",
     "progress": "{answered} of {total} answered",
     "back": "Back",
@@ -891,6 +891,65 @@
         "title": "Almost there.",
         "lead": "This last stretch closes the four territories the test covers. After it, we put your result together."
       }
+    },
+    "intro": {
+      "introLead": "There are {count} statements about how you communicate, your routine, your senses and your focus. It takes 8 to 12 minutes.",
+      "noRightAnswer": "There is no right or wrong answer — you mark how much you agree with each statement.",
+      "disclaimer": "NURA's own scale, with no validation study. The result is informative, is not a diagnosis and does not replace assessment by a qualified professional."
     }
+  },
+  "espectro_result": {
+    "eyebrow": "Your result",
+    "title": "What your answers showed.",
+    "scaleLabel": "NURA scale — 40 items",
+    "count": "{count} of 40 traits recognised",
+    "noCutoff": "This scale has no clinical cut-off. The bands describe; they do not classify.",
+    "badge": {
+      "poucos": "Few traits",
+      "alguns": "Some traits",
+      "muitos": "Many traits"
+    },
+    "bandTitle": {
+      "poucos": "You recognised few of these traits in yourself.",
+      "alguns": "You recognised some of these traits in yourself.",
+      "muitos": "You recognised many of these traits in yourself."
+    },
+    "bandBody": {
+      "poucos": "That describes your answers today, and nothing more. It rules nothing out: plenty of autistic people score low on questionnaires like this, having learned to mask early, not recognising in words what they feel, or because the trait shows up in contexts these questions did not reach. If something still bothers you, a low result here is no reason to stop looking.",
+      "alguns": "Some territories showed up, others did not. This is the most common result, and also the easiest to misread in both directions — it neither confirms nor rules out. What it offers is a map of where to look: the territories that showed up are worth watching in your daily life, and the ones that did not are probably not where your friction is.",
+      "muitos": "Several traits showed up, spread across the territories. This is not a diagnosis and cannot become one on its own — but it is a result that deserves being taken seriously rather than filed away. If these patterns persistently get in the way of your life, it is worth seeking assessment from someone who works with adult autism."
+    },
+    "domainsTitle": "Where the traits showed up",
+    "domainsLead": "The 40 items split into four territories of ten. Here is how many you recognised in each.",
+    "domains": {
+      "comunicacao": "Communication and reciprocity",
+      "rotina": "Routine and repetition",
+      "sensorial": "Sensory processing",
+      "foco": "Focus and detail"
+    },
+    "domainCount": "{flagged} of {total} items",
+    "domainNone": "No items in this range.",
+    "domainSegmentsLabel": "{domain}: {flagged} of {total} items recognised.",
+    "nextTitle": "What to do with this",
+    "next": {
+      "poucos": "If you took this test because of something concrete that bothers you, a low result does not answer that question — it only says these 40 items did not catch it. It is worth describing to a professional what brought you here, with examples from your day, rather than starting from a label.",
+      "alguns": "Take the territories that showed up into a conversation with a professional, with concrete examples. The useful question is not whether you are on the spectrum, but what explains what you feel and what helps — and those two answers are sometimes independent of the diagnosis.",
+      "muitos": "Look for a psychologist or psychiatrist experienced in adult autism. Diagnosis in adults requires a life history, not a questionnaire: bring examples from childhood, school, work and relationships. If someone has known you since early on, their memory usually counts for a lot in the assessment."
+    },
+    "strongest": "It was in {domain} that most traits showed up — that is the territory worth watching first.",
+    "premiumFinding": "You recognised {count} of the 40 traits. The report opens up, item by item, what showed up, what did not, and what else could explain what you feel.",
+    "premiumTitle": "Unlock your full NURA Report",
+    "premiumLead": "Your result here is an initial view. The report organises your answers and explains what the patterns found mean day to day.",
+    "reportSections": {
+      "s1": "How to read your result",
+      "s2": "Communication: what showed up in your answers",
+      "s3": "Routine, repetition and what predictability holds up",
+      "s4": "Your sensory profile",
+      "s5": "Focus, detail and deep interests",
+      "s6": "What to bring and what to ask at an assessment"
+    },
+    "deliveryNote": "Immediate access on NURA, plus a copy sent to the email you enter.",
+    "disclaimer": "This result comes from the NURA spectrum traits scale, our own scale with no validation study. It is informative, is not a diagnosis and does not replace assessment by a qualified professional.",
+    "restart": "Take the assessment again"
   }
 }

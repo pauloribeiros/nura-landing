@@ -474,6 +474,14 @@ a.path-hit:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 
 .badge { display: inline-flex; align-items: center; padding: 5px 9px; border-radius: 999px; font: 700 10px var(--app-font-mono); letter-spacing: .12em; text-transform: uppercase; }
 .badge-available { color: var(--nura-obsidian); background: var(--nura-cyan); }
 .badge-upcoming { color: var(--text-on-dark-faint); border: 1px solid rgba(255,255,255,.2); }
+/* As tres faixas da escala do espectro.
+   NENHUMA DELAS E VERDE OU VERMELHA. Este teste nao aprova nem reprova
+   ninguem, e semaforo e a linguagem de urgencia medica — pintar "muitos
+   tracos" de vermelho transformaria uma descricao num alarme. A gradacao vai
+   do neutro ao ambar, que diz "olhe para isto", nao "algo esta errado". */
+.badge-poucos { color: var(--text-on-dark-faint); border: 1px solid rgba(255,255,255,.22); }
+.badge-alguns { color: var(--nura-obsidian); background: var(--status-clear); }
+.badge-muitos { color: var(--nura-obsidian); background: var(--status-attention); }
 
 /* catalog */
 .catalog-list { display: grid; gap: 16px; padding: 40px 0 0; }
@@ -666,6 +674,9 @@ a.path-hit:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 
   border-left-width: 4px;
   background: rgba(240,178,60,.09);
 }
+.result-band.is-alguns { border-left-color: var(--status-clear); background: var(--status-clear-soft); }
+.result-band.is-muitos { border-left-color: var(--status-attention); border-left-width: 4px; background: rgba(240,178,60,.09); }
+.result-band.is-poucos { border-left-color: var(--text-on-dark-faint); background: rgba(255,255,255,.04); }
 .result-band-label { color: var(--text-on-dark-faint); font: 700 10px var(--app-font-mono); letter-spacing: .14em; text-transform: uppercase; }
 .result-band-count { font: 700 clamp(26px, 3.4vw, 38px)/1.1 var(--app-font-display); letter-spacing: -.04em; }
 .result-band-cutoff { color: var(--text-on-dark-faint); font-size: 13px; }

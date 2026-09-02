@@ -159,6 +159,15 @@ export default async function AssessmentPage({ params }: { params: Params }) {
             blockLabels={espectroBlocos}
             transitions={espectroPausas}
             transitionArt={['start', 'middle', 'end']}
+            // A escala do espectro nao tem perguntas de contexto: as da ASRS
+            // perguntam sobre dificuldade no trabalho e nos estudos, que nao e
+            // o que este teste observa.
+            contextQuestions={[]}
+            introCopy={{
+              lead: te('intro.introLead', { count: nuraEspectro40.questions.length }),
+              noRightAnswer: te('intro.noRightAnswer'),
+              disclaimer: te('intro.disclaimer'),
+            }}
           />
         );
       }
