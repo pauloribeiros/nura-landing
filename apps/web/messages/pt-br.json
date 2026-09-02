@@ -782,5 +782,60 @@
     "disclaimer": "Este relatório tem finalidade informativa e de autoconhecimento. Não é diagnóstico, não é medida de QI e não substitui avaliação de um profissional habilitado.",
     "print": "Salvar em PDF",
     "printHint": "Abre o diálogo de impressão do seu aparelho. No iPhone: toque em Compartilhar, depois em Imprimir, e escolha Salvar em Arquivos."
+  },
+  "espectro": {
+    "prompts": {
+      "esp-01": "Faço certas tarefas sempre da mesma maneira, mesmo quando há outros jeitos.",
+      "esp-02": "Tenho dificuldade com assuntos abstratos, sem exemplo concreto.",
+      "esp-03": "Lugares movimentados me deixam sobrecarregado.",
+      "esp-04": "Prefiro que me expliquem as coisas de forma direta, sem rodeios.",
+      "esp-05": "Mudo meu jeito de falar sem esforço, dependendo de com quem estou.",
+      "esp-06": "Ser tocado de surpresa me incomoda.",
+      "esp-07": "Prefiro passar meu tempo livre sozinho.",
+      "esp-08": "Percebo padrões e detalhes que passam despercebidos para os outros.",
+      "esp-09": "Me expresso melhor escrevendo do que falando.",
+      "esp-10": "Prefiro tarefas com um passo a passo claro a tarefas em aberto.",
+      "esp-11": "Mudanças na minha rotina me incomodam mais do que incomodam as pessoas ao meu redor.",
+      "esp-12": "Evito certos alimentos pela textura ou pelo cheiro, não pelo sabor.",
+      "esp-13": "Consigo ignorar o que acontece ao redor quando preciso me concentrar.",
+      "esp-14": "Repetir certos gestos ou movimentos me acalma.",
+      "esp-15": "Tenho dificuldade de fazer várias coisas ao mesmo tempo.",
+      "esp-16": "Luzes fortes ou ruídos altos me incomodam mais do que incomodam os outros.",
+      "esp-17": "Escolho roupas pela textura do tecido, não só pela aparência.",
+      "esp-18": "Trocar de assunto ou de tarefa exige um esforço grande de mim.",
+      "esp-19": "Rotinas me dão uma sensação de calma.",
+      "esp-20": "Tenho um jeito próprio de organizar minhas coisas, e reparo quando alguém mexe.",
+      "esp-21": "Entendo o que me dizem de forma literal, e às vezes percebo depois que era só modo de dizer.",
+      "esp-22": "Tenho dificuldade de perceber quando uma conversa chegou ao fim.",
+      "esp-23": "Em desacordos, me apoio mais na lógica do que no que as pessoas estão sentindo.",
+      "esp-24": "Conversa em grupo, com várias pessoas falando, me cansa mais do que conversa a dois.",
+      "esp-25": "Gosto de atividades que exigem atenção a detalhes.",
+      "esp-26": "Ironia e sarcasmo às vezes me escapam.",
+      "esp-27": "Percebo cheiros, sons ou texturas que as pessoas ao meu lado nem notam.",
+      "esp-28": "Sinto dor, frio ou calor de forma diferente das pessoas ao meu redor.",
+      "esp-29": "Ser interrompido no meio de algo me irrita mais do que eu gostaria.",
+      "esp-30": "Tenho um assunto que me interessa há muito tempo e sobre o qual sei bastante.",
+      "esp-31": "Manter contato visual me deixa desconfortável.",
+      "esp-32": "Lido bem quando um plano muda em cima da hora.",
+      "esp-33": "Um som repetitivo ao fundo me tira do sério.",
+      "esp-34": "Puxar conversa com alguém que não conheço é fácil para mim.",
+      "esp-35": "Costumo me dedicar ao mesmo hobby por longos períodos.",
+      "esp-36": "Fico incomodado quando as pessoas não seguem as regras combinadas.",
+      "esp-37": "Tenho dificuldade de perceber o que a pessoa está sentindo quando ela não diz.",
+      "esp-38": "Preciso terminar as etapas na ordem certa; pular uma me atrapalha.",
+      "esp-39": "Barulho de fundo atrapalha minha concentração.",
+      "esp-40": "Consigo parar no meio de uma atividade e retomar depois sem incômodo."
+    },
+    "choices": {
+      "strongly-disagree": "Discordo totalmente",
+      "disagree": "Discordo",
+      "neutral": "Nem concordo nem discordo",
+      "agree": "Concordo",
+      "strongly-agree": "Concordo totalmente"
+    },
+    "poles": {
+      "low": "Discordo",
+      "high": "Concordo"
+    }
   }
 }

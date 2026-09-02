@@ -44,7 +44,15 @@ export function isScorable(definition: AssessmentDefinition): boolean {
   }
 }
 
-/** Resolves an answer to the ordinal weight of the chosen option. */
+/**
+ * Resolves an answer to the ordinal weight of the chosen option.
+ *
+ * UM ITEM INVERTIDO E DEVOLVIDO JA VIRADO. A inversao mora aqui, e nao em cada
+ * regra, porque uma regra que esquecesse de virar produziria uma pontuacao
+ * silenciosamente errada — e as tres regras precisam concordar sobre o que
+ * "valor alto" significa. Virar contra o topo da propria escala, e nao contra
+ * um numero fixo, mantem isso correto se a escala mudar de tamanho.
+ */
 function valueOf(
   definition: AssessmentDefinition,
   answers: Map<string, string>,
@@ -57,7 +65,11 @@ function valueOf(
   if (!question) return undefined;
 
   const scale = definition.scales.find((s) => s.id === question.scaleId);
-  return scale?.choices.find((c) => c.id === choiceId)?.value;
+  const value = scale?.choices.find((c) => c.id === choiceId)?.value;
+  if (value === undefined || !question.reversed) return value;
+
+  const topo = Math.max(...(scale?.choices ?? []).map((c) => c.value));
+  return topo - value;
 }
 
 function applyRule(

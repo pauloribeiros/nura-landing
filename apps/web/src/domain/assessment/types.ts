@@ -32,6 +32,16 @@ export interface Question {
   /** Section of the instrument, e.g. the ASRS Part A / Part B split. */
   block: string;
   scaleId: string;
+  /**
+   * Item redigido na direcao contraria: concordar indica AUSENCIA do traco.
+   *
+   * Existe contra o vies de aquiescencia — a tendencia real de marcar
+   * "concordo" em tudo, que num questionario inteiro escrito na mesma direcao
+   * produz uma pontuacao alta que nao mede nada. A inversao acontece em
+   * `valueOf`, entao toda regra a herda igual: soma, contagem por limiar e
+   * marcacao de itens veem sempre o valor ja na direcao do traco.
+   */
+  reversed?: boolean;
 }
 
 /**

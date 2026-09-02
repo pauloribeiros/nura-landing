@@ -782,5 +782,60 @@
     "disclaimer": "Este informe tiene finalidad informativa y de autoconocimiento. No es un diagnóstico, no es una medida de CI y no sustituye la evaluación de un profesional habilitado.",
     "print": "Guardar en PDF",
     "printHint": "Abre el diálogo de impresión de tu dispositivo. En iPhone: toca Compartir, luego Imprimir, y elige Guardar en Archivos."
+  },
+  "espectro": {
+    "prompts": {
+      "esp-01": "Hago ciertas tareas siempre de la misma manera, aunque haya otras formas.",
+      "esp-02": "Me cuesta con los temas abstractos, sin un ejemplo concreto.",
+      "esp-03": "Los lugares concurridos me dejan sobrecargado.",
+      "esp-04": "Prefiero que me expliquen las cosas de forma directa, sin rodeos.",
+      "esp-05": "Cambio mi forma de hablar según con quién esté, sin esfuerzo.",
+      "esp-06": "Que me toquen de sorpresa me incomoda.",
+      "esp-07": "Prefiero pasar mi tiempo libre a solas.",
+      "esp-08": "Noto patrones y detalles que a otros se les pasan.",
+      "esp-09": "Me expreso mejor escribiendo que hablando.",
+      "esp-10": "Prefiero las tareas con pasos claros a las abiertas.",
+      "esp-11": "Los cambios en mi rutina me molestan más que a las personas a mi alrededor.",
+      "esp-12": "Evito ciertos alimentos por su textura u olor, no por su sabor.",
+      "esp-13": "Puedo desconectar de lo que ocurre a mi alrededor cuando necesito concentrarme.",
+      "esp-14": "Repetir ciertos gestos o movimientos me calma.",
+      "esp-15": "Me cuesta hacer varias cosas a la vez.",
+      "esp-16": "Las luces fuertes o los ruidos altos me molestan más que a los demás.",
+      "esp-17": "Elijo la ropa por la textura de la tela, no solo por cómo se ve.",
+      "esp-18": "Cambiar de tema o de tarea me exige un esfuerzo grande.",
+      "esp-19": "Las rutinas me dan una sensación de calma.",
+      "esp-20": "Tengo mi propia forma de organizar mis cosas, y noto cuando alguien las mueve.",
+      "esp-21": "Entiendo lo que me dicen de forma literal, y a veces me doy cuenta después de que era solo una manera de decirlo.",
+      "esp-22": "Me cuesta notar cuándo una conversación ha llegado a su fin.",
+      "esp-23": "En los desacuerdos, me apoyo más en la lógica que en lo que las personas sienten.",
+      "esp-24": "Las conversaciones en grupo, con varias personas hablando, me cansan más que las de dos.",
+      "esp-25": "Disfruto las actividades que exigen atención al detalle.",
+      "esp-26": "La ironía y el sarcasmo a veces se me escapan.",
+      "esp-27": "Noto olores, sonidos o texturas que las personas a mi lado ni registran.",
+      "esp-28": "Siento el dolor, el frío o el calor de forma distinta a las personas a mi alrededor.",
+      "esp-29": "Que me interrumpan a mitad de algo me irrita más de lo que quisiera.",
+      "esp-30": "Hay un tema que me interesa desde hace mucho y sobre el que sé bastante.",
+      "esp-31": "Mantener contacto visual me resulta incómodo.",
+      "esp-32": "Me manejo bien cuando un plan cambia a última hora.",
+      "esp-33": "Un sonido repetitivo de fondo me saca de quicio.",
+      "esp-34": "Iniciar una conversación con alguien que no conozco me resulta fácil.",
+      "esp-35": "Suelo dedicarme al mismo pasatiempo durante largos períodos.",
+      "esp-36": "Me molesta cuando las personas no siguen las reglas acordadas.",
+      "esp-37": "Me cuesta percibir lo que alguien siente cuando no lo dice.",
+      "esp-38": "Necesito completar los pasos en el orden correcto; saltarme uno me descoloca.",
+      "esp-39": "El ruido de fondo interrumpe mi concentración.",
+      "esp-40": "Puedo parar a mitad de una actividad y retomarla después sin que me moleste."
+    },
+    "choices": {
+      "strongly-disagree": "Totalmente en desacuerdo",
+      "disagree": "En desacuerdo",
+      "neutral": "Ni de acuerdo ni en desacuerdo",
+      "agree": "De acuerdo",
+      "strongly-agree": "Totalmente de acuerdo"
+    },
+    "poles": {
+      "low": "En desacuerdo",
+      "high": "De acuerdo"
+    }
   }
 }

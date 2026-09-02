@@ -782,5 +782,60 @@
     "disclaimer": "This report is for information and self-knowledge. It is not a diagnosis, not a measure of IQ, and does not replace assessment by a qualified professional.",
     "print": "Save as PDF",
     "printHint": "Opens your device's print dialogue. On iPhone: tap Share, then Print, and choose Save to Files."
+  },
+  "espectro": {
+    "prompts": {
+      "esp-01": "I do certain tasks the same way every time, even when there are other ways.",
+      "esp-02": "I struggle with abstract subjects that have no concrete example.",
+      "esp-03": "Busy places leave me overwhelmed.",
+      "esp-04": "I prefer things explained to me directly, without preamble.",
+      "esp-05": "I adjust how I speak depending on who I am with, without effort.",
+      "esp-06": "Being touched unexpectedly bothers me.",
+      "esp-07": "I prefer to spend my free time alone.",
+      "esp-08": "I notice patterns and details that others miss.",
+      "esp-09": "I express myself better in writing than in speech.",
+      "esp-10": "I prefer tasks with clear steps to open-ended ones.",
+      "esp-11": "Changes to my routine bother me more than they bother people around me.",
+      "esp-12": "I avoid certain foods because of their texture or smell, not their taste.",
+      "esp-13": "I can tune out what is going on around me when I need to concentrate.",
+      "esp-14": "Repeating certain gestures or movements calms me down.",
+      "esp-15": "I find it hard to do several things at once.",
+      "esp-16": "Bright lights or loud noises bother me more than they bother others.",
+      "esp-17": "I choose clothes by the feel of the fabric, not just how they look.",
+      "esp-18": "Switching subject or task takes a lot out of me.",
+      "esp-19": "Routines give me a sense of calm.",
+      "esp-20": "I have my own way of organising my things, and I notice when someone moves them.",
+      "esp-21": "I take what people say literally, and sometimes realise later it was just a figure of speech.",
+      "esp-22": "I find it hard to tell when a conversation has come to an end.",
+      "esp-23": "In disagreements, I lean more on logic than on what people are feeling.",
+      "esp-24": "Group conversations, with several people talking, tire me more than one-to-one ones.",
+      "esp-25": "I enjoy activities that demand attention to detail.",
+      "esp-26": "Irony and sarcasm sometimes go over my head.",
+      "esp-27": "I notice smells, sounds or textures that people next to me do not even register.",
+      "esp-28": "I feel pain, cold or heat differently from people around me.",
+      "esp-29": "Being interrupted mid-task irritates me more than I would like.",
+      "esp-30": "There is a subject that has interested me for a long time and that I know a lot about.",
+      "esp-31": "Holding eye contact makes me uncomfortable.",
+      "esp-32": "I cope well when a plan changes at the last minute.",
+      "esp-33": "A repetitive sound in the background drives me to distraction.",
+      "esp-34": "Striking up a conversation with someone I do not know comes easily to me.",
+      "esp-35": "I tend to stay with the same hobby for long stretches.",
+      "esp-36": "It bothers me when people do not follow the rules that were agreed.",
+      "esp-37": "I find it hard to tell what someone is feeling when they do not say it.",
+      "esp-38": "I need to complete steps in the right order; skipping one throws me off.",
+      "esp-39": "Background noise disrupts my concentration.",
+      "esp-40": "I can stop in the middle of an activity and pick it up later without it bothering me."
+    },
+    "choices": {
+      "strongly-disagree": "Strongly disagree",
+      "disagree": "Disagree",
+      "neutral": "Neither agree nor disagree",
+      "agree": "Agree",
+      "strongly-agree": "Strongly agree"
+    },
+    "poles": {
+      "low": "Disagree",
+      "high": "Agree"
+    }
   }
 }
