@@ -535,7 +535,8 @@
         "label": "Diagnostic conclusion",
         "body": "Only a qualified professional reaches this, and not always at ADHD — some people receive another explanation, some receive none."
       }
-    }
+    },
+    "printHint": "Opens your device’s print dialogue. On iPhone: tap Share, then Print, and choose Save to Files."
   },
   "iq": {
     "eyebrow": "Before you start",
@@ -636,7 +637,7 @@
     "summaryTitle": "What you get",
     "inclui1": "Your score and the profile across six dimensions",
     "inclui2": "What each dimension measures, read one by one",
-    "inclui3": "The full report by email, as a PDF",
+    "inclui3": "The full report by email, with the option to save as PDF",
     "inclui4": "Permanent access through the link, no expiry",
     "total": "Total",
     "price": "R$ 19.90",
@@ -670,12 +671,14 @@
     "unavailableBody": "Pix is unavailable right now. Use a card or a digital wallet — it takes the same time.",
     "atencao1": "Your answers read one by one",
     "atencao2": "What showed up in inattention and in hyperactivity",
-    "atencao3": "The full report by email, as a PDF",
+    "atencao3": "The full report by email, with the option to save as PDF",
     "atencao4": "Permanent access through the link, no expiry",
     "pendingTitle": "This report is not available yet.",
     "pendingBody": "Your result is recorded and stays saved. The full report for this assessment is still being written, which is why nothing is on sale here.",
     "pendingNote": "You have not been charged.",
     "pendingHead": "Your answers are saved.",
-    "pendingLead": "Your result is recorded. All that is missing is this assessment’s full report, still being written."
+    "pendingLead": "Your result is recorded. All that is missing is this assessment’s full report, still being written.",
+    "doneCta": "Open my report",
+    "doneLink": "We have emailed you this link as well. If it does not arrive, use the button above — the report is already unlocked."
   }
 }

@@ -998,7 +998,7 @@ body.is-answering main { padding-bottom: 0; }
   .site-header,
   .site-footer,
   .consent-banner,
-  .report-print { display: none !important; }
+  .report-print, .report-print-hint { display: none !important; }
 
   html, body, .page, .page-dark { background: #fff !important; color: #111 !important; }
   .report { padding: 0; }
@@ -1492,6 +1492,9 @@ body.is-running-test .header-actions .button { display: none; }
 .pay-pending { max-width: 560px; padding: 26px 28px; border: 1px solid rgba(255,255,255,.14); border-radius: 18px; background: rgba(255,255,255,.03); }
 .pay-pending-title { margin: 0 0 10px; font: 700 20px var(--app-font-display); letter-spacing: -.035em; }
 .pay-pending p { margin: 0; color: var(--text-on-dark-muted); font-size: 15px; line-height: 1.6; }
+.pay-done .button { margin-top: 18px; }
+.pay-done-note { margin-top: 14px !important; font-size: 13px !important; }
+.report-print-hint { max-width: 46ch; margin: 10px 0 0; color: var(--text-on-dark-faint); font-size: 12px; line-height: 1.55; }
 .pay-pending-note { margin-top: 14px !important; color: var(--nura-cyan) !important; font: 700 12px var(--app-font-mono) !important; letter-spacing: .04em; }
 
 /* Os numeros embaixo do botao: o que ja e sabido sobre esta corrida. */

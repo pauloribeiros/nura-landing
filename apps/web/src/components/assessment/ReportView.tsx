@@ -66,6 +66,10 @@ export function ReportView({
           <h1>{t('title')}</h1>
           <p className="runner-lead">{t('lead')}</p>
           <PrintButton label={t('print')} />
+          {/* O caminho no Safari do iPhone nao e obvio — Compartilhar, depois
+              Imprimir — e e no celular que a maior parte destes relatorios e
+              aberta. Escondido na impressao, como o proprio botao. */}
+          <p className="report-print-hint">{t('printHint')}</p>
         </header>
 
         {plan.sections.map((section, i) => (

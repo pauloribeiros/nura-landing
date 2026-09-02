@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { Check } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 import { routing, type Locale } from '@/i18n/routing';
@@ -9,7 +9,8 @@ import { SiteHeader } from '@/components/SiteHeader';
 import { SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL, supabaseConfigured } from '@/lib/supabase/env';
 import { CheckoutAccordion } from '@/components/iq/CheckoutAccordion';
 import { FocusMode } from '@/components/FocusMode';
-import { reportIsSellable } from '@/content/landing';
+import { Link } from '@/i18n/navigation';
+import { reportIsSellable, reportPath } from '@/content/landing';
 
 /**
  * A página de pagamento, na nossa casa em vez da do Stripe.
@@ -140,6 +141,21 @@ export default async function PaginaDePagamento({
                 <div className="pay-done">
                   <p className="pay-done-title">{t('doneTitle')}</p>
                   <p>{t('doneBody')}</p>
+                  {/* O CAMINHO PARA O RELATORIO NAO PODE DEPENDER SO DO E-MAIL.
+                      Uma falha de envio e engolida de proposito — a compra nao
+                      pode falhar porque o e-mail falhou — mas ate agora esta
+                      tela nao oferecia nada, entao quem nao recebesse o e-mail
+                      tinha pago e ficado sem caminho, em silencio dos dois
+                      lados. Este navegador acabou de comprar: o cookie dele ja
+                      abre o relatorio, sem token nenhum. */}
+                  <Link
+                    className="button button-primary"
+                    href={reportPath(locale as Locale, sessionId).replace(`/${locale}`, '')}
+                  >
+                    {t('doneCta')}
+                    <ArrowRight size={16} aria-hidden="true" />
+                  </Link>
+                  <p className="pay-done-note">{t('doneLink')}</p>
                 </div>
               ) : (
                 <CheckoutAccordion sessionId={sessionId} email={lead?.email ?? undefined} />

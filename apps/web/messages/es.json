@@ -535,7 +535,8 @@
         "label": "Conclusión diagnóstica",
         "body": "Solo un profesional habilitado llega aquí, y no siempre a TDAH — parte de las personas recibe otra explicación, parte no recibe ninguna."
       }
-    }
+    },
+    "printHint": "Abre el diálogo de impresión de tu dispositivo. En iPhone: toca Compartir, luego Imprimir, y elige Guardar en Archivos."
   },
   "iq": {
     "eyebrow": "Antes de empezar",
@@ -636,7 +637,7 @@
     "summaryTitle": "Lo que recibes",
     "inclui1": "Tu puntuación y el perfil en seis dimensiones",
     "inclui2": "La lectura de cada dimensión y lo que mide",
-    "inclui3": "El informe completo por correo, en PDF",
+    "inclui3": "El informe completo por correo, con opción de guardarlo en PDF",
     "inclui4": "Acceso permanente por el enlace, sin caducidad",
     "total": "Total",
     "price": "R$ 19,90",
@@ -670,12 +671,14 @@
     "unavailableBody": "Pix no está disponible ahora. Usa tarjeta o una billetera digital — tarda lo mismo.",
     "atencao1": "La lectura de tus respuestas, punto por punto",
     "atencao2": "Lo que apareció en falta de atención y en hiperactividad",
-    "atencao3": "El informe completo por correo, en PDF",
+    "atencao3": "El informe completo por correo, con opción de guardarlo en PDF",
     "atencao4": "Acceso permanente por el enlace, sin caducidad",
     "pendingTitle": "Este informe todavía no está disponible.",
     "pendingBody": "Tu resultado está registrado y sigue guardado. El informe completo de esta evaluación todavía se está escribiendo, por eso no hay nada a la venta aquí.",
     "pendingNote": "No se te ha cobrado nada.",
     "pendingHead": "Tus respuestas quedaron guardadas.",
-    "pendingLead": "Tu resultado está registrado. Solo falta el informe completo de esta evaluación, que todavía se está escribiendo."
+    "pendingLead": "Tu resultado está registrado. Solo falta el informe completo de esta evaluación, que todavía se está escribiendo.",
+    "doneCta": "Abrir mi informe",
+    "doneLink": "También te enviamos este enlace por correo. Si no llega, usa el botón de arriba — el informe ya está desbloqueado."
   }
 }

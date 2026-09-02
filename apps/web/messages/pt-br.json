@@ -535,7 +535,8 @@
         "label": "Conclusão diagnóstica",
         "body": "Só um profissional habilitado chega aqui, e nem sempre chega em TDAH — parte das pessoas recebe outra explicação, parte não recebe nenhuma."
       }
-    }
+    },
+    "printHint": "Abre o diálogo de impressão do seu aparelho. No iPhone: toque em Compartilhar, depois em Imprimir, e escolha Salvar em Arquivos."
   },
   "iq": {
     "eyebrow": "Antes de começar",
@@ -636,7 +637,7 @@
     "summaryTitle": "O que você recebe",
     "inclui1": "Sua pontuação e o perfil nas seis dimensões",
     "inclui2": "A leitura de cada dimensão, com o que ela mede",
-    "inclui3": "O relatório completo por e-mail, em PDF",
+    "inclui3": "O relatório completo por e-mail, com opção de salvar em PDF",
     "inclui4": "Acesso permanente pelo link, sem prazo",
     "total": "Total",
     "price": "R$ 19,90",
@@ -670,12 +671,14 @@
     "unavailableBody": "O Pix está indisponível no momento. Use cartão ou uma carteira digital — leva o mesmo tempo.",
     "atencao1": "A leitura das suas respostas, item a item",
     "atencao2": "O que apareceu em desatenção e em hiperatividade",
-    "atencao3": "O relatório completo por e-mail, em PDF",
+    "atencao3": "O relatório completo por e-mail, com opção de salvar em PDF",
     "atencao4": "Acesso permanente pelo link, sem prazo",
     "pendingTitle": "Este relatório ainda não está disponível.",
     "pendingBody": "Seu resultado está registrado e continua guardado. O relatório completo desta avaliação ainda está sendo escrito, e por isso não colocamos nada à venda aqui.",
     "pendingNote": "Nada foi cobrado.",
     "pendingHead": "Suas respostas ficaram guardadas.",
-    "pendingLead": "O seu resultado está registrado. Falta só o relatório completo desta avaliação, que ainda está sendo escrito."
+    "pendingLead": "O seu resultado está registrado. Falta só o relatório completo desta avaliação, que ainda está sendo escrito.",
+    "doneCta": "Abrir meu relatório",
+    "doneLink": "Também enviamos este link por e-mail. Se ele não chegar, use o botão acima — o relatório já está liberado."
   }
 }
