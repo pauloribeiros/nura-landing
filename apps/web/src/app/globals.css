@@ -1567,12 +1567,27 @@ body.is-running-test .header-actions .button { display: none; }
   width: 100%; height: 100%; border-radius: 50%;
   border: 2px solid var(--anel, rgba(255,255,255,.3));
   background: transparent;
+  display: grid; place-items: center;
 }
-.is-low  { --anel: color-mix(in oklab, var(--nura-blue-hover) calc(45% + var(--d) * 55%), transparent); }
-.is-high { --anel: color-mix(in oklab, var(--nura-cyan) calc(45% + var(--d) * 55%), transparent); }
-.is-mid  { --anel: var(--nura-violet); }
+/* O check vive dentro do anel e so aparece quando ele e preenchido. O traco e
+   escuro porque o anel escolhido fica cheio da cor de destaque. */
+.scale-circle-check {
+  width: 58%; height: 58%;
+  fill: none; stroke: var(--nura-obsidian); stroke-width: 2.6;
+  stroke-linecap: round; stroke-linejoin: round;
+  opacity: 0;
+}
+.scale-circle-check path { stroke-dasharray: 24; stroke-dashoffset: 24; }
+.scale-circle.is-chosen .scale-circle-check { opacity: 1; }
+.scale-circle.is-chosen .scale-circle-check path { stroke-dashoffset: 0; }
+.is-low  { --anel: color-mix(in oklab, var(--nura-blue-hover) calc(45% + var(--d) * 55%), transparent); --solida: var(--nura-blue-hover); }
+.is-high { --anel: color-mix(in oklab, var(--nura-cyan) calc(45% + var(--d) * 55%), transparent); --solida: var(--nura-cyan); }
+.is-mid  { --anel: var(--nura-violet); --solida: var(--nura-violet); }
 
-.scale-circle.is-chosen .scale-circle-ring { background: var(--anel); border-color: var(--anel); }
+/* ESCOLHIDO PREENCHE COM A COR CHEIA, nao com a graduada. A graduacao serve ao
+   anel vazio, onde ela comunica intensidade; usada como preenchimento ela
+   produzia um tom lavado, e o check escuro desaparecia dentro dele. */
+.scale-circle.is-chosen .scale-circle-ring { background: var(--solida); border-color: var(--solida); }
 .scale-circle input:focus-visible + .sr-only + .scale-circle-ring,
 .scale-circle input:focus-visible ~ .scale-circle-ring { outline: 3px solid var(--nura-cyan); outline-offset: 4px; }
 
@@ -1580,6 +1595,9 @@ body.is-running-test .header-actions .button { display: none; }
   .scale-circle-ring { transition: background 180ms ease, border-color 180ms ease, transform 180ms cubic-bezier(.34,1.56,.64,1); }
   .scale-circle:hover .scale-circle-ring { transform: scale(1.08); }
   .scale-circle.is-chosen .scale-circle-ring { transform: scale(1.12); }
+  /* O traco corre; sem isto ele aparece inteiro de uma vez. */
+  .scale-circle-check { transition: opacity 120ms ease; }
+  .scale-circle-check path { transition: stroke-dashoffset 200ms cubic-bezier(.65,0,.35,1); }
 }
 
 @media (max-width: 420px) {

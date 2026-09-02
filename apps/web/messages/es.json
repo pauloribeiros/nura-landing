@@ -951,5 +951,66 @@
     "deliveryNote": "Acceso inmediato en NURA y una copia al correo que indiques.",
     "disclaimer": "Este resultado viene de la Escala NURA de rasgos del espectro, una escala propia sin estudio de validación. Es informativo, no constituye diagnóstico y no sustituye la evaluación de un profesional habilitado.",
     "restart": "Repetir la evaluación"
+  },
+  "espectro_report": {
+    "eyebrow": "Informe completo",
+    "title": "El mapa de tus rasgos.",
+    "lead": "Este informe abre lo que mostraron tus 40 respuestas, territorio por territorio: dónde aparecieron los rasgos, dónde no, y qué describe eso — y qué no describe.",
+    "generatedOn": "Versión de puntuación {versao}",
+    "totalLabel": "rasgos reconocidos de {maximo}",
+    "sections": {
+      "s1": "Cómo leer tu resultado",
+      "s2": "Comunicación: lo que apareció en tus respuestas",
+      "s3": "Rutina, repetición y lo que sostiene la previsibilidad",
+      "s4": "Tu perfil sensorial",
+      "s5": "Foco, detalle e intereses profundos",
+      "s6": "La forma de tu perfil"
+    },
+    "s1": {
+      "poucos": "Reconociste {total} de los {maximo} rasgos. Antes de cualquier lectura: un número bajo aquí no descarta nada, y conviene entender por qué. Mucha gente autista puntúa bajo en cuestionarios así — por haber aprendido a enmascarar temprano, hasta el punto de no reconocer el esfuerzo como esfuerzo; por no tener las palabras para describir lo que siente; o porque el rasgo aparece en contextos que estas 40 preguntas no alcanzaron. Si algo te sigue incomodando, este informe ayuda a nombrar qué, y el resultado bajo no es motivo para cerrar la pregunta.",
+      "alguns": "Reconociste {total} de los {maximo} rasgos. Es el resultado más común, y el más fácil de leer mal en ambas direcciones — no confirma ni descarta. Lo que ofrece es un mapa: algunos territorios aparecieron y otros no, y esa distribución dice más que el total. Las páginas siguientes recorren los cuatro, uno a uno.",
+      "muitos": "Reconociste {total} de los {maximo} rasgos. Es un resultado que merece tomarse en serio, y justamente por eso hay que leerlo con cuidado: no es un diagnóstico y no puede convertirse en uno por sí solo. Diagnosticar autismo en adultos exige historia de vida, observación y un profesional formado — un cuestionario respondido en doce minutos no alcanza eso, por bueno que sea. Lo que hace este informe es organizar lo que ya percibes, para que la conversación con un profesional empiece adelantada."
+    },
+    "s2": {
+      "forte": "Reconociste {reconhecidos} de {total} ítems de este territorio. La comunicación es donde el esfuerzo suele ser más invisible para los demás y más caro para ti: interpretar lo no dicho, sostener el contacto visual, notar cuándo terminó una conversación. Mucha gente lo describe como cansancio tras eventos sociales que parecían tranquilos por fuera. Si te reconoces aquí, fíjate cuánto tiempo a solas necesitas después — ese número suele decir más sobre el costo que la interacción misma.",
+      "parcial": "Reconociste {reconhecidos} de {total} ítems de este territorio. Parte de la comunicación fluye y parte cuesta. Es común que la fricción aparezca en situaciones concretas — grupos grandes, gente nueva, conversaciones sin propósito claro — y desaparezca en otras, con quien conoces o sobre un tema que dominas. Fijarte en cuál de las dos era cuando te sentiste mal suele explicar más que cualquier rasgo aislado.",
+      "leve": "Reconociste {reconhecidos} de {total} ítems de este territorio. La comunicación social no fue donde aparecieron los rasgos para ti. Eso es información útil y no solo ausencia: si lo que te trajo aquí fue dificultad en las relaciones, la explicación probablemente está en otro lugar — ansiedad social, experiencias pasadas, o simplemente preferencia. Vale mirar los territorios que puntuaron más."
+    },
+    "s3": {
+      "forte": "Reconociste {reconhecidos} de {total} ítems de este territorio. La rutina y la previsibilidad te sostienen de forma marcada, y romperlas cuesta más de lo que suele costar a quienes te rodean. Esto rara vez es terquedad: una rutina estable libera atención que, sin ella, se gasta decidiendo cosas pequeñas todo el día. El punto práctico es que planear los cambios con antelación no es exageración — es lo que devuelve esa atención a lo que importa.",
+      "parcial": "Reconociste {reconhecidos} de {total} ítems de este territorio. Tienes estructuras que te sostienen sin que la rutina entera deba ser rígida. Vale fijarse en cuáles en concreto: normalmente son pocas, muy específicas, y es romperlas — no cualquier plan — lo que produce el malestar.",
+      "leve": "Reconociste {reconhecidos} de {total} ítems de este territorio. La rutina y la repetición no fueron donde aparecieron los rasgos. Manejas el cambio sin que te cobre un precio alto, lo cual es flexibilidad real y no siempre se reconoce como tal."
+    },
+    "s4": {
+      "forte": "Reconociste {reconhecidos} de {total} ítems de este territorio. Lo sensorial es donde la diferencia entre tu experiencia y la de quien está al lado es más concreta y más difícil de explicar: un sonido que nadie más oye, una etiqueta que nadie más siente, una luz que solo a ti molesta. No es exageración ni hipersensibilidad emocional — es entrada de información, y llega distinta. La consecuencia práctica más útil es que los ajustes ambientales funcionan: auriculares, luz más baja, tejido elegido. Suelen ser las intervenciones de mayor efecto y menor costo.",
+      "parcial": "Reconociste {reconhecidos} de {total} ítems de este territorio. Algunos canales te sobrecargan y otros no. Vale identificar cuáles en concreto — sonido, luz, textura, tacto — porque la solución es distinta para cada uno, y tratar de resolverlos todos a la vez suele no resolver ninguno.",
+      "leve": "Reconociste {reconhecidos} de {total} ítems de este territorio. El procesamiento sensorial no fue donde aparecieron los rasgos. Los entornos concurridos, el ruido y la textura no son tu punto principal de fricción."
+    },
+    "s5": {
+      "forte": "Reconociste {reconhecidos} de {total} ítems de este territorio. Tu atención se profundiza, y sacarla de donde está cuesta caro. Eso tiene dos caras que vienen juntas: es el mismo rasgo que sostiene el conocimiento profundo sobre un tema y que hace que las interrupciones irriten desproporcionadamente. Vale organizar el día en bloques, en vez de pelear contra tu propia forma de enfocarte — es más activo que defecto cuando el entorno lo permite.",
+      "parcial": "Reconociste {reconhecidos} de {total} ítems de este territorio. Te profundizas en algunas cosas y cambias de foco con facilidad en otras. Fijarte en cuál es la diferencia — tema, entorno, hora del día — suele rendir más que intentar aumentar el foco en general.",
+      "leve": "Reconociste {reconhecidos} de {total} ítems de este territorio. El foco profundo y el interés prolongado no fueron donde aparecieron los rasgos. Transitas entre temas sin que el cambio cobre un precio."
+    },
+    "s6": {
+      "concentrado": "Tus rasgos están concentrados: {amplitude} ítems separan el territorio que más apareció del que menos. Perfiles así suelen significar que la fricción de tu vida tiene una dirección — y esa es una buena noticia práctica, porque la intervención concentrada funciona mejor que el ajuste general. Vale empezar por el territorio más alto y observar cuánto del malestar de tu día se explica solo por él.",
+      "irregular": "Tus rasgos tienen relieve: {amplitude} ítems separan el territorio más alto del más bajo. Es lo más común y buena señal de que el test captó diferencia real en vez de responderse todo igual. Tienes terrenos donde la vida cobra más y otros donde no.",
+      "espalhado": "Tus rasgos están repartidos de forma pareja: solo {amplitude} ítems separan el territorio más alto del más bajo. Un perfil así describe a alguien cuya experiencia es consistente entre situaciones distintas, en vez de concentrada en un tipo. Vale buscar menos un culpable único y observar más la acumulación a lo largo del día."
+    },
+    "domains": {
+      "comunicacao": "Comunicación y reciprocidad",
+      "rotina": "Rutina y repetición",
+      "sensorial": "Procesamiento sensorial",
+      "foco": "Foco y detalle"
+    },
+    "domainCount": "{reconhecidos} de {total}",
+    "profileTitle": "Los cuatro territorios",
+    "profileLead": "Cuántos ítems reconociste en cada uno de los cuatro grupos de diez.",
+    "closingTitle": "Qué llevar y qué preguntar en una evaluación",
+    "closing": "Si decides buscar evaluación, lleva ejemplos concretos y no conclusiones. Lo que un profesional necesita es historia: cómo era en la infancia, en la escuela, en las primeras relaciones; qué cambió y qué nunca cambió; dónde aparece el esfuerzo hoy. Si alguien te conoce desde temprano — madre, padre, hermano, amigo antiguo — su recuerdo suele valer tanto como el tuyo, porque mucho de lo que se volvió automático era visible desde fuera cuando empezó. Este informe sirve como punto de partida de esa conversación, no como sustituto de ella.",
+    "limitsTitle": "Lo que este test no alcanza",
+    "limits": "Esta es una escala propia de NURA, sin estudio de validación: no tiene sensibilidad ni especificidad conocidas y no separa a quien tiene de quien no. La ansiedad, el TDAH, el trauma y rasgos de personalidad producen patrones parecidos en varias de estas preguntas. Y mide lo que reconoces en ti — lo que depende de cuánto hayas pensado ya sobre el tema, y es justamente por eso que mucha gente puntúa distinto antes y después de hablar con un profesional.",
+    "disclaimer": "Este informe tiene finalidad informativa y de autoconocimiento. No es un diagnóstico, no sustituye la evaluación de un profesional habilitado, y la escala que lo produjo no pasó por un estudio de validación.",
+    "print": "Guardar en PDF",
+    "printHint": "Abre el diálogo de impresión de tu dispositivo. En iPhone: toca Compartir, luego Imprimir, y elige Guardar en Archivos."
   }
 }

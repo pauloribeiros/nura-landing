@@ -951,5 +951,66 @@
     "deliveryNote": "Acesso imediato na NURA e uma cópia no e-mail que você informar.",
     "disclaimer": "Este resultado vem da Escala NURA de traços do espectro, uma escala própria sem estudo de validação. É informativo, não constitui diagnóstico e não substitui avaliação de um profissional habilitado.",
     "restart": "Refazer a avaliação"
+  },
+  "espectro_report": {
+    "eyebrow": "Relatório completo",
+    "title": "O mapa dos seus traços.",
+    "lead": "Este relatório abre o que as suas 40 respostas mostraram, território por território: onde os traços apareceram, onde não apareceram, e o que isso descreve — e o que não descreve.",
+    "generatedOn": "Versão de pontuação {versao}",
+    "totalLabel": "traços reconhecidos de {maximo}",
+    "sections": {
+      "s1": "Como ler o seu resultado",
+      "s2": "Comunicação: o que apareceu nas suas respostas",
+      "s3": "Rotina, repetição e o que a previsibilidade sustenta",
+      "s4": "O seu perfil sensorial",
+      "s5": "Foco, detalhe e interesses profundos",
+      "s6": "A forma do seu perfil"
+    },
+    "s1": {
+      "poucos": "Você reconheceu {total} dos {maximo} traços. Antes de qualquer leitura: um número baixo aqui não descarta nada, e é importante entender por quê. Muita gente autista responde baixo em questionários assim — por ter aprendido cedo a mascarar, a ponto de não reconhecer mais o esforço como esforço; por não ter as palavras para descrever o que sente; ou porque o traço aparece em contextos que estas 40 perguntas não alcançaram. Se algo continua te incomodando, este relatório ajuda a nomear o quê, e o resultado baixo não é motivo para encerrar a pergunta.",
+      "alguns": "Você reconheceu {total} dos {maximo} traços. É o resultado mais comum, e o mais fácil de ler errado nas duas direções — ele não confirma nem descarta. O que ele oferece é um mapa: alguns territórios apareceram e outros não, e essa distribuição diz mais do que o total. As páginas a seguir percorrem os quatro, um a um.",
+      "muitos": "Você reconheceu {total} dos {maximo} traços. É um resultado que merece ser levado a sério, e é justamente por isso que ele precisa ser lido com cuidado: não é diagnóstico e não pode virar um sozinho. Diagnóstico de autismo em adultos exige história de vida, observação e um profissional treinado — um questionário respondido em doze minutos não alcança isso, por melhor que seja. O que este relatório faz é organizar o que você já percebe, para que a conversa com um profissional comece adiantada."
+    },
+    "s2": {
+      "forte": "Você reconheceu {reconhecidos} de {total} itens deste território. A comunicação é onde o esforço costuma ser mais invisível para os outros e mais caro para você: interpretar o que não foi dito, sustentar contato visual, perceber quando uma conversa terminou. Muita gente descreve isso como cansaço depois de eventos sociais que pareciam tranquilos por fora. Se você se reconhece nisso, vale reparar em quanto tempo você precisa sozinho depois — esse número costuma dizer mais sobre o custo do que a interação em si.",
+      "parcial": "Você reconheceu {reconhecidos} de {total} itens deste território. Parte da comunicação flui e parte custa. É comum que o atrito apareça em situações específicas — grupos grandes, pessoas novas, conversas sem propósito claro — e desapareça em outras, com quem você conhece ou sobre assunto que domina. Reparar em qual das duas situações você estava quando se sentiu mal costuma explicar mais do que qualquer traço isolado.",
+      "leve": "Você reconheceu {reconhecidos} de {total} itens deste território. A comunicação social não foi onde os traços apareceram para você. Isso é informação útil e não apenas ausência: se o que te trouxe até aqui foi dificuldade em relações, a explicação provavelmente está em outro lugar — ansiedade social, experiências passadas, ou simplesmente preferência. Vale observar os territórios que pontuaram mais."
+    },
+    "s3": {
+      "forte": "Você reconheceu {reconhecidos} de {total} itens deste território. Rotina e previsibilidade te sustentam de forma marcada, e a quebra delas custa mais do que costuma custar às pessoas ao seu redor. Isso raramente é teimosia: uma rotina estável libera atenção que, sem ela, é gasta em decidir coisas pequenas o dia inteiro. O ponto prático é que planejar mudanças com antecedência não é frescura — é o que devolve essa atenção para o que importa.",
+      "parcial": "Você reconheceu {reconhecidos} de {total} itens deste território. Você tem estruturas que te sustentam sem que a rotina inteira precise ser rígida. Vale reparar em quais especificamente: normalmente são poucas, muito específicas, e é a quebra delas — não de qualquer plano — que produz o desconforto.",
+      "leve": "Você reconheceu {reconhecidos} de {total} itens deste território. Rotina e repetição não foram onde os traços apareceram. Você lida com mudança sem que ela cobre um preço alto, o que é uma flexibilidade real e nem sempre reconhecida como tal."
+    },
+    "s4": {
+      "forte": "Você reconheceu {reconhecidos} de {total} itens deste território. O sensorial é onde a diferença entre a sua experiência e a de quem está ao lado é mais concreta e mais difícil de explicar: um som que ninguém mais ouve, uma etiqueta que ninguém mais sente, uma luz que só incomoda você. Não é exagero e não é hipersensibilidade emocional — é entrada de informação, e ela chega diferente. A consequência prática mais útil é que ajustes ambientais funcionam: fone, luz mais baixa, tecido escolhido. Costumam ser as intervenções de maior efeito e menor custo.",
+      "parcial": "Você reconheceu {reconhecidos} de {total} itens deste território. Alguns canais te sobrecarregam e outros não. Vale identificar quais especificamente — som, luz, textura, toque — porque a solução é diferente para cada um, e tentar resolver todos de uma vez costuma não resolver nenhum.",
+      "leve": "Você reconheceu {reconhecidos} de {total} itens deste território. O processamento sensorial não foi onde os traços apareceram. Ambientes movimentados, ruído e textura não são o seu ponto de atrito principal."
+    },
+    "s5": {
+      "forte": "Você reconheceu {reconhecidos} de {total} itens deste território. Sua atenção se aprofunda, e tirá-la de onde está custa caro. Isso tem dois lados que aparecem juntos: é a mesma característica que sustenta conhecimento profundo sobre um assunto e que torna interrupções desproporcionalmente irritantes. Vale organizar o dia em blocos, em vez de brigar contra a própria forma de focar — ela é mais um ativo do que um defeito quando o ambiente permite.",
+      "parcial": "Você reconheceu {reconhecidos} de {total} itens deste território. Você se aprofunda em algumas coisas e troca de foco com facilidade em outras. Reparar em qual é a diferença — assunto, ambiente, hora do dia — costuma render mais do que tentar aumentar o foco em geral.",
+      "leve": "Você reconheceu {reconhecidos} de {total} itens deste território. Foco profundo e interesse prolongado não foram onde os traços apareceram. Você transita entre assuntos sem que a troca cobre um preço."
+    },
+    "s6": {
+      "concentrado": "Seus traços estão concentrados: entre o território que mais apareceu e o que menos apareceu há {amplitude} itens de diferença. Perfis assim costumam significar que o atrito da sua vida tem um endereço — e isso é uma boa notícia prática, porque intervenção concentrada funciona melhor que ajuste geral. Vale começar pelo território mais alto e observar quanto do desconforto do seu dia se explica só por ele.",
+      "irregular": "Seus traços têm relevo: {amplitude} itens separam o território mais alto do mais baixo. Isso é o mais comum e é bom sinal de que o teste captou diferença real em vez de responder tudo igual. Você tem terrenos onde a vida cobra mais e outros onde não cobra.",
+      "espalhado": "Seus traços estão espalhados de forma parelha: apenas {amplitude} itens separam o território mais alto do mais baixo. Um perfil assim descreve alguém para quem a experiência é consistente entre situações diferentes, em vez de concentrada num tipo. Vale menos procurar um culpado único e mais observar o acúmulo ao longo do dia."
+    },
+    "domains": {
+      "comunicacao": "Comunicação e reciprocidade",
+      "rotina": "Rotina e repetição",
+      "sensorial": "Processamento sensorial",
+      "foco": "Foco e detalhe"
+    },
+    "domainCount": "{reconhecidos} de {total}",
+    "profileTitle": "Os quatro territórios",
+    "profileLead": "Quantos itens você reconheceu em cada um dos quatro grupos de dez.",
+    "closingTitle": "O que levar e o que perguntar numa avaliação",
+    "closing": "Se você decidir procurar avaliação, leve exemplos concretos e não conclusões. O que um profissional precisa é de história: como era na infância, na escola, nas primeiras relações; o que mudou e o que nunca mudou; onde o esforço aparece hoje. Se alguém te conhece desde cedo — mãe, pai, irmão, amigo antigo — a lembrança dessa pessoa costuma valer tanto quanto a sua, porque muita coisa que virou automática era visível de fora quando começou. Este relatório serve como ponto de partida dessa conversa, e não como substituto dela.",
+    "limitsTitle": "O que este teste não alcança",
+    "limits": "Esta é uma escala própria da NURA, sem estudo de validação: ela não tem sensibilidade nem especificidade conhecidas e não separa quem tem de quem não tem. Ansiedade, TDAH, trauma e características de personalidade produzem padrões parecidos em várias destas perguntas. E ela mede o que você reconhece em si — o que depende de quanto você já pensou sobre o assunto, e é justamente por isso que muita gente pontua diferente antes e depois de conversar com um profissional.",
+    "disclaimer": "Este relatório tem finalidade informativa e de autoconhecimento. Não é diagnóstico, não substitui avaliação de um profissional habilitado, e a escala que o produziu não passou por estudo de validação.",
+    "print": "Salvar em PDF",
+    "printHint": "Abre o diálogo de impressão do seu aparelho. No iPhone: toque em Compartilhar, depois em Imprimir, e escolha Salvar em Arquivos."
   }
 }

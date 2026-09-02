@@ -341,7 +341,17 @@ export function AssessmentRunner({
     if (!isPageComplete(page, updated)) return;
 
     advancing.current = true;
-    window.setTimeout(() => advanceWith(updated), 260);
+    /**
+     * A batida muda com a escala.
+     *
+     * Na lista, 260ms bastam: a opcao fica marcada no quadro seguinte ao
+     * toque. Na regua de circulos o check e DESENHADO, e o traco leva 200ms
+     * para correr — avancar aos 260 mostraria um check pela metade e a tela ja
+     * trocando, que e a mesma sensacao de toque errado que a espera existe
+     * para evitar. Os 460 dao o traco inteiro mais um instante parado.
+     */
+    const batida = escala.presentation === 'circles' ? 460 : 260;
+    window.setTimeout(() => advanceWith(updated), batida);
   };
 
   const back = () => {

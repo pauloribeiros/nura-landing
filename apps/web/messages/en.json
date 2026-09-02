@@ -951,5 +951,66 @@
     "deliveryNote": "Immediate access on NURA, plus a copy sent to the email you enter.",
     "disclaimer": "This result comes from the NURA spectrum traits scale, our own scale with no validation study. It is informative, is not a diagnosis and does not replace assessment by a qualified professional.",
     "restart": "Take the assessment again"
+  },
+  "espectro_report": {
+    "eyebrow": "Full report",
+    "title": "The map of your traits.",
+    "lead": "This report opens up what your 40 answers showed, territory by territory: where traits appeared, where they did not, and what that describes — and what it does not.",
+    "generatedOn": "Scoring version {versao}",
+    "totalLabel": "traits recognised of {maximo}",
+    "sections": {
+      "s1": "How to read your result",
+      "s2": "Communication: what showed up in your answers",
+      "s3": "Routine, repetition and what predictability holds up",
+      "s4": "Your sensory profile",
+      "s5": "Focus, detail and deep interests",
+      "s6": "The shape of your profile"
+    },
+    "s1": {
+      "poucos": "You recognised {total} of the {maximo} traits. Before any reading: a low number here rules nothing out, and it matters to understand why. Plenty of autistic people score low on questionnaires like this — having learned to mask early, to the point of no longer recognising the effort as effort; not having the words for what they feel; or because the trait shows up in contexts these 40 questions did not reach. If something still bothers you, this report helps name what, and a low result is no reason to close the question.",
+      "alguns": "You recognised {total} of the {maximo} traits. It is the most common result, and the easiest to misread in both directions — it neither confirms nor rules out. What it offers is a map: some territories showed up and others did not, and that distribution says more than the total. The pages that follow walk through all four, one at a time.",
+      "muitos": "You recognised {total} of the {maximo} traits. It is a result that deserves being taken seriously, and that is exactly why it needs reading carefully: it is not a diagnosis and cannot become one on its own. Diagnosing autism in adults requires life history, observation and a trained professional — a questionnaire answered in twelve minutes does not reach that, however good it is. What this report does is organise what you already notice, so a conversation with a professional starts ahead."
+    },
+    "s2": {
+      "forte": "You recognised {reconhecidos} of {total} items in this territory. Communication is where the effort tends to be most invisible to others and most expensive for you: reading what was not said, holding eye contact, noticing when a conversation has ended. Many people describe this as exhaustion after social events that looked easy from outside. If you recognise yourself here, notice how much time alone you need afterwards — that number usually says more about the cost than the interaction itself.",
+      "parcial": "You recognised {reconhecidos} of {total} items in this territory. Some of communication flows and some of it costs. The friction commonly shows up in specific situations — large groups, new people, conversations with no clear purpose — and disappears in others, with people you know or on a subject you master. Noticing which of the two you were in when you felt bad usually explains more than any single trait.",
+      "leve": "You recognised {reconhecidos} of {total} items in this territory. Social communication is not where the traits showed up for you. That is useful information, not just absence: if what brought you here was difficulty in relationships, the explanation is probably elsewhere — social anxiety, past experience, or simply preference. Worth looking at the territories that scored higher."
+    },
+    "s3": {
+      "forte": "You recognised {reconhecidos} of {total} items in this territory. Routine and predictability hold you up markedly, and breaking them costs more than it tends to cost people around you. This is rarely stubbornness: a stable routine frees attention that, without it, is spent deciding small things all day. The practical point is that planning changes ahead is not fussiness — it is what gives that attention back to what matters.",
+      "parcial": "You recognised {reconhecidos} of {total} items in this territory. You have structures that hold you up without the whole routine needing to be rigid. Worth noticing which ones specifically: usually there are few, very specific, and it is breaking those — not any plan — that produces the discomfort.",
+      "leve": "You recognised {reconhecidos} of {total} items in this territory. Routine and repetition are not where the traits showed up. You handle change without it charging a high price, which is real flexibility and not always recognised as such."
+    },
+    "s4": {
+      "forte": "You recognised {reconhecidos} of {total} items in this territory. The sensory is where the difference between your experience and that of the person beside you is most concrete and hardest to explain: a sound nobody else hears, a label nobody else feels, a light that only bothers you. It is not exaggeration and not emotional oversensitivity — it is information coming in, and it arrives differently. The most useful practical consequence is that environmental adjustments work: headphones, lower light, chosen fabric. They tend to be the interventions with the greatest effect and the lowest cost.",
+      "parcial": "You recognised {reconhecidos} of {total} items in this territory. Some channels overload you and others do not. Worth identifying which specifically — sound, light, texture, touch — because the solution differs for each, and trying to fix them all at once usually fixes none.",
+      "leve": "You recognised {reconhecidos} of {total} items in this territory. Sensory processing is not where the traits showed up. Busy environments, noise and texture are not your main point of friction."
+    },
+    "s5": {
+      "forte": "You recognised {reconhecidos} of {total} items in this territory. Your attention goes deep, and pulling it away from where it is costs a lot. That has two sides that come together: it is the same trait that sustains deep knowledge of a subject and makes interruptions disproportionately irritating. Worth organising the day in blocks rather than fighting your own way of focusing — it is more asset than defect when the environment allows it.",
+      "parcial": "You recognised {reconhecidos} of {total} items in this territory. You go deep on some things and switch focus easily on others. Noticing what the difference is — subject, environment, time of day — usually pays off more than trying to increase focus in general.",
+      "leve": "You recognised {reconhecidos} of {total} items in this territory. Deep focus and prolonged interest are not where the traits showed up. You move between subjects without the switch charging a price."
+    },
+    "s6": {
+      "concentrado": "Your traits are concentrated: {amplitude} items separate the territory that showed up most from the one that showed up least. Profiles like this usually mean the friction in your life has an address — and that is practical good news, because concentrated intervention works better than general adjustment. Worth starting with the highest territory and watching how much of your day's discomfort it explains on its own.",
+      "irregular": "Your traits have relief: {amplitude} items separate the highest territory from the lowest. This is the most common shape and a good sign the test caught real difference rather than everything being answered alike. You have ground where life charges more and ground where it does not.",
+      "espalhado": "Your traits are spread evenly: only {amplitude} items separate the highest territory from the lowest. A profile like this describes someone whose experience is consistent across different situations rather than concentrated in one kind. Worth looking less for a single culprit and more at the accumulation across the day."
+    },
+    "domains": {
+      "comunicacao": "Communication and reciprocity",
+      "rotina": "Routine and repetition",
+      "sensorial": "Sensory processing",
+      "foco": "Focus and detail"
+    },
+    "domainCount": "{reconhecidos} of {total}",
+    "profileTitle": "The four territories",
+    "profileLead": "How many items you recognised in each of the four groups of ten.",
+    "closingTitle": "What to bring and what to ask at an assessment",
+    "closing": "If you decide to seek an assessment, bring concrete examples and not conclusions. What a professional needs is history: what it was like in childhood, at school, in early relationships; what changed and what never did; where the effort shows up today. If someone has known you since early on — a parent, a sibling, an old friend — their memory usually counts as much as yours, because much of what became automatic was visible from outside when it began. This report works as a starting point for that conversation, not a substitute for it.",
+    "limitsTitle": "What this test does not reach",
+    "limits": "This is NURA's own scale, with no validation study: it has no known sensitivity or specificity and does not separate those who have from those who do not. Anxiety, ADHD, trauma and personality traits produce similar patterns on several of these questions. And it measures what you recognise in yourself — which depends on how much you have already thought about the subject, and is exactly why many people score differently before and after talking to a professional.",
+    "disclaimer": "This report is for information and self-knowledge. It is not a diagnosis, does not replace assessment by a qualified professional, and the scale that produced it has not been through a validation study.",
+    "print": "Save as PDF",
+    "printHint": "Opens your device's print dialogue. On iPhone: tap Share, then Print, and choose Save to Files."
   }
 }

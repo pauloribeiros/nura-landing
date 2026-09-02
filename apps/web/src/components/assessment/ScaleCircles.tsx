@@ -72,7 +72,16 @@ export function ScaleCircles({
                 onChange={() => onChoose(choice.id)}
               />
               <span className="sr-only">{labels[choice.id]}</span>
-              <span className="scale-circle-ring" aria-hidden="true" />
+              <span className="scale-circle-ring" aria-hidden="true">
+                {/* O check e desenhado, nao aceso: o traco corre de uma ponta a
+                    outra em 240ms. A diferenca importa porque o circulo escolhido
+                    precisa ser visivelmente marcado ANTES de a tela avancar — o
+                    runner espera 260ms de proposito, e um simbolo que aparece
+                    pronto no mesmo quadro le-se como toque errado. */}
+                <svg className="scale-circle-check" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 12.4 10.3 16.6 18 7.6" />
+                </svg>
+              </span>
             </label>
           );
         })}
