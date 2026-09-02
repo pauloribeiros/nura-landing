@@ -61,8 +61,7 @@ export const ASSESSMENTS: AssessmentEntry[] = [
     slug: { 'pt-br': 'qi', en: 'iq', es: 'ci' },
     featured: false,
     available: true,
-    // O relatorio de QI ainda nao existe como conteudo. Ver `reportReady`.
-    reportReady: false,
+    reportReady: true,
   },
   {
     id: 'autism',

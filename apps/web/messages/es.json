@@ -683,5 +683,104 @@
     "pendingLead": "Tu resultado está registrado. Solo falta el informe completo de esta evaluación, que todavía se está escribiendo.",
     "doneCta": "Abrir mi informe",
     "doneLink": "También te enviamos este enlace por correo. Si no llega, usa el botón de arriba — el informe ya está desbloqueado."
+  },
+  "iq_report": {
+    "eyebrow": "Informe completo",
+    "title": "Cómo se comportó tu razonamiento.",
+    "lead": "Este informe abre lo que mostraron tus 45 respuestas: dónde el razonamiento se sostuvo, dónde resbaló, y qué describe eso — y qué no describe.",
+    "generatedOn": "Versión de puntuación {versao}",
+    "scoreLabel": "puntos en la escala NURA",
+    "correctLabel": "aciertos de {total}",
+    "timeLabel": "tiempo total",
+    "minutesShort": "{minutos} min",
+    "sections": {
+      "q1": "Cómo leer tu resultado",
+      "q2": "Tu puntuación y cómo se formó",
+      "q3": "Tu perfil en las seis dimensiones",
+      "q4": "Dónde fuiste más fuerte, y dónde se escapó",
+      "q5": "Ritmo y precisión",
+      "q6": "Lo que este test no mide"
+    },
+    "q1": {
+      "corpo": "Antes de cualquier número: esto no es un CI. La puntuación que vas a ver es una escala propia de NURA, calibrada para este conjunto de 45 preguntas — describe cómo te fue en este test, este día. Un CI de verdad viene de un instrumento normalizado, aplicado e interpretado por un profesional habilitado, con historia y observación clínica. Nada de eso cabe en un test en línea, y prometer lo contrario sería vender una respuesta que nadie puede dar por aquí.",
+      "nota": "Lo que este informe hace bien es otra cosa, y tiene valor: mostrar la forma de tu razonamiento. Dónde es rápido, dónde es cuidadoso, dónde necesita más vueltas. Eso lo reconoces en el día a día — y es lo que se puede usar."
+    },
+    "q2": {
+      "acima": "Sumaste {pontos} puntos, con {acertos} aciertos en {total} preguntas. Eso queda por encima del centro de la escala. Vale entender qué tiene ya en cuenta el número: las preguntas no valen igual. Crecen en dificultad a lo largo del test, y acertar las del final pesa más que acertar las del principio. Dos personas con el mismo número de aciertos pueden terminar con puntuaciones distintas, y la diferencia está en cuáles preguntas resolvió cada una.",
+      "centro": "Sumaste {pontos} puntos, con {acertos} aciertos en {total} preguntas — cerca del centro de la escala. Vale entender qué tiene ya en cuenta el número: las preguntas no valen igual. Crecen en dificultad a lo largo del test, y acertar las del final pesa más que acertar las del principio. Dos personas con el mismo número de aciertos pueden terminar con puntuaciones distintas, y la diferencia está en cuáles preguntas resolvió cada una.",
+      "abaixo": "Sumaste {pontos} puntos, con {acertos} aciertos en {total} preguntas. Antes de sacar conclusiones, dos cosas: las preguntas crecen en dificultad, así que fallar las del final es lo esperado y pesa menos de lo que parece. Y un test único mide un día — sueño, prisa, entorno y humor entran en el resultado sin pedir permiso. Lo que está bajo aquí no describe un límite tuyo; describe esta sesión."
+    },
+    "q3": {
+      "lead": "Las 45 preguntas se dividen en seis tipos de razonamiento. Cada barra es tu tasa de acierto dentro de ese grupo.",
+      "parelho": "Tu perfil es parejo: {amplitude} puntos porcentuales separan la dimensión más alta de la más baja. Eso describe a alguien que aplica una forma parecida de pensar a problemas de naturalezas distintas — consistente, sin una vía de entrada preferida. La ventaja es no trabarse ante un tipo específico de problema; el costo es no tener un atajo natural para ninguno.",
+      "misto": "Tu perfil tiene relieve: {amplitude} puntos porcentuales separan la dimensión más alta de la más baja. Es lo más común, y es buena señal de que el test captó diferencia real en vez de ruido. Tienes terrenos donde piensas con más holgura y otros donde necesitas más vueltas — lo que describe preferencia, no techo.",
+      "irregular": "Tu perfil es bastante irregular: {amplitude} puntos porcentuales separan la dimensión más alta de la más baja. Perfiles así suelen indicar una forma marcada de pensar — alguien que resuelve muy bien por un camino y evita otro. Puede ser talento concentrado, pero también puede ser un bloque de preguntas que te encontró en un mal momento del test. Vale fijarse en cuál de las dos explicaciones encaja con tu experiencia."
+    },
+    "q4": {
+      "doisEixos": "Tus mejores resultados vinieron de {forte1} y {forte2}. Los más bajos, de {fraco1} y {fraco2}. Antes de tratarlo como retrato de tu razonamiento, conviene revisar algo: las preguntas aparecen en dificultad creciente e intercaladas por tipo, así que una dimensión pudo quedar baja porque sus ítems cayeron al final, cuando el cansancio ya pesaba. Si el resultado bajo encaja con lo que ya percibes en ti, probablemente es real. Si te sorprendió, duda del test antes de dudar de ti.",
+      "umEixo": "El test no separó dimensiones fuertes y débiles con suficiente claridad para destacar dos de cada lado — tus resultados quedaron demasiado próximos entre sí. Eso ocurre y no es un fallo: significa que respondiste de forma parecida en naturalezas distintas de problema."
+    },
+    "q5": {
+      "lead": "El tiempo solo no dice nada. Lo que dice es el encuentro entre cuánto tardaste y cuánto acertaste.",
+      "rapidoPreciso": "Terminaste en {minutos} minutos — por debajo de los {referencia} de referencia — y acertaste {acertos} de {total}. Rápido y correcto a la vez suele indicar reconocimiento: ves la estructura del problema antes de resolverlo paso a paso. Es una ventaja real, y tiene un punto ciego — los problemas que parecen familiares pero no lo son se cuelan justamente porque la respuesta llegó demasiado fácil.",
+      "rapidoImpreciso": "Terminaste en {minutos} minutos — por debajo de los {referencia} de referencia — con {acertos} aciertos en {total}. La combinación sugiere decidir demasiado pronto: llegas a una respuesta plausible y sigues, sin la segunda mirada que separaría lo plausible de lo correcto. Es el patrón más fácil de cambiar de todo este informe. En preguntas parecidas, oblígate a revisar la segunda alternativa más probable antes de responder.",
+      "lentoPreciso": "Tardaste {minutos} minutos — por encima de los {referencia} de referencia — y acertaste {acertos} de {total}. Eso describe cuidado: revisas antes de responder, y el número de aciertos muestra que el cuidado se paga. El costo aparece cuando hay reloj corriendo — examen, entrevista, plazo corto — porque el mismo método que te da precisión consume el tiempo que no tendrás.",
+      "lentoImpreciso": "Tardaste {minutos} minutos — por encima de los {referencia} de referencia — con {acertos} aciertos en {total}. Tiempo alto con acierto bajo normalmente no es falta de capacidad: es fricción. Pudo ser cansancio, interrupción, un entorno ruidoso, o preguntas de un tipo que te exige más vueltas de lo normal. Si puedes, repítelo otro día, descansado y sin interrupciones, y compara. La diferencia entre las dos sesiones dice más que cualquiera de ellas por separado."
+    },
+    "q6": {
+      "corpo": "Este test mide razonamiento en situaciones cerradas, con una respuesta correcta y ningún contexto. No mide creatividad, juicio, capacidad de trabajar con otras personas, persistencia ante un problema sin solución conocida, ni conocimiento acumulado — que son las cosas que más deciden lo que alguien construye en la vida.",
+      "nota": "Tómalo como una fotografía desde un ángulo, no como un retrato. Si algún resultado te sorprendió, la pregunta más útil no es si eres así, sino dónde, en tu día, ya lo has visto ocurrir."
+    },
+    "noPercentile": "Este informe no trae comparación con otras personas. Un percentil solo significa algo cuando existe una base de gente medida en las mismas condiciones para comparar, y NURA todavía está reuniendo esa base. Preferimos no mostrar nada a mostrar un número inventado — cuando la base exista, aparece aquí y dice con cuántas personas te están comparando.",
+    "dimensionMeans": {
+      "reconhecimento_padroes": "Percibir la regla que organiza una secuencia y prever lo que viene después.",
+      "pensamento_analitico": "Descomponer un problema en partes y llegar a la conclusión que las partes sostienen.",
+      "raciocinio_abstrato": "Trabajar con relaciones que no dependen del contenido concreto — forma, analogía, transformación.",
+      "orientacao_espacial": "Girar, doblar y reposicionar objetos mentalmente, sin apoyo de dibujo.",
+      "percepcao_visual": "Notar diferencia, detalle y organización visual bajo presión de tiempo.",
+      "memoria_trabalho": "Sostener información en la cabeza mientras haces otra cosa con ella."
+    },
+    "bandLabel": {
+      "alto": "Se sostuvo bien",
+      "medio": "Se sostuvo",
+      "baixo": "Resbaló"
+    },
+    "reading": {
+      "reconhecimento_padroes": {
+        "alto": "Lees estructura rápido. Donde hay una regla escondida en una secuencia, tiendes a encontrarla — lo que ayuda en cualquier cosa que se repita con variación, de una planilla a una rutina de trabajo.",
+        "medio": "Encuentras la regla cuando está razonablemente a la vista, y necesitas más tiempo cuando la secuencia mezcla más de un criterio a la vez.",
+        "baixo": "Las secuencias fueron el terreno más difícil aquí. Vale fijarse en si el obstáculo fue ver la regla o sostenerla hasta el final — son cosas distintas, y la segunda mejora con práctica."
+      },
+      "pensamento_analitico": {
+        "alto": "Sigues una cadena de premisas sin perderte. Es la habilidad que sostiene la argumentación, el diagnóstico y cualquier decisión en que la conclusión debe venir de las partes y no de la impresión.",
+        "medio": "Llegas a la conclusión cuando los pasos son pocos, y el camino se hace más costoso cuando el problema exige sostener tres o cuatro condiciones a la vez.",
+        "baixo": "Las preguntas de deducción fueron las que más costaron. A menudo eso es menos sobre lógica y más sobre carga: mucha información de una vez. Escribir las premisas en vez de sostenerlas en la cabeza suele cambiar bastante este resultado."
+      },
+      "raciocinio_abstrato": {
+        "alto": "Trabajas bien lejos de lo concreto — analogías, transformaciones, relaciones entre formas sin significado propio. Es el tipo de razonamiento que permite trasladar una solución de un dominio a otro.",
+        "medio": "Acompañas la abstracción cuando hay algún apoyo concreto, y sientes más dificultad cuando el problema es puramente relacional.",
+        "baixo": "Este fue uno de los terrenos más difíciles. El razonamiento abstracto es también el más sensible al cansancio de todos, porque no hay contexto para apoyar la memoria — vale fijarse en qué punto del test aparecieron esas preguntas."
+      },
+      "orientacao_espacial": {
+        "alto": "Giras y doblas objetos mentalmente con facilidad. Es una habilidad concreta y bastante específica — aparece en lectura de planos, montaje, navegación y cualquier cosa en tres dimensiones.",
+        "medio": "Resuelves rotaciones simples y necesitas más tiempo cuando hay más de un movimiento encadenado, como girar y después reflejar.",
+        "baixo": "Las preguntas espaciales fueron las que más se escaparon. Es la dimensión con mayor diferencia entre personas, y también la que más responde al entrenamiento — quien dibuja, monta o juega con el espacio mejora de forma medible."
+      },
+      "percepcao_visual": {
+        "alto": "Notas detalle y diferencia rápido, sin necesidad de barrerlo todo. Ayuda en revisión, verificación y en cualquier trabajo donde el error está a la vista pero pasa desapercibido.",
+        "medio": "Percibes las diferencias cuando son de tamaño o posición, y tardas más cuando la diferencia está en la orientación o en un detalle pequeño.",
+        "baixo": "Las preguntas de percepción fueron las más difíciles. Vale distinguir dos causas bien distintas: no ver el detalle, o verlo y no confiar. La segunda mejora solo con el hábito de responder a la primera impresión."
+      },
+      "memoria_trabalho": {
+        "alto": "Sostienes información mientras operas con ella — lo que sostiene el cálculo mental, seguir una conversación larga y no perder el hilo al ser interrumpido.",
+        "medio": "Guardas bien secuencias cortas y sientes la diferencia cuando crecen o cuando algo ocurre en medio.",
+        "baixo": "Las preguntas de memoria fueron las que más costaron. Este es el resultado más sensible de todo el test al sueño, la ansiedad y la interrupción — antes de leerlo como característica tuya, vale revisar en qué condiciones respondiste."
+      }
+    },
+    "closingTitle": "Qué hacer con esto",
+    "closing": "Si algún resultado te llamó la atención, el paso más útil no es repetir el test hasta que suba el número. Es observar dónde, en tu semana, eso aparece — y, si de verdad estorba y de forma persistente, llevar la observación a un profesional. Un psicólogo con formación en evaluación cognitiva trabaja con instrumentos que este no sustituye.",
+    "disclaimer": "Este informe tiene finalidad informativa y de autoconocimiento. No es un diagnóstico, no es una medida de CI y no sustituye la evaluación de un profesional habilitado.",
+    "print": "Guardar en PDF",
+    "printHint": "Abre el diálogo de impresión de tu dispositivo. En iPhone: toca Compartir, luego Imprimir, y elige Guardar en Archivos."
   }
 }

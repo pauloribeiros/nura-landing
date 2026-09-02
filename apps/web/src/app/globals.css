@@ -1150,7 +1150,12 @@ body.is-answering main { padding-bottom: 0; }
 }
 
 /* --- brand on the document --- */
-.report-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+/* A MARCA DO RELATORIO E PARA O PAPEL. Na tela o cabecalho do site ja esta
+   logo acima, e as duas juntas mostravam "NURA" duas vezes, uma embaixo da
+   outra. Na impressao o cabecalho some, e sem esta marca o PDF sairia sem
+   nenhuma identificacao de quem o emitiu. */
+.report-brand { display: none; align-items: center; gap: 10px; margin-bottom: 20px; }
+@media print { .report-brand { display: flex; } }
 .report-brand-name { font-weight: 700; letter-spacing: 0.22em; font-size: 0.92rem; }
 .report-print { margin-top: 24px; }
 
@@ -1498,6 +1503,38 @@ body.is-running-test .header-actions .button { display: none; }
 .pay-pending p { margin: 0; color: var(--text-on-dark-muted); font-size: 15px; line-height: 1.6; }
 .pay-done .button { margin-top: 18px; }
 .pay-done-note { margin-top: 14px !important; font-size: 13px !important; }
+/* ------------------------------------------------ relatorio de raciocinio ---
+   O numero primeiro, o perfil logo depois, e o texto por ultimo: e essa a
+   ordem em que a pessoa realmente le. */
+.iq-report-score { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 32px; margin: 34px 0 0; padding: 26px 28px; border: 1px solid rgba(255,255,255,.14); border-radius: 20px; background: rgba(255,255,255,.03); }
+.iq-report-points { margin: 0; font: 700 clamp(52px, 9vw, 76px)/.92 var(--app-font-display); letter-spacing: -.06em; }
+.iq-report-scale { margin: 8px 0 0; color: var(--text-on-dark-faint); font-size: 12px; }
+.iq-report-facts { display: flex; gap: 28px; margin: 0; }
+.iq-report-facts dt { color: var(--text-on-dark-faint); font: 400 11px var(--app-font-mono); letter-spacing: .06em; text-transform: uppercase; }
+.iq-report-facts dd { margin: 6px 0 0; font: 700 22px var(--app-font-display); letter-spacing: -.03em; }
+.iq-report-no-percentile { max-width: 62ch; margin: 18px 0 0; padding-left: 14px; border-left: 2px solid var(--text-on-dark-faint); color: var(--text-on-dark-muted); font-size: 14px; line-height: 1.6; }
+
+/* Cada barra carrega o que a dimensao mede e o que o resultado sugere — sem
+   isso ela seria so um numero colorido. */
+.iq-report-dimensions { display: grid; gap: 26px; margin: 24px 0 0; padding: 0; list-style: none; }
+.iq-report-dimension { padding-top: 20px; border-top: 1px solid rgba(255,255,255,.1); }
+.iq-report-dimension-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.iq-report-dimension-name { font: 700 17px var(--app-font-display); letter-spacing: -.02em; }
+.iq-report-dimension-score { color: var(--text-on-dark-faint); font: 700 13px var(--app-font-mono); }
+.iq-report-track { height: 8px; margin: 12px 0 0; border-radius: 99px; background: rgba(255,255,255,.09); overflow: hidden; }
+.iq-report-track span { display: block; height: 100%; border-radius: 99px; background: var(--text-on-dark-faint); }
+.is-alto .iq-report-track span { background: var(--nura-cyan); }
+.is-medio .iq-report-track span { background: var(--nura-blue); }
+.iq-report-dimension-means { max-width: 60ch; margin: 12px 0 0; color: var(--text-on-dark-faint); font-size: 13px; line-height: 1.55; }
+.iq-report-dimension-reading { max-width: 62ch; margin: 8px 0 0; color: var(--text-on-dark-muted); font-size: 15px; line-height: 1.65; }
+
+@media print {
+  .iq-report-score { border-color: #d7dae0; background: none; }
+  .iq-report-track { background: #e6e8ec; }
+  .iq-report-track span { background: #4a5060 !important; }
+  .iq-report-dimension { break-inside: avoid; }
+}
+
 .report-print-hint { max-width: 46ch; margin: 10px 0 0; color: var(--text-on-dark-faint); font-size: 12px; line-height: 1.55; }
 .pay-pending-note { margin-top: 14px !important; color: var(--nura-cyan) !important; font: 700 12px var(--app-font-mono) !important; letter-spacing: .04em; }
 

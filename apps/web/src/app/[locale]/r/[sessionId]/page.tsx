@@ -6,7 +6,8 @@ import { routing, type Locale } from '@/i18n/routing';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { ReportView } from '@/components/assessment/ReportView';
-import { loadReport } from '@/lib/assessment/loadReport';
+import { IqReportView } from '@/components/iq/IqReportView';
+import { assessmentOfSession, loadReport } from '@/lib/assessment/loadReport';
 import { confirmCheckout } from '@/lib/payments/confirmCheckout';
 import { asrs18ChoiceLabels, asrs18Prompts } from '@/domain/assessment/instruments/asrs18';
 
@@ -30,9 +31,24 @@ type Params = Promise<{ locale: string; sessionId: string }>;
 type Search = Promise<{ pago?: string; acesso?: string }>;
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale, sessionId } = await params;
   if (!hasLocale(routing.locales, locale)) return {};
-  const t = await getTranslations({ locale, namespace: 'report' });
+
+  /**
+   * O TITULO SEGUE A AVALIACAO. Ele vinha fixo do catalogo do TDAH, entao a
+   * aba de um relatorio de raciocinio dizia "Seus padroes de atencao, em
+   * detalhe" — e e o titulo que a pessoa ve ao salvar em PDF ou favoritar.
+   *
+   * A leitura e sem portao de proposito: um id inexistente ou de outra pessoa
+   * cai no titulo generico, e a pagina abaixo continua respondendo 404. Nada
+   * aqui revela conteudo — so escolhe entre dois titulos.
+   */
+  const qual = await assessmentOfSession(sessionId);
+  const t = await getTranslations({
+    locale,
+    namespace: qual === 'cognition' ? 'iq_report' : 'report',
+  });
+
   // Someone's report is theirs. Nothing about it belongs in an index.
   return { title: t('title'), robots: { index: false, follow: false } };
 }
@@ -64,14 +80,23 @@ export default async function ReportPage({
     <>
       <SiteHeader locale={loc} />
       <main className="page page-dark">
-        {/* The instrument only has published wording in pt-br, so a reader in
-            another locale still sees the items as published rather than a
-            translation NURA invented. */}
-        <ReportView
-          plan={plan}
-          prompts={asrs18Prompts[loc] ?? asrs18Prompts['pt-br']}
-          choiceLabels={asrs18ChoiceLabels[loc] ?? asrs18ChoiceLabels['pt-br']}
-        />
+        {/* CADA AVALIACAO TEM O SEU RELATORIO. Ate aqui esta rota passava os
+            enunciados da ASRS para qualquer sessao, entao uma corrida de
+            raciocinio renderizava as perguntas de TDAH com as secoes vazias.
+            O tipo discriminado que `loadReport` devolve tornou isso impossivel
+            de escrever sem o compilador reclamar. */}
+        {plan.kind === 'iq' ? (
+          <IqReportView plan={plan.plan} />
+        ) : (
+          /* The instrument only has published wording in pt-br, so a reader in
+             another locale still sees the items as published rather than a
+             translation NURA invented. */
+          <ReportView
+            plan={plan.plan}
+            prompts={asrs18Prompts[loc] ?? asrs18Prompts['pt-br']}
+            choiceLabels={asrs18ChoiceLabels[loc] ?? asrs18ChoiceLabels['pt-br']}
+          />
+        )}
       </main>
       <SiteFooter />
     </>

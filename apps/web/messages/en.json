@@ -683,5 +683,104 @@
     "pendingLead": "Your result is recorded. All that is missing is this assessment’s full report, still being written.",
     "doneCta": "Open my report",
     "doneLink": "We have emailed you this link as well. If it does not arrive, use the button above — the report is already unlocked."
+  },
+  "iq_report": {
+    "eyebrow": "Full report",
+    "title": "How your reasoning behaved.",
+    "lead": "This report opens up what your 45 answers showed: where reasoning held, where it slipped, and what that describes — and what it does not.",
+    "generatedOn": "Scoring version {versao}",
+    "scoreLabel": "points on the NURA scale",
+    "correctLabel": "correct out of {total}",
+    "timeLabel": "total time",
+    "minutesShort": "{minutos} min",
+    "sections": {
+      "q1": "How to read your result",
+      "q2": "Your score and how it was formed",
+      "q3": "Your profile across the six dimensions",
+      "q4": "Where you were strongest, and where it slipped",
+      "q5": "Pace and accuracy",
+      "q6": "What this test does not measure"
+    },
+    "q1": {
+      "corpo": "Before any number: this is not an IQ. The score you are about to see is NURA's own scale, calibrated for this set of 45 questions — it describes how you did on this test, on this day. A real IQ comes from a standardised instrument, administered and interpreted by a qualified professional, with history and clinical observation. None of that fits in an online test, and promising otherwise would be selling an answer nobody can give here.",
+      "nota": "What this report does well is something else, and it has value: showing the shape of your reasoning. Where it is fast, where it is careful, where it needs more passes. You recognise that in daily life — and it is what you can actually use."
+    },
+    "q2": {
+      "acima": "You scored {pontos} points, with {acertos} correct out of {total} questions. That sits above the middle of the scale. Worth understanding what the number already accounts for: questions are not worth the same. They grow harder through the test, and getting the later ones right weighs more than the early ones. Two people with the same number correct can end with different scores, and the difference is which questions each of them solved.",
+      "centro": "You scored {pontos} points, with {acertos} correct out of {total} questions — near the middle of the scale. Worth understanding what the number already accounts for: questions are not worth the same. They grow harder through the test, and getting the later ones right weighs more than the early ones. Two people with the same number correct can end with different scores, and the difference is which questions each of them solved.",
+      "abaixo": "You scored {pontos} points, with {acertos} correct out of {total} questions. Before drawing a conclusion, two things: the questions grow harder, so missing the later ones is expected and weighs less than it seems. And a single test measures a day — sleep, hurry, surroundings and mood enter the result without asking. What is low here does not describe a limit of yours; it describes this session."
+    },
+    "q3": {
+      "lead": "The 45 questions split into six kinds of reasoning. Each bar is your accuracy within that group.",
+      "parelho": "Your profile is even: {amplitude} percentage points separate the highest dimension from the lowest. That describes someone who applies a similar way of thinking to problems of different natures — consistent, with no preferred way in. The advantage is not stalling on a specific kind of problem; the cost is having no natural shortcut into any of them.",
+      "misto": "Your profile has relief: {amplitude} percentage points separate the highest dimension from the lowest. This is the most common shape, and a good sign the test caught real difference rather than noise. You have ground where you think with more room and ground where you need more passes — which describes preference, not ceiling.",
+      "irregular": "Your profile is quite uneven: {amplitude} percentage points separate the highest dimension from the lowest. Profiles like this usually point to a marked way of thinking — someone who solves very well by one route and avoids another. That can be concentrated talent, but it can also be a block of questions that caught you at a bad moment in the test. Worth noticing which of the two explanations matches your experience."
+    },
+    "q4": {
+      "doisEixos": "Your best results came from {forte1} and {forte2}. The lowest, from {fraco1} and {fraco2}. Before treating that as a portrait of your reasoning, check one thing: the questions appear in growing difficulty and interleaved by type, so a dimension may have come out low because its items landed near the end, when fatigue was already weighing. If the low result here matches what you already notice in yourself, it is probably real. If it surprised you, doubt the test before doubting yourself.",
+      "umEixo": "The test did not separate strong and weak dimensions clearly enough to highlight two of each — your results came out too close to one another. That happens and is not a failure: it means you answered similarly across different natures of problem."
+    },
+    "q5": {
+      "lead": "Time alone says nothing. What says something is where time meets accuracy.",
+      "rapidoPreciso": "You finished in {minutos} minutes — below the {referencia} of reference — and got {acertos} of {total} right. Fast and correct at once usually points to recognition: you see the structure of a problem before solving it step by step. That is a real advantage, and it has a blind spot — problems that look familiar but are not slip through precisely because the answer came too easily.",
+      "rapidoImpreciso": "You finished in {minutos} minutes — below the {referencia} of reference — with {acertos} correct out of {total}. The combination suggests deciding too early: you reach a plausible answer and move on, without the second look that would separate the plausible from the correct. It is the easiest pattern in this whole report to change. On questions like these, make yourself check the second most likely option before answering.",
+      "lentoPreciso": "You took {minutos} minutes — above the {referencia} of reference — and got {acertos} of {total} right. That describes care: you check before answering, and the number correct shows the care pays off. The cost appears when a clock is running — an exam, an interview, a short deadline — because the same method that gives you accuracy consumes the time you will not have.",
+      "lentoImpreciso": "You took {minutos} minutes — above the {referencia} of reference — with {acertos} correct out of {total}. High time with low accuracy is usually not a lack of capacity: it is friction. It may have been fatigue, interruption, a noisy environment, or questions of a kind that demand more passes from you than usual. If you can, take it again on another day, rested and uninterrupted, and compare. The difference between the two sessions says more than either one alone."
+    },
+    "q6": {
+      "corpo": "This test measures reasoning in closed situations, with one right answer and no context. It does not measure creativity, judgement, the ability to work with other people, persistence in the face of a problem with no known solution, or accumulated knowledge — which are the things that most decide what someone builds in life.",
+      "nota": "Take this as a photograph from one angle, not as a portrait. If a result surprised you, the most useful question is not whether you are like that, but where, in your day, you have already seen it happen."
+    },
+    "noPercentile": "This report carries no comparison with other people. A percentile only means something when there is a base of people measured under the same conditions to compare against, and NURA is still gathering that base. We would rather show nothing than show an invented number — when the base exists, it appears here and says how many people you are being compared with.",
+    "dimensionMeans": {
+      "reconhecimento_padroes": "Spotting the rule that organises a sequence and predicting what comes next.",
+      "pensamento_analitico": "Breaking a problem into parts and reaching the conclusion the parts support.",
+      "raciocinio_abstrato": "Working with relations that do not depend on concrete content — form, analogy, transformation.",
+      "orientacao_espacial": "Rotating, folding and repositioning objects mentally, without drawing them.",
+      "percepcao_visual": "Noticing difference, detail and visual organisation under time pressure.",
+      "memoria_trabalho": "Holding information in mind while doing something else with it."
+    },
+    "bandLabel": {
+      "alto": "Held well",
+      "medio": "Held",
+      "baixo": "Slipped"
+    },
+    "reading": {
+      "reconhecimento_padroes": {
+        "alto": "You read structure quickly. Where a rule hides inside a sequence, you tend to find it — which helps with anything that repeats with variation, from a spreadsheet to a work routine.",
+        "medio": "You find the rule when it is reasonably visible, and need more time when the sequence mixes more than one criterion at once.",
+        "baixo": "Sequences were the hardest ground here. Worth noticing whether the obstacle was seeing the rule or holding it to the end — they are different things, and the second improves with practice."
+      },
+      "pensamento_analitico": {
+        "alto": "You follow a chain of premises without losing your place. It is the ability behind argument, diagnosis and any decision where the conclusion must come from the parts and not from impression.",
+        "medio": "You reach the conclusion when the steps are few, and the path gets costlier when the problem asks you to hold three or four conditions at once.",
+        "baixo": "Deduction questions cost you the most. Often that is less about logic and more about load: too much information at once. Writing the premises down instead of holding them in your head usually changes this result a lot."
+      },
+      "raciocinio_abstrato": {
+        "alto": "You work well far from the concrete — analogies, transformations, relations between shapes with no meaning of their own. It is the kind of reasoning that lets you carry a solution from one domain to another.",
+        "medio": "You follow abstraction when there is some concrete support, and find it harder when the problem is purely relational.",
+        "baixo": "This was one of the hardest grounds. Abstract reasoning is also the most sensitive to fatigue of them all, because there is no context to support memory — worth noticing where in the test those questions reached you."
+      },
+      "orientacao_espacial": {
+        "alto": "You rotate and fold objects mentally with ease. It is a concrete and quite specific ability — it shows up in reading plans, assembly, navigation and anything in three dimensions.",
+        "medio": "You solve simple rotations and need more time when there is more than one chained movement, like rotating and then mirroring.",
+        "baixo": "Spatial questions slipped away the most. It is the dimension with the widest differences between people, and also the one that responds most to training — those who draw, build or play with space improve measurably."
+      },
+      "percepcao_visual": {
+        "alto": "You notice detail and difference quickly, without scanning everything. It helps with reviewing, checking, and any work where the error is in plain sight but goes unnoticed.",
+        "medio": "You catch differences when they are of size or position, and take longer when the difference is in orientation or in a small detail.",
+        "baixo": "Perception questions were the hardest. Worth telling apart two quite different causes: not seeing the detail, or seeing it and not trusting it. The second improves only through the habit of answering on first impression."
+      },
+      "memoria_trabalho": {
+        "alto": "You hold information while operating on it — which supports mental arithmetic, following a long conversation and not losing the thread when interrupted.",
+        "medio": "You hold short sequences well and feel the difference when they grow or when something happens in between.",
+        "baixo": "Memory questions cost you the most. This is the result in the whole test most sensitive to sleep, anxiety and interruption — before reading it as a trait of yours, worth checking the conditions you answered in."
+      }
+    },
+    "closingTitle": "What to do with this",
+    "closing": "If a result caught your attention, the most useful step is not repeating the test until the number goes up. It is watching where, in your week, that shows up — and, if it genuinely and persistently gets in the way, taking the observation to a professional. A psychologist trained in cognitive assessment works with instruments this one does not replace.",
+    "disclaimer": "This report is for information and self-knowledge. It is not a diagnosis, not a measure of IQ, and does not replace assessment by a qualified professional.",
+    "print": "Save as PDF",
+    "printHint": "Opens your device's print dialogue. On iPhone: tap Share, then Print, and choose Save to Files."
   }
 }

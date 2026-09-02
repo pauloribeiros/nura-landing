@@ -9,12 +9,17 @@ import { ASSESSMENTS, reportIsSellable } from './landing';
  * existe — que foi exatamente o estado do teste de QI ate agora.
  */
 describe('reportIsSellable', () => {
-  it('libera o TDAH e segura o QI', () => {
-    // O QI e pontuado e guardado, mas `ReportView` so conhece os dominios da
-    // ASRS: quem pagasse receberia o relatorio do TDAH com as perguntas
-    // erradas. As rotas de pagamento leem exatamente esta funcao.
+  it('libera as avaliacoes cujo relatorio existe', () => {
+    // O QI ficou fora da venda enquanto `ReportView` so conhecia os dominios
+    // da ASRS — quem pagasse receberia o relatorio do TDAH com as perguntas
+    // erradas. Com `IqReportView` e o plano proprio, ele voltou.
     expect(reportIsSellable('attention')).toBe(true);
-    expect(reportIsSellable('cognition')).toBe(false);
+    expect(reportIsSellable('cognition')).toBe(true);
+  });
+
+  it('segura o que ainda nao tem relatorio escrito', () => {
+    expect(reportIsSellable('autism')).toBe(false);
+    expect(reportIsSellable('giftedness')).toBe(false);
   });
 
   it('recusa o que nao conhece', () => {

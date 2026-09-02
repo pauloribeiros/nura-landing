@@ -3,6 +3,8 @@ import 'server-only';
 import { cookies } from 'next/headers';
 import { createServerClient } from '@supabase/ssr';
 import { SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL, supabaseConfigured } from '@/lib/supabase/env';
+import { buildIqReportPlan, type IqReportPlan } from '@/domain/iq/report';
+import type { IqResult } from '@/domain/iq/scoring';
 import { buildReportPlan, type ReportPlan } from '@/domain/assessment/report';
 import { isContextAnswer } from '@/domain/assessment/context';
 import { asrs18 } from '@/domain/assessment/instruments/asrs18';
@@ -36,10 +38,21 @@ import type { ScoreResult } from '@/domain/assessment/types';
  * session to check it against — but it grants exactly one report, the one it
  * belongs to, and a revoked one grants nothing.
  */
+/**
+ * O que uma sessao paga devolve, ja separado por avaliacao.
+ *
+ * Discriminado de proposito: quem consome precisa escolher a view, e um tipo
+ * unico permitiria passar o plano errado sem o compilador reclamar — que e
+ * exatamente o que acontecia.
+ */
+export type RelatorioCarregado =
+  | { kind: 'asrs'; plan: ReportPlan }
+  | { kind: 'iq'; plan: IqReportPlan };
+
 export async function loadReport(
   sessionId: string,
   accessToken?: string,
-): Promise<ReportPlan | null> {
+): Promise<RelatorioCarregado | null> {
   if (!supabaseConfigured) return null;
 
   const cookieStore = await cookies();
@@ -87,11 +100,26 @@ export async function loadReport(
 
   const { data: stored } = await reader
     .from('assessment_results')
-    .select('assessment_id, version, scoring_version, scores, flags, flagged, bands, completeness')
+    .select('assessment_id, version, scoring_version, scores, flags, flagged, bands, completeness, payload')
     .eq('session_id', sessionId)
     .maybeSingle();
 
   if (!stored) return null;
+
+  /**
+   * O RACIOCINIO NAO PASSA PELO PLANO DA ASRS.
+   *
+   * O relatorio de TDAH monta `ReportPlan` a partir das colunas compartilhadas
+   * e dos itens respondidos. O de raciocinio tem outra forma: o resultado
+   * inteiro foi gravado em `payload` na hora da pontuacao, e o plano dele sai
+   * dai. Rotea-los pelo mesmo construtor foi o que produziu, ate hoje, um
+   * relatorio de QI com os enunciados da ASRS dentro.
+   */
+  if (stored.assessment_id === 'cognition') {
+    const bruto = stored.payload as IqResult | null;
+    if (!bruto) return null;
+    return { kind: 'iq', plan: buildIqReportPlan(bruto) };
+  }
 
   const result: ScoreResult = {
     assessmentId: stored.assessment_id,
@@ -128,5 +156,27 @@ export async function loadReport(
       .map((a) => [a.question_id, valueOf.get(a.choice_id) ?? 0]),
   );
 
-  return buildReportPlan(result, context, itemValues);
+  return { kind: 'asrs', plan: buildReportPlan(result, context, itemValues) };
+}
+
+/**
+ * Qual avaliacao uma sessao respondeu.
+ *
+ * Serve ao titulo da aba do relatorio, que precisa escolher entre dois
+ * catalogos antes de qualquer portao rodar. Nao revela conteudo — devolve so o
+ * nome da avaliacao, e null para um id que nao existe. O portao de acesso
+ * continua sendo `loadReport`, que decide se a pagina abre.
+ */
+export async function assessmentOfSession(sessionId: string): Promise<string | null> {
+  if (!supabaseConfigured) return null;
+  const admin = getSupabaseAdminClient();
+  if (!admin) return null;
+
+  const { data } = await admin
+    .from('assessment_sessions')
+    .select('assessment_id')
+    .eq('id', sessionId)
+    .maybeSingle();
+
+  return data?.assessment_id ?? null;
 }
