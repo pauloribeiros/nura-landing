@@ -31,7 +31,7 @@ import type { Locale } from '@/i18n/routing';
  */
 export const OPERADOR = {
   /** Razao social completa, ou o nome civil de quem vende como pessoa fisica. */
-  razaoSocial: '',
+  razaoSocial: 'PHR DATA DESENVOLVIMENTO LTDA',
   /**
    * "CNPJ" ou "CPF".
    *
@@ -40,15 +40,15 @@ export const OPERADOR = {
    * rotulo e um campo porque a frase muda com ele, e escrever "CNPJ" ao lado
    * de um CPF seria informacao errada num documento que existe para informar.
    */
-  documentoRotulo: '',
+  documentoRotulo: 'CNPJ',
   /** Apenas digitos ou formatado — sai na tela como estiver escrito aqui. */
-  documento: '',
+  documento: '66.100.360/0001-73',
   /** Endereco fisico completo, com municipio e UF. */
-  endereco: '',
+  endereco: 'Rua Tereza Mota Valadares, 498 — Buritis, Belo Horizonte/MG, CEP 30575-160',
   /** Onde o consumidor fala sobre a compra. */
-  emailContato: '',
+  emailContato: 'ola@nuraperfil.com',
   /** Onde o titular exerce os direitos do art. 18 da LGPD. */
-  emailEncarregado: '',
+  emailEncarregado: 'privacidade@nuraperfil.com',
 } as const;
 
 /** Verdadeiro so quando todos os campos acima estao preenchidos. */
