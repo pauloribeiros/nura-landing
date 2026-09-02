@@ -1550,21 +1550,26 @@ body.is-running-test .header-actions .button { display: none; }
    Os circulos crescem para as pontas e a cor vira de um lado ao outro: a
    intensidade da resposta e legivel antes de qualquer texto. `--d` e a
    distancia do centro, de 0 a 1, e vem do componente. */
-.scale-circles { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 34px 0 0; flex-wrap: nowrap; }
+.scale-circles { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 34px 0 0; flex-wrap: nowrap; max-width: 100%; }
 .scale-pole { flex: 0 0 auto; max-width: 8ch; font: 700 12px var(--app-font-mono); line-height: 1.3; letter-spacing: .02em; }
 .scale-pole-low { color: var(--nura-blue-hover); text-align: right; }
 .scale-pole-high { color: var(--nura-cyan); text-align: left; }
-.scale-circles-track { display: flex; align-items: center; justify-content: center; gap: clamp(6px, 2.2vw, 14px); }
+.scale-circles-track { display: flex; align-items: center; justify-content: center; gap: clamp(6px, 2.2vw, 14px); min-width: 0; }
 
+/* O ALVO DE TOQUE E MAIOR QUE O CIRCULO NO MEIO DA REGUA.
+   A graduacao faz o circulo central ser o menor — e num telefone estreito ele
+   chegava a 36px, abaixo dos 44 que uma area de toque precisa ter. O desenho
+   nao muda: o anel continua do tamanho graduado, e quem cresce e a etiqueta
+   em volta dele, que e onde o dedo acerta. */
 .scale-circle {
   --tamanho: calc(38px + var(--d) * 26px);
   position: relative; flex: 0 0 auto;
-  width: var(--tamanho); height: var(--tamanho);
+  width: max(44px, var(--tamanho)); height: max(44px, var(--tamanho));
   display: grid; place-items: center; cursor: pointer;
 }
 .scale-circle input { position: absolute; inset: 0; opacity: 0; cursor: pointer; margin: 0; }
 .scale-circle-ring {
-  width: 100%; height: 100%; border-radius: 50%;
+  width: var(--tamanho); height: var(--tamanho); border-radius: 50%;
   border: 2px solid var(--anel, rgba(255,255,255,.3));
   background: transparent;
   display: grid; place-items: center;
@@ -1600,10 +1605,24 @@ body.is-running-test .header-actions .button { display: none; }
   .scale-circle-check path { transition: stroke-dashoffset 200ms cubic-bezier(.65,0,.35,1); }
 }
 
-@media (max-width: 420px) {
-  .scale-circles { gap: 6px; }
-  .scale-pole { font-size: 10px; max-width: 6ch; }
-  .scale-circle { --tamanho: calc(32px + var(--d) * 20px); }
+/* NO CELULAR OS POLOS SAEM DA LINHA DOS CIRCULOS.
+   Com os tres numa fila so, a largura minima da regua passava dos 375px de um
+   telefone — e como ela nao podia encolher, empurrava todos os irmaos: a barra
+   de progresso, o enunciado e ate o cabecalho passavam a transbordar junto. A
+   pagina inteira ganhava rolagem lateral por causa de uma linha.
+   Descidos para baixo, os polos devolvem cerca de 90px a fila, e os circulos
+   ficam MAIORES em vez de menores — que e o que uma area de toque precisa ser
+   num teste de quarenta respostas com o polegar. */
+@media (max-width: 520px) {
+  .scale-circles { flex-wrap: wrap; justify-content: space-between; gap: 12px 0; }
+  .scale-circles-track { order: -1; width: 100%; justify-content: space-between; gap: 4px; }
+  .scale-pole { max-width: none; text-align: left; }
+  .scale-pole-high { text-align: right; }
+  .scale-circle { --tamanho: calc(42px + var(--d) * 22px); }
+}
+@media (max-width: 360px) {
+  .scale-circle { --tamanho: calc(36px + var(--d) * 18px); }
+  .scale-pole { font-size: 10px; }
 }
 
 .report-print-hint { max-width: 46ch; margin: 10px 0 0; color: var(--text-on-dark-faint); font-size: 12px; line-height: 1.55; }
