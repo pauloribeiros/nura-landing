@@ -427,7 +427,10 @@
     "deliveryNote": "Acceso inmediato en NURA y una copia al correo que indiques.",
     "premiumSending": "Abriendo el pago…",
     "premiumError": "No pudimos abrir el pago ahora. Inténtalo de nuevo en unos instantes.",
-    "premiumFinding": "Tu cribado quedó por encima del punto de corte: {count} de 6 respuestas en el rango de atención. El informe abre, punto por punto, lo que apareció y qué hacer con ello."
+    "premiumFinding": "Tu cribado quedó por encima del punto de corte: {count} de 6 respuestas en el rango de atención. El informe abre, punto por punto, lo que apareció y qué hacer con ello.",
+    "premiumFindingClear": "Tu cribado quedó por debajo del punto de corte — {count} de 6 respuestas en el rango de atención. El informe abre, punto a punto, lo que apareció, lo que no, y qué más podría explicar lo que sientes.",
+    "emailTitle": "¿Quieres recibir tu informe por correo?",
+    "emailWhy": "Te enviamos el enlace de tu informe para que lo abras cuando quieras, desde cualquier dispositivo — sin repetir el test."
   },
   "consent": {
     "ariaLabel": "Preferencias de privacidad",

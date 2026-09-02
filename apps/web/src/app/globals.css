@@ -1484,6 +1484,10 @@ body.is-running-test .header-actions .button { display: none; }
 }
 .gate-field input:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 2px; }
 .gate-form .button { justify-content: center; min-height: 54px; }
+/* A pergunta antes do campo: diz o que a pessoa ganha ao dar o e-mail. */
+.gate-intro { margin-bottom: 4px; }
+.gate-intro-title { margin: 0; font: 700 clamp(18px, 2.4vw, 21px)/1.25 var(--app-font-display); letter-spacing: -.03em; }
+.gate-intro-why { max-width: 46ch; margin: 8px 0 0; color: var(--text-on-dark-muted); font-size: 14px; line-height: 1.6; }
 /* Confirmacao de que o e-mail entrou na lista de espera. */
 .gate-saved { max-width: 520px; margin: 26px 0 6px; padding: 22px 24px; border-left: 3px solid var(--nura-cyan); background: rgba(34,211,229,.07); border-radius: 0 14px 14px 0; }
 .gate-saved-title { margin: 0 0 8px; font: 700 18px var(--app-font-display); letter-spacing: -.03em; }

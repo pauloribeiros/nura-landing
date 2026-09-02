@@ -427,7 +427,10 @@
     "deliveryNote": "Immediate access on NURA, plus a copy sent to the email you enter.",
     "premiumSending": "Opening checkout…",
     "premiumError": "We could not open checkout right now. Please try again shortly.",
-    "premiumFinding": "Your screening came out above the cutoff — {count} of 6 answers in the attention range. The report goes through what showed up, item by item, and what to do with it."
+    "premiumFinding": "Your screening came out above the cutoff — {count} of 6 answers in the attention range. The report goes through what showed up, item by item, and what to do with it.",
+    "premiumFindingClear": "Your screening came in below the cut-off — {count} of 6 answers in the attention range. The report opens up, item by item, what showed up, what did not, and what else could explain what you feel.",
+    "emailTitle": "Want your report by email?",
+    "emailWhy": "We send you the link to your report so you can open it whenever you like, from any device — without retaking the test."
   },
   "consent": {
     "ariaLabel": "Privacy preferences",

@@ -427,7 +427,10 @@
     "deliveryNote": "Acesso imediato na NURA e uma cópia no e-mail que você informar.",
     "premiumSending": "Abrindo pagamento…",
     "premiumError": "Não conseguimos abrir o pagamento agora. Tente novamente em instantes.",
-    "premiumFinding": "Sua triagem ficou acima do ponto de corte — {count} de 6 respostas na faixa de atenção. O relatório abre, item a item, o que apareceu e o que fazer com isso."
+    "premiumFinding": "Sua triagem ficou acima do ponto de corte — {count} de 6 respostas na faixa de atenção. O relatório abre, item a item, o que apareceu e o que fazer com isso.",
+    "premiumFindingClear": "Sua triagem ficou abaixo do ponto de corte — {count} de 6 respostas na faixa de atenção. O relatório abre, item a item, o que apareceu, o que não apareceu, e o que mais poderia explicar o que você sente.",
+    "emailTitle": "Quer receber seu relatório por e-mail?",
+    "emailWhy": "Enviamos o link do seu relatório para você abrir quando quiser, de qualquer aparelho — sem precisar refazer o teste."
   },
   "consent": {
     "ariaLabel": "Preferências de privacidade",

@@ -55,6 +55,15 @@ export function UnlockButton({
 
   return (
     <form className="gate-form" onSubmit={start}>
+      {/* Pedir um e-mail sem dizer para que serve custa conversao e, pior,
+          parece cobranca de cadastro. A pergunta e a razao vem antes do campo:
+          o que a pessoa ganha e um link que abre o relatorio de qualquer
+          aparelho, que e exatamente o que o token faz. */}
+      <div className="gate-intro">
+        <h3 className="gate-intro-title">{t('emailTitle')}</h3>
+        <p className="gate-intro-why">{t('emailWhy')}</p>
+      </div>
+
       <label className="gate-field">
         <span>{t('emailLabel')}</span>
         <input

@@ -7,8 +7,6 @@ import { ASRS_DOMAINS, type AsrsDomain } from '@/domain/assessment/instruments/a
 import type { ScoreResult } from '@/domain/assessment/types';
 import { track } from '@/lib/analytics';
 import { DomainSegments } from './DomainSegments';
-import { LeadCapture } from './LeadCapture';
-import { NextAssessment } from './NextAssessment';
 import { StatusBadge } from './StatusBadge';
 import { UnlockButton } from './UnlockButton';
 
@@ -133,50 +131,49 @@ export function AssessmentResult({
           {setting ? <p className="result-context-note">{t(`settingNote.${setting}`)}</p> : null}
         </div>
 
-        {elevated ? (
-          <div className="result-premium">
-            {/* Says out loud what the person is buying an explanation OF. The
-                card used to open with the same sentence for everyone, which
-                left the badge at the top of the page and the offer at the
-                bottom looking like two unrelated things. It repeats the count
-                already on screen and promises nothing the report does not
-                contain — the point is the connection, not new information. */}
-            <p className="result-premium-finding">{t('premiumFinding', { count })}</p>
-            <h2>{t('premiumTitle')}</h2>
-            <p className="runner-lead">{t('premiumLead')}</p>
+        {/* O MESMO BLOCO PARA OS DOIS DESFECHOS.
+            Antes, quem ficava abaixo do ponto de corte recebia um convite para
+            outra avaliacao e nunca via a oferta — como se um resultado nao
+            elevado nao merecesse explicacao. Merece, e as vezes mais: o
+            relatorio diz o que apareceu, o que nao apareceu, e o que mais
+            poderia explicar aquilo que a pessoa sente. */}
+        <div className="result-premium">
+          {/* Says out loud what the person is buying an explanation OF. The
+              card used to open with the same sentence for everyone, which
+              left the badge at the top of the page and the offer at the
+              bottom looking like two unrelated things. It repeats the count
+              already on screen and promises nothing the report does not
+              contain — the point is the connection, not new information. */}
+          <p className="result-premium-finding">
+            {t(elevated ? 'premiumFinding' : 'premiumFindingClear', { count })}
+          </p>
+          <h2>{t('premiumTitle')}</h2>
+          <p className="runner-lead">{t('premiumLead')}</p>
 
-            {/* The contents ARE the description of what is bought. What may be
-                locked is limited on purpose: every section is interpretive
-                depth. The recommendation to seek professional assessment sits
-                in the free result above and stays there. */}
-            <ol className="report-sections">
-              {REPORT_SECTIONS.map((key, i) => (
-                <li key={key}>
-                  <span className="report-section-index">{String(i + 1).padStart(2, '0')}</span>
-                  <span className="report-section-name">{tr(key)}</span>
-                  <Lock size={14} aria-hidden="true" className="report-section-lock" />
-                </li>
-              ))}
-            </ol>
-            <p className="sr-only">{tr('lockedNote', { count: REPORT_SECTIONS.length })}</p>
+          {/* The contents ARE the description of what is bought. What may be
+              locked is limited on purpose: every section is interpretive
+              depth. The recommendation to seek professional assessment sits
+              in the free result above and stays there. */}
+          <ol className="report-sections">
+            {REPORT_SECTIONS.map((key, i) => (
+              <li key={key}>
+                <span className="report-section-index">{String(i + 1).padStart(2, '0')}</span>
+                <span className="report-section-name">{tr(key)}</span>
+                <Lock size={14} aria-hidden="true" className="report-section-lock" />
+              </li>
+            ))}
+          </ol>
+          <p className="sr-only">{tr('lockedNote', { count: REPORT_SECTIONS.length })}</p>
 
-            <div className="price">
-              {t('premiumPrice')} <small>{t('premiumPriceNote')}</small>
-            </div>
-            <UnlockButton sessionId={sessionId} assessmentId={result.assessmentId} />
+          {/* O PRECO NAO APARECE ANTES DO E-MAIL. Ele passou a ser dito na
+              pagina seguinte, onde ja existe o resumo do que esta sendo
+              comprado e o total. Aqui, o que a pessoa decide e se quer o
+              relatorio — nao quanto custa —, e o campo de e-mail e o passo
+              dessa decisao. */}
+          <UnlockButton sessionId={sessionId} assessmentId={result.assessmentId} />
 
-            <p className="result-delivery">{t('deliveryNote')}</p>
-          </div>
-        ) : (
-          <>
-            <LeadCapture
-              assessmentId={result.assessmentId}
-              sessionId={sessionId}
-              variant="primary"
-            />
-            <NextAssessment assessmentId={result.assessmentId} />
-          </>
-        )}
+          <p className="result-delivery">{t('deliveryNote')}</p>
+        </div>
 
         <p className="runner-disclaimer">{t('disclaimer')}</p>
 
