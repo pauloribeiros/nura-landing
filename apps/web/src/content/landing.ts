@@ -68,7 +68,8 @@ export const ASSESSMENTS: AssessmentEntry[] = [
     index: '03',
     slug: { 'pt-br': 'espectro-autista', en: 'autism-spectrum', es: 'espectro-autista' },
     featured: false,
-    available: false,
+    available: true,
+    // O relatorio pago do espectro ainda nao foi escrito. Ver `reportReady`.
     reportReady: false,
   },
   {
@@ -158,6 +159,10 @@ export const ASSESSMENT_RUN_LOCALES: Record<string, Locale[]> = {
   // The IQ items are NURA's own, written for the product, so there is no
   // licensed translation to wait for — the copy is translated like the rest.
   cognition: [...locales],
+  // Idem para a escala do espectro: os itens sao nossos, entao traduzi-los e
+  // trabalho de tradutor e nao espera por licenca. E tambem o motivo de a
+  // escala nao poder invocar validacao — ver `nuraEspectro40`.
+  autism: [...locales],
 };
 
 export const canRunAssessment = (locale: Locale, a: AssessmentEntry) =>

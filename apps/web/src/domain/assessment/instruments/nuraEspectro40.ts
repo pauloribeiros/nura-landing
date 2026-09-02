@@ -127,6 +127,14 @@ const TODOS = [...COMUNICACAO, ...ROTINA, ...SENSORIAL, ...FOCO];
 const LIMIAR = 3;
 const positiveAt = Object.fromEntries(TODOS.map((id) => [id, LIMIAR]));
 
+/** Ordem de apresentacao: os quatro territorios intercalados. */
+export const ESPECTRO_ORDEM: string[] = (() => {
+  const listas = [COMUNICACAO, ROTINA, SENSORIAL, FOCO];
+  const saida: string[] = [];
+  for (let i = 0; i < 10; i++) for (const lista of listas) saida.push(lista[i]);
+  return saida;
+})();
+
 export const nuraEspectro40: AssessmentDefinition = {
   assessmentId: 'autism',
   version: 'nura-espectro-40/1.0',
@@ -145,6 +153,10 @@ export const nuraEspectro40: AssessmentDefinition = {
   scales: [
     {
       id: SCALE_ID,
+      // A posicao no eixo ja diz a intensidade; obrigar a ler cinco rotulos
+      // parecidos quarenta vezes seguidas so cansa.
+      presentation: 'circles',
+      poles: { low: 'low', high: 'high' },
       choices: [
         { id: 'strongly-disagree', value: 0 },
         { id: 'disagree', value: 1 },
@@ -155,10 +167,20 @@ export const nuraEspectro40: AssessmentDefinition = {
     },
   ],
 
-  questions: TODOS.map((id) => ({
+  /**
+   * A ORDEM E O BLOCO SAO DECISOES DE APRESENTACAO, nao de pontuacao.
+   *
+   * Os itens saem intercalados entre os quatro territorios, porque dez
+   * perguntas seguidas sobre som e textura induzem resposta em bloco — a
+   * pessoa entra num ritmo e para de ler. E os quarenta se dividem em quatro
+   * etapas de dez, que e o unico jeito de o runner mostrar tela de transicao:
+   * ele so a exibe onde o instrumento muda de bloco. As etapas nao coincidem
+   * com os dominios de proposito; cada uma leva um pouco de cada assunto.
+   */
+  questions: ESPECTRO_ORDEM.map((id, i) => ({
     id,
     type: 'likert' as const,
-    block: 'espectro',
+    block: `e${Math.floor(i / 10) + 1}`,
     scaleId: SCALE_ID,
     ...(INVERTIDOS.has(id) ? { reversed: true } : {}),
   })),
@@ -200,10 +222,3 @@ export const nuraEspectro40: AssessmentDefinition = {
   ],
 };
 
-/** Ordem de apresentacao: os quatro territorios intercalados. */
-export const ESPECTRO_ORDEM: string[] = (() => {
-  const listas = [COMUNICACAO, ROTINA, SENSORIAL, FOCO];
-  const saida: string[] = [];
-  for (let i = 0; i < 10; i++) for (const lista of listas) saida.push(lista[i]);
-  return saida;
-})();

@@ -20,6 +20,7 @@ import {
   sectionKind,
 } from '@/content/landing';
 import { asrs18, asrs18ChoiceLabels, asrs18Prompts } from '@/domain/assessment/instruments/asrs18';
+import { nuraEspectro40 } from '@/domain/assessment/instruments/nuraEspectro40';
 import { AssessmentRunner } from '@/components/assessment/AssessmentRunner';
 import { IqIntro } from '@/components/iq/IqIntro';
 import { publicItems } from '@/domain/iq/bank';
@@ -100,6 +101,35 @@ export default async function AssessmentPage({ params }: { params: Params }) {
   setRequestLocale(locale);
 
   if (kind === 'assessment') {
+    /**
+     * Os enunciados do espectro vivem no catalogo de mensagens, e nao num
+     * modulo TypeScript como os da ASRS — eles sao nossos, entao traduzi-los e
+     * trabalho de tradutor, nao de quem transcreve um instrumento publicado.
+     * Lidos aqui porque a escolha do runner e sincrona.
+     */
+    const te = await getTranslations({ locale, namespace: 'espectro' });
+    const espectroPrompts = Object.fromEntries(
+      nuraEspectro40.questions.map((q) => [q.id, te(`prompts.${q.id}`)]),
+    );
+    const espectroBlocos = Object.fromEntries(
+      ['e1', 'e2', 'e3', 'e4'].map((b) => [b, te(`blocks.${b}`)]),
+    );
+    // Tres pausas para quatro etapas. Guardadas por indice porque next-intl
+    // nao trabalha com arrays no catalogo.
+    const espectroPausas = ['0', '1', '2'].map((i) => ({
+      eyebrow: te(`transitions.${i}.eyebrow`),
+      title: te(`transitions.${i}.title`),
+      lead: te(`transitions.${i}.lead`),
+    }));
+    const espectroLabels = Object.fromEntries(
+      nuraEspectro40.scales[0].choices
+        .map((c) => [c.id, te(`choices.${c.id}`)])
+        .concat([
+          ['low', te('poles.low')],
+          ['high', te('poles.high')],
+        ]),
+    );
+
     // Which runner belongs to which assessment. A questionnaire and a timed
     // reasoning test have almost nothing in common beyond the URL, so the
     // dispatch is explicit rather than an abstraction over both.
@@ -119,12 +149,40 @@ export default async function AssessmentPage({ params }: { params: Params }) {
         return <IqIntro items={publicItems(locale)} />;
       }
 
+      if (assessment.id === 'autism') {
+        return (
+          <AssessmentRunner
+            definition={nuraEspectro40}
+            prompts={espectroPrompts}
+            choiceLabels={espectroLabels}
+            locale={locale}
+            blockLabels={espectroBlocos}
+            transitions={espectroPausas}
+            transitionArt={['start', 'middle', 'end']}
+          />
+        );
+      }
+
+      if (assessment.id === 'attention') {
+        return (
+          <AssessmentRunner
+            definition={asrs18}
+            prompts={asrs18Prompts[locale]}
+            choiceLabels={asrs18ChoiceLabels[locale]}
+            locale={locale}
+          />
+        );
+      }
+
+      /**
+       * SEM PADRAO SILENCIOSO. Ate aqui qualquer avaliacao que nao fosse o QI
+       * caia na ASRS — a mesma classe de erro que fazia o relatorio de QI sair
+       * com as perguntas do TDAH. Uma avaliacao sem runner proprio diz que nao
+       * esta disponivel, em vez de servir outro questionario.
+       */
       return (
-        <AssessmentRunner
-          definition={asrs18}
-          prompts={asrs18Prompts[locale]}
-          choiceLabels={asrs18ChoiceLabels[locale]}
-          locale={locale}
+        <AssessmentUnavailable
+          fallbackHref={assessmentLandingPath(routing.defaultLocale, assessment)}
         />
       );
     };

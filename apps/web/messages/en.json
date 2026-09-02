@@ -104,7 +104,39 @@
     },
     "autism": {
       "title": "Autism spectrum",
-      "description": "Communication, interaction, routine and sensory processing."
+      "description": "Communication, interaction, routine and sensory processing.",
+      "landing": {
+        "metaTitle": "Autism spectrum traits: a self-assessment for adults | NURA",
+        "metaDescription": "Free self-assessment of spectrum traits in adults. 40 questions on communication, routine, sensory processing and focus. NURA's own scale — not a diagnosis.",
+        "eyebrow": "Spectrum & perception",
+        "heroLine1": "Autism spectrum",
+        "heroLine2": "traits",
+        "heroLine3": "in adults.",
+        "lead": "40 questions, 8 to 12 minutes. The initial result is free and arrives at once.",
+        "intro": "A structured reading of how you communicate, how much routine holds you up, how your senses answer the room, and where your attention goes deep. Not to tell you what you are, but to organise what you already notice in yourself — and give it a name.",
+        "forWhom": "For adults who recognise themselves in persistent difficulty with social interaction, changes of routine or sensory sensitivity, and want to understand those patterns better — out of curiosity, or as a step before a professional assessment. Many people arrive at this question late, after years of assuming it was shyness, stubbornness or making a fuss.",
+        "methodology": "This self-assessment uses the NURA spectrum traits scale: 40 items written by us and organised into four territories the literature describes — social communication, routine and repetition, sensory processing, and focus and detail. Six items are written in the opposite direction, so that agreeing with everything out of habit does not produce a high score that means nothing. Unlike the ADHD assessment, which uses the World Health Organization's ASRS-v1.1, this scale is our own and has not been through a validation study — it organises a self-observation, and that is how it should be read.",
+        "limits": "It is not a diagnostic instrument and has no clinical cut-off. Spectrum traits appear to different degrees across the whole population, and recognising several of them in yourself does not mean having a diagnosis — just as recognising few does not rule one out. Anxiety, ADHD, trauma and personality traits produce similar patterns on some of these questions. Confirmation requires assessment by a psychologist or psychiatrist experienced in adult autism.",
+        "disclaimer": "A self-knowledge tool. The result is informative, is not a diagnosis and does not replace assessment by a qualified professional.",
+        "covers": {
+          "communication": {
+            "title": "Communication and reciprocity",
+            "copy": "How you converse, read what was not said, and feel in interactions."
+          },
+          "routine": {
+            "title": "Routine and repetition",
+            "copy": "How much predictability holds you up, and what shifts when it breaks."
+          },
+          "sensory": {
+            "title": "Sensory processing",
+            "copy": "How sound, light, texture and touch reach you compared with the person beside you."
+          },
+          "focus": {
+            "title": "Focus and detail",
+            "copy": "Where your attention goes deep, and the cost of pulling it away."
+          }
+        }
+      }
     },
     "cognition": {
       "title": "IQ test",
@@ -836,6 +868,29 @@
     "poles": {
       "low": "Disagree",
       "high": "Agree"
+    },
+    "blocks": {
+      "e1": "First part",
+      "e2": "Second part",
+      "e3": "Third part",
+      "e4": "Final part"
+    },
+    "transitions": {
+      "0": {
+        "eyebrow": "Ten of forty",
+        "title": "There is no right answer here.",
+        "lead": "The next questions stay with your daily life. Answer thinking about how things actually are for you, not how you think they should be — the result is only worth anything if it describes you."
+      },
+      "1": {
+        "eyebrow": "Halfway",
+        "title": "You have answered twenty.",
+        "lead": "From here the questions lean more on senses and routine. If one feels odd or does not apply to you, answer as close to your experience as you can and move on — no single question decides the result."
+      },
+      "2": {
+        "eyebrow": "Last ten",
+        "title": "Almost there.",
+        "lead": "This last stretch closes the four territories the test covers. After it, we put your result together."
+      }
     }
   }
 }

@@ -23,6 +23,22 @@ export interface Choice {
 export interface Scale {
   id: string;
   choices: Choice[];
+  /**
+   * Como a escala e desenhada.
+   *
+   * `list` e o padrao: cada opcao com o seu rotulo, uma embaixo da outra. E o
+   * certo para uma escala de frequencia, onde "quase sempre" e "sempre"
+   * precisam ser lidos para serem distinguidos.
+   *
+   * `circles` desenha uma regua de circulos graduados com os extremos
+   * nomeados nas pontas. Serve a uma escala de concordancia, onde a posicao ja
+   * comunica a intensidade e ler cinco rotulos parecidos a cada uma das 40
+   * questoes so cansa. O rotulo continua existindo para quem usa leitor de
+   * tela — ele nao some, muda de lugar.
+   */
+  presentation?: 'list' | 'circles';
+  /** Chaves dos extremos, quando `circles`. */
+  poles?: { low: string; high: string };
 }
 
 export interface Question {

@@ -104,7 +104,39 @@
     },
     "autism": {
       "title": "Espectro autista",
-      "description": "Comunicación, interacción, rutina y procesamiento sensorial."
+      "description": "Comunicación, interacción, rutina y procesamiento sensorial.",
+      "landing": {
+        "metaTitle": "Rasgos del espectro autista: autoevaluación para adultos | NURA",
+        "metaDescription": "Autoevaluación gratuita de rasgos del espectro en adultos. 40 preguntas sobre comunicación, rutina, sensorial y foco. Escala propia de NURA — no es un diagnóstico.",
+        "eyebrow": "Espectro y percepción",
+        "heroLine1": "Rasgos del",
+        "heroLine2": "espectro autista",
+        "heroLine3": "en adultos.",
+        "lead": "40 preguntas, de 8 a 12 minutos. El resultado inicial es gratuito y sale al momento.",
+        "intro": "Una lectura estructurada de cómo te comunicas, de cuánto te sostiene la rutina, de cómo responden tus sentidos al entorno y de dónde se profundiza tu atención. No para decirte lo que eres, sino para organizar lo que ya percibes en ti — y ponerle nombre.",
+        "forWhom": "Para adultos que se reconocen en dificultades persistentes con la interacción social, los cambios de rutina o la sensibilidad sensorial, y quieren entender mejor esos patrones — por curiosidad, o como paso previo a una evaluación profesional. Mucha gente llega tarde a esta pregunta, tras años pensando que era timidez, terquedad o exageración.",
+        "methodology": "Esta autoevaluación usa la Escala NURA de rasgos del espectro: 40 ítems escritos por nosotros y organizados en cuatro territorios que la literatura describe — comunicación social, rutina y repetición, procesamiento sensorial, y foco y detalle. Seis ítems están redactados en la dirección contraria, para que estar de acuerdo con todo por hábito no produzca una puntuación alta que no significa nada. A diferencia de la evaluación de TDAH, que usa la ASRS-v1.1 de la Organización Mundial de la Salud, esta escala es propia y no pasó por un estudio de validación — organiza una autoobservación, y así debe leerse.",
+        "limits": "No es un instrumento diagnóstico y no tiene punto de corte clínico. Los rasgos del espectro aparecen en distintos grados en toda la población, y reconocer varios en ti no significa tener un diagnóstico — igual que reconocer pocos no lo descarta. La ansiedad, el TDAH, el trauma y rasgos de personalidad producen patrones parecidos en algunas de estas preguntas. La confirmación exige evaluación con un psicólogo o psiquiatra con experiencia en autismo adulto.",
+        "disclaimer": "Herramienta de autoconocimiento. El resultado es informativo, no constituye diagnóstico y no sustituye la evaluación de un profesional habilitado.",
+        "covers": {
+          "communication": {
+            "title": "Comunicación y reciprocidad",
+            "copy": "Cómo conversas, interpretas lo no dicho y te sientes en las interacciones."
+          },
+          "routine": {
+            "title": "Rutina y repetición",
+            "copy": "Cuánto te sostiene la previsibilidad y qué cambia cuando se rompe."
+          },
+          "sensory": {
+            "title": "Procesamiento sensorial",
+            "copy": "Cómo te llegan el sonido, la luz, la textura y el tacto frente a quien está al lado."
+          },
+          "focus": {
+            "title": "Foco y detalle",
+            "copy": "Dónde se profundiza tu atención, y el costo de sacarla de ahí."
+          }
+        }
+      }
     },
     "cognition": {
       "title": "Test de CI",
@@ -836,6 +868,29 @@
     "poles": {
       "low": "En desacuerdo",
       "high": "De acuerdo"
+    },
+    "blocks": {
+      "e1": "Primera parte",
+      "e2": "Segunda parte",
+      "e3": "Tercera parte",
+      "e4": "Última parte"
+    },
+    "transitions": {
+      "0": {
+        "eyebrow": "Diez de cuarenta",
+        "title": "Aquí no hay respuesta correcta.",
+        "lead": "Las siguientes preguntas siguen sobre tu día a día. Responde pensando en cómo son realmente las cosas para ti, y no en cómo crees que deberían ser — el resultado solo vale si te describe."
+      },
+      "1": {
+        "eyebrow": "Mitad del camino",
+        "title": "Ya respondiste veinte.",
+        "lead": "De aquí en adelante las preguntas tocan más los sentidos y la rutina. Si alguna te resulta extraña o no se aplica a ti, responde lo más cerca de tu experiencia y sigue — ninguna pregunta por sí sola decide el resultado."
+      },
+      "2": {
+        "eyebrow": "Últimas diez",
+        "title": "Falta poco.",
+        "lead": "Este último tramo cierra los cuatro territorios que recorre el test. Después de él, armamos tu resultado."
+      }
     }
   }
 }

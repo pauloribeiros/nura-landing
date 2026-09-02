@@ -27,7 +27,8 @@ import {
 } from '@/lib/supabase/assessmentStore';
 import { AssessmentResult } from './AssessmentResult';
 import { Calculating, type PerguntaCarregamento } from '../Calculating';
-import { TransitionArt } from '../TransitionArt';
+import { TransitionArt, type ArtVariant } from '../TransitionArt';
+import { ScaleCircles } from './ScaleCircles';
 import { useFocusMode } from '@/lib/focusMode';
 import { track } from '@/lib/analytics';
 import { randomId } from '@/lib/randomId';
@@ -63,7 +64,24 @@ function stepLabelFor(pages: Page[], pageIndex: number) {
 interface Props {
   definition: AssessmentDefinition;
   prompts: Record<string, string>;
-  choiceLabels: Record<string, string>;
+  choiceLabels: Record<string, string>;  /**
+   * Rotulo de cada bloco, quando o instrumento tem os seus.
+   *
+   * A ASRS tem dois blocos com nome proprio — triagem e aprofundamento — e o
+   * runner sabia disso por dentro. Um instrumento de quatro etapas iguais
+   * precisa dos seus, e adivinha-los aqui seria a mesma armadilha do relatorio
+   * que servia o questionario errado.
+   */
+  blockLabels?: Record<string, string>;
+  /**
+   * O texto de cada pausa, na ordem em que elas acontecem.
+   *
+   * Sem isto o runner mostra a unica transicao que conhecia, a do TDAH.
+   */
+  transitions?: { eyebrow: string; title: string; lead: string }[];
+  /** Qual ilustracao acompanha cada pausa. */
+  transitionArt?: ArtVariant[];
+
   locale: string;
 }
 
@@ -82,12 +100,34 @@ interface Props {
  */
 const PAGE_SIZE = 1;
 
-export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: Props) {
+export function AssessmentRunner({
+  definition,
+  prompts,
+  choiceLabels,
+  locale,
+  blockLabels,
+  transitions,
+  transitionArt,
+}: Props) {
   const t = useTranslations('runner');
   const pages = useMemo(() => paginate(definition, PAGE_SIZE), [definition]);
+  // Uma escala por instrumento, hoje. Lida aqui para a tela nao precisar
+  // repetir `definition.scales[0]` em cada ponto onde usa a escala.
+  const escala = definition.scales[0];
+
 
   const [stage, setStage] = useState<Stage>('intro');
   const [session, setSession] = useState<AssessmentSession | null>(null);
+
+  /**
+   * Qual pausa e esta. Contada pelos blocos que ja terminaram antes da pagina
+   * atual — assim voltar e avancar de novo mostra a mesma tela, em vez de
+   * empurrar a sequencia para a frente a cada ida e volta.
+   */
+  const pausaAtual = useMemo(
+    () => (session ? pages.slice(0, session.pageIndex).filter((p) => p.endsBlock).length : 0),
+    [pages, session],
+  );
   const [resumable, setResumable] = useState<AssessmentSession | null>(null);
   const liveRef = useRef<HTMLDivElement>(null);
   const topRef = useRef<HTMLElement>(null);
@@ -293,10 +333,16 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
     return (
       <section className="runner runner-transition" ref={topRef} tabIndex={-1}>
         <div className="wrap runner-inner">
-          <TransitionArt variant="tdah" />
-          <p className="eyebrow eyebrow-light">{t('transitionEyebrow')}</p>
-          <h2>{t('transitionTitle')}</h2>
-          <p className="runner-lead">{t('transitionLead')}</p>
+          <TransitionArt
+            variant={transitionArt?.[Math.max(0, pausaAtual - 1)] ?? 'tdah'}
+          />
+          <p className="eyebrow eyebrow-light">
+            {transitions?.[Math.max(0, pausaAtual - 1)]?.eyebrow ?? t('transitionEyebrow')}
+          </p>
+          <h2>{transitions?.[Math.max(0, pausaAtual - 1)]?.title ?? t('transitionTitle')}</h2>
+          <p className="runner-lead">
+            {transitions?.[Math.max(0, pausaAtual - 1)]?.lead ?? t('transitionLead')}
+          </p>
           <div className="runner-actions">
             <button type="button" className="button button-primary" onClick={() => setStage('questions')}>
               {t('continue')} <ArrowRight size={16} aria-hidden="true" />
@@ -362,7 +408,8 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
           <p className="runner-step">
             {t('stepOf', { step: stepLabel.step, total: stepLabel.total })}
             <span className="runner-step-block">
-              {t(stepLabel.block === 'partA' ? 'blockScreening' : 'blockDetail')}
+              {blockLabels?.[stepLabel.block] ??
+                t(stepLabel.block === 'partA' ? 'blockScreening' : 'blockDetail')}
             </span>
           </p>
           <div className="runner-progress-track" aria-hidden="true">
@@ -384,8 +431,25 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
                     <span className="runner-question-number">{number}</span>
                     {prompts[questionId]}
                   </legend>
+                  {/* A escala decide como se desenha. Uma de concordancia com
+                      polos vira regua de circulos; uma de frequencia continua
+                      lista, porque "quase sempre" e "sempre" precisam ser
+                      lidos para serem distinguidos. */}
+                  {escala.presentation === 'circles' && escala.poles ? (
+                    <ScaleCircles
+                      choices={escala.choices}
+                      chosen={chosen}
+                      name={questionId}
+                      labels={choiceLabels}
+                      poles={{
+                        low: choiceLabels[escala.poles.low] ?? escala.poles.low,
+                        high: choiceLabels[escala.poles.high] ?? escala.poles.high,
+                      }}
+                      onChoose={(choiceId) => chooseAndAdvance(questionId, choiceId)}
+                    />
+                  ) : (
                   <div className="runner-choices">
-                    {definition.scales[0].choices.map((choice) => (
+                    {escala.choices.map((choice) => (
                       <label
                         key={choice.id}
                         className={`runner-choice ${chosen === choice.id ? 'is-chosen' : ''}`}
@@ -402,6 +466,7 @@ export function AssessmentRunner({ definition, prompts, choiceLabels, locale }: 
                       </label>
                     ))}
                   </div>
+                  )}
                 </fieldset>
               </li>
             );

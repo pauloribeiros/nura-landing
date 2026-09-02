@@ -1535,6 +1535,48 @@ body.is-running-test .header-actions .button { display: none; }
   .iq-report-dimension { break-inside: avoid; }
 }
 
+/* ----------------------------------------------- regua de circulos ---
+   Os circulos crescem para as pontas e a cor vira de um lado ao outro: a
+   intensidade da resposta e legivel antes de qualquer texto. `--d` e a
+   distancia do centro, de 0 a 1, e vem do componente. */
+.scale-circles { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 34px 0 0; flex-wrap: nowrap; }
+.scale-pole { flex: 0 0 auto; max-width: 8ch; font: 700 12px var(--app-font-mono); line-height: 1.3; letter-spacing: .02em; }
+.scale-pole-low { color: var(--nura-blue-hover); text-align: right; }
+.scale-pole-high { color: var(--nura-cyan); text-align: left; }
+.scale-circles-track { display: flex; align-items: center; justify-content: center; gap: clamp(6px, 2.2vw, 14px); }
+
+.scale-circle {
+  --tamanho: calc(38px + var(--d) * 26px);
+  position: relative; flex: 0 0 auto;
+  width: var(--tamanho); height: var(--tamanho);
+  display: grid; place-items: center; cursor: pointer;
+}
+.scale-circle input { position: absolute; inset: 0; opacity: 0; cursor: pointer; margin: 0; }
+.scale-circle-ring {
+  width: 100%; height: 100%; border-radius: 50%;
+  border: 2px solid var(--anel, rgba(255,255,255,.3));
+  background: transparent;
+}
+.is-low  { --anel: color-mix(in oklab, var(--nura-blue-hover) calc(45% + var(--d) * 55%), transparent); }
+.is-high { --anel: color-mix(in oklab, var(--nura-cyan) calc(45% + var(--d) * 55%), transparent); }
+.is-mid  { --anel: var(--nura-violet); }
+
+.scale-circle.is-chosen .scale-circle-ring { background: var(--anel); border-color: var(--anel); }
+.scale-circle input:focus-visible + .sr-only + .scale-circle-ring,
+.scale-circle input:focus-visible ~ .scale-circle-ring { outline: 3px solid var(--nura-cyan); outline-offset: 4px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .scale-circle-ring { transition: background 180ms ease, border-color 180ms ease, transform 180ms cubic-bezier(.34,1.56,.64,1); }
+  .scale-circle:hover .scale-circle-ring { transform: scale(1.08); }
+  .scale-circle.is-chosen .scale-circle-ring { transform: scale(1.12); }
+}
+
+@media (max-width: 420px) {
+  .scale-circles { gap: 6px; }
+  .scale-pole { font-size: 10px; max-width: 6ch; }
+  .scale-circle { --tamanho: calc(32px + var(--d) * 20px); }
+}
+
 .report-print-hint { max-width: 46ch; margin: 10px 0 0; color: var(--text-on-dark-faint); font-size: 12px; line-height: 1.55; }
 .pay-pending-note { margin-top: 14px !important; color: var(--nura-cyan) !important; font: 700 12px var(--app-font-mono) !important; letter-spacing: .04em; }
 
