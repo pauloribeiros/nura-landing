@@ -630,7 +630,18 @@
     "calcYes": "Sí",
     "calcNo": "No",
     "calcAskNumber": "El número que memorizaste era…",
-    "calcAskWord": "La segunda palabra que memorizaste fue…"
+    "calcAskWord": "La segunda palabra que memorizaste fue…",
+    "interativos": {
+      "ESP-14": {
+        "enunciado": "Conecta cada par de puntos del mismo color. Las líneas no pueden cruzarse.",
+        "instrucao": "Arrastra de un punto al otro del mismo color. Piensa en el orden antes de trazar.",
+        "restante": "{s}s",
+        "ligadas": "{n} de {total} conectadas",
+        "bloqueado": "Ese trazo cruzaría otra línea.",
+        "concluir": "Terminar",
+        "desfazer": "Deshacer"
+      }
+    }
   },
   "iq_result": {
     "eyebrow": "Tu resultado",

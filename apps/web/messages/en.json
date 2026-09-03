@@ -630,7 +630,18 @@
     "calcYes": "Yes",
     "calcNo": "No",
     "calcAskNumber": "The number you memorised was…",
-    "calcAskWord": "The second word you memorised was…"
+    "calcAskWord": "The second word you memorised was…",
+    "interativos": {
+      "ESP-14": {
+        "enunciado": "Connect each pair of dots of the same colour. The lines must not cross.",
+        "instrucao": "Drag from one dot to the other of the same colour. Think about the order before you draw.",
+        "restante": "{s}s",
+        "ligadas": "{n} of {total} connected",
+        "bloqueado": "That line would cross another one.",
+        "concluir": "Finish",
+        "desfazer": "Undo"
+      }
+    }
   },
   "iq_result": {
     "eyebrow": "Your result",

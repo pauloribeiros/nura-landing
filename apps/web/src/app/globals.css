@@ -1625,6 +1625,42 @@ body.is-running-test .header-actions .button { display: none; }
   .scale-pole { font-size: 10px; }
 }
 
+/* ------------------------------------------------- conectar pares ---
+   A superficie e quadrada e ocupa a largura disponivel: num celular ela nao
+   pode depender de altura de viewport, porque a barra do navegador muda de
+   tamanho durante a rolagem e o desenho pularia de lugar no meio do traco. */
+.conectar { display: grid; gap: 14px; margin-top: 22px; }
+.conectar-barra { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.conectar-relogio { font: 700 clamp(22px, 4vw, 28px) var(--app-font-display); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.conectar-contador { color: var(--text-on-dark-faint); font: 700 12px var(--app-font-mono); letter-spacing: .06em; }
+.conectar-instrucao { margin: 0; color: var(--text-on-dark-muted); font-size: 14px; line-height: 1.55; }
+
+.conectar-superficie {
+  width: 100%; aspect-ratio: 1; display: block;
+  border: 1px solid rgba(255,255,255,.14); border-radius: 18px;
+  background: rgba(255,255,255,.03);
+  /* SEM ISTO O PRIMEIRO MOVIMENTO DO DEDO ROLA A PAGINA em vez de desenhar, e
+     a pessoa conclui que o item esta quebrado. Fica so na superficie: o resto
+     da tela precisa continuar rolando. */
+  touch-action: none;
+  -webkit-user-select: none; user-select: none;
+}
+.conectar.is-bloqueado .conectar-superficie { border-color: var(--status-attention); }
+
+.conectar-linha { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.conectar-linha.is-rascunho { opacity: .75; stroke-dasharray: 6 5; }
+
+.conectar-ponto { cursor: pointer; transition: r 140ms ease; }
+.conectar-ponto.is-ligado { opacity: .55; }
+
+.conectar-acoes { display: flex; gap: 10px; }
+.conectar-acoes .button { flex: 1; justify-content: center; min-height: 48px; }
+.conectar-aviso { min-height: 1.4em; margin: 0; color: var(--status-attention); font-size: 13px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .conectar-ponto { transition: none; }
+}
+
 .report-print-hint { max-width: 46ch; margin: 10px 0 0; color: var(--text-on-dark-faint); font-size: 12px; line-height: 1.55; }
 .pay-pending-note { margin-top: 14px !important; color: var(--nura-cyan) !important; font: 700 12px var(--app-font-mono) !important; letter-spacing: .04em; }
 
