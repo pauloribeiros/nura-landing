@@ -1,6 +1,13 @@
 import { DIMENSOES, ITEMS } from './bank';
 import { BASE, SPEED, SCORING_VERSION, WEIGHT_BY_DIFFICULTY } from './scoring-config';
 import type { Dimensao, Item, Resposta, ScoreDimensao } from './types';
+import {
+  conferirBruto,
+  verificarNoServidor,
+  type BrutoConferido,
+  type ResultadoConectarPares,
+} from './conectarPares';
+import type { ConfigConectarPares } from './itensInterativos';
 
 /**
  * Scores a completed run. Pure: same answers always give the same result.
@@ -31,6 +38,20 @@ export interface IqResult {
   perfil: ScoreDimensao[];
   pontosFortes: Dimensao[];
   pontosFracos: Dimensao[];
+  /**
+   * O desempenho bruto dos itens que se respondem desenhando.
+   *
+   * FICA FORA DE `pontos` DE PROPOSITO. Na escala do teste o item vale o mesmo
+   * que os outros — acertou ou nao acertou — porque dar peso diferente a ele
+   * exigiria amostra, e nao ha. O score bruto anda junto para que o modelo
+   * psicometrico futuro tenha tempo, bloqueios e tracado em vez de um acerto
+   * binario que jogou fora tudo isso.
+   *
+   * OPCIONAL PORQUE AS RODADAS ANTIGAS NAO TEM. O `payload` gravado no banco e
+   * lido de volta como um `IqResult`, e exigir o campo faria o tipo mentir
+   * sobre toda rodada anterior a este item.
+   */
+  interativos?: (BrutoConferido & { itemId: string })[];
 }
 
 /**
@@ -48,6 +69,27 @@ export function isCorrect(item: Item, resposta: Resposta): boolean {
     const expected = memoria.estimulo.replace(/\s+/g, '');
     const target = memoria.cobrar === 'inverso' ? [...expected].reverse().join('') : expected;
     return given.length > 0 && given === target;
+  }
+
+  /**
+   * Item interativo: o julgamento e refeito a partir do que foi desenhado.
+   *
+   * O que o cliente conta nao vale — ver `verificarNoServidor`. Aqui o item so
+   * acerta com todos os pares ligados, nenhum errado, e nenhuma linha cruzando
+   * outra.
+   */
+  if (item.formato_alternativas === 'interativo') {
+    const config = item.interativo as ConfigConectarPares | undefined;
+    const dados = resposta.bruto?.dados as ResultadoConectarPares | undefined;
+    if (!config || !dados || !Array.isArray(dados.ligacoes)) return false;
+
+    const conferido = verificarNoServidor(dados.ligacoes, config.paresCorretos);
+    return (
+      conferido.valido &&
+      conferido.faltantes === 0 &&
+      conferido.erros === 0 &&
+      conferido.acertos > 0
+    );
   }
 
   return item.correta !== null && resposta.escolhaIndex === item.correta;
@@ -84,6 +126,8 @@ export function scoreIq(respostas: Resposta[], items: Item[] = ITEMS): IqResult 
   const perDimension = new Map<Dimensao, { acertos: number; total: number }>();
   for (const d of DIMENSOES) perDimension.set(d, { acertos: 0, total: 0 });
 
+  const interativos: (BrutoConferido & { itemId: string })[] = [];
+
   for (const item of items) {
     const weight = WEIGHT_BY_DIFFICULTY[item.dificuldade];
     possible += weight;
@@ -92,6 +136,19 @@ export function scoreIq(respostas: Resposta[], items: Item[] = ITEMS): IqResult 
     bucket.total += 1;
 
     const resposta = answered.find((r) => r.itemId === item.id);
+
+    // O bruto e guardado por si, e nao entra na conta acima: ver `interativos`.
+    if (resposta && item.formato_alternativas === 'interativo') {
+      const config = item.interativo as ConfigConectarPares | undefined;
+      const dados = resposta.bruto?.dados as ResultadoConectarPares | undefined;
+      if (config && dados && Array.isArray(dados.ligacoes)) {
+        interativos.push({
+          itemId: item.id,
+          ...conferirBruto(dados, config.paresCorretos, config.tempoLimite * 1000),
+        });
+      }
+    }
+
     if (resposta && isCorrect(item, resposta)) {
       earned += weight;
       acertos += 1;
@@ -136,5 +193,6 @@ export function scoreIq(respostas: Resposta[], items: Item[] = ITEMS): IqResult 
     perfil,
     pontosFortes: ranked.slice(0, 2).map((p) => p.dimensao),
     pontosFracos: ranked.slice(-2).map((p) => p.dimensao).reverse(),
+    interativos,
   };
 }

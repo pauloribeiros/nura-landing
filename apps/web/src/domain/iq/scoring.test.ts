@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { ITEMS } from './bank';
+import { SOLUCOES, type ConfigConectarPares } from './itensInterativos';
 import { isCorrect, scoreIq, speedFactor } from './scoring';
 import { SPEED } from './scoring-config';
 import type { Resposta } from './types';
@@ -13,6 +14,38 @@ import type { Resposta } from './types';
 
 const answerAll = (correct: boolean): Resposta[] =>
   ITEMS.map((item) => {
+    /**
+     * Item interativo: a "resposta certa" e um desenho, e o servidor a refaz a
+     * partir das ligacoes. Ligar em linha reta cada par previsto e a solucao
+     * mais simples que passa — os pontos foram posicionados para que ela nao
+     * gere cruzamento.
+     */
+    if (item.formato_alternativas === 'interativo') {
+      const config = item.interativo as ConfigConectarPares;
+      // Ligar em linha reta NAO resolve este item — o traco rosa atravessa o
+      // azul. A solucao declarada contorna, que e o que se pede.
+      const ligacoes = correct
+        ? SOLUCOES[item.id].map((l) => ({ ...l, correta: true }))
+        : [];
+      return {
+        itemId: item.id,
+        escolhaIndex: null,
+        correta: correct,
+        tempo_ms: 20_000,
+        bruto: {
+          dados: {
+            motivo: 'completou',
+            tempoGasto: 20_000,
+            acertos: correct ? config.paresCorretos.length : 0,
+            erros: correct ? 0 : 1,
+            faltantes: correct ? 0 : config.paresCorretos.length,
+            bloqueios: 0,
+            ligacoes,
+          },
+        },
+      };
+    }
+
     const memoria = item.memoria;
     if (memoria && (memoria.cobrar === 'sequencia_completa' || memoria.cobrar === 'inverso')) {
       const expected = memoria.estimulo.replace(/\s+/g, '');
@@ -48,6 +81,25 @@ describe('iq scoring', () => {
     expect(perfect.acertos).toBe(ITEMS.length);
     expect(perfect.total).toBe(ITEMS.length);
     expect(scoreIq(answerAll(false)).acertos).toBe(0);
+  });
+
+  it('guarda o bruto do item interativo FORA da pontuacao do teste', () => {
+    // Os dois lados importam. O bruto precisa existir, porque e o unico
+    // registro de tempo e tentativas que o modelo psicometrico futuro vai ter.
+    // E nao pode entrar em `pontos`, porque dar peso proprio a um item exige
+    // amostra — hoje ele vale o mesmo que os outros 44.
+    const perfeito = scoreIq(answerAll(true));
+    const bruto = perfeito.interativos ?? [];
+    expect(bruto).toHaveLength(1);
+    expect(bruto[0].itemId).toBe('ESP-14');
+    expect(bruto[0].valido).toBe(true);
+    expect(bruto[0].acertos).toBe(3);
+    expect(bruto[0].score).toBeGreaterThan(0);
+
+    // O peso na escala do teste e o do item, e nada alem dele.
+    const semInterativo = ITEMS.filter((i) => i.formato_alternativas !== 'interativo');
+    const soOsOutros = scoreIq(answerAll(true), semInterativo);
+    expect(perfeito.total - soOsOutros.total).toBe(1);
   });
 
   it('scores a perfect run above a failed one', () => {

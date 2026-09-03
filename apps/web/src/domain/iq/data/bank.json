@@ -725,27 +725,6 @@
     "ordem": 34
   },
   {
-    "id": "ESP-08",
-    "tipo": "dobradura_espacial",
-    "dificuldade": 4,
-    "enunciado": "Uma folha é dobrada ao meio, e ao meio de novo (4 camadas). Você faz um furo de furador no meio da folha dobrada. Ao desdobrar, quantos furos aparecem?",
-    "alternativas": [
-      "1",
-      "2",
-      "4",
-      "6",
-      "8",
-      "16"
-    ],
-    "correta": 2,
-    "regra": "Duas dobras = 4 camadas = 4 furos. O \"8\" pega quem conta 3 dobras; o \"6\" pega quem soma em vez de dobrar; o \"16\" pega quem dobra três vezes.",
-    "dimensao": "orientacao_espacial",
-    "formato_estimulo": "none",
-    "formato_alternativas": "texto",
-    "estimulo": null,
-    "ordem": 35
-  },
-  {
     "id": "MEM-05",
     "tipo": "span_digitos",
     "dificuldade": 4,

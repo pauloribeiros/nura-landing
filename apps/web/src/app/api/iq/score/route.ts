@@ -6,6 +6,7 @@ import { getSupabaseAdminClient } from '@/lib/supabase/server';
 import { ITEMS } from '@/domain/iq/bank';
 import { scoreIq } from '@/domain/iq/scoring';
 import { SCORING_VERSION } from '@/domain/iq/scoring-config';
+import { lerDesenhoDoCliente } from '@/domain/iq/conectarPares';
 import type { Resposta } from '@/domain/iq/types';
 
 /**
@@ -63,10 +64,20 @@ function parseAnswers(input: unknown): Resposta[] | null {
 
     const rawTime = typeof r.tempo_ms === 'number' && Number.isFinite(r.tempo_ms) ? r.tempo_ms : 0;
 
+    // O item que se responde desenhando nao tem indice nem texto: o que ele
+    // manda e o tracado. Passa por `lerDesenhoDoCliente` porque nada aqui pode
+    // ser lido como veio — o desenho e limitado em tamanho, e os acertos que o
+    // navegador afirma ter feito sao descartados e recontados no scorer.
+    const desenho = r.bruto ? lerDesenhoDoCliente((r.bruto as Record<string, unknown>).dados) : null;
+    if (r.bruto && !desenho) {
+      console.warn('[nura] desenho descartado por forma invalida', itemId);
+    }
+
     out.push({
       itemId,
       escolhaIndex,
       entradaLivre,
+      bruto: desenho ? { dados: desenho } : undefined,
       // Overwritten by the scorer. Kept only to satisfy the shared type.
       correta: false,
       tempo_ms: Math.min(MAX_ITEM_MS, Math.max(MIN_ITEM_MS, rawTime)),
@@ -127,10 +138,20 @@ export async function POST(request: Request) {
   // coefficients change, every past run can be rescored from what was actually
   // chosen. `choice_id` carries the index as text for options and the typed
   // string for free entry, which is the whole of what a person answered.
+  // O item interativo nao tem escolha nem texto para gravar aqui; o que ele
+  // produziu — score bruto, tempo, bloqueios e o tracado — vai no `payload` do
+  // resultado, que e jsonb. Esta coluna guarda so o score, para que uma leitura
+  // rapida da tabela nao precise abrir o payload.
+  const brutoPorItem = new Map(
+    (result.interativos ?? []).map((i) => [i.itemId, i.score] as const),
+  );
+
   const rows = respostas.map((r) => ({
     session_id: session.id,
     question_id: r.itemId,
-    choice_id: r.entradaLivre ?? String(r.escolhaIndex ?? ''),
+    choice_id: brutoPorItem.has(r.itemId)
+      ? `bruto:${brutoPorItem.get(r.itemId)}`
+      : (r.entradaLivre ?? String(r.escolhaIndex ?? '')),
   }));
 
   const { error: answersError } = await admin.from('assessment_answers').insert(rows);

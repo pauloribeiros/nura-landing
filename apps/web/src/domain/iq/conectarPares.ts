@@ -235,3 +235,170 @@ export function scoreBruto(r: ResultadoConectarPares, tempoLimite_ms: number): n
 export function itemAcertou(r: ResultadoConectarPares): boolean {
   return r.faltantes === 0 && r.erros === 0 && r.acertos > 0;
 }
+
+/**
+ * Refaz o julgamento a partir do que foi desenhado, ignorando o que o cliente
+ * afirma ter acertado.
+ *
+ * O NAVEGADOR NAO E TESTEMUNHA CONFIAVEL. O resultado chega com `acertos` e
+ * `bloqueios` ja contados, e um payload forjado poderia dizer "tres acertos"
+ * com tres linhas cruzadas — ou com nenhuma linha. Entao o servidor conta de
+ * novo a partir das ligacoes: confere se cada uma une um par previsto e se
+ * nenhuma cruza outra. E a mesma razao pela qual `correta` nunca sai do banco
+ * para o navegador nos outros itens.
+ *
+ * Os tracos sao verificados em ordem, cada um contra os anteriores — que e
+ * como eles foram aceitos na tela.
+ */
+export function verificarNoServidor(
+  ligacoes: Ligacao[],
+  paresCorretos: ParCorreto[],
+): { acertos: number; erros: number; faltantes: number; valido: boolean } {
+  const aceitas: Ligacao[] = [];
+  let acertos = 0;
+  let erros = 0;
+  let valido = true;
+  const usados = new Set<string>();
+
+  for (const l of ligacoes) {
+    // Um ponto so participa de uma ligacao, como na tela.
+    if (usados.has(l.de) || usados.has(l.para) || l.de === l.para) {
+      valido = false;
+      continue;
+    }
+    if (tracadoCruza(l.tracado, aceitas)) {
+      // Uma ligacao que cruza jamais poderia ter sido criada: o payload foi
+      // adulterado, ou a geometria da tela e do servidor divergiu.
+      valido = false;
+      continue;
+    }
+    usados.add(l.de);
+    usados.add(l.para);
+    aceitas.push(l);
+    if (parEhCorreto(l.de, l.para, paresCorretos)) acertos++;
+    else erros++;
+  }
+
+  return { acertos, erros, faltantes: Math.max(0, paresCorretos.length - acertos), valido };
+}
+
+/* ------------------------------------------- o que chega pela rede --- */
+
+/**
+ * Quantos tracos e quantos pontos por traco o servidor aceita.
+ *
+ * NAO SAO NUMEROS DE ESTILO: a checagem de cruzamento compara cada segmento do
+ * traco novo com cada segmento dos aceitos, entao o custo cresce com o quadrado
+ * do tamanho do desenho. Sem teto, um payload com cem mil pontos por ligacao
+ * prende o processo do servidor por minutos — uma requisicao, um servidor fora
+ * do ar. O teto e generoso de proposito: a tela so registra um ponto a cada ~1
+ * unidade de uma area 100x100, entao 800 pontos ja e atravessar o quadro oito
+ * vezes num item de 60 segundos.
+ */
+export const LIMITE_LIGACOES = 12;
+export const LIMITE_PONTOS_POR_LIGACAO = 800;
+
+/**
+ * Le o desenho que veio do navegador, e so o desenho.
+ *
+ * OS NUMEROS DO CLIENTE NAO ENTRAM. `acertos`, `erros` e `faltantes` chegam
+ * zerados daqui e sao recalculados de `ligacoes` — a razao esta em
+ * `verificarNoServidor`. O que nao da para recalcular, porque so o navegador
+ * viu, e o tempo e os bloqueios; esses vem limitados, nunca em bruto.
+ *
+ * Devolve `null` quando a forma nao bate. Quem chama descarta o desenho e o
+ * item conta como errado, em vez de recusar a rodada inteira: uma pessoa perder
+ * 45 respostas por causa de um item mal formado seria pior que perder o item.
+ */
+export function lerDesenhoDoCliente(raw: unknown): ResultadoConectarPares | null {
+  if (!raw || typeof raw !== 'object') return null;
+  const r = raw as Record<string, unknown>;
+
+  if (!Array.isArray(r.ligacoes) || r.ligacoes.length > LIMITE_LIGACOES) return null;
+
+  const ligacoes: Ligacao[] = [];
+  for (const bruta of r.ligacoes) {
+    if (!bruta || typeof bruta !== 'object') return null;
+    const l = bruta as Record<string, unknown>;
+
+    if (typeof l.de !== 'string' || typeof l.para !== 'string') return null;
+    if (l.de.length > 40 || l.para.length > 40) return null;
+    if (!Array.isArray(l.tracado)) return null;
+    if (l.tracado.length < 2 || l.tracado.length > LIMITE_PONTOS_POR_LIGACAO) return null;
+
+    const tracado: { x: number; y: number }[] = [];
+    for (const ponto of l.tracado) {
+      if (!ponto || typeof ponto !== 'object') return null;
+      const p = ponto as Record<string, unknown>;
+      if (typeof p.x !== 'number' || typeof p.y !== 'number') return null;
+      if (!Number.isFinite(p.x) || !Number.isFinite(p.y)) return null;
+      // A area e 0-100. A folga cobre o dedo que sai um pouco pela borda; fora
+      // dela o ponto nao veio da tela.
+      if (p.x < -20 || p.x > 120 || p.y < -20 || p.y > 120) return null;
+      tracado.push({ x: p.x, y: p.y });
+    }
+
+    // `correta` e recalculada; o valor que veio nao e lido.
+    ligacoes.push({ de: l.de, para: l.para, tracado, correta: false });
+  }
+
+  const motivo: MotivoConclusao =
+    r.motivo === 'completou' || r.motivo === 'tempo' ? r.motivo : 'desistiu';
+
+  const tempoGasto =
+    typeof r.tempoGasto === 'number' && Number.isFinite(r.tempoGasto)
+      ? Math.max(0, r.tempoGasto)
+      : 0;
+
+  const bloqueios =
+    typeof r.bloqueios === 'number' && Number.isFinite(r.bloqueios)
+      ? Math.min(50, Math.max(0, Math.floor(r.bloqueios)))
+      : 0;
+
+  return { motivo, tempoGasto, bloqueios, ligacoes, acertos: 0, erros: 0, faltantes: 0 };
+}
+
+/** O que o servidor concluiu sobre um item interativo, sem consultar o cliente. */
+export interface BrutoConferido {
+  score: number;
+  acertos: number;
+  erros: number;
+  faltantes: number;
+  bloqueios: number;
+  tempoGasto_ms: number;
+  motivo: MotivoConclusao;
+  /** Falso quando o desenho nao poderia ter sido feito na tela. */
+  valido: boolean;
+}
+
+/**
+ * Recalcula acertos e score bruto a partir do desenho.
+ *
+ * O TEMPO E O UNICO NUMERO QUE SOBREVIVE DO CLIENTE, porque so o navegador viu
+ * o cronometro — e por isso ele vem preso ao limite do item: sem isso, mandar
+ * `tempoGasto: 0` compraria o bonus de velocidade inteiro de graca.
+ */
+export function conferirBruto(
+  dados: ResultadoConectarPares,
+  paresCorretos: ParCorreto[],
+  tempoLimite_ms: number,
+): BrutoConferido {
+  const conferido = verificarNoServidor(dados.ligacoes, paresCorretos);
+  const tempoGasto_ms = Math.min(tempoLimite_ms, Math.max(0, dados.tempoGasto));
+
+  const score = scoreBruto(
+    { ...dados, ...conferido, tempoGasto: tempoGasto_ms },
+    tempoLimite_ms,
+  );
+
+  return {
+    score,
+    acertos: conferido.acertos,
+    erros: conferido.erros,
+    faltantes: conferido.faltantes,
+    bloqueios: dados.bloqueios,
+    tempoGasto_ms,
+    motivo: dados.motivo,
+    valido: conferido.valido,
+  };
+}

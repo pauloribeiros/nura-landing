@@ -2,6 +2,7 @@ import raw from './data/bank.json';
 import textEn from './data/text.en.json';
 import textEs from './data/text.es.json';
 import type { Dimensao, Item } from './types';
+import { ITENS_INTERATIVOS } from './itensInterativos';
 
 /**
  * The item bank.
@@ -17,7 +18,37 @@ import type { Dimensao, Item } from './types';
  * test.
  */
 
-export const ITEMS: Item[] = (raw as Item[]).slice().sort((a, b) => a.ordem - b.ordem);
+/**
+ * Os itens interativos entram no banco como qualquer outro.
+ *
+ * A ALTERNATIVA SERIA UM CAMINHO PARALELO, e ela custaria caro: ordem,
+ * traducao, pontuacao e contagem de progresso teriam que aprender que existe
+ * um segundo tipo de item, cada uma a seu modo. Entrando aqui, eles herdam
+ * tudo isso — o que muda e so quem desenha a pergunta.
+ *
+ * Sem alternativas e sem indice de correta: nao ha o que marcar. `correta`
+ * fica null e quem decide acerto e a regra do dominio, a partir do que a
+ * pessoa desenhou.
+ */
+const INTERATIVOS: Item[] = ITENS_INTERATIVOS.map((item) => ({
+  id: item.id,
+  ordem: item.ordem,
+  dimensao: item.dimensao,
+  tipo: item.tipo,
+  dificuldade: item.dificuldade,
+  enunciado: item.enunciado,
+  estimulo: null,
+  formato_estimulo: 'none',
+  alternativas: [],
+  formato_alternativas: 'interativo',
+  correta: null,
+  interativo: item.config,
+  regra: item.regra,
+}));
+
+export const ITEMS: Item[] = [...(raw as Item[]), ...INTERATIVOS]
+  .slice()
+  .sort((a, b) => a.ordem - b.ordem);
 
 export const DIMENSOES: Dimensao[] = [
   'reconhecimento_padroes',

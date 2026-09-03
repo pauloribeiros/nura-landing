@@ -20,6 +20,8 @@ import { Stimulus } from './Stimulus';
 import { OptionGrid } from './OptionGrid';
 import { MemoryShow } from './MemoryShow';
 import { FreeEntry } from './FreeEntry';
+import { ConectarPares } from './ConectarPares';
+import type { ConfigConectarPares } from '@/domain/iq/itensInterativos';
 import { Timer } from './Timer';
 import { BREAKS, TransitionScreen } from './TransitionScreen';
 import { preloadTransitionArt } from '../TransitionArt';
@@ -53,6 +55,9 @@ export function IqRunner({
   onFinish: (session: IqSession) => void;
 }) {
   const t = useTranslations('iq');
+  // Os rotulos da tela de um item interativo. Separados do enunciado, que mora
+  // no banco com o dos outros itens.
+  const ti = useTranslations('iq.interativos');
 
   // The run order is fixed for the whole session: rebuilding it mid-run could
   // move a recall away from the stimulus it belongs to.
@@ -107,6 +112,7 @@ export function IqRunner({
   const item = step.item as unknown as PublicItem;
   const existing = answerFor(session, item.id);
   const isFreeEntry = item.formato_alternativas === 'entrada_livre';
+  const isInterativo = item.formato_alternativas === 'interativo';
 
   // A recall must not be reachable by going back — that would re-show the
   // stimulus that precedes it.
@@ -114,17 +120,24 @@ export function IqRunner({
   const canGoBack =
     session.stepIndex > 0 && step.kind === 'question' && previous?.kind === 'question';
 
-  const answered = isFreeEntry
-    ? (existing?.entradaLivre ?? draft).trim().length > 0
-    : existing?.escolhaIndex != null;
+  const answered = isInterativo
+    ? existing?.bruto != null
+    : isFreeEntry
+      ? (existing?.entradaLivre ?? draft).trim().length > 0
+      : existing?.escolhaIndex != null;
 
-  const commit = (partial: { escolhaIndex?: number | null; entradaLivre?: string }) => {
+  const commit = (partial: {
+    escolhaIndex?: number | null;
+    entradaLivre?: string;
+    bruto?: { dados: unknown };
+  }) => {
     setSession((current) =>
       current
         ? recordIqAnswer(current, {
             itemId: item.id,
             escolhaIndex: partial.escolhaIndex ?? null,
             entradaLivre: partial.entradaLivre,
+            bruto: partial.bruto,
             // Correctness is the server's to decide; this is a placeholder the
             // scorer overwrites, kept only to satisfy the shared type.
             correta: false,
@@ -229,7 +242,31 @@ export function IqRunner({
             <p className="iq-enunciado">{item.enunciado}</p>
             <Stimulus item={item} />
 
-            {isFreeEntry ? (
+            {isInterativo ? (
+              /* Um item que se responde desenhando. Ele avanca sozinho ao
+                 concluir — por par completo ou por tempo — porque parar para
+                 apertar "continuar" depois de 60 segundos cronometrados so
+                 acrescenta um toque a um item que ja terminou. */
+              <ConectarPares
+                {...(item.interativo as ConfigConectarPares)}
+                rotulos={{
+                  restante: ti(`${item.id}.restante`),
+                  ligadas: ti(`${item.id}.ligadas`),
+                  instrucao: ti(`${item.id}.instrucao`),
+                  bloqueado: ti(`${item.id}.bloqueado`),
+                  concluir: ti(`${item.id}.concluir`),
+                  desfazer: ti(`${item.id}.desfazer`),
+                }}
+                onConcluir={(resultado) => {
+                  if (advancing.current) return;
+                  advancing.current = true;
+                  // So o desenho: quem pontua e o servidor, contra o gabarito
+                  // que este navegador nunca teve.
+                  commit({ bruto: { dados: resultado } });
+                  window.setTimeout(next, 500);
+                }}
+              />
+            ) : isFreeEntry ? (
               <FreeEntry
                 item={item}
                 value={existing?.entradaLivre ?? draft}

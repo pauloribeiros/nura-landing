@@ -633,7 +633,6 @@
     "calcAskWord": "A segunda palavra que você memorizou foi…",
     "interativos": {
       "ESP-14": {
-        "enunciado": "Ligue cada par de pontos da mesma cor. As linhas não podem se cruzar.",
         "instrucao": "Arraste de um ponto até o outro da mesma cor. Pense na ordem antes de traçar.",
         "restante": "{s}s",
         "ligadas": "{n} de {total} ligadas",

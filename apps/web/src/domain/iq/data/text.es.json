@@ -118,9 +118,6 @@
   "ESP-01": {
     "enunciado": "¿Cuántas aristas (las líneas donde se encuentran dos caras) tiene un cubo?"
   },
-  "ESP-08": {
-    "enunciado": "Una hoja se dobla por la mitad y otra vez por la mitad (4 capas). Haces un agujero con un perforador en el centro de la hoja doblada. Al desdoblarla, ¿cuántos agujeros aparecen?"
-  },
   "ESP-09": {
     "enunciado": "Un cuadrado se dobla por la mitad, se hace un agujero a través de ambas capas y luego se desdobla. ¿Qué hoja es el resultado?"
   },
@@ -237,5 +234,8 @@
   },
   "PER-09": {
     "enunciado": "¿Qué pieza completa la cuadrícula?"
+  },
+  "ESP-14": {
+    "enunciado": "Conecta cada par de puntos del mismo color. Las líneas no pueden cruzarse."
   }
 }

@@ -39,6 +39,15 @@ describe('item bank', () => {
   describe('answerability', () => {
     it('points at an option that exists, or asks for free entry', () => {
       for (const item of ITEMS) {
+        // Um item interativo nao tem alternativa para apontar: a resposta e o
+        // que a pessoa desenhou, e quem julga e a regra do dominio. O que ele
+        // precisa ter e a config, sem a qual a tela nao teria o que montar.
+        if (item.formato_alternativas === 'interativo') {
+          expect(item.correta, `${item.id}`).toBeNull();
+          expect(item.alternativas, `${item.id}`).toHaveLength(0);
+          expect(item.interativo, `${item.id} precisa da config`).toBeTruthy();
+          continue;
+        }
         if (item.formato_alternativas === 'entrada_livre') {
           expect(item.correta, `${item.id}`).toBeNull();
           expect(item.alternativas, `${item.id}`).toHaveLength(0);
@@ -185,7 +194,10 @@ describe('item bank', () => {
       for (const item of publicItems()) {
         expect(item.enunciado.trim().length, item.id).toBeGreaterThan(0);
         expect(item.formato_alternativas, item.id).toBeTruthy();
-        if (item.formato_alternativas !== 'entrada_livre') {
+        if (
+          item.formato_alternativas !== 'entrada_livre' &&
+          item.formato_alternativas !== 'interativo'
+        ) {
           expect(item.alternativas.length, item.id).toBeGreaterThan(1);
         }
       }
