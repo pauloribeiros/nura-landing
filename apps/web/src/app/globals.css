@@ -1626,9 +1626,14 @@ body.is-running-test .header-actions .button { display: none; }
 }
 
 /* ------------------------------------------------- conectar pares ---
-   A superficie e quadrada e ocupa a largura disponivel: num celular ela nao
-   pode depender de altura de viewport, porque a barra do navegador muda de
-   tamanho durante a rolagem e o desenho pularia de lugar no meio do traco. */
+   A superficie e quadrada e ocupa a largura disponivel.
+
+   NO CELULAR ELA TAMBEM E LIMITADA POR ALTURA, e a unidade importa: `svh` e a
+   altura com a barra do navegador aberta e NAO muda quando a barra recolhe
+   durante a rolagem. `dvh` mudaria, e a superficie mudaria de tamanho no meio
+   de um traco — o desenho pularia de lugar sob o dedo. Sem esse limite a
+   superficie quadrada empurrava "Desfazer" e "Concluir" para tras da barra do
+   navegador, e o item ficava sem saida visivel. */
 .conectar { display: grid; gap: 14px; margin-top: 22px; }
 .conectar-barra { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
 .conectar-relogio { font: 700 clamp(22px, 4vw, 28px) var(--app-font-display); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
@@ -1647,8 +1652,12 @@ body.is-running-test .header-actions .button { display: none; }
 }
 .conectar.is-bloqueado .conectar-superficie { border-color: var(--status-attention); }
 
-.conectar-linha { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-.conectar-linha.is-rascunho { opacity: .75; stroke-dasharray: 6 5; }
+/* Espessura em px de tela (`non-scaling-stroke` no elemento), e nao em unidades
+   do viewBox: o traco precisa ter o mesmo peso visual em qualquer tamanho de
+   superficie. Um traco fino demais some contra os discos de cor e a pessoa
+   perde tempo conferindo se a ligacao pegou. */
+.conectar-linha { fill: none; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.conectar-linha.is-rascunho { opacity: .75; stroke-dasharray: 7 6; }
 
 .conectar-ponto { cursor: pointer; transition: r 140ms ease; }
 .conectar-ponto.is-ligado { opacity: .55; }
@@ -1659,6 +1668,27 @@ body.is-running-test .header-actions .button { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .conectar-ponto { transition: none; }
+}
+
+/* No celular o item inteiro precisa caber sem rolagem: o relogio corre, e quem
+   precisa rolar para achar "Concluir" perde segundos que o item esta contando.
+   O limite de altura vem primeiro; o resto e o enxugamento do que esta em
+   volta, para devolver a superficie o espaco que as margens tomavam. */
+@media (max-width: 680px) {
+  .conectar { gap: 10px; margin-top: 6px; }
+  .conectar-relogio { font-size: 20px; }
+  .conectar-instrucao { font-size: 13px; line-height: 1.45; }
+  .conectar-aviso { min-height: 1.2em; font-size: 12px; }
+  .conectar-acoes .button { min-height: 46px; }
+  .conectar-superficie {
+    /* A superficie fica com o que sobra: 420px e o que o resto da tela ocupa
+       num celular — cabecalho, progresso, enunciado, relogio, instrucao,
+       botoes e a linha do aviso, medidos, com folga para um enunciado que
+       quebre em tres linhas. O piso de 220px vem antes de encolher a ponto de
+       dois pontos vizinhos virarem um alvo so para o dedo. */
+    width: min(100%, max(220px, calc(100svh - 420px)));
+    justify-self: center;
+  }
 }
 
 .report-print-hint { max-width: 46ch; margin: 10px 0 0; color: var(--text-on-dark-faint); font-size: 12px; line-height: 1.55; }
