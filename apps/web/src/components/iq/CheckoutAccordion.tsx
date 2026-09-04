@@ -12,6 +12,7 @@ import {
   useStripe,
 } from '@stripe/react-stripe-js';
 import { track } from '@/lib/analytics';
+import type { SegredosIniciais } from '@/lib/payments/intents';
 
 /**
  * Escolha da forma de pagamento, um painel aberto por vez, e o pagamento
@@ -29,10 +30,17 @@ import { track } from '@/lib/analytics';
  * cresce. `grid-template-rows: 0fr -> 1fr` acompanha a altura real do que está
  * lá dentro, inclusive quando ela muda sozinha.
  *
- * UM INTENT POR MÉTODO, criado só quando o painel abre. O Payment Element
- * mostra o que o intent aceita, então é assim que o painel do cartão mostra
- * cartão e o do Pix mostra Pix — em vez de um acordeão do Stripe dentro do
- * nosso acordeão.
+ * UM INTENT POR MÉTODO. O Payment Element mostra o que o intent aceita, então
+ * é assim que o painel do cartão mostra cartão e o do Pix mostra Pix — em vez
+ * de um acordeão do Stripe dentro do nosso acordeão.
+ *
+ * OS SEGREDOS CHEGAM PRONTOS, como uma promessa que a página começou a
+ * resolver antes de mandar o HTML. Antes eles eram pedidos aqui, depois da
+ * hidratação, e a espera aparecia como vários segundos de "carregando" no
+ * lugar dos campos de cartão: era uma ida ao servidor que refazia a
+ * autenticação e três consultas antes de sequer falar com o Stripe. O pedido
+ * pela rota continua existindo para quando a criação no servidor falha — ver
+ * `pedirSegredo`.
  *
  * ACESSIBILIDADE: `aria-expanded` e `aria-controls` no cabeçalho, `region`
  * apontando de volta, e o conteúdo de um painel fechado fora da ordem de
@@ -58,7 +66,16 @@ const appearance = {
   },
 };
 
-export function CheckoutAccordion({ sessionId, email }: { sessionId: string; email?: string }) {
+export function CheckoutAccordion({
+  sessionId,
+  email,
+  segredosIniciais,
+}: {
+  sessionId: string;
+  email?: string;
+  /** Promessa aberta no servidor. Nunca rejeita: ver `abrirIntentsDaCobranca`. */
+  segredosIniciais?: Promise<SegredosIniciais> | null;
+}) {
   const t = useTranslations('iq_checkout');
   const locale = useLocale();
   // Pix aberto por padrao: no celular e o caminho mais curto — nada para
@@ -103,12 +120,48 @@ export function CheckoutAccordion({ sessionId, email }: { sessionId: string; ema
     [segredos, sessionId, locale, email],
   );
 
-  // O Pix abre por padrão; o intent do cartão vem junto porque é ele que as
-  // carteiras usam, e o Express Checkout precisa dele para saber se há
-  // Apple Pay ou Google Pay neste aparelho.
+  /**
+   * Os dois segredos: o do Pix porque o painel dele abre por padrão, o do
+   * cartão porque é ele que as carteiras usam — o Express Checkout precisa
+   * dele para saber se há Apple Pay ou Google Pay neste aparelho.
+   *
+   * A promessa da página já está resolvendo desde antes do HTML chegar, então
+   * na prática ela responde na hora. A rota só entra quando ela não trouxe o
+   * método, que é o caso de falha na criação no servidor.
+   */
   useEffect(() => {
-    void pedirSegredo('pix');
-    void pedirSegredo('card');
+    let vivo = true;
+
+    void (async () => {
+      const prontos = segredosIniciais ? await segredosIniciais : {};
+      if (!vivo) return;
+
+      const naoAtendidos = (['card', 'pix'] as const).filter(
+        (m) => prontos[m]?.atendido === false,
+      );
+      if (naoAtendidos.length > 0) {
+        setIndisponiveis((atual) => [...new Set([...atual, ...naoAtendidos])]);
+        setAberto((atualAberto) =>
+          naoAtendidos.includes(atualAberto as 'card' | 'pix') ? 'card' : atualAberto,
+        );
+      }
+
+      const vindos = Object.fromEntries(
+        (['card', 'pix'] as const)
+          .map((m) => [m, prontos[m]?.clientSecret] as const)
+          .filter(([, segredo]) => Boolean(segredo)),
+      ) as Partial<Record<'card' | 'pix', string>>;
+      if (Object.keys(vindos).length > 0) setSegredos((atual) => ({ ...vindos, ...atual }));
+
+      // Só o que o servidor não conseguiu abrir.
+      for (const metodo of ['pix', 'card'] as const) {
+        if (!vindos[metodo] && prontos[metodo]?.atendido !== false) void pedirSegredo(metodo);
+      }
+    })();
+
+    return () => {
+      vivo = false;
+    };
     // Uma vez: o segredo é guardado e `pedirSegredo` sai cedo depois disso.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

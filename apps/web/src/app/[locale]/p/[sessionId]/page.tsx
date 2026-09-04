@@ -11,6 +11,8 @@ import { CheckoutAccordion } from '@/components/iq/CheckoutAccordion';
 import { FocusMode } from '@/components/FocusMode';
 import { Link } from '@/i18n/navigation';
 import { reportIsSellable, reportPath } from '@/content/landing';
+import { getStripe } from '@/lib/payments/stripe';
+import { abrirIntentsDaCobranca } from '@/lib/payments/intents';
 
 /**
  * A página de pagamento, na nossa casa em vez da do Stripe.
@@ -30,6 +32,13 @@ import { reportIsSellable, reportPath } from '@/content/landing';
  * dele simplesmente não existe. Sem resultado gravado também não há o que
  * vender, e a página some — vender um relatório para uma corrida que nunca foi
  * pontuada seria receber por algo que não dá para entregar.
+ *
+ * OS INTENTS NASCEM AQUI, e não no navegador. Antes a página carregava,
+ * hidratava, e só então pedia o intent numa chamada que refazia a autenticação
+ * e três consultas antes de falar com o Stripe: eram segundos de "carregando"
+ * no lugar dos campos de cartão. Agora a criação começa junto com o render e o
+ * segredo chega como promessa — a página aparece na hora, e o formulário monta
+ * assim que o Stripe responde, sem uma ida ao servidor no meio.
  */
 
 export const dynamic = 'force-dynamic';
@@ -56,27 +65,32 @@ export default async function PaginaDePagamento({
     cookies: { getAll: () => cookieStore.getAll(), setAll: () => {} },
   });
 
-  const { data: sessao } = await comoVisitante
-    .from('assessment_sessions')
-    .select('id, assessment_id')
-    .eq('id', sessionId)
-    .maybeSingle();
+  /**
+   * As quatro leituras de uma vez, e não uma esperando a outra.
+   *
+   * Todas dependem só do id da sessão, então encadeá-las custava três idas ao
+   * banco em fila para nada — tempo que a página inteira esperava antes de
+   * existir. A RLS continua fazendo o trabalho: uma sessão que não é do
+   * visitante não volta de nenhuma delas.
+   */
+  const [
+    { data: auth },
+    { data: sessao },
+    { data: resultado },
+    { data: lead },
+    { data: jaPago },
+  ] = await Promise.all([
+    comoVisitante.auth.getUser(),
+    comoVisitante.from('assessment_sessions').select('id, assessment_id').eq('id', sessionId).maybeSingle(),
+    comoVisitante.from('assessment_results').select('session_id').eq('session_id', sessionId).maybeSingle(),
+    // O e-mail que a pessoa deu na tela anterior, para o recibo do Stripe e
+    // para o envio do relatório — ela não digita duas vezes.
+    comoVisitante.from('assessment_leads').select('email').eq('session_id', sessionId).maybeSingle(),
+    comoVisitante.from('assessment_entitlements').select('id').eq('session_id', sessionId).maybeSingle(),
+  ]);
+
   if (!sessao) notFound();
-
-  const { data: resultado } = await comoVisitante
-    .from('assessment_results')
-    .select('session_id')
-    .eq('session_id', sessionId)
-    .maybeSingle();
   if (!resultado) notFound();
-
-  // O e-mail que a pessoa deu na tela anterior, para o recibo do Stripe e
-  // para o envio do relatório — ela não digita duas vezes.
-  const { data: lead } = await comoVisitante
-    .from('assessment_leads')
-    .select('email')
-    .eq('session_id', sessionId)
-    .maybeSingle();
 
   const t = await getTranslations({ locale, namespace: 'iq_checkout' });
 
@@ -88,6 +102,27 @@ export default async function PaginaDePagamento({
    * negar e pior do que nao oferecer nada. Aqui a pessoa le o que aconteceu.
    */
   const aVenda = reportIsSellable(sessao.assessment_id);
+
+  /**
+   * A criação começa aqui e NÃO É ESPERADA: a promessa vai para a tela, que a
+   * resolve depois de hidratar. Esperar por ela seguraria o HTML pelo tempo de
+   * duas chamadas ao Stripe, trocando um "carregando" no formulário por uma
+   * página em branco — pior, porque a página em branco não explica nada.
+   *
+   * Uma corrida já paga não abre intent: cobrar duas vezes e estornar depois é
+   * pior do que não cobrar.
+   */
+  const stripe = getStripe();
+  const segredosIniciais =
+    stripe && aVenda && !pago && auth.user && !jaPago
+      ? abrirIntentsDaCobranca(stripe, {
+          sessionId,
+          userId: auth.user.id,
+          assessmentId: sessao.assessment_id,
+          locale,
+          email: lead?.email ?? undefined,
+        })
+      : null;
   // O que esta sendo vendido muda com a avaliacao; o resto da pagina nao.
   const inclui =
     sessao.assessment_id === 'attention'
@@ -96,6 +131,13 @@ export default async function PaginaDePagamento({
 
   return (
     <>
+      {/* A conexao com o Stripe aberta antes de alguem precisar dela. O
+          formulario de cartao sao iframes servidos por estes dois dominios, e
+          sem isto o DNS e o TLS de cada um so comecam quando o script do
+          Stripe roda — algumas centenas de milissegundos de espera no celular,
+          gastas depois da pagina ja estar na tela. */}
+      <link rel="preconnect" href="https://js.stripe.com" />
+      <link rel="preconnect" href="https://m.stripe.network" />
       <FocusMode />
       <SiteHeader locale={locale as Locale} />
       <main className="page page-dark">
@@ -158,7 +200,11 @@ export default async function PaginaDePagamento({
                   <p className="pay-done-note">{t('doneLink')}</p>
                 </div>
               ) : (
-                <CheckoutAccordion sessionId={sessionId} email={lead?.email ?? undefined} />
+                <CheckoutAccordion
+                  sessionId={sessionId}
+                  email={lead?.email ?? undefined}
+                  segredosIniciais={segredosIniciais}
+                />
               )}
             </div>
             )}

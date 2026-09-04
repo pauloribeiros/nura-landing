@@ -8,5 +8,15 @@ export default defineConfig({
     include: ['src/**/*.test.ts'],
     environment: 'node',
   },
-  resolve: { alias: { '@': path.resolve(import.meta.dirname, 'src') } },
+  resolve: {
+    alias: {
+      '@': path.resolve(import.meta.dirname, 'src'),
+      // `server-only` existe para quebrar o BUILD quando um modulo de servidor
+      // e importado por um componente de cliente. Fora do bundler do Next ele
+      // so lanca, e a regra que ele protege ja foi verificada na compilacao —
+      // entao aqui ele vira um modulo vazio, para que a logica de servidor
+      // possa ser testada como qualquer outra.
+      'server-only': path.resolve(import.meta.dirname, 'src/test/server-only.ts'),
+    },
+  },
 });

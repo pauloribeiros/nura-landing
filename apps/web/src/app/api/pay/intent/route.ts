@@ -2,7 +2,8 @@ import { NextResponse } from 'next/server';
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 import { SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL, supabaseConfigured } from '@/lib/supabase/env';
-import { CURRENCY, PRICE_CENTS, getStripe } from '@/lib/payments/stripe';
+import { getStripe } from '@/lib/payments/stripe';
+import { abrirIntent, type MetodoDePagamento } from '@/lib/payments/intents';
 import { reportIsSellable } from '@/content/landing';
 
 /**
@@ -25,6 +26,12 @@ import { reportIsSellable } from '@/content/landing';
  * IDEMPOTÊNCIA: uma corrida já paga não abre outro intent. O webhook também se
  * protege pelo índice único em (provider, provider_ref), mas cobrar duas vezes
  * e estornar depois é pior do que não cobrar.
+ *
+ * ESTA ROTA HOJE É A SAÍDA DE EMERGÊNCIA. O caminho normal é a própria página
+ * de pagamento abrir os intents no render e entregar o segredo pronto — ver
+ * `abrirIntentsDaCobranca`. A tela só chega aqui quando aquilo falhou, e é por
+ * isso que a rota continua verificando tudo por conta própria: ela não pode
+ * confiar em quem a chamou.
  */
 
 export const runtime = 'nodejs';
@@ -83,57 +90,20 @@ export async function POST(request: Request) {
     .maybeSingle();
   if (jaPago) return NextResponse.json({ error: 'already-paid' }, { status: 409 });
 
-  /**
-   * Mesmo cuidado do checkout: um metodo que a conta nao habilitou faz o
-   * Stripe recusar a criacao inteira. Melhor abrir com o que a conta tem do
-   * que devolver erro para quem ja decidiu pagar.
-   */
-  const criarIntent = (comMetodo: boolean) =>
-    stripe.paymentIntents.create({
-      amount: PRICE_CENTS,
-      currency: CURRENCY,
-    // Um intent por método, porque cada painel do acordeão monta o seu próprio
-    // Payment Element e ele mostra o que o intent aceita. Só dois valores são
-    // aceitos; qualquer outra coisa cai nos métodos configurados na conta.
-      ...(comMetodo && body.metodo === 'card'
-        ? { payment_method_types: ['card'] }
-        : comMetodo && body.metodo === 'pix'
-          ? { payment_method_types: ['pix'] }
-          : { automatic_payment_methods: { enabled: true } }),
-    // O endereço que a pessoa digitou antes de pagar. Serve ao recibo do
-    // Stripe e é por onde o webhook manda o relatório — não é segredo e não
-    // decide preço nem acesso, então vir do cliente é aceitável.
-      ...(typeof body.email === 'string' && body.email.length <= 320
-        ? { receipt_email: body.email }
-        : {}),
-      // Lidos de volta pelo webhook. Os dois foram verificados acima.
-      metadata: {
-        sessionId,
-        userId: auth.user.id,
-        assessmentId: sessao.assessment_id,
-        locale: body.locale ?? '',
-      },
-    });
+  const metodo: MetodoDePagamento | undefined =
+    body.metodo === 'card' || body.metodo === 'pix' ? body.metodo : undefined;
 
-  let intent;
-  // Se o metodo pedido nao existe na conta, quem chamou precisa SABER — senao
-  // o painel do Pix acaba mostrando um formulario de cartao, que e pior do que
-  // nao oferecer Pix nenhum.
-  let atendido = true;
-  try {
-    intent = await criarIntent(true);
-  } catch (erro) {
-    const invalido =
-      erro instanceof Error && 'type' in erro && erro.type === 'StripeInvalidRequestError';
-    if (!invalido) throw erro;
-    console.warn('[nura] metodo indisponivel na conta, usando o padrao', body.metodo);
-    atendido = false;
-    intent = await criarIntent(false);
-  }
+  const segredo = await abrirIntent(stripe, metodo, {
+    sessionId,
+    userId: auth.user.id,
+    assessmentId: sessao.assessment_id,
+    locale: body.locale,
+    email: typeof body.email === 'string' ? body.email : undefined,
+  });
 
-  if (!intent.client_secret) {
+  if (!segredo) {
     return NextResponse.json({ error: 'intent-failed' }, { status: 502 });
   }
 
-  return NextResponse.json({ clientSecret: intent.client_secret, atendido });
+  return NextResponse.json(segredo);
 }
