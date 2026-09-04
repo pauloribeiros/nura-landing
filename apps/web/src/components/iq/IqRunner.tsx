@@ -23,7 +23,8 @@ import { FreeEntry } from './FreeEntry';
 import { ConectarPares } from './ConectarPares';
 import type { ConfigConectarPares } from '@/domain/iq/itensInterativos';
 import { Timer } from './Timer';
-import { BREAKS, TransitionScreen } from './TransitionScreen';
+import { TransitionScreen } from './TransitionScreen';
+import { BREAKS } from '@/domain/iq/breaks';
 import { preloadTransitionArt } from '../TransitionArt';
 
 /**

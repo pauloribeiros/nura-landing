@@ -58,6 +58,21 @@ export interface Item {
    * encontram.
    */
   interativo?: unknown;
+  /**
+   * Posicao fixa na trilha, contada em itens e a partir de 1.
+   *
+   * EXISTE PARA SEPARAR "ONDE APARECE" DE "QUANTO VALE". A ordem de execucao e
+   * montada por banda de dificuldade, e `dificuldade` tambem define o peso do
+   * item na pontuacao — entao adiantar um item mexendo na dificuldade mentiria
+   * sobre o quanto ele vale. Com este campo, o item vai para onde precisa ir e
+   * continua valendo o que vale.
+   *
+   * QUEBRA A RAMPA DE PROPOSITO, e por isso e excecao e nao regra: um item
+   * dificil chega antes de itens mais faceis. So se justifica quando a
+   * presenca dele cedo e o ponto — um formato que a pessoa nunca viu, que
+   * precisa aparecer enquanto ela ainda esta decidindo se o teste e serio.
+   */
+  posicaoFixa?: number;
   /** Documentação interna da regra do item. NUNCA exibir ao usuário. */
   regra: string;
 }

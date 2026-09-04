@@ -31,6 +31,8 @@ export interface ItemInterativo {
   enunciado: string;
   /** Onde ele entra na ordem do teste. */
   ordem: number;
+  /** Posicao fixa na trilha, se ele precisa aparecer cedo. Ver `Item.posicaoFixa`. */
+  posicaoFixa?: number;
   dimensao: 'orientacao_espacial';
   tipo: 'conectar_pares';
   dificuldade: 1 | 2 | 3 | 4 | 5;
@@ -53,6 +55,18 @@ export interface ItemInterativo {
 export const CONECTAR_PARES_01: ItemInterativo = {
   id: 'ESP-14',
   ordem: 35,
+  /* ELE ENTRA LOGO DEPOIS DA PRIMEIRA TELA DE PROGRESSAO, como 14a resposta.
+     Na banda dele o item caia na questao 35 de 45 — quase ninguem chegava ali
+     com atencao sobrando, e um formato que a pessoa nunca viu nao pode
+     estrear no fim.
+     O ponto exato nao e capricho. A primeira transicao aparece depois da 12a
+     resposta e promete, com todas as letras, que "as proximas ficam mais
+     dificeis". Uma questao comum vem em seguida, para a promessa nao virar
+     truque de tela, e entao chega o desafio: e a promessa sendo cumprida, no
+     momento em que a pessoa acabou de receber um balanco do proprio progresso.
+     15 e nao 14 porque a contagem aqui e de ITENS e a da tela e de RESPOSTAS,
+     e uma recordacao adiada de palavra ja passou entre as duas. */
+  posicaoFixa: 15,
   enunciado: 'Ligue cada par de pontos da mesma cor. As linhas não podem se cruzar.',
   dimensao: 'orientacao_espacial',
   tipo: 'conectar_pares',

@@ -43,6 +43,7 @@ const INTERATIVOS: Item[] = ITENS_INTERATIVOS.map((item) => ({
   formato_alternativas: 'interativo',
   correta: null,
   interativo: item.config,
+  posicaoFixa: item.posicaoFixa,
   regra: item.regra,
 }));
 

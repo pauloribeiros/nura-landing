@@ -19,8 +19,25 @@ import type { Item } from './types';
  * point of eventually having a norm.
  */
 export function interleaveByType(items: Item[]): Item[] {
+  /**
+   * Alguns itens declaram onde querem estar e saem da distribuicao por banda.
+   *
+   * A REGRA GERAL CONTINUA VALENDO PARA TODO O RESTO: a banda decide a ordem, e
+   * e isso que mantem a rampa de dificuldade. O que este bloco abre e uma
+   * excecao nomeada, para o caso em que a presenca do item cedo E o ponto — um
+   * formato inedito precisa aparecer enquanto a pessoa ainda esta decidindo se
+   * o teste e serio, e no fim da fila ele nao cumpre esse papel para ninguem.
+   * Sem isto, a unica forma de adiantar um item seria baixar a `dificuldade`
+   * dele, o que mudaria junto o peso na pontuacao — mentir sobre quanto vale
+   * para consertar onde aparece.
+   */
+  const fixos = items
+    .filter((i) => typeof i.posicaoFixa === 'number')
+    .sort((a, b) => a.posicaoFixa! - b.posicaoFixa!);
+  const distribuiveis = fixos.length > 0 ? items.filter((i) => typeof i.posicaoFixa !== 'number') : items;
+
   const byDifficulty = new Map<number, Item[]>();
-  for (const item of items.slice().sort((a, b) => a.ordem - b.ordem)) {
+  for (const item of distribuiveis.slice().sort((a, b) => a.ordem - b.ordem)) {
     const band = byDifficulty.get(item.dificuldade) ?? [];
     band.push(item);
     byDifficulty.set(item.dificuldade, band);
@@ -42,6 +59,14 @@ export function interleaveByType(items: Item[]): Item[] {
       out.push(remaining[pick]);
       remaining.splice(pick, 1);
     }
+  }
+
+  // Inseridos depois, em ordem crescente, para que uma posicao nao empurre a
+  // seguinte: com duas fixas em 3 e 5, a segunda ja conta com a primeira no
+  // lugar. Fora do intervalo, entra na ponta mais proxima em vez de sumir.
+  for (const item of fixos) {
+    const alvo = Math.min(Math.max(0, item.posicaoFixa! - 1), out.length);
+    out.splice(alvo, 0, item);
   }
 
   return out;

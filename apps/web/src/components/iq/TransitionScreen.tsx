@@ -78,17 +78,3 @@ export function TransitionScreen({
     </div>
   );
 }
-
-/**
- * After how many ANSWERS a break appears.
- *
- * Counted in answers rather than in screens: the run has more screens than
- * items, because a memory stimulus is a screen nobody answers, and a break
- * that landed between a stimulus and its recall would sit in the middle of the
- * interference it is supposed to be measuring.
- */
-export const BREAKS: { after: number; variant: 'start' | 'middle' | 'end' }[] = [
-  { after: 12, variant: 'start' },
-  { after: 24, variant: 'middle' },
-  { after: 36, variant: 'end' },
-];
