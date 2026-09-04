@@ -311,7 +311,6 @@ a.path-hit:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 
    Agora a escada e de claridade: tinta -> branco -> quase-branco -> tinta. O
    branco puro fica na secao do preco, que e onde a decisao acontece. */
 .how { position: relative; overflow: hidden; isolation: isolate; color: #14213a; background: var(--nura-soft-white); }
-.how:before { content: "01  \00b7  02  \00b7  03"; position: absolute; z-index: 0; right: 6vw; bottom: 7%; color: rgba(59,103,255,.09); font: 700 clamp(40px, 7vw, 104px)/1 var(--app-font-mono); letter-spacing: -.1em; pointer-events: none; }
 .how .wrap { position: relative; z-index: 1; }
 .steps { display: grid; gap: 0; margin-top: 54px; border-top: 1px solid rgba(86,110,153,.42); }
 .step { min-height: 175px; padding: 28px 0; border-bottom: 1px solid rgba(86,110,153,.42); display: grid; grid-template-columns: 64px 1fr; gap: 6px 18px; align-content: start; }
