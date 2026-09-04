@@ -315,14 +315,13 @@ a.path-hit:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 
 .how .wrap { position: relative; z-index: 1; }
 .steps { display: grid; gap: 0; margin-top: 54px; border-top: 1px solid rgba(86,110,153,.42); }
 .step { min-height: 175px; padding: 28px 0; border-bottom: 1px solid rgba(86,110,153,.42); display: grid; grid-template-columns: 64px 1fr; gap: 6px 18px; align-content: start; }
-/* .step-mark is hidden below 900px, so grid auto-placement used to drop the
-   paragraph into the 64px numeral column. Both text nodes are pinned to the
-   content column instead. */
+/* Os dois textos ficam presos a coluna de conteudo em vez de dependerem da
+   colocacao automatica do grid, que jogava o paragrafo na coluna de 64px do
+   numeral. */
 .step-number { grid-column: 1; grid-row: 1; }
 .step h3, .step p { grid-column: 2; }
 .step-number { color: var(--nura-blue-ink); font: 700 14px var(--app-font-mono); }
 .step h3 { margin: 0; font: 700 24px var(--app-font-display); letter-spacing: -.04em; }.step p { margin: 9px 0 0; color: #52617a; font-size: 15px; line-height: 1.55; }
-.step-mark { display: none; }
 
 .profile { min-height: 780px; position: relative; display: flex; align-items: center; overflow: hidden; isolation: isolate; background: radial-gradient(circle at 20% 48%, rgba(34,211,229,.13), transparent 29%), radial-gradient(circle at 71% 38%, rgba(117,87,255,.16), transparent 32%), linear-gradient(105deg, rgba(7,11,20,.62), rgba(9,14,28,.84) 46%, rgba(7,11,20,.94)); }
 .profile:before { content: "NURA\A PERFIL"; white-space: pre; position: absolute; z-index: 0; top: 50%; left: 7vw; transform: translateY(-50%); color: rgba(117,87,255,.075); font: 800 clamp(74px, 11vw, 164px)/.78 var(--app-font-display); letter-spacing: -.09em; pointer-events: none; }
@@ -403,7 +402,28 @@ a.path-hit:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 
   .hero-inner { padding-top: 100px; }
   .scroll-hint { display: flex; }
   .statement-inner { grid-template-columns: 1.2fr .8fr; align-items: flex-end; gap: 70px; }
-  .steps { grid-template-columns: repeat(3, 1fr); border-top: 0; gap: 28px; }.step { position: relative; min-height: 250px; display: block; padding: 26px 25px; border: 1px solid var(--rule-light); border-radius: 20px; }.step-mark { display: block; width: 38px; height: 38px; margin: 32px 0 33px; border: 1px solid var(--nura-blue); border-radius: 50%; position: relative; }.step-mark:after { content: ""; position: absolute; width: 7px; height: 7px; top: 15px; left: 15px; background: var(--nura-cyan); border-radius: 50%; box-shadow: 0 0 12px var(--nura-cyan); }.profile-grid { grid-template-columns: .9fr 1.1fr; }.result-card { margin-left: auto; max-width: 480px; }.premium aside { margin-top: 60px; }.final-cta { padding: 140px 0; }
+  /* A JORNADA E UM ITINERARIO, E NAO TRES CARTOES LADO A LADO.
+     Ate aqui o desktop transformava a lista numa fileira de tres caixas de
+     altura igual, cada uma com um circulo vazio de 38px por dentro do qual
+     brilhava um ponto ciano. Nada daquilo carregava informacao: o circulo nao
+     representava nada, o brilho menos ainda, e a altura minima de 250px
+     existia so para os tres cartoes ficarem do mesmo tamanho. Tres cartoes
+     iguais de "icone + titulo + frase" e a composicao mais imitada de landing
+     gerada, e era exatamente ela.
+     No celular a secao ja era o que devia ser — uma lista numerada separada
+     por fios. O desktop agora e a mesma lista, so que usando a largura: o
+     numero, o passo e a frase na mesma linha, como um itinerario se le. E o
+     mesmo gesto do catalogo logo acima, entao a pagina passa a repetir uma
+     ideia em vez de duas. */
+  .steps { grid-template-columns: 1fr; border-top: 1px solid rgba(86,110,153,.42); gap: 0; }
+  .step {
+    min-height: 0; padding: 34px 0;
+    grid-template-columns: 64px minmax(180px, 280px) minmax(0, 1fr);
+    gap: 0 28px; align-items: baseline;
+  }
+  .step h3 { grid-column: 2; grid-row: 1; }
+  .step p { grid-column: 3; grid-row: 1; margin: 0; max-width: 62ch; }
+.profile-grid { grid-template-columns: .9fr 1.1fr; }.result-card { margin-left: auto; max-width: 480px; }.premium aside { margin-top: 60px; }.final-cta { padding: 140px 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *:before, *:after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }

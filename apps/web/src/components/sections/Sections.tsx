@@ -232,7 +232,6 @@ export function HowItWorks() {
               key={step}
             >
               <div className="step-number">{t(`${step}.number`)}</div>
-              <div className="step-mark" />
               <h3>{t(`${step}.title`)}</h3>
               <p>{t(`${step}.copy`)}</p>
             </article>
