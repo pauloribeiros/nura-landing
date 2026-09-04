@@ -3,10 +3,9 @@ import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 import { getSupabaseAdminClient } from '@/lib/supabase/server';
 import { SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL, supabaseConfigured } from '@/lib/supabase/env';
-import { asrs18 } from '@/domain/assessment/instruments/asrs18';
 import { scoreAssessment } from '@/domain/assessment/scoring';
+import { INSTRUMENTS } from '@/domain/assessment/instruments/registry';
 import { isContextAnswer } from '@/domain/assessment/context';
-import type { AssessmentDefinition } from '@/domain/assessment/types';
 
 /**
  * Scores a finished session, server side, and stores the result.
@@ -33,10 +32,6 @@ import type { AssessmentDefinition } from '@/domain/assessment/types';
  */
 
 export const runtime = 'nodejs';
-
-const INSTRUMENTS: Record<string, AssessmentDefinition> = {
-  [asrs18.assessmentId]: asrs18,
-};
 
 export async function POST(
   _request: Request,
