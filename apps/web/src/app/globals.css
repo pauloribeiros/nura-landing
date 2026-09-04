@@ -767,6 +767,22 @@ a.path-hit:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 
 .consent-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 .consent-actions .button { min-height: 40px; }
 
+/* RECUSAR PRECISA SER TAO VISIVEL QUANTO ACEITAR.
+   `.button-ghost` e uma variante de fundo ESCURO — texto quase branco, borda
+   branca a 24% — e este banner e um card branco. Sobre ele o botao media
+   1.14:1 de contraste, contra os 4.5:1 minimos: ficava literalmente
+   invisivel, ao lado de um "Aceitar" azul e solido.
+   Isso nao e so acessibilidade. A LGPD exige consentimento livre, e uma tela
+   onde so a opcao de aceitar e visivel nao coleta consentimento livre — coleta
+   desistencia. As duas saidas ficam com o mesmo tamanho e o mesmo peso de
+   leitura; o que as diferencia e o preenchimento, nao a legibilidade. */
+.consent-actions .button-ghost {
+  color: var(--nura-graphite);
+  border-color: var(--rule-tint);
+  background: transparent;
+}
+.consent-actions .button-ghost:hover { background: var(--surface-tint); }
+
 /* The banner is fixed, so the page owes it the space it covers — otherwise a
    button at the bottom of the screen is simply unreachable. The height comes
    from the banner itself; see ConsentBanner. */
