@@ -219,7 +219,7 @@ export function IqRunner({
         </div>
 
         <div className="runner-progress-track" aria-hidden="true">
-          <span style={{ width: `${Math.round((answeredCount / total) * 100)}%` }} />
+          <span style={{ transform: `scaleX(${total > 0 ? answeredCount / total : 0})` }} />
         </div>
 
         {step.kind === 'memory-show' ? (
@@ -239,8 +239,15 @@ export function IqRunner({
           />
         ) : (
           <>
-            <p className="iq-enunciado">{item.enunciado}</p>
-            <Stimulus item={item} />
+            {/* A `key` e o que faz a animacao de entrada rodar de novo a cada
+                questao: sem ela o React reaproveita o mesmo no, so troca o
+                texto, e a animacao nao reinicia. Nao envolvemos tudo numa div
+                porque `.runner-inner` e um grid com `gap` — um wrapper viraria
+                um item so e colaria os tres elementos. */}
+            <p className="iq-enunciado" key={`e-${item.id}`}>
+              {item.enunciado}
+            </p>
+            <Stimulus item={item} key={`s-${item.id}`} />
 
             {isInterativo ? (
               /* Um item que se responde desenhando. Ele avanca sozinho ao
@@ -279,6 +286,7 @@ export function IqRunner({
               />
             ) : (
               <OptionGrid
+                key={`o-${item.id}`}
                 item={item}
                 chosen={existing?.escolhaIndex}
                 onChoose={(index) => {

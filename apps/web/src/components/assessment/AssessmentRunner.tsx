@@ -458,7 +458,7 @@ export function AssessmentRunner({
             </span>
           </p>
           <div className="runner-progress-track" aria-hidden="true">
-            <span style={{ width: `${Math.round(stats.ratio * 100)}%` }} />
+            <span style={{ transform: `scaleX(${stats.ratio})` }} />
           </div>
           <p className="runner-progress-label" role="status" ref={liveRef}>
             {t('progress', { answered: stats.answered, total: stats.total })}

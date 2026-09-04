@@ -101,7 +101,7 @@ export function Calculating({
         <p className="runner-lead">{lead}</p>
 
         <div className="iq-calc-track" role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100}>
-          <span style={{ width: `${pct}%` }} />
+          <span style={{ transform: `scaleX(${pct / 100})` }} />
         </div>
         <p className="iq-calc-pct">{pct}%</p>
 
