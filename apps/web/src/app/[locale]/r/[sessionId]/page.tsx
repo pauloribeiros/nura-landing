@@ -7,6 +7,7 @@ import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { ReportView } from '@/components/assessment/ReportView';
 import { IqReportView } from '@/components/iq/IqReportView';
+import { EspectroReportView } from '@/components/assessment/EspectroReportView';
 import { assessmentOfSession, loadReport } from '@/lib/assessment/loadReport';
 import { confirmCheckout } from '@/lib/payments/confirmCheckout';
 import { asrs18ChoiceLabels, asrs18Prompts } from '@/domain/assessment/instruments/asrs18';
@@ -46,7 +47,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const qual = await assessmentOfSession(sessionId);
   const t = await getTranslations({
     locale,
-    namespace: qual === 'cognition' ? 'iq_report' : 'report',
+    namespace:
+      qual === 'cognition' ? 'iq_report' : qual === 'autism' ? 'espectro_report' : 'report',
   });
 
   // Someone's report is theirs. Nothing about it belongs in an index.
@@ -87,6 +89,8 @@ export default async function ReportPage({
             de escrever sem o compilador reclamar. */}
         {plan.kind === 'iq' ? (
           <IqReportView plan={plan.plan} />
+        ) : plan.kind === 'espectro' ? (
+          <EspectroReportView plan={plan.plan} />
         ) : (
           /* The instrument only has published wording in pt-br, so a reader in
              another locale still sees the items as published rather than a

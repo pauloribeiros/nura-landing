@@ -124,10 +124,22 @@ export default async function PaginaDePagamento({
         })
       : null;
   // O que esta sendo vendido muda com a avaliacao; o resto da pagina nao.
+  /**
+   * CADA AVALIACAO PROMETE O QUE ELA ENTREGA.
+   *
+   * A lista generica descreve o relatorio de raciocinio — "o perfil nas seis
+   * dimensoes", "a leitura de cada dimensao". O espectro nao tem seis
+   * dimensoes: tem quatro territorios. Enquanto ele caia no `else`, esta tela
+   * vendia, na hora de pedir o dinheiro, um conteudo que o relatorio dele nao
+   * tem. Nao e detalhe de copy — e a unica descricao do produto que a pessoa
+   * le antes de pagar.
+   */
   const inclui =
     sessao.assessment_id === 'attention'
       ? (['atencao1', 'atencao2', 'atencao3', 'atencao4'] as const)
-      : (['inclui1', 'inclui2', 'inclui3', 'inclui4'] as const);
+      : sessao.assessment_id === 'autism'
+        ? (['espectro1', 'espectro2', 'espectro3', 'espectro4'] as const)
+        : (['inclui1', 'inclui2', 'inclui3', 'inclui4'] as const);
 
   return (
     <>

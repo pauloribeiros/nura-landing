@@ -1021,6 +1021,11 @@ body.is-answering main { padding-bottom: 0; }
 .report-inner { max-width: 680px; }
 .report-head { margin-bottom: 40px; }
 .report-head h1 { margin: 10px 0 14px; }
+/* A versao da pontuacao e procedencia, e nao leitura: quem abre o relatorio
+   nao comeca por ela, mas quem volta meses depois precisa saber com que regra
+   aquilo foi calculado. Sem regra propria ela saia no corpo do texto, colada
+   no paragrafo de abertura, competindo com ele. */
+.report-meta { margin: 16px 0 0; color: var(--text-on-dark-faint); font: 400 11px var(--app-font-mono); letter-spacing: .06em; }
 
 .report-section {
   padding: 28px 0;
@@ -1615,6 +1620,30 @@ body.is-running-test .header-actions .button { display: none; }
 .iq-report-facts dt { color: var(--text-on-dark-faint); font: 400 11px var(--app-font-mono); letter-spacing: .06em; text-transform: uppercase; }
 .iq-report-facts dd { margin: 6px 0 0; font: 700 22px var(--app-font-display); letter-spacing: -.03em; }
 .iq-report-no-percentile { max-width: 62ch; margin: 18px 0 0; padding-left: 14px; border-left: 2px solid var(--text-on-dark-faint); color: var(--text-on-dark-muted); font-size: 14px; line-height: 1.6; }
+
+/* --------------------------------------------- relatorio do espectro ---
+   O MAPA OCUPA O LUGAR QUE NO RELATORIO DE QI E DA PONTUACAO. La o numero e a
+   medida; aqui ele nao e — a escala nao tem ponto de corte, e um numero em
+   corpo grande viraria nota. Entao o total entra como legenda, no tamanho de
+   uma legenda, e quem ocupa o alto sao os quatro territorios. */
+.espectro-map { margin: 34px 0 0; padding: 26px 28px; border: 1px solid rgba(255,255,255,.14); border-radius: 20px; background: rgba(255,255,255,.03); }
+.espectro-map h2 { margin: 0; font: 700 22px var(--app-font-display); letter-spacing: -.03em; }
+.espectro-map .runner-lead { margin: 8px 0 0; font-size: 14px; }
+
+.espectro-map-total { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 10px; margin: 20px 0 0; color: var(--text-on-dark-muted); font-size: 14px; }
+.espectro-map-total b { color: var(--text-on-dark); font: 700 30px var(--app-font-display); letter-spacing: -.04em; }
+/* A faixa e um rotulo, e nao um selo de aprovacao: mesma tinta do texto,
+   sem cor de status. Poucos ou muitos tracos nao e bom nem ruim. */
+.espectro-map-band { margin-left: auto; color: var(--text-on-dark-faint); font: 700 11px var(--app-font-mono); letter-spacing: .1em; text-transform: uppercase; }
+
+.espectro-map-list { display: grid; gap: 20px; margin: 22px 0 0; padding: 0; list-style: none; }
+.espectro-map-item { padding-top: 18px; border-top: 1px solid rgba(255,255,255,.1); }
+.espectro-map-item:first-child { padding-top: 0; border-top: 0; }
+
+@media (max-width: 600px) {
+  .espectro-map { padding: 20px 18px; }
+  .espectro-map-band { margin-left: 0; width: 100%; }
+}
 
 /* Cada barra carrega o que a dimensao mede e o que o resultado sugere — sem
    isso ela seria so um numero colorido. */

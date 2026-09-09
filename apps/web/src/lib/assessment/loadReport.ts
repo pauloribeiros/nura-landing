@@ -6,6 +6,10 @@ import { SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL, supabaseConfigured } from '@/li
 import { buildIqReportPlan, type IqReportPlan } from '@/domain/iq/report';
 import type { IqResult } from '@/domain/iq/scoring';
 import { buildReportPlan, type ReportPlan } from '@/domain/assessment/report';
+import {
+  buildEspectroReportPlan,
+  type EspectroReportPlan,
+} from '@/domain/assessment/espectroReport';
 import { isContextAnswer } from '@/domain/assessment/context';
 import { asrs18 } from '@/domain/assessment/instruments/asrs18';
 import { getSupabaseAdminClient } from '@/lib/supabase/server';
@@ -47,7 +51,8 @@ import type { ScoreResult } from '@/domain/assessment/types';
  */
 export type RelatorioCarregado =
   | { kind: 'asrs'; plan: ReportPlan }
-  | { kind: 'iq'; plan: IqReportPlan };
+  | { kind: 'iq'; plan: IqReportPlan }
+  | { kind: 'espectro'; plan: EspectroReportPlan };
 
 export async function loadReport(
   sessionId: string,
@@ -131,6 +136,35 @@ export async function loadReport(
     bands: stored.bands as Record<string, string>,
     completeness: Number(stored.completeness),
   };
+
+  /**
+   * O ESPECTRO SAI ANTES DE CHEGAR NO PLANO DA ASRS.
+   *
+   * Ate aqui qualquer avaliacao que nao fosse `cognition` caia no construtor
+   * do TDAH — o que, para o espectro, produziria um relatorio com os
+   * enunciados da ASRS e as secoes vazias. E o mesmo defeito que ja aconteceu
+   * uma vez com o de raciocinio, e que o comentario acima descreve; a diferenca
+   * e que desta vez ele foi barrado antes de ir ao ar.
+   *
+   * O plano dele sai das colunas compartilhadas (`scores`, `bands`,
+   * `flagged`), sem precisar de contexto nem dos valores item a item: a escala
+   * do espectro se le por territorio, e o territorio ja esta em `flagged`.
+   */
+  if (stored.assessment_id === 'autism') {
+    return { kind: 'espectro', plan: buildEspectroReportPlan(result) };
+  }
+
+  /**
+   * O QUE SOBRA E O TDAH, E SO ELE.
+   *
+   * Uma avaliacao nova que chegasse aqui sem ramo proprio voltaria a cair no
+   * plano do TDAH em silencio. Melhor devolver nada — a pagina responde 404,
+   * que e ruim, mas nao e um relatorio errado sobre a cabeca de alguem.
+   */
+  if (stored.assessment_id !== asrs18.assessmentId) {
+    console.error('[nura] sessao sem relatorio proprio', stored.assessment_id);
+    return null;
+  }
 
   // Context answers personalise the wording. Their absence is normal — they
   // are optional — so a failure to read them must not fail the report.

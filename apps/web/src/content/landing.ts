@@ -69,8 +69,7 @@ export const ASSESSMENTS: AssessmentEntry[] = [
     slug: { 'pt-br': 'espectro-autista', en: 'autism-spectrum', es: 'espectro-autista' },
     featured: false,
     available: true,
-    // O relatorio pago do espectro ainda nao foi escrito. Ver `reportReady`.
-    reportReady: false,
+    reportReady: true,
   },
   {
     id: 'giftedness',
