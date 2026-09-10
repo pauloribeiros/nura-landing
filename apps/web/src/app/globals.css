@@ -321,10 +321,20 @@ a.path-hit:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 
    badge acaba com um raio de sombra que nao combina com o do card, e o
    conjunto deixa de parecer o mesmo material. */
 :root {
-  --argila-fundo: #e9eefb;
-  --argila-externa: 0 18px 38px rgba(59, 103, 255, 0.11);
-  --argila-cava: inset -7px -7px 14px rgba(139, 157, 197, 0.34);
-  --argila-luz: inset 7px 7px 14px rgba(255, 255, 255, 0.9);
+  /* A ARGILA E DA COR DA MARCA, e nao um pastel lavado.
+     O primeiro corte usava #e9eefb sobre uma secao #f6f8fc: os dois quase o
+     mesmo tom, entao os cards nao tinham peso nenhum — a forma existia, a
+     presenca nao. Agora eles sao o azul de acao da NURA, o mesmo do botao
+     principal, que e a unica cor forte que a pagina ja usa em superficie
+     clara.
+     AS LUZES SAO DERIVADAS DO PROPRIO AZUL, e nao branco e cinza. Numa
+     superficie saturada, um realce branco e uma sombra cinza leem como
+     plastico por cima da cor; tingidos do mesmo matiz, leem como o material
+     sendo iluminado. */
+  --argila-fundo: #2f56e0;
+  --argila-externa: 0 22px 44px rgba(29, 55, 150, 0.34);
+  --argila-cava: inset -8px -8px 16px rgba(18, 38, 112, 0.55);
+  --argila-luz: inset 8px 8px 16px rgba(126, 156, 255, 0.45);
   --argila: var(--argila-externa), var(--argila-cava), var(--argila-luz);
 }
 
@@ -344,6 +354,9 @@ a.path-hit:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 
    relacao ao card: no card a luz vem de cima e afunda a borda de baixo; aqui
    ela sobe do fundo e estufa o meio, que e o que faz o disco parecer saliente
    sobre uma superficie do mesmo material, em vez de um buraco nela. */
+/* O disco e ciano, o segundo tom da marca. Sobre o azul ele salta sem
+   precisar de volume extra — e o mesmo par que a pagina usa em todo lugar:
+   azul age, ciano aponta. */
 .step-number {
   width: 52px;
   height: 52px;
@@ -351,19 +364,22 @@ a.path-hit:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 
   place-items: center;
   margin-bottom: 22px;
   border-radius: 50%;
-  color: var(--nura-blue-ink);
-  background: var(--argila-fundo);
+  color: var(--nura-deep-navy);
+  background: var(--nura-cyan);
   box-shadow:
-    0 8px 16px rgba(59, 103, 255, 0.14),
-    inset -4px -4px 9px rgba(139, 157, 197, 0.32),
-    inset 4px 4px 9px rgba(255, 255, 255, 0.95);
+    0 8px 18px rgba(12, 30, 90, 0.32),
+    inset -4px -4px 9px rgba(10, 122, 140, 0.42),
+    inset 4px 4px 9px rgba(196, 250, 255, 0.9);
   font: 700 14px var(--app-font-mono);
 }
 
-.step h3 { margin: 0; font: 700 24px var(--app-font-display); letter-spacing: -.04em; }
-/* #4b586e e nao o #52617a de antes: sobre a argila pastel aquele tom caia
-   para 4.3:1, abaixo do minimo. */
-.step p { margin: 10px 0 0; color: #4b586e; font-size: 15px; line-height: 1.55; }
+.step h3 { margin: 0; color: var(--text-on-dark); font: 700 24px var(--app-font-display); letter-spacing: -.04em; }
+/* Azul claro tingido do proprio card, e nao cinza: sobre superficie colorida
+   um cinza suja, enquanto o mesmo matiz mais claro continua sendo a cor. */
+/* #dde5ff, e nao um azul mais fechado: sobre #2f56e0 o tom anterior media
+   4.29:1, logo abaixo do minimo de 4.5. Este mede 4.74:1 e continua sendo a
+   cor do card, nao cinza. */
+.step p { margin: 10px 0 0; color: #dde5ff; font-size: 15px; line-height: 1.55; }
 
 .profile { min-height: 780px; position: relative; display: flex; align-items: center; overflow: hidden; isolation: isolate; background: radial-gradient(circle at 20% 48%, rgba(34,211,229,.13), transparent 29%), radial-gradient(circle at 71% 38%, rgba(117,87,255,.16), transparent 32%), linear-gradient(105deg, rgba(7,11,20,.62), rgba(9,14,28,.84) 46%, rgba(7,11,20,.94)); }
 .profile:before { content: "NURA\A PERFIL"; white-space: pre; position: absolute; z-index: 0; top: 50%; left: 7vw; transform: translateY(-50%); color: rgba(117,87,255,.075); font: 800 clamp(74px, 11vw, 164px)/.78 var(--app-font-display); letter-spacing: -.09em; pointer-events: none; }
