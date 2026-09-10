@@ -46,6 +46,32 @@ export interface DadosDaCobranca {
  * decididos no servidor, porque um navegador que pudesse nomear o proprio
  * preco seria o bug mais antigo do comercio.
  */
+/**
+ * Metodos que a conta recusou, lembrados enquanto esta instancia viver.
+ *
+ * O PIX NAO ESTA HABILITADO NESTA CONTA — a Stripe so libera depois de um
+ * historico de processamento. Sem esta memoria, toda visita a tela de
+ * pagamento pedia `payment_method_types: ['pix']`, levava 400, e so entao
+ * tentava de novo sem metodo: dois round trips e um erro no log da conta, por
+ * visita, para chegar sempre na mesma conclusao.
+ *
+ * A memoria e por instancia de proposito, e nao persistida: quando a Stripe
+ * liberar o Pix, basta o proximo deploy — ou o proximo processo — para voltar
+ * a tentar. Um flag em banco precisaria de alguem lembrando de virar.
+ */
+const recusados = new Set<MetodoDePagamento>();
+
+/**
+ * Esquece o que a conta recusou.
+ *
+ * Existe por dois motivos, e o segundo e o que justifica ser exportado: os
+ * testes precisam de isolamento entre casos, e no dia em que a Stripe liberar
+ * o Pix ha como voltar a tentar sem esperar a instancia reciclar.
+ */
+export function limparMetodosRecusados(): void {
+  recusados.clear();
+}
+
 export async function abrirIntent(
   stripe: Stripe,
   metodo: MetodoDePagamento | undefined,
@@ -70,6 +96,9 @@ export async function abrirIntent(
       },
     });
 
+  // Ja sabemos que a conta nao processa este metodo: nem pede.
+  if (metodo && recusados.has(metodo)) return { atendido: false };
+
   let atendido = true;
   let intent: Stripe.PaymentIntent;
   try {
@@ -81,9 +110,16 @@ export async function abrirIntent(
     const invalido =
       erro instanceof Error && 'type' in erro && erro.type === 'StripeInvalidRequestError';
     if (!invalido) throw erro;
-    console.warn('[nura] metodo indisponivel na conta, usando o padrao', metodo);
-    atendido = false;
-    intent = await criar(false);
+    console.warn('[nura] metodo indisponivel na conta', metodo);
+    if (metodo) recusados.add(metodo);
+    /**
+     * SEM INTENT DE CONSOLO. Antes o codigo criava um intent com
+     * `automatic_payment_methods` quando o metodo era recusado — mas quem
+     * chama marca o painel como indisponivel e nunca o abre, entao aquele
+     * intent nascia para nao ser usado. Era uma cobranca em aberto na conta
+     * por visita, e um round trip a mais na tela mais sensivel do produto.
+     */
+    return { atendido: false };
   }
 
   if (!intent.client_secret) return null;

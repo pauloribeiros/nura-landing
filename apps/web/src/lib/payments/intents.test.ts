@@ -1,6 +1,6 @@
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type Stripe from 'stripe';
-import { abrirIntent, abrirIntentsDaCobranca } from './intents';
+import { abrirIntent, abrirIntentsDaCobranca, limparMetodosRecusados } from './intents';
 import { CURRENCY, PRICE_CENTS } from './stripe';
 
 /**
@@ -10,6 +10,10 @@ import { CURRENCY, PRICE_CENTS } from './stripe';
  * porque a saida ingenua, deixar o erro subir, apaga a pagina de pagamento
  * inteira de quem ja tinha decidido pagar.
  */
+
+// A memoria de metodos recusados vive no modulo: sem limpar, o que um caso
+// descobre vaza para o proximo.
+beforeEach(() => limparMetodosRecusados());
 
 const DADOS = {
   sessionId: 'sess-1',
@@ -62,18 +66,30 @@ describe('abrirIntent', () => {
     expect(pix.mock.calls[0][0].payment_method_types).toEqual(['pix']);
   });
 
-  it('AVISA quando a conta nao processa o metodo, em vez de estourar', async () => {
+  it('AVISA quando a conta nao processa o metodo, e nao cria intent de consolo', async () => {
     // Sem o `atendido: false`, o painel do Pix acabaria mostrando um
-    // formulario de cartao — pior do que nao oferecer Pix nenhum.
-    const create = vi
-      .fn()
-      .mockRejectedValueOnce(new ErroDeMetodo('pix nao habilitado'))
-      .mockResolvedValueOnce({ client_secret: 'pi_2_secret' } as Stripe.PaymentIntent);
+    // formulario de cartao — pior do que nao oferecer Pix nenhum. E como o
+    // painel fica desabilitado, um intent de reserva nasceria para nao ser
+    // usado: cobranca em aberto na conta a cada visita.
+    const create = vi.fn().mockRejectedValue(new ErroDeMetodo('pix nao habilitado'));
 
     const r = await abrirIntent(stripeFalso(create), 'pix', DADOS);
-    expect(r).toEqual({ clientSecret: 'pi_2_secret', atendido: false });
-    // A segunda tentativa nao pede metodo nenhum: usa o que a conta tem.
-    expect(create.mock.calls[1][0].payment_method_types).toBeUndefined();
+    expect(r).toEqual({ atendido: false });
+    expect(create).toHaveBeenCalledTimes(1);
+  });
+
+  it('NAO PEDE DE NOVO o que a conta ja recusou', () => {
+    // Sem esta memoria, toda visita a tela de pagamento gastava um 400 no log
+    // da conta para chegar sempre na mesma conclusao.
+    const create = vi.fn().mockRejectedValue(new ErroDeMetodo('pix nao habilitado'));
+    const stripe = stripeFalso(create);
+
+    return abrirIntent(stripe, 'pix', DADOS)
+      .then(() => abrirIntent(stripe, 'pix', DADOS))
+      .then((segunda) => {
+        expect(segunda).toEqual({ atendido: false });
+        expect(create, 'pediu de novo o que ja tinha sido recusado').toHaveBeenCalledTimes(1);
+      });
   });
 
   it('deixa passar um erro que nao e de metodo, sem virar cobranca torta', async () => {
