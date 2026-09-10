@@ -115,9 +115,14 @@ a { color: inherit; text-decoration: none; }
 .site-header.scrolled { background: rgba(7, 11, 20, .86); border-color: rgba(255,255,255,.1); box-shadow: 0 8px 28px rgba(0,0,0,.18); backdrop-filter: blur(16px); }
 .header-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
 .brand { min-height: 44px; display: inline-flex; align-items: center; gap: 9px; color: var(--text-on-dark); font: 800 18px var(--app-font-display); letter-spacing: .14em; }
-.brand-mark { width: 22px; height: 22px; position: relative; border: 1px solid var(--nura-cyan); border-radius: 50%; }
-.brand-mark:before, .brand-mark:after { content: ""; position: absolute; border: 1px solid var(--nura-blue); border-radius: 50%; transform: rotate(35deg); inset: 3px 7px; }
-.brand-mark:after { transform: rotate(-35deg); border-color: var(--nura-violet); }
+/* A marca da NURA.
+   Fica como imagem de fundo, e nao como <img>, porque a classe e usada em seis
+   lugares (cabecalho, rodape e os tres relatorios) e assim todos mudam juntos,
+   sem tocar em componente nenhum. O <span> e aria-hidden e o link que o
+   envolve tem rotulo proprio, entao nao ha texto alternativo a perder.
+   24px em vez dos 22 anteriores: a marca agora e uma figura com detalhe, nao
+   dois circulos, e precisa de um pouco mais de area para ser reconhecivel. */
+.brand-mark { width: 24px; height: 24px; flex: 0 0 auto; background: url("/marca-nura.png") center / contain no-repeat; }
 .nav { display: none; align-items: center; gap: 30px; color: #b9c2d3; font-size: 13px; }
 .nav a { min-height: 44px; display: inline-flex; align-items: center; transition: color .2s ease; }
 .nav a:hover { color: #fff; }
