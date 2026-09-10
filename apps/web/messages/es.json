@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "NURA — Evaluaciones para explorar tu atención, cognición y comportamiento",
-    "description": "Explora diferentes dimensiones de tu mente y tu comportamiento con evaluaciones interactivas. Empieza gratis, sin tarjeta, y recibe un resultado inicial al momento. Herramienta de autoconocimiento y cribado — no sustituye un diagnóstico profesional.",
+    "description": "Autoevaluaciones gratuitas de TDAH, espectro autista y razonamiento. Empieza sin tarjeta y recibe un resultado al momento. No es un diagnóstico.",
     "ogTitle": "NURA — Descubre más sobre ti",
     "ogDescription": "Evaluaciones interactivas para explorar tu atención, cognición, personalidad y comportamiento. Gratis para empezar, sin tarjeta.",
     "ogImageAlt": "NURA — Descubre más sobre ti"
@@ -71,7 +71,7 @@
       "description": "Atención, organización e impulsividad en el día a día.",
       "landing": {
         "metaTitle": "TDAH: autoevaluación para adultos — cribado gratuito | NURA",
-        "metaDescription": "Autoevaluación gratuita de TDAH en adultos con la escala ASRS-v1.1, de la Organización Mundial de la Salud. 18 ítems, de 3 a 5 minutos, sin tarjeta. Instrumento de cribado — no constituye diagnóstico.",
+        "metaDescription": "Autoevaluación gratuita de TDAH en adultos con la escala ASRS-v1.1 de la OMS. 18 ítems, de 3 a 5 minutos, sin tarjeta. Instrumento de cribado.",
         "heroLine1": "TDAH:",
         "heroLine2": "autoevaluación",
         "intro": "Una experiencia estructurada para observar cómo se comporta tu atención en el día a día: dónde se sostiene, dónde se escapa y qué patrones se repiten. El resultado inicial es gratuito e inmediato.",
@@ -107,7 +107,7 @@
       "description": "Comunicación, interacción, rutina y procesamiento sensorial.",
       "landing": {
         "metaTitle": "Rasgos del espectro autista: autoevaluación para adultos | NURA",
-        "metaDescription": "Autoevaluación gratuita de rasgos del espectro en adultos. 40 preguntas sobre comunicación, rutina, sensorial y foco. Escala propia de NURA — no es un diagnóstico.",
+        "metaDescription": "Autoevaluación gratuita de rasgos del espectro autista en adultos. 40 preguntas sobre comunicación, rutina, sensorial y foco. No es un diagnóstico.",
         "eyebrow": "Espectro y percepción",
         "heroLine1": "Rasgos del",
         "heroLine2": "espectro autista",
@@ -143,7 +143,7 @@
       "description": "Razonamiento, patrones, memoria y percepción en 45 preguntas.",
       "landing": {
         "metaTitle": "Test de CI online — evaluación de razonamiento en 45 preguntas | NURA",
-        "metaDescription": "Evaluación de razonamiento con 45 preguntas en seis dimensiones cognitivas: patrones, lógica, matrices, orientación espacial, percepción visual y memoria de trabajo. Resultado inmediato.",
+        "metaDescription": "Test de CI online con 45 preguntas en seis dimensiones: patrones, lógica, matrices, orientación espacial, percepción y memoria. Resultado inmediato.",
         "eyebrow": "Evaluación 03",
         "heroLine1": "Test de CI:",
         "heroLine2": "razonamiento en",

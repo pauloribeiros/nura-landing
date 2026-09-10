@@ -62,6 +62,20 @@ export async function generateMetadata({
       images: ['/og-image.jpg'],
     },
     robots: { index: true, follow: true, 'max-image-preview': 'large' },
+    /**
+     * Verificacao do Google Search Console.
+     *
+     * Sem o Search Console nao da para saber por quais termos o site aparece,
+     * quantos cliques recebe, nem se ha pagina com erro de indexacao — que e
+     * exatamente a informacao de que qualquer decisao de SEO depende.
+     *
+     * Vem de variavel de ambiente para que o codigo de verificacao possa ser
+     * trocado sem passar por aqui. Ausente, o campo simplesmente nao e
+     * emitido: `undefined` nao vira meta tag vazia.
+     */
+    verification: {
+      google: process.env.GOOGLE_SITE_VERIFICATION?.trim() || undefined,
+    },
   };
 }
 

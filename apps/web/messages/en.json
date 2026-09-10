@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "NURA — Assessments to explore your attention, cognition and behaviour",
-    "description": "Explore different dimensions of your mind and behaviour through interactive assessments. Start free, no card required, and get an initial result right away. A self-knowledge and screening tool — it does not replace professional diagnosis.",
+    "description": "Free self-assessments for ADHD, autism spectrum traits and reasoning. Start with no card required and get an initial result right away. Not a diagnosis.",
     "ogTitle": "NURA — Discover what makes you, you",
     "ogDescription": "Interactive assessments to explore your attention, cognition, personality and behaviour. Free to start, no card required.",
     "ogImageAlt": "NURA — Discover what makes you, you"
@@ -71,7 +71,7 @@
       "description": "Attention, organisation and impulsivity in everyday life.",
       "landing": {
         "metaTitle": "ADHD self-report for adults — free screening | NURA",
-        "metaDescription": "Free adult ADHD self-report using the ASRS-v1.1 scale from the World Health Organization. 18 items, 3 to 5 minutes, no card required. A screening instrument — not a diagnosis.",
+        "metaDescription": "Free adult ADHD self-report using the WHO's ASRS-v1.1 scale. 18 items, 3 to 5 minutes, no card required. A screening instrument, not a diagnosis.",
         "heroLine1": "ADHD:",
         "heroLine2": "self-report",
         "intro": "A structured experience for observing how your attention behaves day to day: where it holds, where it slips, and which patterns repeat. The initial result is free and immediate.",
@@ -107,7 +107,7 @@
       "description": "Communication, interaction, routine and sensory processing.",
       "landing": {
         "metaTitle": "Autism spectrum traits: a self-assessment for adults | NURA",
-        "metaDescription": "Free self-assessment of spectrum traits in adults. 40 questions on communication, routine, sensory processing and focus. NURA's own scale — not a diagnosis.",
+        "metaDescription": "Free self-assessment of autism spectrum traits in adults. 40 questions on communication, routine, sensory processing and focus. Not a diagnosis.",
         "eyebrow": "Spectrum & perception",
         "heroLine1": "Autism spectrum",
         "heroLine2": "traits",
@@ -143,7 +143,7 @@
       "description": "Reasoning, patterns, memory and perception across 45 questions.",
       "landing": {
         "metaTitle": "Online IQ test — 45-question reasoning assessment | NURA",
-        "metaDescription": "A reasoning assessment with 45 questions across six cognitive dimensions: patterns, logic, matrices, spatial orientation, visual perception and working memory. Immediate result.",
+        "metaDescription": "Online IQ-style reasoning test with 45 questions across six dimensions: patterns, logic, matrices, spatial orientation, perception and memory.",
         "eyebrow": "Assessment 03",
         "heroLine1": "IQ test:",
         "heroLine2": "reasoning across",
