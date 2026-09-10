@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type Stripe from 'stripe';
-import { getStripe } from '@/lib/payments/stripe';
+import { getStripe, webhookSecret } from '@/lib/payments/stripe';
 import { getSupabaseAdminClient } from '@/lib/supabase/server';
 import { sendReportEmail } from '@/lib/email/sendReport';
 
@@ -26,7 +26,7 @@ export const runtime = 'nodejs';
 
 export async function POST(request: Request) {
   const stripe = getStripe();
-  const secret = process.env.STRIPE_WEBHOOK_SECRET;
+  const secret = webhookSecret();
   const admin = getSupabaseAdminClient();
 
   if (!stripe || !secret || !admin) {

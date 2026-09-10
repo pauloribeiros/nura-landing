@@ -50,7 +50,8 @@ import type { SegredosIniciais } from '@/lib/payments/intents';
 
 type Metodo = 'card' | 'pix';
 
-const chavePublica = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+// Aparada pelo mesmo motivo que a secreta: ver `lib/payments/stripe.ts`.
+const chavePublica = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY?.trim();
 const stripePromise = chavePublica ? loadStripe(chavePublica) : null;
 
 /** O visual do Stripe alinhado ao nosso, para não parecer um enxerto. */
