@@ -39,7 +39,7 @@ describe('o que a tela de pagamento promete', () => {
       ).toBeDefined();
 
       for (const [locale, catalogo] of Object.entries(CATALOGOS)) {
-        const ck = catalogo.iq_checkout as Record<string, string>;
+        const ck = catalogo.iq_checkout as unknown as Record<string, string>;
         for (let i = 1; i <= 4; i += 1) {
           expect(
             typeof ck[`${familia}${i}`],
@@ -55,7 +55,7 @@ describe('o que a tela de pagamento promete', () => {
     // usando o texto da outra — que e o defeito que este arquivo existe para
     // impedir. As duas ultimas linhas SAO iguais de proposito (e-mail e
     // acesso), entao a comparacao e so das duas primeiras.
-    const ck = ptBr.iq_checkout as Record<string, string>;
+    const ck = ptBr.iq_checkout as unknown as Record<string, string>;
     const assinatura = (familia: string) => `${ck[`${familia}1`]}|${ck[`${familia}2`]}`;
     const vistas = new Map<string, string>();
     for (const [id, familia] of Object.entries(FAMILIA)) {

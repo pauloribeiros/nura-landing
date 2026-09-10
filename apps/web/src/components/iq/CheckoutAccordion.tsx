@@ -78,9 +78,33 @@ export function CheckoutAccordion({
 }) {
   const t = useTranslations('iq_checkout');
   const locale = useLocale();
-  // Pix aberto por padrao: no celular e o caminho mais curto — nada para
-  // digitar, aprovacao na hora, e e o metodo que mais converte no Brasil.
-  const [aberto, setAberto] = useState<Metodo>('pix');
+  /**
+   * O CARTAO ABRE POR PADRAO ENQUANTO A CONTA NAO TEM PIX.
+   *
+   * O padrao era Pix, e a razao era boa: no celular e o caminho mais curto,
+   * nada para digitar, aprovacao na hora, e e o metodo que mais converte no
+   * Brasil. So que a Stripe so libera Pix depois de um historico de
+   * processamento, entao hoje a conta nao tem — e abrir num painel que o
+   * servidor vai desabilitar um instante depois custa duas coisas: a tela
+   * pisca, e o formulario de cartao monta escondido (ver `montados`).
+   *
+   * QUANDO O PIX FOR LIBERADO, isto volta a ser 'pix'. E uma linha.
+   */
+  const [aberto, setAberto] = useState<Metodo>('card');
+
+  /**
+   * Os paineis cujo formulario do Stripe ja pode existir.
+   *
+   * O Payment Element PRECISA MONTAR COM ALTURA. Um painel fechado e
+   * `grid-template-rows: 0fr` com `overflow: hidden`: o iframe do Stripe monta
+   * ali medindo zero e nao se recupera quando o painel abre depois. E a mesma
+   * armadilha que a sonda de carteiras documenta logo abaixo — la, escondido,
+   * o elemento respondia que nao havia carteira nenhuma.
+   *
+   * Entao o formulario so nasce quando o painel dele abre, e continua montado
+   * depois: remontar a cada troca jogaria fora o que a pessoa ja digitou.
+   */
+  const [montados, setMontados] = useState<Metodo[]>(['card']);
   const [segredos, setSegredos] = useState<Partial<Record<'card' | 'pix', string>>>({});
   const [erro, setErro] = useState(false);
   // Metodos que a conta do Stripe nao processa. Continuam na lista, apagados e
@@ -168,6 +192,7 @@ export function CheckoutAccordion({
 
   const abrir = (metodo: Metodo) => {
     setAberto(metodo);
+    setMontados((atuais) => (atuais.includes(metodo) ? atuais : [...atuais, metodo]));
     if (metodo === 'pix') void pedirSegredo('pix');
   };
 
@@ -247,7 +272,7 @@ export function CheckoutAccordion({
 
                 {id === 'wallet' ? null : !stripePromise ? (
                   <p className="runner-hint">{t('semChave')}</p>
-                ) : segredo ? (
+                ) : segredo && montados.includes(id) ? (
                   <Elements
                     key={id}
                     stripe={stripePromise}
