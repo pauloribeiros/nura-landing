@@ -1,0 +1,52 @@
+# Roda o que a Vercel roda, antes da Vercel rodar.
+#
+# Um erro de `prefer-const` ja derrubou um deploy que tinha passado limpo na
+# maquina — porque `next build` local NAO roda o ESLint e o da Vercel roda. Este
+# arquivo existe para que esse tipo de erro apareca no push, e nao no deploy.
+#
+# O build NAO esta aqui de proposito: ele precisa das chaves de producao, e
+# duplicar na CI um build que a Vercel ja faz custaria minutos para responder a
+# mesma pergunta duas vezes. O que a CI cobre e o que independe de segredo.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Um push novo cancela a checagem do anterior no mesmo branch: o que importa e
+# o estado atual do codigo, nao a fila.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v5
+
+      # Le a versao do campo `packageManager` do package.json.
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Instalar
+        run: pnpm install --frozen-lockfile
+
+      - name: Tipos
+        run: pnpm --filter @workspace/web run typecheck
+
+      # `--max-warnings` fica solto de proposito: a base tem 4 avisos antigos, e
+      # transformar aviso em erro hoje so ensinaria a ignorar a CI. Erro quebra.
+      - name: ESLint
+        run: pnpm --filter @workspace/web run lint
+
+      - name: Testes
+        run: pnpm --filter @workspace/web run test
