@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
-import { Check, CreditCard, QrCode, Wallet } from 'lucide-react';
+import { Check, CreditCard, QrCode } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { loadStripe } from '@stripe/stripe-js';
 import {
@@ -48,7 +48,7 @@ import type { SegredosIniciais } from '@/lib/payments/intents';
  * no-preference`.
  */
 
-type Metodo = 'wallet' | 'card' | 'pix';
+type Metodo = 'card' | 'pix';
 
 const chavePublica = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
 const stripePromise = chavePublica ? loadStripe(chavePublica) : null;
@@ -111,7 +111,6 @@ export function CheckoutAccordion({
   // marcados como indisponiveis: some-los faria a pessoa procurar o Pix e nao
   // achar, sem saber se e a pagina ou a vista dela. Dito, ela escolhe outro.
   const [indisponiveis, setIndisponiveis] = useState<string[]>([]);
-  const [carteiras, setCarteiras] = useState(false);
 
   /** Abre o intent daquele método uma vez só e guarda o segredo. */
   const pedirSegredo = useCallback(
@@ -197,7 +196,11 @@ export function CheckoutAccordion({
   };
 
   const itens: { id: Metodo; icone: React.ReactNode }[] = [
-    ...(carteiras ? [{ id: 'wallet' as const, icone: <Wallet size={18} aria-hidden="true" /> }] : []),
+    /* NAO HA LINHA DE CARTEIRA NO ACORDEAO.
+       Havia, e ela abria um painel vazio: o botao de verdade e o do Express
+       Checkout, que fica acima do acordeao e e desenhado pela propria Apple.
+       A linha so repetia o nome de algo que ja estava na tela, e clicar nela
+       nao levava a lugar nenhum. */
     { id: 'pix', icone: <QrCode size={18} aria-hidden="true" /> },
     { id: 'card', icone: <CreditCard size={18} aria-hidden="true" /> },
   ];
@@ -209,9 +212,10 @@ export function CheckoutAccordion({
 
   return (
     <div className="pay-accordion">
-      {/* Fica montado fora do acordeão: é ele que diz se há Apple Pay ou
-          Google Pay neste aparelho, e sem essa resposta o item não deve
-          aparecer prometendo algo que não vai abrir.
+      {/* O BOTAO DE CARTEIRA, DESENHADO PELA PROPRIA APPLE OU GOOGLE.
+          Fica fora do acordeao de proposito: nao e uma opcao entre outras, e
+          um atalho — quem tem o cartao no aparelho paga num toque, sem abrir
+          nada. Por isso ele vem antes da lista, e nao dentro dela.
           NUNCA dentro de `display: none`: o elemento do Stripe precisa estar
           no layout para se medir e decidir se a carteira existe. Escondido,
           ele respondia que nao havia nenhuma — que foi por isso que o Apple
@@ -224,19 +228,6 @@ export function CheckoutAccordion({
             options={{ clientSecret: segredos.card, appearance, locale: locale as 'pt-BR' }}
           >
             <ExpressCheckoutElement
-              onReady={({ availablePaymentMethods }) => {
-                /**
-                 * UM OBJETO VAZIO E VERDADEIRO. Aqui estava
-                 * `Boolean(availablePaymentMethods)`, e o Stripe devolve um
-                 * OBJETO — `{ applePay: false, googlePay: false, link: false }`
-                 * — quando nenhuma carteira serve neste aparelho. `Boolean`
-                 * disso e `true`, entao a linha "Carteira digital" entrava no
-                 * acordeao sempre: a pessoa via uma forma de pagamento que
-                 * abria vazia. O que decide e ter ao menos uma verdadeira.
-                 */
-                const disponiveis = availablePaymentMethods ?? {};
-                setCarteiras(Object.values(disponiveis).some(Boolean));
-              }}
               onConfirm={() => track('checkout_started', { assessment: 'cognition' })}
               options={{ buttonHeight: 48 }}
             />
@@ -280,7 +271,7 @@ export function CheckoutAccordion({
               <div className="pay-panel-inner" inert={!expandido}>
                 <p>{indisponivel ? t('unavailableBody') : t(`${id}.body`)}</p>
 
-                {id === 'wallet' ? null : !stripePromise ? (
+                {!stripePromise ? (
                   <p className="runner-hint">{t('semChave')}</p>
                 ) : segredo && montados.includes(id) ? (
                   <Elements
@@ -386,7 +377,14 @@ function Formulario({
 
   return (
     <form onSubmit={pagar} className="pay-form">
-      <PaymentElement options={{ layout: 'tabs' }} />
+      {/* SEM CARTEIRA AQUI DENTRO. O Payment Element oferece Apple Pay e
+          Google Pay como abas ao lado de "Cartao" — e com o botao do Express
+          Checkout no topo isso vira o MESMO pagamento oferecido duas vezes na
+          mesma tela, em dois lugares, com aparencias diferentes. Quem paga com
+          carteira usa o botao de cima; este painel e o do cartao. */}
+      <PaymentElement
+        options={{ layout: 'tabs', wallets: { applePay: 'never', googlePay: 'never' } }}
+      />
       {estado === 'aguardando' ? (
         <p className="pay-waiting">{aguardando}</p>
       ) : (

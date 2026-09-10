@@ -700,11 +700,6 @@
     "sending": "Opening checkout…",
     "error": "We could not open checkout right now. Try again in a moment.",
     "secure": "Payment handled by Stripe. NURA never sees or stores your card details.",
-    "wallet": {
-      "name": "Apple Pay or Google Pay",
-      "note": "one tap",
-      "body": "Pay with the card already on your device, without typing anything."
-    },
     "carregando": "Loading the payment form…",
     "semChave": "Payment unavailable: the Stripe publishable key is not configured.",
     "doneTitle": "Payment confirmed.",

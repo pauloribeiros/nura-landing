@@ -700,11 +700,6 @@
     "sending": "Abriendo el pago…",
     "error": "No pudimos abrir el pago ahora. Inténtalo de nuevo en un momento.",
     "secure": "Pago procesado por Stripe. NURA nunca ve ni guarda los datos de tu tarjeta.",
-    "wallet": {
-      "name": "Apple Pay o Google Pay",
-      "note": "un toque",
-      "body": "Paga con la tarjeta que ya está en tu dispositivo, sin escribir nada."
-    },
     "carregando": "Cargando el formulario de pago…",
     "semChave": "Pago no disponible: falta configurar la clave pública de Stripe.",
     "doneTitle": "Pago confirmado.",
