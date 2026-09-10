@@ -310,7 +310,7 @@ a.path-hit:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 
    a pagina precisa dizer "antes" e "depois".
    Agora a escada e de claridade: tinta -> branco -> quase-branco -> tinta. O
    branco puro fica na secao do preco, que e onde a decisao acontece. */
-.how { position: relative; overflow: hidden; isolation: isolate; color: #14213a; background: var(--nura-soft-white); }
+.how { position: relative; overflow: hidden; isolation: isolate; color: #101a36; background: var(--nura-soft-white); }
 .how .wrap { position: relative; z-index: 1; }
 /* ------------------------------------------------- jornada em argila ---
    A RECEITA DE ARGILA E UMA SO, e por isso mora numa variavel.
@@ -321,21 +321,20 @@ a.path-hit:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 
    badge acaba com um raio de sombra que nao combina com o do card, e o
    conjunto deixa de parecer o mesmo material. */
 :root {
-  /* A ARGILA E DA COR DA MARCA, e nao um pastel lavado.
-     O primeiro corte usava #e9eefb sobre uma secao #f6f8fc: os dois quase o
-     mesmo tom, entao os cards nao tinham peso nenhum — a forma existia, a
-     presenca nao. Agora eles sao o azul de acao da NURA, o mesmo do botao
-     principal, que e a unica cor forte que a pagina ja usa em superficie
-     clara.
-     AS LUZES SAO DERIVADAS DO PROPRIO AZUL, e nao branco e cinza. Numa
-     superficie saturada, um realce branco e uma sombra cinza leem como
-     plastico por cima da cor; tingidos do mesmo matiz, leem como o material
-     sendo iluminado. */
-  --argila-fundo: #2f56e0;
-  --argila-externa: 0 22px 44px rgba(29, 55, 150, 0.34);
-  --argila-cava: inset -8px -8px 16px rgba(18, 38, 112, 0.55);
-  --argila-luz: inset 8px 8px 16px rgba(126, 156, 255, 0.45);
-  --argila: var(--argila-externa), var(--argila-cava), var(--argila-luz);
+  /* AS TRES PARADAS DE UM DEGRADE SO, uma por card.
+     O azul unico dava presenca mas nao dizia nada sobre a ordem: tres cards
+     iguais sao tres coisas paralelas, e a jornada e uma sequencia. Petroleo,
+     azul e roxo atravessam a fileira e amarram a secao ao que esta em volta —
+     o petroleo puxa o teal do catalogo logo acima, o roxo puxa o violeta que
+     a paleta ja tinha e quase nao usava.
+     CADA CARD COMECA ONDE O ANTERIOR TERMINA, e por isso a fileira le como um
+     movimento continuo em vez de tres blocos coloridos. */
+  --argila-1a: #08697a;  /* petroleo */
+  --argila-1b: #135f9c;
+  --argila-2a: #2453c5;  /* azul */
+  --argila-2b: #3a45cf;
+  --argila-3a: #5936d6;  /* roxo */
+  --argila-3b: #4a2bb5;
 }
 
 .steps { display: grid; gap: 20px; margin-top: 54px; }
@@ -346,8 +345,32 @@ a.path-hit:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 
   gap: 0;
   padding: 30px 28px 32px;
   border-radius: 30px;
-  background: var(--argila-fundo);
-  box-shadow: var(--argila);
+  background: linear-gradient(142deg, var(--de), var(--para));
+  /* As luzes saem da cor do proprio card. Numa superficie saturada, realce
+     branco e sombra cinza leem como plastico por cima da cor; tingidos do
+     mesmo matiz, leem como o material sendo iluminado. */
+  box-shadow:
+    0 22px 44px var(--sombra),
+    inset -8px -8px 16px var(--cava),
+    inset 8px 8px 16px var(--luz);
+}
+.step:nth-child(1) {
+  --de: var(--argila-1a); --para: var(--argila-1b);
+  --sombra: rgba(8, 72, 90, 0.34);
+  --cava: rgba(3, 40, 52, 0.55);
+  --luz: rgba(126, 205, 220, 0.38);
+}
+.step:nth-child(2) {
+  --de: var(--argila-2a); --para: var(--argila-2b);
+  --sombra: rgba(29, 55, 150, 0.34);
+  --cava: rgba(14, 32, 100, 0.55);
+  --luz: rgba(126, 156, 255, 0.42);
+}
+.step:nth-child(3) {
+  --de: var(--argila-3a); --para: var(--argila-3b);
+  --sombra: rgba(58, 30, 140, 0.34);
+  --cava: rgba(38, 18, 100, 0.55);
+  --luz: rgba(166, 136, 255, 0.42);
 }
 
 /* O numeral vira um disco inflado. A cava e a luz entram invertidas em
@@ -367,7 +390,7 @@ a.path-hit:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 
   color: var(--nura-deep-navy);
   background: var(--nura-cyan);
   box-shadow:
-    0 8px 18px rgba(12, 30, 90, 0.32),
+    0 8px 18px rgba(10, 26, 54, 0.34),
     inset -4px -4px 9px rgba(10, 122, 140, 0.42),
     inset 4px 4px 9px rgba(196, 250, 255, 0.9);
   font: 700 14px var(--app-font-mono);
@@ -376,9 +399,10 @@ a.path-hit:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 
 .step h3 { margin: 0; color: var(--text-on-dark); font: 700 24px var(--app-font-display); letter-spacing: -.04em; }
 /* Azul claro tingido do proprio card, e nao cinza: sobre superficie colorida
    um cinza suja, enquanto o mesmo matiz mais claro continua sendo a cor. */
-/* #dde5ff, e nao um azul mais fechado: sobre #2f56e0 o tom anterior media
-   4.29:1, logo abaixo do minimo de 4.5. Este mede 4.74:1 e continua sendo a
-   cor do card, nao cinza. */
+/* Um tom so para os tres cards, e nao um por cor: as tres paradas sao escuras
+   o bastante para o mesmo claro passar em todas (5.05, 5.36 e 5.72 contra o
+   minimo de 4.5). Tres tons de texto seriam tres coisas para manter em
+   sincronia sem ganho nenhum de legibilidade. */
 .step p { margin: 10px 0 0; color: #dde5ff; font-size: 15px; line-height: 1.55; }
 
 .profile { min-height: 780px; position: relative; display: flex; align-items: center; overflow: hidden; isolation: isolate; background: radial-gradient(circle at 20% 48%, rgba(34,211,229,.13), transparent 29%), radial-gradient(circle at 71% 38%, rgba(117,87,255,.16), transparent 32%), linear-gradient(105deg, rgba(7,11,20,.62), rgba(9,14,28,.84) 46%, rgba(7,11,20,.94)); }
