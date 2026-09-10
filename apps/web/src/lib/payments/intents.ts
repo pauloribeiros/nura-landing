@@ -99,14 +99,13 @@ export async function abrirIntent(
   // Ja sabemos que a conta nao processa este metodo: nem pede.
   if (metodo && recusados.has(metodo)) return { atendido: false };
 
-  let atendido = true;
   let intent: Stripe.PaymentIntent;
   try {
     intent = await criar(true);
   } catch (erro) {
     // Um metodo que a conta nao habilitou faz o Stripe recusar a criacao
-    // inteira. Melhor abrir com o que a conta tem do que devolver erro para
-    // quem ja decidiu pagar.
+    // inteira. Aqui isso vira "indisponivel" para aquele painel; qualquer
+    // outro erro sobe, porque nao e uma escolha do produto e sim uma falha.
     const invalido =
       erro instanceof Error && 'type' in erro && erro.type === 'StripeInvalidRequestError';
     if (!invalido) throw erro;
@@ -123,7 +122,7 @@ export async function abrirIntent(
   }
 
   if (!intent.client_secret) return null;
-  return { clientSecret: intent.client_secret, atendido };
+  return { clientSecret: intent.client_secret, atendido: true };
 }
 
 /** O que a tela de pagamento precisa para montar os dois paineis. */

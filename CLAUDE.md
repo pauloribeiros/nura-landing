@@ -52,7 +52,13 @@ nada de gradiente decorativo sem função.
 pnpm --filter @workspace/web run build     # build de produção (valida tipos)
 cd apps/web && npx vitest run              # testes de domínio (puros, sem DOM)
 cd apps/web && npx tsc --noEmit            # só os tipos
+cd apps/web && npx next lint               # ESLint — ver aviso abaixo
 ```
+
+**O build local NÃO roda o ESLint; o da Vercel roda, e falha o deploy.** Um
+`prefer-const` já derrubou um deploy que tinha passado limpo aqui. Rode
+`next lint` antes de commitar mudança em `apps/web/src` — avisos não quebram,
+erros sim.
 
 Servidor de desenvolvimento: usar a ferramenta de preview do Claude Code
 (`.claude/launch.json`), nunca `next dev` pelo shell. **Nunca rodar `next build`
