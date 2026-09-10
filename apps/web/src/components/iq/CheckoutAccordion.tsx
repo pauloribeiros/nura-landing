@@ -225,7 +225,17 @@ export function CheckoutAccordion({
           >
             <ExpressCheckoutElement
               onReady={({ availablePaymentMethods }) => {
-                setCarteiras(Boolean(availablePaymentMethods));
+                /**
+                 * UM OBJETO VAZIO E VERDADEIRO. Aqui estava
+                 * `Boolean(availablePaymentMethods)`, e o Stripe devolve um
+                 * OBJETO — `{ applePay: false, googlePay: false, link: false }`
+                 * — quando nenhuma carteira serve neste aparelho. `Boolean`
+                 * disso e `true`, entao a linha "Carteira digital" entrava no
+                 * acordeao sempre: a pessoa via uma forma de pagamento que
+                 * abria vazia. O que decide e ter ao menos uma verdadeira.
+                 */
+                const disponiveis = availablePaymentMethods ?? {};
+                setCarteiras(Object.values(disponiveis).some(Boolean));
               }}
               onConfirm={() => track('checkout_started', { assessment: 'cognition' })}
               options={{ buttonHeight: 48 }}
