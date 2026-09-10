@@ -6,6 +6,7 @@ import { getStripe } from '@/lib/payments/stripe';
 import { abrirIntent, type MetodoDePagamento } from '@/lib/payments/intents';
 import { reportIsSellable } from '@/content/landing';
 import { reportarErro } from '@/lib/observability/report';
+import { LIMITES, limitar, respostaDeExcesso } from '@/lib/seguranca/rateLimit';
 
 /**
  * Abre um PaymentIntent para uma corrida.
@@ -38,6 +39,9 @@ import { reportarErro } from '@/lib/observability/report';
 export const runtime = 'nodejs';
 
 export async function POST(request: Request) {
+  const cota = await limitar(request, 'pay/intent', LIMITES.pagar);
+  if (!cota.permitido) return respostaDeExcesso(cota);
+
   const stripe = getStripe();
   if (!stripe || !supabaseConfigured) {
     return NextResponse.json({ error: 'not-configured' }, { status: 503 });

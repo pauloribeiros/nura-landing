@@ -6,6 +6,7 @@ import { CURRENCY, PRICE_CENTS, getStripe } from '@/lib/payments/stripe';
 import { SITE_URL } from '@/lib/site';
 import { reportIsSellable, reportPath } from '@/content/landing';
 import { routing, type Locale } from '@/i18n/routing';
+import { LIMITES, limitar, respostaDeExcesso } from '@/lib/seguranca/rateLimit';
 
 /**
  * Starts a checkout for one assessment run.
@@ -27,6 +28,9 @@ import { routing, type Locale } from '@/i18n/routing';
 export const runtime = 'nodejs';
 
 export async function POST(request: Request) {
+  const cota = await limitar(request, 'checkout', LIMITES.pagar);
+  if (!cota.permitido) return respostaDeExcesso(cota);
+
   const stripe = getStripe();
   if (!stripe || !supabaseConfigured) {
     return NextResponse.json({ error: 'not-configured' }, { status: 503 });

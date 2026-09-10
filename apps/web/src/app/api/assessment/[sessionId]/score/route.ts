@@ -7,6 +7,7 @@ import { scoreAssessment } from '@/domain/assessment/scoring';
 import { INSTRUMENTS } from '@/domain/assessment/instruments/registry';
 import { isContextAnswer } from '@/domain/assessment/context';
 import { reportarErro } from '@/lib/observability/report';
+import { LIMITES, limitar, respostaDeExcesso } from '@/lib/seguranca/rateLimit';
 
 /**
  * Scores a finished session, server side, and stores the result.
@@ -35,9 +36,12 @@ import { reportarErro } from '@/lib/observability/report';
 export const runtime = 'nodejs';
 
 export async function POST(
-  _request: Request,
+  request: Request,
   { params }: { params: Promise<{ sessionId: string }> },
 ) {
+  const cota = await limitar(request, 'assessment/score', LIMITES.pontuar);
+  if (!cota.permitido) return respostaDeExcesso(cota);
+
   const { sessionId } = await params;
 
   if (!supabaseConfigured) {

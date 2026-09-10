@@ -98,6 +98,20 @@ do arquivo.** `SUPABASE_SECRET_KEY` e `STRIPE_SECRET_KEY` são de servidor: jama
 Identidade jurídica (razão social, CNPJ, endereço, e-mails do rodapé e das
 páginas legais) nunca é inventada — vem de `apps/web/src/content/legal.ts`.
 
+**Rate limiting** em `src/lib/seguranca/rateLimit.ts`, contando no Postgres
+(migration `0010`) porque em serverless um contador em memória conta só o que
+passou por aquela instância. Os números vivem em `LIMITES`; a rota entra no
+bucket, então gastar o limite de pagamento não gasta o de pontuação. O IP nunca
+é gravado — vira HMAC. **O webhook da Stripe fica de fora de propósito**: é
+protegido por assinatura e a Stripe reenvia o mesmo evento por desenho.
+**Falha aberta**: banco fora do ar libera a requisição e manda aviso ao Sentry,
+porque um limitador que derruba o site é pior que o abuso que ele evita.
+
+## CI
+
+`.github/workflows/ci.yml` roda tipos, ESLint e testes em todo push e PR. O
+build **não** está lá: precisa das chaves de produção, e a Vercel já o faz.
+
 ## Monitoramento de erro
 
 Sentry, em `src/lib/observability/`. **Erro que impede alguém de concluir o que

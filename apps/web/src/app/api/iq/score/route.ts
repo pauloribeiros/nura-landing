@@ -9,6 +9,7 @@ import { SCORING_VERSION } from '@/domain/iq/scoring-config';
 import { lerDesenhoDoCliente } from '@/domain/iq/conectarPares';
 import type { Resposta } from '@/domain/iq/types';
 import { reportarErro, reportarAviso } from '@/lib/observability/report';
+import { LIMITES, limitar, respostaDeExcesso } from '@/lib/seguranca/rateLimit';
 
 /**
  * Scores a finished IQ run and stores the result.
@@ -89,6 +90,9 @@ function parseAnswers(input: unknown): Resposta[] | null {
 }
 
 export async function POST(request: Request) {
+  const cota = await limitar(request, 'iq/score', LIMITES.pontuar);
+  if (!cota.permitido) return respostaDeExcesso(cota);
+
   if (!supabaseConfigured) {
     return NextResponse.json({ error: 'not-configured' }, { status: 503 });
   }
