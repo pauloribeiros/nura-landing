@@ -642,6 +642,27 @@ a.path-hit:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 
 .covers-grid h3 { font: 700 21px var(--app-font-display); letter-spacing: -.035em; }
 .covers-grid p { max-width: 46ch; margin-top: 8px; color: var(--text-on-dark-muted); font-size: 15px; line-height: 1.55; }
 
+/* Ligacao entre as avaliacoes. Fica sobre o mesmo branco da secao acima e se
+   separa dela por um fio, nao por mais uma cor: a pagina ja tem tres valores de
+   superficie e um quarto so acrescentaria ruido. */
+.assessment-others { color: var(--nura-graphite); background: var(--nura-soft-white); border-top: 1px solid var(--rule-tint); }
+.assessment-others-lead { max-width: 48ch; margin-top: 10px; color: var(--text-on-tint); font-size: 15px; line-height: 1.6; }
+.assessment-others-list { margin-top: 28px; list-style: none; border-top: 1px solid var(--rule-tint); }
+.assessment-others-list li { border-bottom: 1px solid var(--rule-tint); }
+.assessment-others-list a { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4px 18px; padding: 20px 0; color: inherit; text-decoration: none; }
+.assessment-others-list b { grid-column: 1; font: 700 19px var(--app-font-display); letter-spacing: -.03em; }
+.assessment-others-list span { grid-column: 1; max-width: 52ch; color: var(--text-on-tint); font-size: 14px; line-height: 1.55; }
+.assessment-others-list svg { grid-column: 2; grid-row: 1 / span 2; color: var(--nura-blue); transition: transform .2s ease; }
+
+@media (hover: hover) and (pointer: fine) {
+  .assessment-others-list a:hover svg { transform: translateX(4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .assessment-others-list svg { transition: none; }
+  .assessment-others-list a:hover svg { transform: none; }
+}
+
 .assessment-detail { color: var(--nura-graphite); background: var(--nura-soft-white); }
 .assessment-detail-grid { display: grid; gap: 40px; }
 .assessment-detail h2 { font: 700 24px var(--app-font-display); letter-spacing: -.04em; }

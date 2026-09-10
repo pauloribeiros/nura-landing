@@ -211,6 +211,10 @@ export default async function AssessmentPage({ params }: { params: Params }) {
   const tc = await getTranslations({ locale, namespace: 'common' });
   const tq = await getTranslations({ locale, namespace: 'faq' });
   const tn = await getTranslations({ locale, namespace: 'nav' });
+  const tcat = await getTranslations({ locale, namespace: 'assessments' });
+
+  /** As outras avaliacoes que ja rodam — a fonte dos links desta pagina. */
+  const outras = AVAILABLE_ASSESSMENTS.filter((a) => a.id !== assessment.id);
 
   const strip = (p: string) => p.replace(`/${locale}`, '') || '/';
 
@@ -350,6 +354,40 @@ export default async function AssessmentPage({ params }: { params: Params }) {
             </div>
           </div>
         </section>
+
+        {/**
+         * POR QUE ESTE BLOCO EXISTE, e nao e enfeite de rodape.
+         *
+         * As paginas /testes/<slug> so eram alcancaveis pelo sitemap: a landing
+         * e o catalogo mandam todo mundo direto para o teste (decisao de UX
+         * documentada em [section]/page.tsx), e nenhuma outra pagina apontava
+         * para ca. O Google respondeu o previsivel — indexou a do TDAH, que e a
+         * unica com link, e deixou as outras duas em "Detectada, mas nao
+         * indexada". Pagina orfa nao ranqueia, e o argumento de que a landing
+         * "existe para quem chega pela busca" se desfaz quando ninguem chega.
+         *
+         * Isto liga as landings entre si sem tocar no funil: quem escolheu no
+         * catalogo continua indo direto para o teste.
+         */}
+        {outras.length > 0 ? (
+          <section className="section assessment-others">
+            <div className="wrap">
+              <h2 className="section-title">{tl('othersTitle')}</h2>
+              <p className="assessment-others-lead">{tl('othersLead')}</p>
+              <ul className="assessment-others-list">
+                {outras.map((outra) => (
+                  <li key={outra.id}>
+                    <Link href={assessmentLandingPath(locale, outra).replace(`/${locale}`, '')}>
+                      <b>{tcat(`${outra.id}.title`)}</b>
+                      <span>{tcat(`${outra.id}.description`)}</span>
+                      <ArrowRight size={16} aria-hidden="true" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        ) : null}
 
         <section className="section faq">
           <div className="wrap faq-layout">

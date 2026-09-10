@@ -348,7 +348,9 @@
     "upcomingTitle": "La evaluación abre pronto",
     "upcomingCopy": "Estamos terminando el instrumento de esta evaluación. Se publicará en cuanto la metodología esté definida, revisada y documentada en esta página.",
     "startCta": "Empezar la evaluación gratuita",
-    "limitsTitle": "Límites de este resultado"
+    "limitsTitle": "Límites de este resultado",
+    "othersTitle": "Otras evaluaciones de NURA",
+    "othersLead": "La atención es una explicación entre varias. Estas miran otras dimensiones."
   },
   "runner": {
     "introEyebrow": "Antes de empezar",

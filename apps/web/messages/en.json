@@ -348,7 +348,9 @@
     "upcomingTitle": "This assessment opens soon",
     "upcomingCopy": "We are finalising the instrument behind this assessment. It goes live as soon as the methodology is defined, reviewed and documented on this page.",
     "startCta": "Start the free assessment",
-    "limitsTitle": "Limits of this result"
+    "limitsTitle": "Limits of this result",
+    "othersTitle": "Other NURA assessments",
+    "othersLead": "Attention is one explanation among several. These look at other dimensions."
   },
   "runner": {
     "introEyebrow": "Before you start",
