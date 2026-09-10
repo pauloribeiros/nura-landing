@@ -93,15 +93,34 @@ export async function POST(request: Request) {
   const metodo: MetodoDePagamento | undefined =
     body.metodo === 'card' || body.metodo === 'pix' ? body.metodo : undefined;
 
-  const segredo = await abrirIntent(stripe, metodo, {
-    sessionId,
-    userId: auth.user.id,
-    assessmentId: sessao.assessment_id,
-    locale: body.locale,
-    email: typeof body.email === 'string' ? body.email : undefined,
-  });
+  /**
+   * UM ERRO AQUI NAO PODE SAIR COMO 500 MUDO.
+   *
+   * `abrirIntent` relanca o que nao for recusa de metodo — chave invalida,
+   * conta sem permissao, Stripe fora do ar. Sem este `catch`, o Next respondia
+   * 500 com corpo vazio: a tela mostrava "nao foi possivel abrir o pagamento"
+   * e nao havia registro em lugar nenhum. Uma chave invalida, ainda por cima,
+   * nem aparece no log da conta Stripe, porque a requisicao nao pode ser
+   * atribuida a ela. Levou horas de investigacao para achar isso; o log abaixo
+   * teria dado a resposta na primeira tentativa.
+   */
+  let segredo: Awaited<ReturnType<typeof abrirIntent>>;
+  try {
+    segredo = await abrirIntent(stripe, metodo, {
+      sessionId,
+      userId: auth.user.id,
+      assessmentId: sessao.assessment_id,
+      locale: body.locale,
+      email: typeof body.email === 'string' ? body.email : undefined,
+    });
+  } catch (erro) {
+    const tipo = erro && typeof erro === 'object' && 'type' in erro ? erro.type : 'desconhecido';
+    const mensagem = erro instanceof Error ? erro.message : String(erro);
+    console.error('[nura] stripe recusou a criacao do intent', { tipo, mensagem, metodo });
+    return NextResponse.json({ error: 'stripe-failed' }, { status: 502 });
+  }
 
-  if (!segredo) {
+  if (!segredo || !segredo.clientSecret) {
     return NextResponse.json({ error: 'intent-failed' }, { status: 502 });
   }
 
