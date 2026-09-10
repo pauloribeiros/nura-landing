@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@react-three/fiber": "^9.7.0",
+    "@sentry/nextjs": "^10.74.0",
     "@stripe/react-stripe-js": "^6.8.2",
     "@stripe/stripe-js": "^9.14.0",
     "@supabase/ssr": "^0.12.4",

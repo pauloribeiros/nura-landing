@@ -1,4 +1,5 @@
 import 'server-only';
+import { reportarErro } from '@/lib/observability/report';
 
 import { getStripe } from './stripe';
 import { getSupabaseAdminClient } from '@/lib/supabase/server';
@@ -60,7 +61,7 @@ export async function confirmCheckout(
 
   // 23505 means the webhook got there first. Access exists either way.
   if (error && error.code !== '23505') {
-    console.error('[nura] could not grant on return', error.message);
+    reportarErro('could not grant on return', error.message, { sessionId });
     return false;
   }
 

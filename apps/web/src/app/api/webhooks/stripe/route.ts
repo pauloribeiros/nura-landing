@@ -3,6 +3,7 @@ import type Stripe from 'stripe';
 import { getStripe, webhookSecret } from '@/lib/payments/stripe';
 import { getSupabaseAdminClient } from '@/lib/supabase/server';
 import { sendReportEmail } from '@/lib/email/sendReport';
+import { reportarErro, reportarAviso } from '@/lib/observability/report';
 
 /**
  * Where a payment becomes access.
@@ -44,7 +45,7 @@ export async function POST(request: Request) {
   } catch (error) {
     // A bad signature is not an outage — answering 400 stops Stripe retrying
     // something that will never verify.
-    console.warn('[nura] stripe signature rejected', error);
+    reportarAviso('stripe signature rejected', error);
     return NextResponse.json({ error: 'bad-signature' }, { status: 400 });
   }
 
@@ -107,7 +108,7 @@ export async function POST(request: Request) {
   const { ref, sessionId, userId, assessmentId } = pago;
 
   if (!sessionId || !userId || !assessmentId) {
-    console.error('[nura] pagamento sem metadata', ref);
+    reportarErro('pagamento sem metadata', ref, { evento: event.type });
     // 200 on purpose: retrying will not add metadata that was never set, and
     // this needs a human, not another delivery.
     return NextResponse.json({ received: true, granted: false });
@@ -127,7 +128,7 @@ export async function POST(request: Request) {
   // 23505 is a unique violation: this event already granted, or the session
   // already had access. Both mean the desired state is the actual state.
   if (error && error.code !== '23505') {
-    console.error('[nura] could not grant entitlement', error.message);
+    reportarErro('could not grant entitlement', error.message, { ref, sessionId, assessmentId });
     // 500 asks Stripe to retry — the payment is real and access is owed.
     return NextResponse.json({ error: 'grant-failed' }, { status: 500 });
   }

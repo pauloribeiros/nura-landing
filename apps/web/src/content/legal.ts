@@ -107,6 +107,7 @@ const SUBPROCESSADORES_PT = [
   'Stripe, Inc. (Estados Unidos) — processamento do pagamento. Os dados do cartão são digitados em campos do próprio Stripe e nunca passam pelos nossos servidores.',
   'Resend (Estados Unidos) — envio do e-mail com o link do relatório.',
   'PostHog (Estados Unidos) — medição anônima de uso, ativada somente se você aceitar no aviso de privacidade.',
+  'Functional Software, Inc. (Sentry, Estados Unidos) — registro técnico de falhas do site, para que um erro seja consertado em vez de passar despercebido. O relatório leva o erro, a página e o navegador; não leva suas respostas, seu e-mail nem o seu IP.',
 ];
 
 const SUBPROCESSADORES_EN = [
@@ -115,6 +116,7 @@ const SUBPROCESSADORES_EN = [
   'Stripe, Inc. (United States) — payment processing. Card details are typed into Stripe’s own fields and never reach our servers.',
   'Resend (United States) — delivery of the email carrying your report link.',
   'PostHog (United States) — anonymous usage measurement, enabled only if you accept it in the privacy notice.',
+  'Functional Software, Inc. (Sentry, United States) — technical logging of site failures, so an error gets fixed instead of going unnoticed. The report carries the error, the page and the browser; it does not carry your answers, your email or your IP.',
 ];
 
 const SUBPROCESSADORES_ES = [
@@ -123,6 +125,7 @@ const SUBPROCESSADORES_ES = [
   'Stripe, Inc. (Estados Unidos) — procesamiento del pago. Los datos de la tarjeta se escriben en campos del propio Stripe y nunca pasan por nuestros servidores.',
   'Resend (Estados Unidos) — envío del correo con el enlace del informe.',
   'PostHog (Estados Unidos) — medición anónima de uso, activada solo si la aceptas en el aviso de privacidad.',
+  'Functional Software, Inc. (Sentry, Estados Unidos) — registro técnico de fallas del sitio, para que un error se arregle en vez de pasar desapercibido. El informe lleva el error, la página y el navegador; no lleva tus respuestas, tu correo ni tu IP.',
 ];
 
 const privacidadePt: DocumentoLegal = {

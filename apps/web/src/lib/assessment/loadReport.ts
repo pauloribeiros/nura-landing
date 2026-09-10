@@ -1,4 +1,5 @@
 import 'server-only';
+import { reportarErro } from '@/lib/observability/report';
 
 import { cookies } from 'next/headers';
 import { createServerClient } from '@supabase/ssr';
@@ -162,7 +163,7 @@ export async function loadReport(
    * que e ruim, mas nao e um relatorio errado sobre a cabeca de alguem.
    */
   if (stored.assessment_id !== asrs18.assessmentId) {
-    console.error('[nura] sessao sem relatorio proprio', stored.assessment_id);
+    reportarErro('sessao sem relatorio proprio', stored.assessment_id);
     return null;
   }
 

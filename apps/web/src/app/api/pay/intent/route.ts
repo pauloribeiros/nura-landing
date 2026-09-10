@@ -5,6 +5,7 @@ import { SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL, supabaseConfigured } from '@/li
 import { getStripe } from '@/lib/payments/stripe';
 import { abrirIntent, type MetodoDePagamento } from '@/lib/payments/intents';
 import { reportIsSellable } from '@/content/landing';
+import { reportarErro } from '@/lib/observability/report';
 
 /**
  * Abre um PaymentIntent para uma corrida.
@@ -101,8 +102,11 @@ export async function POST(request: Request) {
    * 500 com corpo vazio: a tela mostrava "nao foi possivel abrir o pagamento"
    * e nao havia registro em lugar nenhum. Uma chave invalida, ainda por cima,
    * nem aparece no log da conta Stripe, porque a requisicao nao pode ser
-   * atribuida a ela. Levou horas de investigacao para achar isso; o log abaixo
-   * teria dado a resposta na primeira tentativa.
+   * atribuida a ela. Levou horas de investigacao para achar isso, e so foi
+   * descoberto porque o dono tentou comprar.
+   *
+   * Por isso o relato vai por `reportarErro`, e nao por `console.error`: um
+   * log da Vercel so responde a quem ja foi olhar. Este avisa.
    */
   let segredo: Awaited<ReturnType<typeof abrirIntent>>;
   try {
@@ -115,8 +119,7 @@ export async function POST(request: Request) {
     });
   } catch (erro) {
     const tipo = erro && typeof erro === 'object' && 'type' in erro ? erro.type : 'desconhecido';
-    const mensagem = erro instanceof Error ? erro.message : String(erro);
-    console.error('[nura] stripe recusou a criacao do intent', { tipo, mensagem, metodo });
+    reportarErro('stripe recusou a criacao do intent', erro, { tipo, metodo, sessionId });
     return NextResponse.json({ error: 'stripe-failed' }, { status: 502 });
   }
 

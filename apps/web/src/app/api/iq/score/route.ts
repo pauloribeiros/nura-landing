@@ -8,6 +8,7 @@ import { scoreIq } from '@/domain/iq/scoring';
 import { SCORING_VERSION } from '@/domain/iq/scoring-config';
 import { lerDesenhoDoCliente } from '@/domain/iq/conectarPares';
 import type { Resposta } from '@/domain/iq/types';
+import { reportarErro, reportarAviso } from '@/lib/observability/report';
 
 /**
  * Scores a finished IQ run and stores the result.
@@ -70,7 +71,7 @@ function parseAnswers(input: unknown): Resposta[] | null {
     // navegador afirma ter feito sao descartados e recontados no scorer.
     const desenho = r.bruto ? lerDesenhoDoCliente((r.bruto as Record<string, unknown>).dados) : null;
     if (r.bruto && !desenho) {
-      console.warn('[nura] desenho descartado por forma invalida', itemId);
+      reportarAviso('desenho descartado por forma invalida', itemId);
     }
 
     out.push({
@@ -130,7 +131,7 @@ export async function POST(request: Request) {
     .single();
 
   if (sessionError || !session) {
-    console.error('[nura] could not open iq session', sessionError?.message);
+    reportarErro('could not open iq session', sessionError?.message);
     return NextResponse.json({ error: 'store-failed' }, { status: 500 });
   }
 
@@ -156,7 +157,7 @@ export async function POST(request: Request) {
 
   const { error: answersError } = await admin.from('assessment_answers').insert(rows);
   if (answersError) {
-    console.error('[nura] could not store iq answers', answersError.message);
+    reportarErro('could not store iq answers', answersError.message, { sessionId: session.id });
     // Not fatal: the result is what the report is built from, and losing the
     // raw answers costs a future rescore, not this person's result.
   }
@@ -176,7 +177,7 @@ export async function POST(request: Request) {
   });
 
   if (resultError) {
-    console.error('[nura] could not store iq result', resultError.message);
+    reportarErro('could not store iq result', resultError.message, { sessionId: session.id });
     return NextResponse.json({ error: 'store-failed' }, { status: 500 });
   }
 

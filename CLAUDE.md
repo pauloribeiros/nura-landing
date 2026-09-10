@@ -98,5 +98,25 @@ do arquivo.** `SUPABASE_SECRET_KEY` e `STRIPE_SECRET_KEY` são de servidor: jama
 Identidade jurídica (razão social, CNPJ, endereço, e-mails do rodapé e das
 páginas legais) nunca é inventada — vem de `apps/web/src/content/legal.ts`.
 
-Pendências conhecidas: a senha do banco exposta numa sessão anterior ainda
-precisa ser rotacionada antes de tráfego real.
+## Monitoramento de erro
+
+Sentry, em `src/lib/observability/`. **Erro que impede alguém de concluir o que
+veio fazer sai por `reportarErro`, nunca por `console.error` solto** — o log da
+Vercel só responde a quem já foi olhar, e foi assim que o checkout ficou
+quebrado em produção sem ninguém saber. `reportarAviso` é para o que o sistema
+absorveu e ainda vale registrar.
+
+O que NÃO vai para o Sentry: recusa de método de pagamento pela conta Stripe
+(o Pix, hoje) continua em `console.warn`, porque acontece em toda compra e
+enterraria o painel.
+
+`privacidade.ts` esteriliza todo evento antes do envio — sem usuário, sem IP,
+sem cookie, sem corpo de requisição, sem e-mail, sem migalha de `console`. Isso
+não é preferência: resposta de avaliação é dado sensível de saúde sob a LGPD e
+o Sentry é um terceiro fora do Brasil. Há teste (`privacidade.test.ts`); se
+mexer no filtro, ele tem que continuar passando.
+
+Sem `NEXT_PUBLIC_SENTRY_DSN` nada é inicializado — é o que mantém máquina de
+desenvolvimento e preview fora do painel de produção. Com `SENTRY_AUTH_TOKEN`,
+`SENTRY_ORG` e `SENTRY_PROJECT` na Vercel, o build passa a subir sourcemap e os
+stack traces do navegador deixam de vir minificados.

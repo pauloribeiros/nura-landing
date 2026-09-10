@@ -2,6 +2,7 @@ import 'server-only';
 
 import type Stripe from 'stripe';
 import { CURRENCY, PRICE_CENTS } from './stripe';
+import { reportarErro } from '@/lib/observability/report';
 
 /**
  * A criacao dos PaymentIntents de uma corrida, num lugar so.
@@ -144,7 +145,7 @@ export async function abrirIntentsDaCobranca(
     try {
       return await abrirIntent(stripe, metodo, dados);
     } catch (erro) {
-      console.error('[nura] falha ao abrir intent no servidor', metodo, erro);
+      reportarErro('falha ao abrir intent no servidor', erro, { metodo });
       return null;
     }
   };

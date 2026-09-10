@@ -41,6 +41,10 @@ autoInstallPeers: false
 # Native/postinstall builds this workspace trusts.
 allowBuilds:
   '@parcel/watcher': true
+  # O postinstall baixa o binario do sentry-cli. Ele so e usado no build, para
+  # subir sourcemap quando SENTRY_AUTH_TOKEN existe — sem mapa, um stack trace
+  # do navegador chega minificado e o monitoramento perde metade do valor.
+  '@sentry/cli': true
   '@swc/core': true
   # Pulled in by posthog-js. Its postinstall only prints a funding notice, so
   # there is nothing to gain by running it.

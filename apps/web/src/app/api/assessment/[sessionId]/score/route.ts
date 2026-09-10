@@ -6,6 +6,7 @@ import { SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL, supabaseConfigured } from '@/li
 import { scoreAssessment } from '@/domain/assessment/scoring';
 import { INSTRUMENTS } from '@/domain/assessment/instruments/registry';
 import { isContextAnswer } from '@/domain/assessment/context';
+import { reportarErro } from '@/lib/observability/report';
 
 /**
  * Scores a finished session, server side, and stores the result.
@@ -110,7 +111,7 @@ export async function POST(
     // `assertScorable` throws rather than returning a plausible wrong number.
     // Surfacing that as a 500 is right: it means the instrument definition is
     // broken, not the request.
-    console.error('[nura] scoring failed', error);
+    reportarErro('scoring failed', error, { sessionId, assessmentId: session.assessment_id });
     return NextResponse.json({ error: 'not-scorable' }, { status: 500 });
   }
 
@@ -130,7 +131,7 @@ export async function POST(
   );
 
   if (writeError) {
-    console.error('[nura] could not store result', writeError.message);
+    reportarErro('could not store result', writeError.message, { sessionId });
     return NextResponse.json({ error: 'store-failed' }, { status: 500 });
   }
 
