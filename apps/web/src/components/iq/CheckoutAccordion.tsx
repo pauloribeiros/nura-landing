@@ -227,10 +227,7 @@ export function CheckoutAccordion({
             stripe={stripePromise}
             options={{ clientSecret: segredos.card, appearance, locale: locale as 'pt-BR' }}
           >
-            <ExpressCheckoutElement
-              onConfirm={() => track('checkout_started', { assessment: 'cognition' })}
-              options={{ buttonHeight: 48 }}
-            />
+            <BotaoCarteira retorno={retorno} />
           </Elements>
         </div>
       ) : null}
@@ -298,6 +295,54 @@ export function CheckoutAccordion({
       {erro ? <p className="runner-hint">{t('error')}</p> : null}
       <p className="pay-secure">{t('secure')}</p>
     </div>
+  );
+}
+
+/**
+ * O botão de carteira — Apple Pay, Google Pay, Link.
+ *
+ * `onConfirm` E ONDE O PAGAMENTO ACONTECE, e nao um aviso de que ele
+ * aconteceu. Aqui havia so um `track()`: a folha do Apple Pay abria, a pessoa
+ * autenticava com Face ID, a folha fechava — e nada era cobrado. Sem erro na
+ * tela, sem cobranca, sem relatorio. O pior tipo de falha num checkout, porque
+ * parece que funcionou.
+ *
+ * PRECISA DOS HOOKS, e hooks do Stripe so existem dentro de `<Elements>`. Por
+ * isso o botao virou componente proprio em vez de ficar solto no JSX do
+ * acordeao: `useStripe` chamado fora do provedor devolve null para sempre.
+ */
+function BotaoCarteira({ retorno }: { retorno: string }) {
+  const stripe = useStripe();
+  const elements = useElements();
+  const [erro, setErro] = useState<string | null>(null);
+
+  return (
+    <>
+      <ExpressCheckoutElement
+        options={{ buttonHeight: 48 }}
+        onConfirm={async () => {
+          if (!stripe || !elements) return;
+          track('checkout_started', { assessment: 'cognition' });
+
+          const { error, paymentIntent } = await stripe.confirmPayment({
+            elements,
+            confirmParams: { return_url: retorno },
+            redirect: 'if_required',
+          });
+
+          if (error) {
+            // A mensagem vem do Stripe no idioma da pessoa e diz o que houve.
+            setErro(error.message ?? null);
+            return;
+          }
+
+          // A carteira resolve na hora: ou aprovou, ou deu erro acima. Nao ha
+          // o segundo passo que o Pix tem, entao aqui `succeeded` e o fim.
+          if (paymentIntent?.status === 'succeeded') window.location.href = retorno;
+        }}
+      />
+      {erro ? <p className="runner-hint">{erro}</p> : null}
+    </>
   );
 }
 
