@@ -27,12 +27,6 @@ export function SiteFooter() {
         <FooterLegalLine />
         <div className="footer-bottom">
           <span>{t('tagline')}</span>
-          {/* Required by the Storyset licence: the break-screen illustrations
-              are free for commercial use only while this credit is visible.
-              See TransitionArt. */}
-          <a className="footer-credit" href="https://storyset.com" target="_blank" rel="noopener noreferrer">
-            {t('credits')}
-          </a>
           <LocaleSwitcher variant="footer" />
         </div>
       </div>
