@@ -21,17 +21,26 @@ const nextConfig: NextConfig = {
  * O Sentry entra por fora de tudo.
  *
  * SOURCEMAP: sem `SENTRY_AUTH_TOKEN` nao ha upload, e um stack trace do
- * navegador chega minificado — legivel a duras penas, mas chega. Basta criar o
- * token na Sentry e por as tres variaveis na Vercel para que o upload se ligue
- * sozinho no proximo build. Nao deixar isso obrigatorio e proposital: uma
- * variavel faltando NAO pode derrubar um deploy por causa de monitoramento.
+ * navegador chega minificado — legivel a duras penas, mas chega. Por o token na
+ * Vercel liga o upload sozinho no proximo build. Nao deixar isso obrigatorio e
+ * proposital: uma variavel faltando NAO pode derrubar um deploy por causa de
+ * monitoramento.
+ *
+ * Org e projeto ficam escritos aqui em vez de virarem variavel de ambiente
+ * porque nao sao segredo, nao mudam, e cada variavel a mais e mais uma chance
+ * de o upload falhar em silencio por causa de um nome errado. O segredo e um
+ * so, e e o token.
+ *
+ * Os arquivos .map sao apagados depois do upload — e o padrao do plugin, e o
+ * certo: servir sourcemap publicamente entrega o codigo-fonte inteiro do
+ * cliente, comentarios inclusive.
  *
  * `silent` fora de CI porque, sem token, o plugin avisa a cada build local que
  * nao vai subir mapa — um aviso correto que ninguem precisa ler cem vezes.
  */
 export default withSentryConfig(withNextIntl(nextConfig), {
-  org: process.env.SENTRY_ORG,
-  project: process.env.SENTRY_PROJECT,
+  org: process.env.SENTRY_ORG || 'aec-az',
+  project: process.env.SENTRY_PROJECT || 'nura-web',
   silent: !process.env.CI,
   sourcemaps: { disable: !process.env.SENTRY_AUTH_TOKEN },
   // Tira do bundle o logger interno do SDK, que so serve para depurar o Sentry.
