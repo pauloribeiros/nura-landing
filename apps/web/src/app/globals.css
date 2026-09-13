@@ -799,12 +799,31 @@ a.path-hit:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 
    comeca a parecer que a tela demorou a ouvir. A curva chega rapido e assenta
    devagar, entao o avanco e visto sem fazer ninguem esperar por ele. O brilho e
    fixo e baixo — separa o cheio do trilho em tela OLED, nao pisca. */
-.runner-progress-track span { display: block; width: 100%; height: 100%; border-radius: inherit; transform-origin: left center; background: linear-gradient(90deg, var(--nura-blue), var(--nura-cyan)); box-shadow: 0 0 10px rgba(34,211,229,.35); transition: transform .24s var(--ease-out); }
+.runner-progress-track span { display: block; width: 100%; height: 100%; border-radius: inherit; transform-origin: left center; background: repeating-linear-gradient(-45deg, rgba(255,255,255,.16) 0 3px, transparent 3px 8px), linear-gradient(90deg, var(--nura-blue), var(--nura-cyan)); box-shadow: 0 0 10px rgba(34,211,229,.35); transition: transform .24s var(--ease-out); }
+
+/* A PISTA. A metafora e alguem avancando rumo a uma meta: um marcador anda na
+   ponta do preenchimento e uma bandeira espera no fim. O marcador so se move
+   quando a pessoa responde — nada corre em loop em cima de uma pergunta de
+   atencao. As listras do preenchimento ficam paradas pelo mesmo motivo.
+
+   O marcador e um elemento da largura da pista deslocado por translateX em
+   porcentagem: porcentagem em translate e relativa ao proprio elemento, entao
+   translateX(40%) sobre uma pista de 335px sao 134px, sem medir nada em JS. O
+   icone fica ancorado na borda esquerda desse elemento, centrado nela. */
+.runner-progress-course { position: relative; padding: 18px 0 0; }
+.runner-progress-runner { position: absolute; top: 0; left: 0; width: 100%; height: 16px; color: var(--nura-cyan); transition: transform .24s var(--ease-out); }
+.runner-progress-runner svg { position: absolute; left: 0; top: 0; transform: translateX(-50%); }
+.runner-progress-flag { position: absolute; top: 0; right: 0; color: var(--text-on-dark-faint); }
+/* Terminou: a bandeira acende e cresce uma vez. E o unico momento de festa do
+   teste, e por isso e o unico lugar com keyframe: dispara uma vez, no fim, nao
+   a cada resposta. */
+.runner-progress-course[data-complete="true"] .runner-progress-flag { color: var(--nura-cyan); animation: flag-raise .32s var(--ease-out) both; }
+@keyframes flag-raise { from { transform: scale(1); } 50% { transform: scale(1.3); } to { transform: scale(1.1); } }
 /* Terminou: o degrade vira ciano solido. Um estado, nao um enfeite — a pessoa
    ve que chegou antes de ler qualquer texto. A troca e instantanea de proposito:
     nao anima, e transicionar so a cor fazia o cheio sumir por
    um quadro e voltar em fade — um piscar justo no momento que devia assentar. */
-.runner-progress-track[data-complete="true"] span { background: var(--nura-cyan); }
+.runner-progress-course[data-complete="true"] .runner-progress-track span { background: var(--nura-cyan); }
 .runner-progress-label { color: var(--text-on-dark-faint); font: 11px var(--app-font-mono); letter-spacing: .08em; text-transform: uppercase; }
 
 /* questions */
@@ -1689,6 +1708,8 @@ body.is-running-test .header-actions .button { display: none; }
 @media (prefers-reduced-motion: reduce) {
   .iq-calc-track span { transition: none; }
   .runner-progress-track span { transition: none; }
+  .runner-progress-runner { transition: none; }
+  .runner-progress-course[data-complete="true"] .runner-progress-flag { animation: none; }
 }
 
 /* ------------------------------------------- campo de e-mail antes do pagamento */

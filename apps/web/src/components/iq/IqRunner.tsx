@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Flag, Footprints } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import type { PublicItem } from '@/domain/iq/bank';
 import { buildRunOrder, type Step } from '@/domain/iq/memoryQueue';
@@ -219,8 +219,17 @@ export function IqRunner({
           <Timer startedAt={session.startedAt} />
         </div>
 
-        <div className="runner-progress-track" aria-hidden="true" data-complete={total > 0 && answeredCount >= total}>
-          <span style={{ transform: `scaleX(${total > 0 ? answeredCount / total : 0})` }} />
+        <div className="runner-progress-course" aria-hidden="true" data-complete={total > 0 && answeredCount >= total}>
+          <div className="runner-progress-track">
+            <span style={{ transform: `scaleX(${total > 0 ? answeredCount / total : 0})` }} />
+          </div>
+          <span
+            className="runner-progress-runner"
+            style={{ transform: `translateX(${total > 0 ? (answeredCount / total) * 100 : 0}%)` }}
+          >
+            <Footprints size={14} />
+          </span>
+          <Flag className="runner-progress-flag" size={14} />
         </div>
 
         {step.kind === 'memory-show' ? (

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check, Flag, Footprints } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import {
   createSession,
@@ -457,8 +457,14 @@ export function AssessmentRunner({
                 t(stepLabel.block === 'partA' ? 'blockScreening' : 'blockDetail')}
             </span>
           </p>
-          <div className="runner-progress-track" aria-hidden="true" data-complete={stats.ratio >= 1}>
-            <span style={{ transform: `scaleX(${stats.ratio})` }} />
+          <div className="runner-progress-course" aria-hidden="true" data-complete={stats.ratio >= 1}>
+            <div className="runner-progress-track">
+              <span style={{ transform: `scaleX(${stats.ratio})` }} />
+            </div>
+            <span className="runner-progress-runner" style={{ transform: `translateX(${stats.ratio * 100}%)` }}>
+              <Footprints size={14} />
+            </span>
+            <Flag className="runner-progress-flag" size={14} />
           </div>
           <p className="runner-progress-label" role="status" ref={liveRef}>
             {t('progress', { answered: stats.answered, total: stats.total })}
