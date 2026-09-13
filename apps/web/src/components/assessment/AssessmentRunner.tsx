@@ -457,7 +457,7 @@ export function AssessmentRunner({
                 t(stepLabel.block === 'partA' ? 'blockScreening' : 'blockDetail')}
             </span>
           </p>
-          <div className="runner-progress-track" aria-hidden="true">
+          <div className="runner-progress-track" aria-hidden="true" data-complete={stats.ratio >= 1}>
             <span style={{ transform: `scaleX(${stats.ratio})` }} />
           </div>
           <p className="runner-progress-label" role="status" ref={liveRef}>

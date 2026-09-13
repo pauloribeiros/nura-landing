@@ -15,6 +15,10 @@
   --status-clear: #4fd1c5;
   --status-clear-soft: rgba(79, 209, 197, 0.14);
 
+  /* Curva de saida forte para resposta a acao do usuario. Os easings nativos
+     do CSS sao fracos demais; esta chega rapido e assenta devagar. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+
   --nura-obsidian: #070b14;
   --nura-deep-navy: #101827;
   --nura-blue: #3b67ff;
@@ -781,12 +785,26 @@ a.path-hit:focus-visible { outline: 3px solid var(--nura-cyan); outline-offset: 
 
 /* progress */
 .runner-progress { display: grid; gap: 8px; margin-bottom: 14px; }
-.runner-progress-track { height: 4px; border-radius: 99px; background: rgba(255,255,255,.12); overflow: hidden; }
+/* 6px, nao 4: a barra e o unico sinal de "quanto falta" durante o teste
+   inteiro, e a 4px sobre preto ela sumia atras do polegar no celular. O trilho
+   sobe de .12 para .2 de alfa pelo mesmo motivo — o vazio precisa ser legivel
+   para o cheio significar algo. Continua um fio, nao um jogo. */
+.runner-progress-track { height: 6px; border-radius: 99px; background: rgba(255,255,255,.2); overflow: hidden; }
 /* A BARRA ESCALA, NAO CRESCE. Animar `width` refaz o layout a cada quadro, e
    esta barra anima uma vez por questao — 45 vezes numa corrida. `scaleX` roda
    no compositor: mesma imagem, sem tocar no layout. A largura fica em 100% e
-   quem varia e a escala, com a origem na esquerda. */
-.runner-progress-track span { display: block; width: 100%; height: 100%; border-radius: inherit; transform-origin: left center; background: linear-gradient(90deg, var(--nura-blue), var(--nura-cyan)); transition: transform .4s cubic-bezier(.16,1,.3,1); }
+   quem varia e a escala, com a origem na esquerda.
+
+   240ms em vez de 400: e feedback a uma resposta, e feedback acima de 300ms
+   comeca a parecer que a tela demorou a ouvir. A curva chega rapido e assenta
+   devagar, entao o avanco e visto sem fazer ninguem esperar por ele. O brilho e
+   fixo e baixo — separa o cheio do trilho em tela OLED, nao pisca. */
+.runner-progress-track span { display: block; width: 100%; height: 100%; border-radius: inherit; transform-origin: left center; background: linear-gradient(90deg, var(--nura-blue), var(--nura-cyan)); box-shadow: 0 0 10px rgba(34,211,229,.35); transition: transform .24s var(--ease-out); }
+/* Terminou: o degrade vira ciano solido. Um estado, nao um enfeite — a pessoa
+   ve que chegou antes de ler qualquer texto. A troca e instantanea de proposito:
+    nao anima, e transicionar so a cor fazia o cheio sumir por
+   um quadro e voltar em fade — um piscar justo no momento que devia assentar. */
+.runner-progress-track[data-complete="true"] span { background: var(--nura-cyan); }
 .runner-progress-label { color: var(--text-on-dark-faint); font: 11px var(--app-font-mono); letter-spacing: .08em; text-transform: uppercase; }
 
 /* questions */
@@ -1670,6 +1688,7 @@ body.is-running-test .header-actions .button { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .iq-calc-track span { transition: none; }
+  .runner-progress-track span { transition: none; }
 }
 
 /* ------------------------------------------- campo de e-mail antes do pagamento */

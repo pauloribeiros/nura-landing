@@ -219,7 +219,7 @@ export function IqRunner({
           <Timer startedAt={session.startedAt} />
         </div>
 
-        <div className="runner-progress-track" aria-hidden="true">
+        <div className="runner-progress-track" aria-hidden="true" data-complete={total > 0 && answeredCount >= total}>
           <span style={{ transform: `scaleX(${total > 0 ? answeredCount / total : 0})` }} />
         </div>
 
