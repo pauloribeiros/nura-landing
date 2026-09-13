@@ -26,9 +26,15 @@ cara de template genérico, que é exatamente o que o dono não quer.
 | Criar, redesenhar, criticar, polir ou auditar uma tela | `impeccable` (`shape`, `critique`, `audit`, `polish`, `bolder`, `layout`, `typeset`, `delight`) |
 | Landing/portfólio que não pode parecer template | `design-taste-frontend` |
 | Subir a régua de uma tela que já existe | `redesign-existing-projects` |
-| Movimento, transição, micro-interação | `animate`, `improve-animations`, `review-animations`, `emil-design-eng` |
-| Escolher biblioteca de UI | `pick-ui-library` |
+| Movimento, transição, micro-interação | `animate`, `improve-animations`, `emil-design-eng`, `find-animation-opportunities` |
+| Gesto, arraste, mola, sheet, acordeão (o ConectarPares do QI, o checkout) | `apple-design` |
+| Revisar uma animação já escrita | `review-animations` — **só roda por `/review-animations`** |
+| Escolher biblioteca de UI | `pick-ui-library` — **só roda por `/pick-ui-library`** |
 | Texto que soa a IA | `humanizer` |
+
+As duas marcadas acima têm `disable-model-invocation: true`: nenhum agente as
+chama sozinho, e elas nem aparecem na lista de skills da sessão. Quando forem
+necessárias, peça ao dono para digitar o comando.
 
 O padrão para uma tela nova é `impeccable shape`; para uma tela existente que
 incomoda, `impeccable critique` e depois o comando que ele indicar.
